@@ -8,7 +8,7 @@ def num_checker(number: int) -> Union[int, str]:
     them based of the following conditions
     divisible by 3 = crackle
     divisible by 5 = Pop
-    divisible by 3 and 5 = crackle
+    divisible by 3 and 5 = cracklePop
     """
     if number % 3 == 0:
         return "Crackle"
