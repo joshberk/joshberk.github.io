@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Berkoh - Cybersecurity Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .skill-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-gray-900" onclick="navigate(event, 'home')">Joshua Berkoh</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link active" onclick="navigate(event, 'home')">Home</a>
+                <a href="#about" class="nav-link" onclick="navigate(event, 'about')">About</a>
+                <a href="#resume" class="nav-link" onclick="navigate(event, 'resume')">Resume</a>
+                <a href="#volunteering" class="nav-link" onclick="navigate(event, 'volunteering')">Volunteering</a>
+                <a href="#projects" class="nav-link" onclick="navigate(event, 'projects')">Projects</a>
+                <a href="#contact" class="nav-link" onclick="navigate(event, 'contact')">Contact</a>
+            </div>
+            <button class="md:hidden" id="mobile-menu-button">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'home')">Home</a>
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'about')">About</a>
+            <a href="#resume" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'resume')">Resume</a>
+            <a href="#volunteering" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'volunteering')">Volunteering</a>
+            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'projects')">Projects</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'contact')">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Home Section -->
+        <section id="home" class="section active min-h-[calc(100vh-150px)] flex items-center">
+            <div class="w-full text-center">
+                <div class="max-w-4xl mx-auto">
+                    <img src="IMG_6186.jpg" alt="Joshua Berkoh" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">Hi, I'm Joshua Berkoh</h1>
+                    <p class="text-xl md:text-2xl text-indigo-600 font-medium mb-8">A Passionate Cybersecurity Professional</p>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">A dedicated and results-driven cybersecurity professional with a passion for ethical hacking, threat analysis, and security engineering. Welcome to my personal corner of the internet. I'm excited to share my journey with you.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#projects" onclick="navigate(event, 'projects')" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl">View My Work</a>
+                        <a href="#contact" onclick="navigate(event, 'contact')" class="bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-300 border border-indigo-200 shadow-lg hover:shadow-xl">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section py-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">About Me</h2>
+                <div class="grid md:grid-cols-3 gap-10 items-center">
+                    <div class="md:col-span-1">
+                        <img src="IMG_6186.jpg" alt="Joshua Berkoh" class="rounded-lg shadow-xl w-full h-96 object-cover">
+                    </div>
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">My Journey in Cybersecurity</h3>
+                        <p class="text-gray-600 mb-4">Hello! I'm Joshua Berkoh, a Cybersecurity Professional based in Cincinnati, OH. My passion lies at the intersection of offensive security and threat mitigation. I am currently pursuing a PhD in Information Technology at the University of Cincinnati, building upon my Master's degree in the same field. I've spent years honing my skills in web penetration testing, security operations, and threat analysis.</p>
+                        <p class="text-gray-600 mb-6">Whether I'm hunting for bugs, analyzing advanced persistent threats, or mentoring the next generation of security experts, my goal is always the same: to make the digital world a safer place. I'm driven by curiosity and a desire to continuously learn and contribute to the cybersecurity community.</p>
+                         <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600"><i data-lucide="github" class="w-6 h-6"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600"><i data-lucide="mail" class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-center mb-10 text-gray-900">My Skills</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                            <i data-lucide="sword" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
+                            <h4 class="font-semibold text-lg">Penetration Testing</h4>
+                            <p class="text-sm text-gray-500">Burp Suite, Nmap, Metasploit, SQLmap, Hashcat</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                            <i data-lucide="shield-check" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
+                            <h4 class="font-semibold text-lg">Security Operations</h4>
+                            <p class="text-sm text-gray-500">Splunk, Nessus, Threat Modeling, MITRE ATT&CK</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                            <i data-lucide="search" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
+                            <h4 class="font-semibold text-lg">Digital Forensics</h4>
+                             <p class="text-sm text-gray-500">Autopsy, FTK Imager, Scalpel, Cyberchef</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                            <i data-lucide="code" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
+                            <h4 class="font-semibold text-lg">Programming</h4>
+                             <p class="text-sm text-gray-500">Python, HTML, CSS, JavaScript, SQL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section py-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Resume</h2>
+                <div class="text-center mb-12">
+                     <a href="Joshua Berkoh-Resume.pdf" download="Joshua_Berkoh_Resume.pdf" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl">Download PDF</a>
+                </div>
+                <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl">
+                    <!-- Experience -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 border-b-2 border-indigo-200 pb-2 mb-6">Work Experience</h3>
+                         <div class="mb-6">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="text-xl font-semibold text-gray-700">Security Engineer Intern</h4>
+                                <p class="text-sm text-gray-500">Jun 2023 - Sep 2023</p>
+                            </div>
+                            <p class="text-md text-indigo-500 font-medium mb-2">Intuit Inc. - San Diego, CA</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Integrated security repositories into red teaming tools, increasing efficiency by 20%.</li>
+                                <li>Implemented Tox integration for automated code compliance checks, reducing manual effort by 30%.</li>
+                                <li>Identified and resolved 70% of compliance issues before deployment through rigorous testing.</li>
+                            </ul>
+                        </div>
+                        <div class="mb-6">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="text-xl font-semibold text-gray-700">Adjunct Instructor</h4>
+                                <p class="text-sm text-gray-500">Jan 2023 - Apr 2023</p>
+                            </div>
+                            <p class="text-md text-indigo-500 font-medium mb-2">University of Cincinnati - Cincinnati, OH</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Revised IT 2030C course, creating new materials and labs to increase student engagement by 20%.</li>
+                                <li>Implemented hands-on learning for 48 students, improving performance by 15%.</li>
+                            </ul>
+                        </div>
+                         <div class="mb-6">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="text-xl font-semibold text-gray-700">Security Operations Center Analyst</h4>
+                                <p class="text-sm text-gray-500">Oct 2021 - Jun 2022</p>
+                            </div>
+                            <p class="text-md text-indigo-500 font-medium mb-2">Virtual Infosec Africa - Accra, Ghana</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Monitored networks for the Bank of Ghana, achieving a 95% intrusion detection rate.</li>
+                                <li>Mitigated threats and reduced response time by 30% through proactive measures.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Education -->
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-bold text-gray-800 border-b-2 border-indigo-200 pb-2 mb-6">Education</h3>
+                        <div class="mb-6">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="text-xl font-semibold text-gray-700">PhD in Information Technology</h4>
+                                <p class="text-sm text-gray-500">Exp. Aug 2027</p>
+                            </div>
+                            <p class="text-md text-indigo-500 font-medium mb-2">University of Cincinnati</p>
+                        </div>
+                         <div>
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="text-xl font-semibold text-gray-700">Master of Science in Information Technology</h4>
+                                <p class="text-sm text-gray-500">Graduated Aug 2024</p>
+                            </div>
+                            <p class="text-md text-indigo-500 font-medium mb-2">University of Cincinnati</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteering Section -->
+        <section id="volunteering" class="section py-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Community & Volunteering</h2>
+                <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xl font-semibold text-gray-700">Bugbash Mentor</h4>
+                            <p class="text-sm text-gray-500">Jul 2024</p>
+                        </div>
+                        <p class="text-md text-indigo-500 font-medium mb-2">OWASP Cincinnati Chapter</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Mentored chapter members to improve OWASP Cheatsheets on critical vulnerability topics.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xl font-semibold text-gray-700">Examination Developer</h4>
+                            <p class="text-sm text-gray-500">Nov 2023 - Mar 2024</p>
+                        </div>
+                        <p class="text-md text-indigo-500 font-medium mb-2">ISC2</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Developed and reviewed content for ISC2 certifications, improving quality and pass rates.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xl font-semibold text-gray-700">AWS Community Builder</h4>
+                            <p class="text-sm text-gray-500">Jan 2022 - Jan 2024</p>
+                        </div>
+                        <p class="text-md text-indigo-500 font-medium mb-2">Amazon Web Services</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Contributed feedback that led to a 15% improvement in AWS product usability.</li>
+                        </ul>
+                    </div>
+                     <div class="mb-6">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xl font-semibold text-gray-700">OSINT CTF Player and Judge</h4>
+                            <p class="text-sm text-gray-500">Jan 2021 - Dec 2022</p>
+                        </div>
+                        <p class="text-md text-indigo-500 font-medium mb-2">Tracelabs</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Used OSINT to improve critical lead identification for missing persons cases by 40%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section py-20">
+             <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/a3bfb8/ffffff?text=AppSec+CTF" alt="Appsec CTF" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Security Innovation CTF</h3>
+                            <p class="text-gray-600 mb-4">Demonstrated proficiency in web penetration testing by exploiting SQLi, XSS, SSRF, and broken access control vulnerabilities in a competitive CTF.</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">BurpSuite</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SQLmap</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Hashcat</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/d1c1d1/ffffff?text=Threat+Analysis" alt="Threat Analysis" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">APT Threat Analysis</h3>
+                            <p class="text-gray-600 mb-4">Conducted in-depth analysis of Advanced Persistent Threats (APTs), identifying TTPs to develop proactive threat mitigation strategies.</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Threat Intelligence</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Behavioral Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/f0e6cc/ffffff?text=Bug+Bounty" alt="Bug Bounty" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Bug Bounty Hunter</h3>
+                            <p class="text-gray-600 mb-4">Identified and reported critical vulnerabilities on 7 programs, receiving Hall of Fame recognition from multiple companies including Centrify and Arlo.</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Bugcrowd</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Ethical Hacking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section py-20">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Get In Touch</h2>
+                 <p class="text-center text-gray-600 mb-10">I'm always open to discussing new projects, collaborations, or opportunities in cybersecurity. Feel free to send me a message.</p>
+                <form id="contact-form" class="bg-white p-8 rounded-lg shadow-xl space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Your Name" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="your@email.com" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="How can I help you?" required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">Send Message</button>
+                    </div>
+                </form>
+                <div id="form-submission-message" class="hidden mt-6 text-center text-green-600 bg-green-100 p-4 rounded-lg">
+                    Thank you! Your message has been sent successfully.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-indigo-400"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-indigo-400"><i data-lucide="github" class="w-6 h-6"></i></a>
+                <a href="mailto:joshuaberkoh19@gmail.com" class="hover:text-indigo-400"><i data-lucide="mail" class="w-6 h-6"></i></a>
+            </div>
+            <p>&copy; 2025 Joshua Berkoh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // --- SPA Navigation ---
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+
+        function navigate(event, pageId) {
+            if(event) event.preventDefault();
+            
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const targetSection = document.getElementById(pageId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            const allLinks = [...navLinks, ...mobileNavLinks];
+            allLinks.forEach(link => {
+                link.classList.remove('active');
+                 if (link.getAttribute('href') === `#${pageId}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.add('hidden');
+            
+            if (window.location.hash !== `#${pageId}`) {
+                window.location.hash = pageId;
+            }
+
+            window.scrollTo(0, 0);
+        }
+        
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                navigate(null, hash);
+            } else {
+                navigate(null, 'home');
+            }
+        });
+        
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.substring(1);
+            if(hash) {
+                navigate(null, hash);
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Contact Form Submission ---
+        const contactForm = document.getElementById('contact-form');
+        const formSubmissionMessage = document.getElementById('form-submission-message');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formSubmissionMessage.classList.remove('hidden');
+            contactForm.reset();
+
+            setTimeout(() => {
+                formSubmissionMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+    </script>
+</body>
+</html>
