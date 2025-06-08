@@ -344,7 +344,7 @@
                 <a href="#" class="hover:text-indigo-400"><i data-lucide="github" class="w-6 h-6"></i></a>
                 <a href="mailto:joshuaberkoh19@gmail.com" class="hover:text-indigo-400"><i data-lucide="mail" class="w-6 h-6"></i></a>
             </div>
-            <p>&copy; 2025 Joshua Berkoh. All Rights Reserved.</p>
+            <p>&copy; <span id="current-year">2025</span> Joshua Berkoh. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -424,5 +424,8 @@
         });
 
     </script>
+<script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
