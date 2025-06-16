@@ -1,0 +1,21 @@
+{
+  "name": "Joshua Berkoh - Cybersecurity Professional",
+  "short_name": "Joshua Berkoh",
+  "description": "Personal portfolio of Joshua Berkoh, showcasing cybersecurity expertise, resume, and projects",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "IMG_6186.JPG",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "scope": "/"
+}

@@ -4,8 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal website of Joshua Berkoh, showcasing cybersecurity expertise, resume, and projects." />
+    <meta name="keywords" content="cybersecurity, penetration testing, bug bounty, security engineer, ethical hacking, threat analysis">
+    <meta name="author" content="Joshua Berkoh">
+    <meta property="og:title" content="Joshua Berkoh - Cybersecurity Professional">
+    <meta property="og:description" content="Passionate cybersecurity professional specializing in ethical hacking, threat analysis, and security engineering.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://joshberk.github.io">
+    <meta property="og:image" content="https://joshberk.github.io/IMG_6186.JPG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Joshua Berkoh - Cybersecurity Professional">
+    <meta name="twitter:description" content="Passionate cybersecurity professional specializing in ethical hacking, threat analysis, and security engineering.">
     <title>Joshua Berkoh - Cybersecurity Professional</title>
+    <link rel="canonical" href="https://joshberk.github.io">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Joshua Berkoh">
+    <link rel="apple-touch-icon" href="/IMG_6186.JPG">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Joshua Berkoh",
+        "jobTitle": "Cybersecurity Professional",
+        "description": "Passionate cybersecurity professional specializing in ethical hacking, threat analysis, and security engineering",
+        "url": "https://joshberk.github.io",
+        "image": "https://joshberk.github.io/IMG_6186.JPG",
+        "email": "joshuaberkoh19@gmail.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/joshfiifi/",
+            "https://github.com/joshberk"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cincinnati",
+            "addressRegion": "OH",
+            "addressCountry": "US"
+        },
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Cincinnati"
+            }
+        ],
+        "knowsAbout": [
+            "Cybersecurity",
+            "Penetration Testing",
+            "Ethical Hacking",
+            "Threat Analysis",
+            "Security Engineering",
+            "Bug Bounty Hunting"
+        ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -44,49 +105,87 @@
         .skill-card {
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .skill-card:hover {
+        .skill-card:hover, .skill-card:focus-within {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        
+        /* Focus styles for better accessibility */
+        .nav-link:focus, button:focus, input:focus, textarea:focus {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+        
+        /* Skip to content link for screen readers */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #4f46e5;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Reduced motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header & Navigation -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-gray-900" onclick="navigate(event, 'home')">Joshua Berkoh</a>
+            <a href="#home" class="text-2xl font-bold text-gray-900 dark:text-white" onclick="navigate(event, 'home')">Joshua Berkoh</a>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link active" onclick="navigate(event, 'home')">Home</a>
-                <a href="#about" class="nav-link" onclick="navigate(event, 'about')">About</a>
-                <a href="#resume" class="nav-link" onclick="navigate(event, 'resume')">Resume</a>
-                <a href="#volunteering" class="nav-link" onclick="navigate(event, 'volunteering')">Volunteering</a>
-                <a href="#projects" class="nav-link" onclick="navigate(event, 'projects')">Projects</a>
-                <a href="#contact" class="nav-link" onclick="navigate(event, 'contact')">Contact</a>
+                <a href="#home" class="nav-link active text-gray-700 dark:text-gray-300" onclick="navigate(event, 'home')">Home</a>
+                <a href="#about" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'about')">About</a>
+                <a href="#resume" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'resume')">Resume</a>
+                <a href="#volunteering" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'volunteering')">Volunteering</a>
+                <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'projects')">Projects</a>
+                <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'contact')">Contact</a>
             </div>
-            <button class="md:hidden" id="mobile-menu-button">
-                <i data-lucide="menu"></i>
-            </button>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200" aria-label="Toggle dark mode">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-500"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-gray-700"></i>
+                </button>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <i data-lucide="menu" class="text-gray-700 dark:text-gray-300"></i>
+                </button>
+            </div>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'home')">Home</a>
-            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'about')">About</a>
-            <a href="#resume" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'resume')">Resume</a>
-            <a href="#volunteering" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'volunteering')">Volunteering</a>
-            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'projects')">Projects</a>
-            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100" onclick="navigate(event, 'contact')">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
+            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'home')">Home</a>
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'about')">About</a>
+            <a href="#resume" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'resume')">Resume</a>
+            <a href="#volunteering" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'volunteering')">Volunteering</a>
+            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'projects')">Projects</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'contact')">Contact</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main id="main-content" class="container mx-auto px-6 py-12">
 
         <!-- Home Section -->
         <section id="home" class="section active min-h-[calc(100vh-150px)] flex items-center">
             <div class="w-full text-center">
                 <div class="max-w-4xl mx-auto">
                     <img src="IMG_6186.JPG" alt="Joshua Berkoh" loading="lazy" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">Hi, I'm Joshua Berkoh</h1>
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">Hi, I'm Joshua Berkoh</h1>
                     <p class="text-xl md:text-2xl text-indigo-600 font-medium mb-8">A Passionate Cybersecurity Professional</p>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">A dedicated and results-driven cybersecurity professional with a passion for ethical hacking, threat analysis, and security engineering. Welcome to my personal corner of the internet. I'm excited to share my journey with you.</p>
                     <div class="flex justify-center space-x-4">
@@ -100,15 +199,15 @@
         <!-- About Section -->
         <section id="about" class="section py-20">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">About Me</h2>
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">About Me</h2>
                 <div class="grid md:grid-cols-3 gap-10 items-center">
                     <div class="md:col-span-1">
                         <img src="IMG_6186.JPG" alt="Joshua Berkoh" loading="lazy" class="rounded-lg shadow-xl w-full h-96 object-cover">
                     </div>
                     <div class="md:col-span-2">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">My Journey in Cybersecurity</h3>
-                        <p class="text-gray-600 mb-4">Hello! I'm Joshua Berkoh, a Cybersecurity Professional based in Cincinnati, OH. My passion lies at the intersection of offensive security and threat mitigation. I am currently pursuing a PhD in Information Technology at the University of Cincinnati, building upon my Master's degree in the same field. I've spent years honing my skills in web penetration testing, security operations, and threat analysis.</p>
-                        <p class="text-gray-600 mb-6">Whether I'm hunting for bugs, analyzing advanced persistent threats, or mentoring the next generation of security experts, my goal is always the same: to make the digital world a safer place. I'm driven by curiosity and a desire to continuously learn and contribute to the cybersecurity community.</p>
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">My Journey in Cybersecurity</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Hello! I'm Joshua Berkoh, a Cybersecurity Professional based in Cincinnati, OH. My passion lies at the intersection of offensive security and threat mitigation. I am currently pursuing a PhD in Information Technology at the University of Cincinnati, building upon my Master's degree in the same field. I've spent years honing my skills in web penetration testing, security operations, and threat analysis.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Whether I'm hunting for bugs, analyzing advanced persistent threats, or mentoring the next generation of security experts, my goal is always the same: to make the digital world a safer place. I'm driven by curiosity and a desire to continuously learn and contribute to the cybersecurity community.</p>
                          <div class="flex space-x-4">
                             <a href="https://www.linkedin.com/in/joshfiifi/" aria-label="LinkedIn" class="text-gray-500 hover:text-indigo-600"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
                             <a href="https://github.com/joshberk" aria-label="GitHub" class="text-gray-500 hover:text-indigo-600"><i data-lucide="github" class="w-6 h-6"></i></a>
@@ -117,27 +216,27 @@
                     </div>
                 </div>
                  <div class="mt-16">
-                    <h3 class="text-3xl font-bold text-center mb-10 text-gray-900">My Skills</h3>
+                    <h3 class="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">My Skills</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                        <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md skill-card transition-colors duration-300">
                             <i data-lucide="sword" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
-                            <h4 class="font-semibold text-lg">Penetration Testing</h4>
-                            <p class="text-sm text-gray-500">Burp Suite, Nmap, Metasploit, SQLmap, Hashcat</p>
+                            <h4 class="font-semibold text-lg dark:text-white">Penetration Testing</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Burp Suite, Nmap, Metasploit, SQLmap, Hashcat</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md skill-card transition-colors duration-300">
                             <i data-lucide="shield-check" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
-                            <h4 class="font-semibold text-lg">Security Operations</h4>
-                            <p class="text-sm text-gray-500">Splunk, Nessus, Threat Modeling, MITRE ATT&CK</p>
+                            <h4 class="font-semibold text-lg dark:text-white">Security Operations</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Splunk, Nessus, Threat Modeling, MITRE ATT&CK</p>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md skill-card transition-colors duration-300">
                             <i data-lucide="search" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
-                            <h4 class="font-semibold text-lg">Digital Forensics</h4>
-                             <p class="text-sm text-gray-500">Autopsy, FTK Imager, Scalpel, Cyberchef</p>
+                            <h4 class="font-semibold text-lg dark:text-white">Digital Forensics</h4>
+                             <p class="text-sm text-gray-500 dark:text-gray-400">Autopsy, FTK Imager, Scalpel, Cyberchef</p>
                         </div>
-                         <div class="bg-white p-6 rounded-lg shadow-md skill-card">
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md skill-card transition-colors duration-300">
                             <i data-lucide="code" class="w-12 h-12 mx-auto text-indigo-500 mb-4"></i>
-                            <h4 class="font-semibold text-lg">Programming</h4>
-                             <p class="text-sm text-gray-500">Python, HTML, CSS, JavaScript, SQL</p>
+                            <h4 class="font-semibold text-lg dark:text-white">Programming</h4>
+                             <p class="text-sm text-gray-500 dark:text-gray-400">Python, HTML, CSS, JavaScript, SQL</p>
                         </div>
                     </div>
                 </div>
@@ -147,21 +246,21 @@
         <!-- Resume Section -->
         <section id="resume" class="section py-20">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Resume</h2>
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">My Resume</h2>
                 <div class="text-center mb-12">
                      <a href="Joshua_Berkoh_Resume.pdf" download="Joshua_Berkoh_Resume.pdf" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl">Download PDF</a>
                 </div>
-                <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl">
+                <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-lg shadow-xl transition-colors duration-300">
                     <!-- Experience -->
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800 border-b-2 border-indigo-200 pb-2 mb-6">Work Experience</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white border-b-2 border-indigo-200 dark:border-indigo-400 pb-2 mb-6">Work Experience</h3>
                          <div class="mb-6">
                             <div class="flex justify-between items-baseline">
-                                <h4 class="text-xl font-semibold text-gray-700">Security Engineer Intern</h4>
-                                <p class="text-sm text-gray-500">Jun 2023 - Sep 2023</p>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200">Security Engineer Intern</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Jun 2023 - Sep 2023</p>
                             </div>
                             <p class="text-md text-indigo-500 font-medium mb-2">Intuit Inc. - San Diego, CA</p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
                                 <li>Integrated security repositories into red teaming tools, increasing efficiency by 20%.</li>
                                 <li>Implemented Tox integration for automated code compliance checks, reducing manual effort by 30%.</li>
                                 <li>Identified and resolved 70% of compliance issues before deployment through rigorous testing.</li>
@@ -169,22 +268,22 @@
                         </div>
                         <div class="mb-6">
                             <div class="flex justify-between items-baseline">
-                                <h4 class="text-xl font-semibold text-gray-700">Adjunct Instructor</h4>
-                                <p class="text-sm text-gray-500">Jan 2023 - Apr 2023</p>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200">Adjunct Instructor</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Jan 2023 - Apr 2023</p>
                             </div>
                             <p class="text-md text-indigo-500 font-medium mb-2">University of Cincinnati - Cincinnati, OH</p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
                                 <li>Revised IT 2030C course, creating new materials and labs to increase student engagement by 20%.</li>
                                 <li>Implemented hands-on learning for 48 students, improving performance by 15%.</li>
                             </ul>
                         </div>
                          <div class="mb-6">
                             <div class="flex justify-between items-baseline">
-                                <h4 class="text-xl font-semibold text-gray-700">Security Operations Center Analyst</h4>
-                                <p class="text-sm text-gray-500">Oct 2021 - Jun 2022</p>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200">Security Operations Center Analyst</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Oct 2021 - Jun 2022</p>
                             </div>
                             <p class="text-md text-indigo-500 font-medium mb-2">Virtual Infosec Africa - Accra, Ghana</p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
                                 <li>Monitored networks for the Bank of Ghana, achieving a 95% intrusion detection rate.</li>
                                 <li>Mitigated threats and reduced response time by 30% through proactive measures.</li>
                             </ul>
@@ -192,18 +291,18 @@
                     </div>
                      <!-- Education -->
                     <div class="mt-10">
-                        <h3 class="text-2xl font-bold text-gray-800 border-b-2 border-indigo-200 pb-2 mb-6">Education</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white border-b-2 border-indigo-200 dark:border-indigo-400 pb-2 mb-6">Education</h3>
                         <div class="mb-6">
                             <div class="flex justify-between items-baseline">
-                                <h4 class="text-xl font-semibold text-gray-700">PhD in Information Technology</h4>
-                                <p class="text-sm text-gray-500">Exp. Aug 2027</p>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200">PhD in Information Technology</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Exp. Aug 2027</p>
                             </div>
                             <p class="text-md text-indigo-500 font-medium mb-2">University of Cincinnati</p>
                         </div>
                          <div>
                             <div class="flex justify-between items-baseline">
-                                <h4 class="text-xl font-semibold text-gray-700">Master of Science in Information Technology</h4>
-                                <p class="text-sm text-gray-500">Graduated Aug 2024</p>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-200">Master of Science in Information Technology</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Graduated Aug 2024</p>
                             </div>
                             <p class="text-md text-indigo-500 font-medium mb-2">University of Cincinnati</p>
                         </div>
@@ -215,12 +314,12 @@
         <!-- Volunteering Section -->
         <section id="volunteering" class="section py-20">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Community & Volunteering</h2>
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">Community & Volunteering</h2>
                 <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl">
                     <div class="mb-6">
                         <div class="flex justify-between items-baseline">
                             <h4 class="text-xl font-semibold text-gray-700">Bugbash Mentor</h4>
-                            <p class="text-sm text-gray-500">Jul 2024</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Jul 2024</p>
                         </div>
                         <p class="text-md text-indigo-500 font-medium mb-2">OWASP Cincinnati Chapter</p>
                         <ul class="list-disc list-inside text-gray-600 space-y-1">
@@ -230,7 +329,7 @@
                     <div class="mb-6">
                         <div class="flex justify-between items-baseline">
                             <h4 class="text-xl font-semibold text-gray-700">Examination Developer</h4>
-                            <p class="text-sm text-gray-500">Nov 2023 - Mar 2024</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Nov 2023 - Mar 2024</p>
                         </div>
                         <p class="text-md text-indigo-500 font-medium mb-2">ISC2</p>
                         <ul class="list-disc list-inside text-gray-600 space-y-1">
@@ -240,7 +339,7 @@
                     <div class="mb-6">
                         <div class="flex justify-between items-baseline">
                             <h4 class="text-xl font-semibold text-gray-700">AWS Community Builder</h4>
-                            <p class="text-sm text-gray-500">Jan 2022 - Jan 2024</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Jan 2022 - Jan 2024</p>
                         </div>
                         <p class="text-md text-indigo-500 font-medium mb-2">Amazon Web Services</p>
                         <ul class="list-disc list-inside text-gray-600 space-y-1">
@@ -250,7 +349,7 @@
                      <div class="mb-6">
                         <div class="flex justify-between items-baseline">
                             <h4 class="text-xl font-semibold text-gray-700">OSINT CTF Player and Judge</h4>
-                            <p class="text-sm text-gray-500">Jan 2021 - Dec 2022</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Jan 2021 - Dec 2022</p>
                         </div>
                         <p class="text-md text-indigo-500 font-medium mb-2">Tracelabs</p>
                         <ul class="list-disc list-inside text-gray-600 space-y-1">
@@ -264,14 +363,23 @@
         <!-- Projects Section -->
         <section id="projects" class="section py-20">
              <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Projects</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-white">My Projects</h2>
+                
+                <!-- Project Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="filter-btn active px-6 py-2 rounded-full bg-indigo-600 text-white font-medium transition-all duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" data-filter="all">All Projects</button>
+                    <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" data-filter="security">Security</button>
+                    <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" data-filter="analysis">Analysis</button>
+                    <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" data-filter="bounty">Bug Bounty</button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
                     <!-- Project Card 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-category="security">
                         <img src="https://placehold.co/600x400/a3bfb8/ffffff?text=AppSec+CTF" alt="Security Innovation CTF - Web penetration testing demonstration" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Security Innovation CTF</h3>
-                            <p class="text-gray-600 mb-4">Demonstrated proficiency in web penetration testing by exploiting SQLi, XSS, SSRF, and broken access control vulnerabilities in a competitive CTF.</p>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Security Innovation CTF</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Demonstrated proficiency in web penetration testing by exploiting SQLi, XSS, SSRF, and broken access control vulnerabilities in a competitive CTF.</p>
                              <div class="flex flex-wrap gap-2">
                                 <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">BurpSuite</span>
                                 <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SQLmap</span>
@@ -280,11 +388,11 @@
                         </div>
                     </div>
                     <!-- Project Card 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-category="analysis">
                         <img src="https://placehold.co/600x400/d1c1d1/ffffff?text=Threat+Analysis" alt="Advanced Persistent Threat analysis and mitigation strategies" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">APT Threat Analysis</h3>
-                            <p class="text-gray-600 mb-4">Conducted in-depth analysis of Advanced Persistent Threats (APTs), identifying TTPs to develop proactive threat mitigation strategies.</p>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">APT Threat Analysis</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Conducted in-depth analysis of Advanced Persistent Threats (APTs), identifying TTPs to develop proactive threat mitigation strategies.</p>
                              <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Threat Intelligence</span>
                                 <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Behavioral Analytics</span>
@@ -292,11 +400,11 @@
                         </div>
                     </div>
                     <!-- Project Card 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-category="bounty">
                         <img src="https://placehold.co/600x400/f0e6cc/ffffff?text=Bug+Bounty" alt="Bug bounty hunting achievements and Hall of Fame recognitions" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Bug Bounty Hunter</h3>
-                            <p class="text-gray-600 mb-4">Identified and reported critical vulnerabilities on 7 programs, receiving Hall of Fame recognition from multiple companies including Centrify and Arlo.</p>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Bug Bounty Hunter</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Identified and reported critical vulnerabilities on 7 programs, receiving Hall of Fame recognition from multiple companies including Centrify and Arlo.</p>
                              <div class="flex flex-wrap gap-2">
                                 <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Bugcrowd</span>
                                 <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Ethical Hacking</span>
@@ -310,20 +418,20 @@
         <!-- Contact Section -->
         <section id="contact" class="section py-20">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Get In Touch</h2>
-                 <p class="text-center text-gray-600 mb-10">I'm always open to discussing new projects, collaborations, or opportunities in cybersecurity. Feel free to send me a message.</p>
-                <form id="contact-form" class="bg-white p-8 rounded-lg shadow-xl space-y-6">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">Get In Touch</h2>
+                 <p class="text-center text-gray-600 dark:text-gray-400 mb-10">I'm always open to discussing new projects, collaborations, or opportunities in cybersecurity. Feel free to send me a message.</p>
+                <form id="contact-form" class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl space-y-6 transition-colors duration-300">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Your Name" required>
+                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Your Name" required>
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="your@email.com" required>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="your@email.com" required>
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="How can I help you?" required></textarea>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="How can I help you?" required></textarea>
                     </div>
                     <div>
                         <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">Send Message</button>
@@ -338,7 +446,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white transition-colors duration-300">
         <div class="container mx-auto px-6 py-8 text-center">
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="https://www.linkedin.com/in/joshfiifi/" aria-label="LinkedIn" class="hover:text-indigo-400"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
@@ -423,6 +531,78 @@
                 formSubmissionMessage.classList.add('hidden');
             }, 5000);
         });
+
+        // --- Dark Mode Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme or default to light mode
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // --- Project Filtering ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                
+                // Update active button
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-indigo-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                });
+                btn.classList.add('active', 'bg-indigo-600', 'text-white');
+                btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease-in-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // --- Enhanced Keyboard Navigation ---
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+        
+        // --- Service Worker Registration ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
 
     </script>
 <script>
