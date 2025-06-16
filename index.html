@@ -139,6 +139,23 @@
                 transition-duration: 0.01ms !important;
             }
         }
+        
+        /* Blog card styles */
+        .blog-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .blog-card:hover, .blog-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Text truncation for blog excerpts */
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -155,6 +172,7 @@
                 <a href="#resume" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'resume')">Resume</a>
                 <a href="#volunteering" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'volunteering')">Volunteering</a>
                 <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'projects')">Projects</a>
+                <a href="#blog" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'blog')">Blog</a>
                 <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'contact')">Contact</a>
             </div>
             <div class="flex items-center space-x-4">
@@ -174,6 +192,7 @@
             <a href="#resume" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'resume')">Resume</a>
             <a href="#volunteering" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'volunteering')">Volunteering</a>
             <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'projects')">Projects</a>
+            <a href="#blog" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'blog')">Blog</a>
             <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'contact')">Contact</a>
         </div>
     </header>
@@ -415,6 +434,133 @@
             </div>
         </section>
 
+        <!-- Blog Section -->
+        <section id="blog" class="section py-20">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-white">My Blog</h2>
+                <p class="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+                    Sharing insights on cybersecurity, penetration testing, and emerging threats. Follow my journey and learn from real-world security experiences.
+                </p>
+                
+                <!-- Blog Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="blog-filter-btn active px-6 py-2 rounded-full bg-indigo-600 text-white font-medium transition-all duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" data-filter="all">All Posts</button>
+                    <button class="blog-filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" data-filter="pentesting">Pentesting</button>
+                    <button class="blog-filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" data-filter="research">Research</button>
+                    <button class="blog-filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" data-filter="tutorials">Tutorials</button>
+                </div>
+
+                <!-- Blog Posts Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-container">
+                    <!-- Sample blog posts - replace with your actual Medium articles -->
+                    
+                    <!-- Blog Post 1 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-category="pentesting">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Penetration+Testing" alt="Penetration Testing Guide" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">Pentesting</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <time class="text-sm text-gray-500 dark:text-gray-400">Published on Medium</time>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">5 min read</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Advanced Web Application Penetration Testing Techniques</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                Explore advanced methodologies for web application security testing, including automated scanning techniques and manual exploitation methods...
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium transition-colors duration-200">
+                                    Read on Medium
+                                    <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">BurpSuite</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">OWASP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-category="research">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/059669/ffffff?text=Threat+Research" alt="Threat Research Analysis" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Research</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <time class="text-sm text-gray-500 dark:text-gray-400">Published on Medium</time>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">8 min read</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Analyzing APT Group Tactics: A Deep Dive into Modern Threat Landscapes</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                An in-depth analysis of Advanced Persistent Threat groups and their evolving tactics, techniques, and procedures using the MITRE ATT&CK framework...
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium transition-colors duration-200">
+                                    Read on Medium
+                                    <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">MITRE</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">APT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-category="tutorials">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/dc2626/ffffff?text=Security+Tutorial" alt="Security Tutorial" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">Tutorial</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <time class="text-sm text-gray-500 dark:text-gray-400">Published on Medium</time>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">12 min read</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Building a Home Security Lab: Complete Setup Guide</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                Step-by-step guide to setting up a comprehensive cybersecurity lab at home using VirtualBox, Kali Linux, and vulnerable applications for practice...
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium transition-colors duration-200">
+                                    Read on Medium
+                                    <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">Kali</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">Lab</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-12">
+                    <a href="https://medium.com/@yourusername" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold px-8 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/>
+                        </svg>
+                        Follow me on Medium
+                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="section py-20">
             <div class="max-w-3xl mx-auto">
@@ -570,6 +716,34 @@
                 
                 // Filter projects
                 projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease-in-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // --- Blog Filtering ---
+        const blogFilterBtns = document.querySelectorAll('.blog-filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+        
+        blogFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                
+                // Update active button
+                blogFilterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-indigo-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                });
+                btn.classList.add('active', 'bg-indigo-600', 'text-white');
+                btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                
+                // Filter blog posts
+                blogCards.forEach(card => {
                     if (filter === 'all' || card.dataset.category === filter) {
                         card.style.display = 'block';
                         card.style.animation = 'fadeIn 0.5s ease-in-out';
