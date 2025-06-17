@@ -596,54 +596,6 @@
             to { opacity: 1; }
         }
         
-        /* Threat Alerts */
-        .threat-alerts {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 50;
-            pointer-events: none;
-        }
-        
-        .threat-alert {
-            background: rgba(0, 0, 0, 0.9);
-            border-left: 4px solid #ff4444;
-            padding: 12px 16px;
-            margin-bottom: 8px;
-            border-radius: 4px;
-            color: #ffffff;
-            font-family: 'Courier New', monospace;
-            font-size: 11px;
-            max-width: 300px;
-            animation: alert-slide 5s ease-out forwards;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .threat-alert.critical {
-            border-left-color: #ff4444;
-            background: rgba(255, 68, 68, 0.1);
-        }
-        
-        .threat-alert.high {
-            border-left-color: #ffaa00;
-            background: rgba(255, 170, 0, 0.1);
-        }
-        
-        .threat-alert.medium {
-            border-left-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-        }
-        
-        .threat-alert-title {
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        
-        @keyframes alert-slide {
-            0% { transform: translateX(100%); opacity: 0; }
-            10%, 80% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(100%); opacity: 0; }
-        }
         
         /* Crypto Elements */
         .crypto-layer {
@@ -840,8 +792,6 @@
                 <div id="terminalWindows"></div>
                 <div class="scan-line"></div>
             </div>
-            <!-- Threat Alerts -->
-            <div class="threat-alerts" id="threatAlerts"></div>
             <!-- Node Tooltip -->
             <div class="node-tooltip" id="nodeTooltip"></div>
             <div class="w-full text-center relative z-10">
@@ -1783,7 +1733,6 @@
                 this.nodes = [];
                 this.connections = [];
                 this.terminals = [];
-                this.threats = [];
                 this.isActive = true;
                 this.nodeCount = 20;
                 
@@ -1838,16 +1787,6 @@
                         ]
                     }
                 ];
-                
-                this.threatMessages = [
-                    { level: 'critical', title: 'CRITICAL', message: 'Brute force attack detected on SSH' },
-                    { level: 'high', title: 'HIGH', message: 'Malware signature found in memory dump' },
-                    { level: 'critical', title: 'CRITICAL', message: 'IOC Match: Known APT group indicators' },
-                    { level: 'high', title: 'HIGH', message: 'SIEM Alert: Privilege escalation attempt' },
-                    { level: 'medium', title: 'MEDIUM', message: 'Unusual network traffic pattern detected' },
-                    { level: 'high', title: 'HIGH', message: 'Suspicious PowerShell execution detected' },
-                    { level: 'critical', title: 'CRITICAL', message: 'Ransomware behavior indicators found' }
-                ];
             }
             
             init() {
@@ -1859,7 +1798,6 @@
                 this.initNetworkGraph();
                 this.initCryptoLayer();
                 this.initTerminalWindows();
-                this.initThreatAlerts();
                 this.initDataStreams();
                 this.initNodeTooltips();
                 
@@ -2071,41 +2009,6 @@
                         }, Math.random() * 5000 + 5000);
                     }
                 }, 20000);
-            }
-            
-            initThreatAlerts() {
-                this.createThreatAlert();
-            }
-            
-            createThreatAlert() {
-                const container = document.getElementById('threatAlerts');
-                if (!container || !this.isActive) return;
-                
-                const threatData = this.threatMessages[Math.floor(Math.random() * this.threatMessages.length)];
-                const alert = document.createElement('div');
-                alert.className = `threat-alert ${threatData.level}`;
-                
-                alert.innerHTML = `
-                    <div class="threat-alert-title">${threatData.title}</div>
-                    <div>${threatData.message}</div>
-                    <div style="font-size: 9px; opacity: 0.7; margin-top: 4px;">
-                        ${new Date().toLocaleTimeString()} | SOC-${Math.floor(Math.random() * 9999)}
-                    </div>
-                `;
-                
-                container.appendChild(alert);
-                
-                // Remove alert after animation
-                setTimeout(() => {
-                    if (alert.parentNode) {
-                        alert.remove();
-                    }
-                }, 5000);
-                
-                // Create next alert
-                setTimeout(() => {
-                    this.createThreatAlert();
-                }, Math.random() * 8000 + 7000);
             }
             
             initDataStreams() {
