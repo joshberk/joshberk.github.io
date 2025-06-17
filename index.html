@@ -397,12 +397,16 @@
         .matrix-column {
             position: absolute;
             top: -100px;
-            color: #00ff41;
+            color: #059669;
             font-family: 'Courier New', monospace;
             font-size: 14px;
             line-height: 20px;
             white-space: pre;
             animation: matrix-fall linear infinite;
+        }
+        
+        .dark .matrix-column {
+            color: #00ff41;
         }
         
         @keyframes matrix-fall {
@@ -424,27 +428,50 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            border: 2px solid #00ff41;
-            background: rgba(0, 255, 65, 0.3);
+            border: 2px solid #059669;
+            background: rgba(5, 150, 105, 0.4);
             cursor: pointer;
             pointer-events: auto;
             transition: all 0.3s ease;
             animation: node-pulse 2s ease-in-out infinite;
         }
         
+        .dark .network-node {
+            border-color: #00ff41;
+            background: rgba(0, 255, 65, 0.3);
+        }
+        
         .network-node.server {
+            background: rgba(59, 130, 246, 0.5);
+            border-color: #3b82f6;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+        }
+        
+        .dark .network-node.server {
             background: rgba(0, 212, 255, 0.5);
             border-color: #00d4ff;
             box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
         
         .network-node.compromised {
+            background: rgba(239, 68, 68, 0.5);
+            border-color: #ef4444;
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+        }
+        
+        .dark .network-node.compromised {
             background: rgba(255, 68, 68, 0.5);
             border-color: #ff4444;
             box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
         }
         
         .network-node.router {
+            background: rgba(245, 158, 11, 0.5);
+            border-color: #f59e0b;
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+        }
+        
+        .dark .network-node.router {
             background: rgba(255, 170, 0, 0.5);
             border-color: #ffaa00;
             box-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
@@ -463,12 +490,26 @@
         .network-connection {
             position: absolute;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            background: linear-gradient(90deg, transparent, #059669, transparent);
             transform-origin: left center;
             animation: data-flow 3s ease-in-out infinite;
         }
         
+        .dark .network-connection {
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+        }
+        
         @keyframes data-flow {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; box-shadow: 0 0 8px #059669; }
+            100% { opacity: 0.3; }
+        }
+        
+        .dark .network-connection {
+            animation: data-flow-dark 3s ease-in-out infinite;
+        }
+        
+        @keyframes data-flow-dark {
             0% { opacity: 0.3; }
             50% { opacity: 1; box-shadow: 0 0 10px #00ff41; }
             100% { opacity: 0.3; }
@@ -617,10 +658,14 @@
         
         .crypto-symbol {
             position: absolute;
-            color: #00d4ff;
+            color: #3b82f6;
             font-size: 18px;
             opacity: 0.6;
             animation: crypto-float 15s linear infinite;
+        }
+        
+        .dark .crypto-symbol {
+            color: #00d4ff;
         }
         
         @keyframes crypto-float {
@@ -633,8 +678,12 @@
         .data-stream {
             position: absolute;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            background: linear-gradient(90deg, transparent, #059669, transparent);
             animation: data-stream-flow 4s linear infinite;
+        }
+        
+        .dark .data-stream {
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
         }
         
         @keyframes data-stream-flow {
@@ -647,9 +696,13 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            background: linear-gradient(90deg, transparent, #059669, transparent);
             animation: scan-sweep 6s ease-in-out infinite;
             opacity: 0.5;
+        }
+        
+        .dark .scan-line {
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
         }
         
         @keyframes scan-sweep {
@@ -660,11 +713,11 @@
         /* Node Tooltip */
         .node-tooltip {
             position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00ff41;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #059669;
             padding: 8px 12px;
             border-radius: 4px;
-            color: #00ff41;
+            color: #059669;
             font-family: 'Courier New', monospace;
             font-size: 10px;
             white-space: nowrap;
@@ -672,6 +725,14 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dark .node-tooltip {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: #00ff41;
+            color: #00ff41;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .node-tooltip.visible {
