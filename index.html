@@ -175,12 +175,12 @@
             overflow: hidden;
             border-right: 3px solid #4f46e5;
             white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
         }
         
         @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+            0%, 50% { width: 0; }
+            10%, 40% { width: 100%; }
         }
         
         @keyframes blink-caret {
@@ -1304,15 +1304,13 @@
         function initTypingAnimation() {
             const typingElement = document.querySelector('.typing-animation');
             if (typingElement) {
-                // Reset animation on page load
+                // Ensure the animation starts properly and loops
+                typingElement.style.width = '0';
+                
+                // Start the infinite typing animation
                 setTimeout(() => {
-                    typingElement.style.width = '0';
-                    typingElement.style.animation = 'none';
-                    
-                    setTimeout(() => {
-                        typingElement.style.animation = 'typing 3s steps(40, end), blink-caret 0.75s step-end infinite';
-                    }, 100);
-                }, 500);
+                    typingElement.style.animation = 'typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite';
+                }, 1000); // Delay to ensure page is loaded
             }
         }
 
