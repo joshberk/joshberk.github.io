@@ -99,7 +99,6 @@
             animation: fadeIn 0.5s ease-in-out;
         }
         
-        /* Testimonials section - controlled by JavaScript */
         .testimonials-section {
             display: block; /* Initially visible since home is default active */
         }
@@ -789,7 +788,6 @@
 
         <!-- Home Section -->
         <section id="home" class="section active min-h-[calc(100vh-150px)] flex items-center relative overflow-hidden">
-            <!-- Cybersecurity Network Animation -->
             <div class="cyber-animation-container" id="cyberAnimation">
                 <div class="matrix-rain" id="matrixRain"></div>
                 <div class="network-graph" id="networkGraph"></div>
@@ -797,7 +795,6 @@
                 <div id="terminalWindows"></div>
                 <div class="scan-line"></div>
             </div>
-            <!-- Node Tooltip -->
             <div class="node-tooltip" id="nodeTooltip"></div>
             <div class="w-full text-center relative z-10">
                 <div class="max-w-4xl mx-auto">
@@ -1671,7 +1668,6 @@
     <script>
         lucide.createIcons();
 
-        // --- Intersection Observer for Scroll Animations ---
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1682,7 +1678,6 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     
-                    // Animate progress bars when they come into view
                     if (entry.target.querySelector('.progress-fill')) {
                         const progressBars = entry.target.querySelectorAll('.progress-fill');
                         progressBars.forEach((bar, index) => {
@@ -1692,7 +1687,6 @@
                         });
                     }
                     
-                    // Animate timeline items
                     if (entry.target.classList.contains('timeline-content')) {
                         entry.target.classList.add('visible');
                     }
@@ -1700,11 +1694,9 @@
             });
         }, observerOptions);
 
-        // Observe all animated elements
         const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .timeline-content');
         animatedElements.forEach(el => observer.observe(el));
 
-        // --- Particle System ---
         function createParticles() {
             const particlesContainer = document.querySelector('.particles');
             if (!particlesContainer) return;
@@ -1715,7 +1707,6 @@
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 
-                // Random size between 4px and 12px
                 const size = Math.random() * 8 + 4;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
@@ -1724,7 +1715,6 @@
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
                 
-                // Random animation delay and duration
                 particle.style.animationDelay = Math.random() * 6 + 's';
                 particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
                 
@@ -1732,7 +1722,6 @@
             }
         }
 
-        // --- Cybersecurity Network Animation System ---
         class CyberSecurityAnimation {
             constructor() {
                 this.nodes = [];
@@ -1741,7 +1730,6 @@
                 this.isActive = true;
                 this.nodeCount = 20;
                 
-                // Animation data
                 this.matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*(){}[]<>?/\\|~`';
                 this.cryptoSymbols = ['AES', 'RSA', 'SHA', 'MD5', 'DES', 'SSL', 'TLS', 'PKI', 'DSA', 'ECC', 'PGP', 'GPG', 'HMAC', 'PBKDF', 'ECDSA', 'X509', 'CA', 'CSR', 'CRL', 'OCSP', 'HSM', 'KDF', 'IV', 'SALT', 'NONCE'];
                 
@@ -1806,7 +1794,6 @@
                 this.initDataStreams();
                 this.initNodeTooltips();
                 
-                // Start animation loops
                 this.startAnimationLoop();
             }
             
@@ -1841,7 +1828,6 @@
                 
                 container.appendChild(column);
                 
-                // Remove and recreate after animation
                 setTimeout(() => {
                     if (column.parentNode && this.isActive) {
                         column.remove();
@@ -1854,12 +1840,10 @@
                 const networkContainer = document.getElementById('networkGraph');
                 if (!networkContainer) return;
                 
-                // Create nodes
                 for (let i = 0; i < this.nodeCount; i++) {
                     this.createNetworkNode(networkContainer, i);
                 }
                 
-                // Create connections after nodes are positioned
                 setTimeout(() => {
                     this.createConnections(networkContainer);
                 }, 100);
@@ -1874,14 +1858,12 @@
                 node.dataset.nodeId = index;
                 node.dataset.nodeType = type;
                 
-                // Position nodes in a distributed pattern
-                const x = Math.random() * 90 + 5; // 5% to 95%
+                const x = Math.random() * 90 + 5;
                 const y = Math.random() * 90 + 5;
                 
                 node.style.left = x + '%';
                 node.style.top = y + '%';
                 
-                // Generate fake IP and system info
                 const ip = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
                 const os = ['Windows 10', 'Ubuntu 20.04', 'CentOS 7', 'macOS 12.0'][Math.floor(Math.random() * 4)];
                 
@@ -2103,10 +2085,8 @@
             }
         }
         
-        // Global animation instance
         let cyberAnimation;
 
-        // --- Typing Animation Control ---
         function initTypingAnimation() {
             const typingElement = document.querySelector('.typing-animation');
             if (!typingElement) return;
@@ -2138,7 +2118,6 @@
             setTimeout(startTypingCycle, 1000);
         }
 
-        // --- Enhanced Project Interactions ---
         function initProjectInteractions() {
             const projectCards = document.querySelectorAll('.project-card');
             
@@ -2183,7 +2162,6 @@
             
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    // Add loading state
                     const loader = document.createElement('div');
                     loader.style.position = 'fixed';
                     loader.style.top = '0';
@@ -2248,30 +2226,24 @@
             });
         }
 
-        // --- Initialize Everything ---
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize cybersecurity animation
             cyberAnimation = new CyberSecurityAnimation();
             cyberAnimation.init();
             
-            // Keep existing functionality for fallback
             createParticles();
             initTypingAnimation();
             initProjectInteractions();
             enhanceNavigation();
             initLazyLoading();
             
-            // Re-create icons after content changes
             setTimeout(() => {
                 lucide.createIcons();
             }, 100);
         });
 
-        // Initialize on window load for complete resource loading
         window.addEventListener('load', function() {
             preloadCriticalResources();
             
-            // Final animation trigger for any missed elements
             const remainingElements = document.querySelectorAll('.fade-in:not(.visible)');
             remainingElements.forEach((el, index) => {
                 setTimeout(() => {
@@ -2282,7 +2254,6 @@
             });
         });
 
-        // --- SPA Navigation ---
         const sections = document.querySelectorAll('.section');
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
@@ -2310,7 +2281,6 @@
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.add('hidden');
             
-            // Show testimonials only on homepage
             const testimonialsSection = document.querySelector('.testimonials-section');
             if (testimonialsSection) {
                 if (pageId === 'home') {
@@ -2343,14 +2313,12 @@
             }
         });
 
-        // --- Mobile Menu Toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // --- Contact Form Submission ---
         const contactForm = document.getElementById('contact-form');
         const formSubmissionMessage = document.getElementById('form-submission-message');
 
