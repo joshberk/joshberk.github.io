@@ -372,6 +372,317 @@
             .terminal-logo-small { font-size: 1.5em; }
         }
         
+        /* Cybersecurity Network Animation Styles */
+        .cyber-animation-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Matrix Rain */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .matrix-column {
+            position: absolute;
+            top: -100px;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 20px;
+            white-space: pre;
+            animation: matrix-fall linear infinite;
+        }
+        
+        @keyframes matrix-fall {
+            to { transform: translateY(calc(100vh + 100px)); }
+        }
+        
+        /* Network Graph */
+        .network-graph {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .network-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #00ff41;
+            background: rgba(0, 255, 65, 0.3);
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            animation: node-pulse 2s ease-in-out infinite;
+        }
+        
+        .network-node.server {
+            background: rgba(0, 212, 255, 0.5);
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        
+        .network-node.compromised {
+            background: rgba(255, 68, 68, 0.5);
+            border-color: #ff4444;
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+        }
+        
+        .network-node.router {
+            background: rgba(255, 170, 0, 0.5);
+            border-color: #ffaa00;
+            box-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
+        }
+        
+        .network-node:hover {
+            transform: scale(1.5);
+            z-index: 100;
+        }
+        
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        .network-connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            transform-origin: left center;
+            animation: data-flow 3s ease-in-out infinite;
+        }
+        
+        @keyframes data-flow {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; box-shadow: 0 0 10px #00ff41; }
+            100% { opacity: 0.3; }
+        }
+        
+        /* Terminal Windows */
+        .terminal-window {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ff41;
+            border-radius: 8px;
+            min-width: 300px;
+            max-width: 400px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 16px;
+            color: #00ff41;
+            animation: terminal-float 20s ease-in-out infinite;
+            pointer-events: auto;
+            z-index: 10;
+        }
+        
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 8px 12px;
+            border-bottom: 1px solid #00ff41;
+            border-radius: 7px 7px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-button.close { background: #ff4444; }
+        .terminal-button.minimize { background: #ffaa00; }
+        .terminal-button.maximize { background: #00ff41; }
+        
+        .terminal-title {
+            color: #ffffff;
+            font-size: 11px;
+            margin-left: auto;
+        }
+        
+        .terminal-content {
+            padding: 12px;
+            max-height: 200px;
+            overflow: hidden;
+        }
+        
+        .terminal-line {
+            margin-bottom: 4px;
+            opacity: 0;
+            animation: terminal-type 0.5s ease-out forwards;
+        }
+        
+        .terminal-prompt {
+            color: #00d4ff;
+        }
+        
+        .terminal-success {
+            color: #00ff41;
+        }
+        
+        .terminal-error {
+            color: #ff4444;
+        }
+        
+        .terminal-warning {
+            color: #ffaa00;
+        }
+        
+        @keyframes terminal-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+        
+        @keyframes terminal-type {
+            to { opacity: 1; }
+        }
+        
+        /* Threat Alerts */
+        .threat-alerts {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+            pointer-events: none;
+        }
+        
+        .threat-alert {
+            background: rgba(0, 0, 0, 0.9);
+            border-left: 4px solid #ff4444;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            max-width: 300px;
+            animation: alert-slide 5s ease-out forwards;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .threat-alert.critical {
+            border-left-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+        
+        .threat-alert.high {
+            border-left-color: #ffaa00;
+            background: rgba(255, 170, 0, 0.1);
+        }
+        
+        .threat-alert.medium {
+            border-left-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        .threat-alert-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        @keyframes alert-slide {
+            0% { transform: translateX(100%); opacity: 0; }
+            10%, 80% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+        
+        /* Crypto Elements */
+        .crypto-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+        
+        .crypto-symbol {
+            position: absolute;
+            color: #00d4ff;
+            font-size: 18px;
+            opacity: 0.6;
+            animation: crypto-float 15s linear infinite;
+        }
+        
+        @keyframes crypto-float {
+            0% { transform: translateX(-50px) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 0.6; }
+            100% { transform: translateX(calc(100vw + 50px)) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Data Streams */
+        .data-stream {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            animation: data-stream-flow 4s linear infinite;
+        }
+        
+        @keyframes data-stream-flow {
+            0% { transform: translateX(-100%); opacity: 0; }
+            10%, 90% { opacity: 0.8; }
+            100% { transform: translateX(100vw); opacity: 0; }
+        }
+        
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            animation: scan-sweep 6s ease-in-out infinite;
+            opacity: 0.5;
+        }
+        
+        @keyframes scan-sweep {
+            0%, 100% { transform: translateY(-100%); }
+            50% { transform: translateY(100vh); }
+        }
+        
+        /* Node Tooltip */
+        .node-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ff41;
+            padding: 8px 12px;
+            border-radius: 4px;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            white-space: nowrap;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .node-tooltip.visible {
+            opacity: 1;
+        }
+        
+        /* Performance optimizations */
+        .cyber-animation-container * {
+            will-change: transform, opacity;
+        }
+        
         /* Reduced motion for users who prefer it */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -388,6 +699,10 @@
             .terminal-cursor {
                 animation: none !important;
                 opacity: 1 !important;
+            }
+            
+            .cyber-animation-container {
+                display: none !important;
             }
         }
         
@@ -456,7 +771,18 @@
 
         <!-- Home Section -->
         <section id="home" class="section active min-h-[calc(100vh-150px)] flex items-center relative overflow-hidden">
-            <div class="particles"></div>
+            <!-- Cybersecurity Network Animation -->
+            <div class="cyber-animation-container" id="cyberAnimation">
+                <div class="matrix-rain" id="matrixRain"></div>
+                <div class="network-graph" id="networkGraph"></div>
+                <div class="crypto-layer" id="cryptoLayer"></div>
+                <div id="terminalWindows"></div>
+                <div class="scan-line"></div>
+            </div>
+            <!-- Threat Alerts -->
+            <div class="threat-alerts" id="threatAlerts"></div>
+            <!-- Node Tooltip -->
+            <div class="node-tooltip" id="nodeTooltip"></div>
             <div class="w-full text-center relative z-10">
                 <div class="max-w-4xl mx-auto">
                     <img src="IMG_6186.JPG" alt="Joshua Berkoh" loading="lazy" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover fade-in" decoding="async">
@@ -1390,6 +1716,427 @@
             }
         }
 
+        // --- Cybersecurity Network Animation System ---
+        class CyberSecurityAnimation {
+            constructor() {
+                this.nodes = [];
+                this.connections = [];
+                this.terminals = [];
+                this.threats = [];
+                this.isActive = true;
+                this.nodeCount = 20;
+                
+                // Animation data
+                this.matrixChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+                this.cryptoSymbols = ['∑', '∏', '∆', '∇', '∂', '∫', 'π', 'λ', 'Ω', 'α', 'β', 'γ', 'δ', 'ε', 'θ', 'μ', 'σ', 'φ', 'ψ', 'χ'];
+                
+                this.terminalCommands = [
+                    {
+                        title: 'Network Scanner',
+                        commands: [
+                            { type: 'prompt', text: 'root@kali:~# ' },
+                            { type: 'command', text: 'nmap -sS -O 192.168.1.0/24' },
+                            { type: 'success', text: 'Starting Nmap 7.94 ( https://nmap.org )' },
+                            { type: 'success', text: 'Host is up (0.001s latency).' },
+                            { type: 'warning', text: '22/tcp   open  ssh' },
+                            { type: 'warning', text: '80/tcp   open  http' },
+                            { type: 'error', text: '443/tcp  open  https' }
+                        ]
+                    },
+                    {
+                        title: 'Threat Hunter',
+                        commands: [
+                            { type: 'prompt', text: 'analyst@soc:~$ ' },
+                            { type: 'command', text: 'python3 threat_hunter.py --scan' },
+                            { type: 'success', text: 'Initializing threat detection...' },
+                            { type: 'warning', text: 'Suspicious process detected: PID 1337' },
+                            { type: 'error', text: 'ALERT: Potential lateral movement' },
+                            { type: 'success', text: 'IOC analysis complete' }
+                        ]
+                    },
+                    {
+                        title: 'Cryptography',
+                        commands: [
+                            { type: 'prompt', text: 'crypto@lab:~$ ' },
+                            { type: 'command', text: 'openssl enc -d -aes-256-cbc -in secret.enc' },
+                            { type: 'success', text: 'Decryption successful' },
+                            { type: 'command', text: 'hashcat -m 1000 hash.txt wordlist.txt' },
+                            { type: 'warning', text: 'Cracking NTLM hashes...' },
+                            { type: 'success', text: 'Password recovered: [REDACTED]' }
+                        ]
+                    },
+                    {
+                        title: 'Penetration Testing',
+                        commands: [
+                            { type: 'prompt', text: 'pentester@kali:~# ' },
+                            { type: 'command', text: 'msfconsole -q' },
+                            { type: 'success', text: 'Metasploit Framework loaded' },
+                            { type: 'command', text: 'use exploit/multi/handler' },
+                            { type: 'warning', text: 'Payload set to windows/meterpreter/reverse_tcp' },
+                            { type: 'error', text: 'Session 1 opened (192.168.1.10:4444)' }
+                        ]
+                    }
+                ];
+                
+                this.threatMessages = [
+                    { level: 'critical', title: 'CRITICAL', message: 'Brute force attack detected on SSH' },
+                    { level: 'high', title: 'HIGH', message: 'Malware signature found in memory dump' },
+                    { level: 'critical', title: 'CRITICAL', message: 'IOC Match: Known APT group indicators' },
+                    { level: 'high', title: 'HIGH', message: 'SIEM Alert: Privilege escalation attempt' },
+                    { level: 'medium', title: 'MEDIUM', message: 'Unusual network traffic pattern detected' },
+                    { level: 'high', title: 'HIGH', message: 'Suspicious PowerShell execution detected' },
+                    { level: 'critical', title: 'CRITICAL', message: 'Ransomware behavior indicators found' }
+                ];
+            }
+            
+            init() {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+                
+                this.initMatrixRain();
+                this.initNetworkGraph();
+                this.initCryptoLayer();
+                this.initTerminalWindows();
+                this.initThreatAlerts();
+                this.initDataStreams();
+                this.initNodeTooltips();
+                
+                // Start animation loops
+                this.startAnimationLoop();
+            }
+            
+            initMatrixRain() {
+                const matrixContainer = document.getElementById('matrixRain');
+                if (!matrixContainer) return;
+                
+                const columnCount = Math.floor(window.innerWidth / 20);
+                
+                for (let i = 0; i < columnCount; i++) {
+                    this.createMatrixColumn(matrixContainer, i);
+                }
+            }
+            
+            createMatrixColumn(container, index) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = (index * 20) + 'px';
+                
+                const height = Math.random() * 200 + 100;
+                const speed = Math.random() * 3 + 2;
+                
+                let text = '';
+                for (let i = 0; i < height / 20; i++) {
+                    text += this.matrixChars[Math.floor(Math.random() * this.matrixChars.length)] + '\n';
+                }
+                
+                column.textContent = text;
+                column.style.animationDuration = speed + 's';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                column.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                container.appendChild(column);
+                
+                // Remove and recreate after animation
+                setTimeout(() => {
+                    if (column.parentNode && this.isActive) {
+                        column.remove();
+                        this.createMatrixColumn(container, index);
+                    }
+                }, (speed + Math.random() * 2) * 1000);
+            }
+            
+            initNetworkGraph() {
+                const networkContainer = document.getElementById('networkGraph');
+                if (!networkContainer) return;
+                
+                // Create nodes
+                for (let i = 0; i < this.nodeCount; i++) {
+                    this.createNetworkNode(networkContainer, i);
+                }
+                
+                // Create connections after nodes are positioned
+                setTimeout(() => {
+                    this.createConnections(networkContainer);
+                }, 100);
+            }
+            
+            createNetworkNode(container, index) {
+                const node = document.createElement('div');
+                const types = ['endpoint', 'server', 'router', 'compromised'];
+                const type = types[Math.floor(Math.random() * types.length)];
+                
+                node.className = `network-node ${type}`;
+                node.dataset.nodeId = index;
+                node.dataset.nodeType = type;
+                
+                // Position nodes in a distributed pattern
+                const x = Math.random() * 90 + 5; // 5% to 95%
+                const y = Math.random() * 90 + 5;
+                
+                node.style.left = x + '%';
+                node.style.top = y + '%';
+                
+                // Generate fake IP and system info
+                const ip = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+                const os = ['Windows 10', 'Ubuntu 20.04', 'CentOS 7', 'macOS 12.0'][Math.floor(Math.random() * 4)];
+                
+                node.dataset.ip = ip;
+                node.dataset.os = os;
+                node.dataset.status = type === 'compromised' ? 'COMPROMISED' : 'ONLINE';
+                
+                this.nodes.push({
+                    element: node,
+                    x: x,
+                    y: y,
+                    type: type,
+                    ip: ip,
+                    os: os
+                });
+                
+                container.appendChild(node);
+            }
+            
+            createConnections(container) {
+                const maxConnections = Math.min(this.nodes.length * 2, 30);
+                
+                for (let i = 0; i < maxConnections; i++) {
+                    const node1 = this.nodes[Math.floor(Math.random() * this.nodes.length)];
+                    const node2 = this.nodes[Math.floor(Math.random() * this.nodes.length)];
+                    
+                    if (node1 !== node2) {
+                        this.createConnection(container, node1, node2);
+                    }
+                }
+            }
+            
+            createConnection(container, node1, node2) {
+                const connection = document.createElement('div');
+                connection.className = 'network-connection';
+                
+                const deltaX = node2.x - node1.x;
+                const deltaY = node2.y - node1.y;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                
+                connection.style.left = node1.x + '%';
+                connection.style.top = node1.y + '%';
+                connection.style.width = distance + '%';
+                connection.style.transform = `rotate(${angle}deg)`;
+                connection.style.animationDelay = Math.random() * 3 + 's';
+                
+                container.appendChild(connection);
+                this.connections.push(connection);
+            }
+            
+            initCryptoLayer() {
+                const cryptoContainer = document.getElementById('cryptoLayer');
+                if (!cryptoContainer) return;
+                
+                this.createCryptoSymbols(cryptoContainer);
+            }
+            
+            createCryptoSymbols(container) {
+                const symbol = document.createElement('div');
+                symbol.className = 'crypto-symbol';
+                symbol.textContent = this.cryptoSymbols[Math.floor(Math.random() * this.cryptoSymbols.length)];
+                symbol.style.top = Math.random() * 100 + '%';
+                symbol.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                container.appendChild(symbol);
+                
+                setTimeout(() => {
+                    if (symbol.parentNode && this.isActive) {
+                        symbol.remove();
+                        this.createCryptoSymbols(container);
+                    }
+                }, 15000);
+            }
+            
+            initTerminalWindows() {
+                this.createTerminalWindow();
+            }
+            
+            createTerminalWindow() {
+                const container = document.getElementById('terminalWindows');
+                if (!container || !this.isActive) return;
+                
+                const terminalData = this.terminalCommands[Math.floor(Math.random() * this.terminalCommands.length)];
+                const terminal = document.createElement('div');
+                terminal.className = 'terminal-window';
+                
+                // Random position
+                terminal.style.left = Math.random() * 60 + 20 + '%';
+                terminal.style.top = Math.random() * 60 + 20 + '%';
+                
+                // Create header
+                const header = document.createElement('div');
+                header.className = 'terminal-header';
+                header.innerHTML = `
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                    <div class="terminal-title">${terminalData.title}</div>
+                `;
+                
+                // Create content
+                const content = document.createElement('div');
+                content.className = 'terminal-content';
+                
+                terminal.appendChild(header);
+                terminal.appendChild(content);
+                container.appendChild(terminal);
+                
+                // Type commands with delay
+                let delay = 0;
+                terminalData.commands.forEach((cmd, index) => {
+                    setTimeout(() => {
+                        const line = document.createElement('div');
+                        line.className = `terminal-line terminal-${cmd.type}`;
+                        line.textContent = cmd.text;
+                        line.style.animationDelay = (index * 0.1) + 's';
+                        content.appendChild(line);
+                    }, delay);
+                    delay += cmd.type === 'command' ? 1000 : 500;
+                });
+                
+                // Remove terminal after animation
+                setTimeout(() => {
+                    if (terminal.parentNode) {
+                        terminal.remove();
+                        // Create next terminal
+                        setTimeout(() => {
+                            this.createTerminalWindow();
+                        }, Math.random() * 5000 + 5000);
+                    }
+                }, 20000);
+            }
+            
+            initThreatAlerts() {
+                this.createThreatAlert();
+            }
+            
+            createThreatAlert() {
+                const container = document.getElementById('threatAlerts');
+                if (!container || !this.isActive) return;
+                
+                const threatData = this.threatMessages[Math.floor(Math.random() * this.threatMessages.length)];
+                const alert = document.createElement('div');
+                alert.className = `threat-alert ${threatData.level}`;
+                
+                alert.innerHTML = `
+                    <div class="threat-alert-title">${threatData.title}</div>
+                    <div>${threatData.message}</div>
+                    <div style="font-size: 9px; opacity: 0.7; margin-top: 4px;">
+                        ${new Date().toLocaleTimeString()} | SOC-${Math.floor(Math.random() * 9999)}
+                    </div>
+                `;
+                
+                container.appendChild(alert);
+                
+                // Remove alert after animation
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.remove();
+                    }
+                }, 5000);
+                
+                // Create next alert
+                setTimeout(() => {
+                    this.createThreatAlert();
+                }, Math.random() * 8000 + 7000);
+            }
+            
+            initDataStreams() {
+                this.createDataStream();
+            }
+            
+            createDataStream() {
+                const container = document.getElementById('cyberAnimation');
+                if (!container || !this.isActive) return;
+                
+                const stream = document.createElement('div');
+                stream.className = 'data-stream';
+                stream.style.top = Math.random() * 100 + '%';
+                stream.style.width = '100px';
+                stream.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(stream);
+                
+                setTimeout(() => {
+                    if (stream.parentNode) {
+                        stream.remove();
+                    }
+                }, 4000);
+                
+                // Create next stream
+                setTimeout(() => {
+                    this.createDataStream();
+                }, Math.random() * 3000 + 2000);
+            }
+            
+            initNodeTooltips() {
+                const tooltip = document.getElementById('nodeTooltip');
+                if (!tooltip) return;
+                
+                // Add hover listeners to nodes
+                document.addEventListener('mouseover', (e) => {
+                    if (e.target.classList.contains('network-node')) {
+                        const node = e.target;
+                        tooltip.innerHTML = `
+                            <strong>IP:</strong> ${node.dataset.ip}<br>
+                            <strong>OS:</strong> ${node.dataset.os}<br>
+                            <strong>Status:</strong> ${node.dataset.status}<br>
+                            <strong>Type:</strong> ${node.dataset.nodeType.toUpperCase()}
+                        `;
+                        tooltip.style.left = e.pageX + 10 + 'px';
+                        tooltip.style.top = e.pageY - 50 + 'px';
+                        tooltip.classList.add('visible');
+                    }
+                });
+                
+                document.addEventListener('mouseout', (e) => {
+                    if (e.target.classList.contains('network-node')) {
+                        tooltip.classList.remove('visible');
+                    }
+                });
+            }
+            
+            startAnimationLoop() {
+                // Continuously create new crypto symbols
+                setInterval(() => {
+                    if (this.isActive) {
+                        const cryptoContainer = document.getElementById('cryptoLayer');
+                        if (cryptoContainer && cryptoContainer.children.length < 5) {
+                            this.createCryptoSymbols(cryptoContainer);
+                        }
+                    }
+                }, 3000);
+                
+                // Update network node animations
+                setInterval(() => {
+                    if (this.isActive) {
+                        this.nodes.forEach(node => {
+                            if (Math.random() < 0.1) {
+                                node.element.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                            }
+                        });
+                    }
+                }, 5000);
+            }
+            
+            destroy() {
+                this.isActive = false;
+                const container = document.getElementById('cyberAnimation');
+                if (container) {
+                    container.innerHTML = '';
+                }
+            }
+        }
+        
+        // Global animation instance
+        let cyberAnimation;
+
         // --- Typing Animation Control ---
         function initTypingAnimation() {
             const typingElement = document.querySelector('.typing-animation');
@@ -1534,6 +2281,11 @@
 
         // --- Initialize Everything ---
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cybersecurity animation
+            cyberAnimation = new CyberSecurityAnimation();
+            cyberAnimation.init();
+            
+            // Keep existing functionality for fallback
             createParticles();
             initTypingAnimation();
             initProjectInteractions();
