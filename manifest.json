@@ -3,10 +3,11 @@
   "short_name": "Joshua Berkoh",
   "description": "Personal portfolio of Joshua Berkoh, showcasing cybersecurity expertise, resume, and projects",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#f9fafb",
   "theme_color": "#4f46e5",
-  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "IMG_6186.JPG",
@@ -17,5 +18,9 @@
   ],
   "categories": ["business", "productivity"],
   "lang": "en",
-  "scope": "/"
+  "prefer_related_applications": false,
+  "display_override": ["standalone", "minimal-ui"],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
 }
