@@ -98,6 +98,11 @@
             display: block;
             animation: fadeIn 0.5s ease-in-out;
         }
+        
+        /* Testimonials section - controlled by JavaScript */
+        .testimonials-section {
+            display: block; /* Initially visible since home is default active */
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1135,8 +1140,8 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+        <!-- Testimonials Section (Homepage Only) -->
+        <section class="testimonials-section py-20 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in">What People Say</h2>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -2304,6 +2309,16 @@
             
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.add('hidden');
+            
+            // Show testimonials only on homepage
+            const testimonialsSection = document.querySelector('.testimonials-section');
+            if (testimonialsSection) {
+                if (pageId === 'home') {
+                    testimonialsSection.style.display = 'block';
+                } else {
+                    testimonialsSection.style.display = 'none';
+                }
+            }
             
             if (window.location.hash !== `#${pageId}`) {
                 window.location.hash = pageId;
