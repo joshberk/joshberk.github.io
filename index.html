@@ -179,11 +179,11 @@
         }
         
         .typing-active {
-            animation: typing 3s steps(35, end), blink-caret 0.75s step-end infinite;
+            animation: typing 5s steps(35, end), blink-caret 0.75s step-end infinite;
         }
         
         .erasing-active {
-            animation: erasing 2s steps(35, end), blink-caret 0.75s step-end infinite;
+            animation: erasing 3s steps(35, end), blink-caret 0.75s step-end infinite;
         }
         
         @keyframes typing {
@@ -1332,13 +1332,13 @@
                 setTimeout(() => {
                     typingElement.classList.remove('typing-active');
                     typingElement.classList.add('erasing-active');
-                }, 4500); // 3s typing + 1.5s pause
+                }, 6500); // 5s typing + 1.5s pause
                 
                 // Start next cycle after erasing completes + pause
                 setTimeout(() => {
                     typingElement.classList.remove('erasing-active');
                     startTypingCycle(); // Restart the cycle
-                }, 7500); // Previous 4.5s + 2s erasing + 1s pause
+                }, 10500); // Previous 6.5s + 3s erasing + 1s pause
             }
             
             // Start the first cycle after page loads
