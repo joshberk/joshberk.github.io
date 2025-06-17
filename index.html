@@ -442,6 +442,19 @@
                     Sharing insights on cybersecurity, penetration testing, and emerging threats. Follow my journey and learn from real-world security experiences.
                 </p>
                 
+                <!-- Search Bar -->
+                <div class="max-w-md mx-auto mb-8">
+                    <div class="relative">
+                        <input type="text" id="blog-search" placeholder="Search blog posts..." class="w-full px-4 py-3 pl-12 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <button id="clear-search" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200" style="display: none;">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Blog Filter Buttons -->
                 <div class="flex flex-wrap justify-center gap-4 mb-12">
                     <button class="blog-filter-btn active px-6 py-2 rounded-full bg-indigo-600 text-white font-medium transition-all duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" data-filter="all">All Posts</button>
@@ -546,6 +559,121 @@
                             </div>
                         </div>
                     </article>
+
+                    <!-- Additional blog posts (initially hidden) -->
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 blog-post-hidden" data-category="pentesting" style="display: none;">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/7c3aed/ffffff?text=Bug+Bounty" alt="Bug Bounty Methodology" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Pentesting</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <time class="text-sm text-gray-500 dark:text-gray-400">Published on Medium</time>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">7 min read</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Bug Bounty Methodology: From Recon to Payout</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                A comprehensive guide to bug bounty hunting methodology, covering reconnaissance, vulnerability assessment, and responsible disclosure processes...
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium transition-colors duration-200">
+                                    Read on Medium
+                                    <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">Recon</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">HackerOne</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 blog-post-hidden" data-category="research" style="display: none;">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/ea580c/ffffff?text=Malware+Analysis" alt="Malware Analysis Research" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-medium">Research</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <time class="text-sm text-gray-500 dark:text-gray-400">Published on Medium</time>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">15 min read</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Reverse Engineering Modern Malware: Dynamic Analysis Techniques</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                Deep dive into dynamic malware analysis techniques using sandboxes, debuggers, and behavioral analysis tools to understand threat actors' methodologies...
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium transition-colors duration-200">
+                                    Read on Medium
+                                    <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">IDA Pro</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">Ghidra</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 blog-post-hidden" data-category="tutorials" style="display: none;">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/16a34a/ffffff?text=OSINT+Tutorial" alt="OSINT Investigation Tutorial" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Tutorial</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <time class="text-sm text-gray-500 dark:text-gray-400">Published on Medium</time>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">10 min read</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">OSINT Investigation Techniques: Digital Footprint Analysis</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                Learn advanced OSINT techniques for digital investigations, including social media analysis, metadata extraction, and geolocation methods...
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium transition-colors duration-200">
+                                    Read on Medium
+                                    <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">OSINT</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">Investigation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-results-message" class="text-center py-12" style="display: none;">
+                    <div class="max-w-md mx-auto">
+                        <i data-lucide="search-x" class="w-16 h-16 mx-auto text-gray-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">No posts found</h3>
+                        <p class="text-gray-500 dark:text-gray-500 mb-4">Try adjusting your search terms or browse all posts.</p>
+                        <button id="clear-all-filters" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                            Show All Posts
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-12">
+                    <button id="load-more-blogs" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <i data-lucide="plus" class="w-5 h-5 inline mr-2"></i>
+                        Load More Posts
+                    </button>
+                    <button id="show-less-blogs" class="bg-gray-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl ml-4" style="display: none;">
+                        <i data-lucide="minus" class="w-5 h-5 inline mr-2"></i>
+                        Show Less
+                    </button>
                 </div>
 
                 <!-- Call to Action -->
@@ -726,10 +854,16 @@
             });
         });
         
-        // --- Blog Filtering ---
+        // --- Blog Filtering and Load More Functionality ---
         const blogFilterBtns = document.querySelectorAll('.blog-filter-btn');
         const blogCards = document.querySelectorAll('.blog-card');
+        const loadMoreBtn = document.getElementById('load-more-blogs');
+        const showLessBtn = document.getElementById('show-less-blogs');
+        const hiddenBlogPosts = document.querySelectorAll('.blog-post-hidden');
         
+        let showingMore = false;
+        
+        // Blog filtering functionality
         blogFilterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filter = btn.dataset.filter;
@@ -744,13 +878,159 @@
                 
                 // Filter blog posts
                 blogCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                        card.style.animation = 'fadeIn 0.5s ease-in-out';
+                    const shouldShow = filter === 'all' || card.dataset.category === filter;
+                    const isHidden = card.classList.contains('blog-post-hidden');
+                    
+                    if (shouldShow) {
+                        // Show if it's a visible post, or if showing more and it's a hidden post
+                        if (!isHidden || showingMore) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.5s ease-in-out';
+                        }
                     } else {
                         card.style.display = 'none';
                     }
                 });
+            });
+        });
+        
+        // Load More functionality
+        loadMoreBtn.addEventListener('click', () => {
+            showingMore = true;
+            
+            // Get current active filter
+            const activeFilter = document.querySelector('.blog-filter-btn.active').dataset.filter;
+            
+            // Show hidden posts that match the current filter
+            hiddenBlogPosts.forEach(card => {
+                if (activeFilter === 'all' || card.dataset.category === activeFilter) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease-in-out';
+                }
+            });
+            
+            // Toggle button visibility
+            loadMoreBtn.style.display = 'none';
+            showLessBtn.style.display = 'inline-block';
+        });
+        
+        // Show Less functionality
+        showLessBtn.addEventListener('click', () => {
+            showingMore = false;
+            
+            // Hide additional posts
+            hiddenBlogPosts.forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            // Toggle button visibility
+            loadMoreBtn.style.display = 'inline-block';
+            showLessBtn.style.display = 'none';
+            
+            // Scroll back to blog section
+            document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // --- Blog Search Functionality ---
+        const blogSearchInput = document.getElementById('blog-search');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const noResultsMessage = document.getElementById('no-results-message');
+        const loadMoreContainer = document.querySelector('.text-center.mt-12');
+        const clearAllFiltersBtn = document.getElementById('clear-all-filters');
+        
+        function filterBlogsBySearch(searchTerm) {
+            const activeFilter = document.querySelector('.blog-filter-btn.active').dataset.filter;
+            let visibleCount = 0;
+            
+            blogCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const excerpt = card.querySelector('p').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.bg-gray-100')).map(tag => tag.textContent.toLowerCase());
+                const category = card.dataset.category;
+                
+                const matchesSearch = searchTerm === '' || 
+                    title.includes(searchTerm) || 
+                    excerpt.includes(searchTerm) ||
+                    tags.some(tag => tag.includes(searchTerm));
+                
+                const matchesFilter = activeFilter === 'all' || category === activeFilter;
+                const isHidden = card.classList.contains('blog-post-hidden');
+                
+                if (matchesSearch && matchesFilter) {
+                    // Show if it's a visible post, or if showing more and it's a hidden post
+                    if (!isHidden || showingMore) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease-in-out';
+                        visibleCount++;
+                    }
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResultsMessage.style.display = 'block';
+                loadMoreContainer.style.display = 'none';
+            } else {
+                noResultsMessage.style.display = 'none';
+                loadMoreContainer.style.display = 'block';
+            }
+            
+            // Show/hide clear button
+            clearSearchBtn.style.display = searchTerm ? 'flex' : 'none';
+        }
+        
+        blogSearchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            filterBlogsBySearch(searchTerm);
+        });
+        
+        clearSearchBtn.addEventListener('click', () => {
+            blogSearchInput.value = '';
+            filterBlogsBySearch('');
+            blogSearchInput.focus();
+        });
+        
+        // Clear all filters functionality
+        clearAllFiltersBtn.addEventListener('click', () => {
+            // Clear search
+            blogSearchInput.value = '';
+            
+            // Reset to "All Posts" filter
+            blogFilterBtns.forEach(b => {
+                b.classList.remove('active', 'bg-indigo-600', 'text-white');
+                b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            });
+            const allPostsBtn = document.querySelector('[data-filter="all"]');
+            allPostsBtn.classList.add('active', 'bg-indigo-600', 'text-white');
+            allPostsBtn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            
+            // Show all visible posts
+            blogCards.forEach(card => {
+                const isHidden = card.classList.contains('blog-post-hidden');
+                if (!isHidden || showingMore) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease-in-out';
+                }
+            });
+            
+            // Hide no results message
+            noResultsMessage.style.display = 'none';
+            loadMoreContainer.style.display = 'block';
+        });
+        
+        // Update search when filter changes
+        const originalFilterLogic = blogFilterBtns.forEach;
+        blogFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Small delay to ensure filter is applied first
+                setTimeout(() => {
+                    const searchTerm = blogSearchInput.value.toLowerCase().trim();
+                    if (searchTerm) {
+                        filterBlogsBySearch(searchTerm);
+                    }
+                }, 50);
             });
         });
         
