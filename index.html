@@ -71,7 +71,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
     
-    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
+    <!-- Fallback for older browsers -->
+    <noscript>
+        <style>
+            body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+            .fade-in, .slide-in-left, .slide-in-right { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
+    
+    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous" onerror="console.error('Failed to load Tailwind CSS')"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -2191,6 +2199,20 @@
 
     <script>
         lucide.createIcons();
+        
+        // Browser compatibility and debugging
+        console.log('Website loaded successfully');
+        console.log('Tailwind CSS status:', typeof tailwind !== 'undefined' ? 'Loaded' : 'Not loaded');
+        console.log('Lucide icons status:', typeof lucide !== 'undefined' ? 'Loaded' : 'Not loaded');
+        
+        // Check for common styling issues
+        const testElement = document.createElement('div');
+        testElement.className = 'bg-red-500 text-white p-4';
+        testElement.style.display = 'none';
+        document.body.appendChild(testElement);
+        const computedStyle = window.getComputedStyle(testElement);
+        console.log('Tailwind classes working:', computedStyle.backgroundColor === 'rgb(239, 68, 68)' ? 'Yes' : 'No');
+        document.body.removeChild(testElement);
         
         // Security monitoring and XSS protection
         (function() {
