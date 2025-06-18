@@ -1,0 +1,12 @@
+# Security documentation - should not be publicly accessible
+SECURITY_ENHANCEMENTS.md
+SECURITY_IMPLEMENTATION_GUIDE.md
+SECURITY_ROADMAP.md
+CSP_IMPLEMENTATION_PLAN.md
+
+# Other sensitive files
+*.log
+.env
+.env.local
+.env.production
+.env.staging
