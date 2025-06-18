@@ -73,7 +73,7 @@
         ]
     }
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -83,7 +83,7 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous" defer></script>
     <style>
         /* Professional Typography Scale */
         :root {
@@ -2177,8 +2177,16 @@
     </footer>
 
     <script>
-        lucide.createIcons();
-        
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            lucide.createIcons();
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    lucide.createIcons();
+                }
+            });
+        }
+
         // Browser compatibility and debugging
         console.log('Website loaded successfully');
         console.log('Tailwind CSS status:', typeof tailwind !== 'undefined' ? 'Loaded' : 'Not loaded');
