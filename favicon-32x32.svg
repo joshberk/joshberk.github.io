@@ -1,0 +1,22 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="3" fill="#000000"/>
+  
+  <!-- Border with glow -->
+  <rect width="30" height="30" x="1" y="1" rx="2" fill="none" stroke="#00ff41" stroke-width="1" filter="url(#glow)"/>
+  
+  <!-- Terminal text -->
+  <text x="3" y="21" font-family="monospace, 'Courier New'" font-size="10" font-weight="bold" fill="#ffffff">
+    &gt;BJ_
+  </text>
+</svg>
