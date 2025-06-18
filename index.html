@@ -23,14 +23,12 @@
     <meta name="apple-mobile-web-app-title" content="Joshua Berkoh">
     <link rel="apple-touch-icon" href="/IMG_6186.JPG">
     
-    <!-- Security Headers -->
-    <!-- CSP temporarily disabled for compatibility testing -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob: https://placehold.co; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"> -->
-    <!-- <meta http-equiv="X-Frame-Options" content="DENY"> -->
-    <!-- <meta http-equiv="X-Content-Type-Options" content="nosniff"> -->
-    <!-- <meta http-equiv="X-XSS-Protection" content="1; mode=block"> -->
-    <!-- <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"> -->
-    <!-- <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"> -->
+    <!-- Safe Security Headers (Phase 1: Non-CSS interfering) -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    
+    <!-- CSP and other headers will be added gradually after testing -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
