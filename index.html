@@ -1247,7 +1247,6 @@
                 <a href="#home" class="nav-link active text-gray-700 dark:text-gray-300" onclick="navigate(event, 'home')">Home</a>
                 <a href="#about" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'about')">About</a>
                 <a href="#resume" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'resume')">Resume</a>
-                <a href="#volunteering" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'volunteering')">Volunteering</a>
                 <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'projects')">Projects</a>
                 <a href="#blog" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'blog')">Blog</a>
                 <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300" onclick="navigate(event, 'contact')">Contact</a>
@@ -1267,7 +1266,6 @@
             <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'home')">Home</a>
             <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'about')">About</a>
             <a href="#resume" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'resume')">Resume</a>
-            <a href="#volunteering" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'volunteering')">Volunteering</a>
             <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'projects')">Projects</a>
             <a href="#blog" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'blog')">Blog</a>
             <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300" onclick="navigate(event, 'contact')">Contact</a>
@@ -1412,7 +1410,7 @@
                 </div>
 
                 <!-- Interactive Timeline -->
-                <div class="grid md:grid-cols-2 gap-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Work Experience Timeline -->
                     <div class="fade-in stagger-delay-2">
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-8 text-center">
@@ -1543,89 +1541,75 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Volunteering Section -->
-        <section id="volunteering" class="section py-20">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in">Community & Volunteering</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Volunteering Card 1 -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover-lift transition-colors duration-300 fade-in stagger-delay-1">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-gradient-to-br from-orange-400 to-red-500 p-3 rounded-lg">
-                                <i data-lucide="users" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">Bugbash Mentor</h4>
-                                    <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">2024</span>
+                    <!-- Volunteering & Community Timeline -->
+                    <div class="fade-in stagger-delay-4">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-8 text-center">
+                            <i data-lucide="users" class="w-6 h-6 inline mr-2"></i>
+                            Volunteering
+                        </h3>
+                        <div class="timeline">
+                            <!-- Volunteering 1 -->
+                            <div class="timeline-item">
+                                <div class="timeline-marker" style="background: linear-gradient(45deg, #f59e0b, #ef4444);"></div>
+                                <div class="timeline-content">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">Bugbash Mentor</h4>
+                                        <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">2024</span>
+                                    </div>
+                                    <p class="text-indigo-600 font-medium mb-3">OWASP Cincinnati Chapter</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jul 2024</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Mentored chapter members to improve OWASP Cheatsheets on critical vulnerability topics.</p>
                                 </div>
-                                <p class="text-indigo-600 font-medium mb-2">OWASP Cincinnati Chapter</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jul 2024</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Mentored chapter members to improve OWASP Cheatsheets on critical vulnerability topics.</p>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Volunteering Card 2 -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover-lift transition-colors duration-300 fade-in stagger-delay-2">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-gradient-to-br from-blue-400 to-indigo-500 p-3 rounded-lg">
-                                <i data-lucide="file-text" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">Examination Developer</h4>
-                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">2023-24</span>
+                            <!-- Volunteering 2 -->
+                            <div class="timeline-item">
+                                <div class="timeline-marker" style="background: linear-gradient(45deg, #3b82f6, #4f46e5);"></div>
+                                <div class="timeline-content">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">Examination Developer</h4>
+                                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">2023-24</span>
+                                    </div>
+                                    <p class="text-indigo-600 font-medium mb-3">ISC2</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Nov 2023 - Mar 2024</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Developed and reviewed content for ISC2 certifications, improving quality and pass rates.</p>
                                 </div>
-                                <p class="text-indigo-600 font-medium mb-2">ISC2</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Nov 2023 - Mar 2024</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Developed and reviewed content for ISC2 certifications, improving quality and pass rates.</p>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Volunteering Card 3 -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover-lift transition-colors duration-300 fade-in stagger-delay-3">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-gradient-to-br from-yellow-400 to-orange-500 p-3 rounded-lg">
-                                <i data-lucide="cloud" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">AWS Community Builder</h4>
-                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">2022-24</span>
+                            <!-- Volunteering 3 -->
+                            <div class="timeline-item">
+                                <div class="timeline-marker" style="background: linear-gradient(45deg, #f59e0b, #f97316);"></div>
+                                <div class="timeline-content">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">AWS Community Builder</h4>
+                                        <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">2022-24</span>
+                                    </div>
+                                    <p class="text-indigo-600 font-medium mb-3">Amazon Web Services</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jan 2022 - Jan 2024</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Contributed feedback that led to a 15% improvement in AWS product usability.</p>
                                 </div>
-                                <p class="text-indigo-600 font-medium mb-2">Amazon Web Services</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jan 2022 - Jan 2024</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Contributed feedback that led to a 15% improvement in AWS product usability.</p>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Volunteering Card 4 -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover-lift transition-colors duration-300 fade-in stagger-delay-4">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-gradient-to-br from-purple-400 to-pink-500 p-3 rounded-lg">
-                                <i data-lucide="eye" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">OSINT CTF Player & Judge</h4>
-                                    <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">2021-22</span>
+                            <!-- Volunteering 4 -->
+                            <div class="timeline-item">
+                                <div class="timeline-marker" style="background: linear-gradient(45deg, #8b5cf6, #ec4899);"></div>
+                                <div class="timeline-content">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-lg font-semibold text-indigo-900 dark:text-indigo-300">OSINT CTF Player & Judge</h4>
+                                        <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">2021-22</span>
+                                    </div>
+                                    <p class="text-indigo-600 font-medium mb-3">Tracelabs</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jan 2021 - Dec 2022</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Used OSINT to improve critical lead identification for missing persons cases by 40%.</p>
                                 </div>
-                                <p class="text-indigo-600 font-medium mb-2">Tracelabs</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jan 2021 - Dec 2022</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Used OSINT to improve critical lead identification for missing persons cases by 40%.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <!-- Testimonials Section (Homepage Only) -->
         <section class="testimonials-section py-20 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
