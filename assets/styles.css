@@ -1,30 +1,25 @@
-        /* Professional Typography Scale */
+        /* Optimized Design System */
         :root {
-            --font-size-xs: 0.75rem;    /* 12px */
-            --font-size-sm: 0.875rem;   /* 14px */
-            --font-size-base: 1rem;     /* 16px */
-            --font-size-lg: 1.125rem;   /* 18px */
-            --font-size-xl: 1.25rem;    /* 20px */
-            --font-size-2xl: 1.5rem;    /* 24px */
-            --font-size-3xl: 1.875rem;  /* 30px */
-            --font-size-4xl: 2.25rem;   /* 36px */
-            --font-size-5xl: 3rem;      /* 48px */
-            --font-size-6xl: 3.75rem;   /* 60px */
+            /* Typography Scale */
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
             
-            /* Professional Color System */
+            /* Color System */
             --color-primary: #4f46e5;
             --color-primary-light: #6366f1;
             --color-primary-dark: #3730a3;
-            --color-accent: #0891b2;
-            --color-accent-light: #06b6d4;
             --color-success: #10b981;
             --color-warning: #f59e0b;
             --color-error: #ef4444;
             
-            /* Improved Gray Scale */
-            --color-gray-50: #f9fafb;
+            /* Gray Scale */
             --color-gray-100: #f3f4f6;
-            --color-gray-200: #e5e7eb;
             --color-gray-300: #d1d5db;
             --color-gray-400: #9ca3af;
             --color-gray-500: #6b7280;
@@ -33,38 +28,27 @@
             --color-gray-800: #1f2937;
             --color-gray-900: #111827;
             
-            /* 8-Point Grid Spacing System */
-            --spacing-0: 0;
-            --spacing-1: 0.25rem;  /* 4px */
-            --spacing-2: 0.5rem;   /* 8px */
-            --spacing-3: 0.75rem;  /* 12px */
-            --spacing-4: 1rem;     /* 16px */
-            --spacing-5: 1.25rem;  /* 20px */
-            --spacing-6: 1.5rem;   /* 24px */
-            --spacing-8: 2rem;     /* 32px */
-            --spacing-10: 2.5rem;  /* 40px */
-            --spacing-12: 3rem;    /* 48px */
-            --spacing-16: 4rem;    /* 64px */
-            --spacing-20: 5rem;    /* 80px */
+            /* Spacing System */
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            --spacing-20: 5rem;
             
-            /* Professional Shadows */
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            /* Shadows */
             --shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
             
-            /* Border Radius System */
-            --radius-sm: 0.25rem;   /* 4px */
-            --radius-base: 0.5rem;  /* 8px */
-            --radius-md: 0.75rem;   /* 12px */
-            --radius-lg: 1rem;      /* 16px */
-            --radius-xl: 1.5rem;    /* 24px */
+            /* Border Radius */
+            --radius-base: 0.5rem;
+            --radius-lg: 1rem;
             
             /* Transitions */
-            --transition-fast: 0.15s ease;
             --transition-base: 0.2s ease;
-            --transition-slow: 0.3s ease;
         }
         
         body {
@@ -108,11 +92,11 @@
         p {
             font-size: var(--font-size-base);
             line-height: 1.6;
-            color: var(--color-gray-600);
+            color: var(--color-gray-700);
         }
         
         .dark p {
-            color: var(--color-gray-400);
+            color: var(--color-gray-300);
         }
         
         small {
@@ -124,11 +108,27 @@
             color: var(--color-gray-400);
         }
         
-        /* Mobile Typography Adjustments */
+        /* Mobile Typography and Touch Optimizations */
         @media (max-width: 768px) {
             h1 { font-size: var(--font-size-4xl); }
             h2 { font-size: var(--font-size-3xl); }
             h3 { font-size: var(--font-size-xl); }
+            
+            /* Improved touch targets */
+            button, .nav-link, .filter-btn, .blog-filter-btn {
+                min-height: 44px;
+                min-width: 44px;
+                padding: var(--spacing-3) var(--spacing-4);
+            }
+            
+            /* Reduced animations on mobile */
+            .cyber-animation-container {
+                opacity: 0.3;
+            }
+            
+            .matrix-rain, .crypto-layer {
+                display: none;
+            }
         }
         /* Navigation Enhancement with Design System */
         .nav-link {
@@ -288,27 +288,10 @@
             }
         }
         
-        /* Enhanced Color Utility Classes */
-        .text-primary { color: var(--color-primary) !important; }
-        .text-primary-light { color: var(--color-primary-light) !important; }
-        .text-primary-dark { color: var(--color-primary-dark) !important; }
-        .text-accent { color: var(--color-accent) !important; }
-        .text-accent-light { color: var(--color-accent-light) !important; }
-        .text-success { color: var(--color-success) !important; }
-        .text-warning { color: var(--color-warning) !important; }
-        .text-error { color: var(--color-error) !important; }
-        
-        .bg-primary { background-color: var(--color-primary) !important; }
-        .bg-primary-light { background-color: var(--color-primary-light) !important; }
-        .bg-primary-dark { background-color: var(--color-primary-dark) !important; }
-        .bg-accent { background-color: var(--color-accent) !important; }
-        .bg-accent-light { background-color: var(--color-accent-light) !important; }
-        .bg-success { background-color: var(--color-success) !important; }
-        .bg-warning { background-color: var(--color-warning) !important; }
-        .bg-error { background-color: var(--color-error) !important; }
-        
-        .border-primary { border-color: var(--color-primary) !important; }
-        .border-accent { border-color: var(--color-accent) !important; }
+        /* Essential Color Utilities */
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .border-primary { border-color: var(--color-primary); }
         
         /* Professional Button Styles */
         .btn-primary {
@@ -343,32 +326,6 @@
             transform: translateY(-1px);
         }
         
-        /* 8-Point Grid Spacing Utility Classes */
-        .spacing-0 { margin: var(--spacing-0) !important; }
-        .spacing-1 { margin: var(--spacing-1) !important; }
-        .spacing-2 { margin: var(--spacing-2) !important; }
-        .spacing-3 { margin: var(--spacing-3) !important; }
-        .spacing-4 { margin: var(--spacing-4) !important; }
-        .spacing-5 { margin: var(--spacing-5) !important; }
-        .spacing-6 { margin: var(--spacing-6) !important; }
-        .spacing-8 { margin: var(--spacing-8) !important; }
-        .spacing-10 { margin: var(--spacing-10) !important; }
-        .spacing-12 { margin: var(--spacing-12) !important; }
-        .spacing-16 { margin: var(--spacing-16) !important; }
-        .spacing-20 { margin: var(--spacing-20) !important; }
-        
-        .p-spacing-0 { padding: var(--spacing-0) !important; }
-        .p-spacing-1 { padding: var(--spacing-1) !important; }
-        .p-spacing-2 { padding: var(--spacing-2) !important; }
-        .p-spacing-3 { padding: var(--spacing-3) !important; }
-        .p-spacing-4 { padding: var(--spacing-4) !important; }
-        .p-spacing-5 { padding: var(--spacing-5) !important; }
-        .p-spacing-6 { padding: var(--spacing-6) !important; }
-        .p-spacing-8 { padding: var(--spacing-8) !important; }
-        .p-spacing-10 { padding: var(--spacing-10) !important; }
-        .p-spacing-12 { padding: var(--spacing-12) !important; }
-        .p-spacing-16 { padding: var(--spacing-16) !important; }
-        .p-spacing-20 { padding: var(--spacing-20) !important; }
         
         /* Consistent Section Spacing */
         .section-padding {
@@ -516,12 +473,20 @@
         /* High contrast mode support */
         @media (prefers-contrast: high) {
             .card-base {
-                border: 2px solid var(--color-gray-400);
+                border: 2px solid var(--color-gray-600);
             }
             
             .btn-primary, .btn-secondary {
                 border-width: 2px;
                 font-weight: 600;
+            }
+            
+            p {
+                color: var(--color-gray-900);
+            }
+            
+            .dark p {
+                color: var(--color-gray-100);
             }
         }
         
@@ -534,10 +499,18 @@
             color: var(--color-gray-100);
         }
         
-        /* Focus indicators for keyboard navigation */
+        /* Enhanced focus indicators for keyboard navigation */
         .nav-item:focus-within {
-            background-color: rgba(79, 70, 229, 0.1);
+            background-color: rgba(79, 70, 229, 0.15);
             border-radius: var(--radius-base);
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+        
+        /* Improved button focus states */
+        button:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
         }
         
         /* Accessible form elements */
@@ -552,7 +525,7 @@
         .form-input:focus {
             border-color: var(--color-primary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
         }
         
         .dark .form-input {
@@ -636,18 +609,17 @@
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         
-        /* Enhanced hover effects */
+        /* Optimized hover effects */
         .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-base);
         }
         
         .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
         }
         
         /* Progress bars */
@@ -1111,7 +1083,7 @@
             will-change: transform, opacity;
         }
         
-        /* Reduced motion for users who prefer it */
+        /* Reduced motion and mobile performance */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -1131,6 +1103,18 @@
             
             .cyber-animation-container {
                 display: none !important;
+            }
+        }
+        
+        /* Battery and performance optimization */
+        @media (max-width: 768px) and (hover: none) {
+            .hover-lift:hover {
+                transform: none;
+            }
+            
+            .card-interactive:hover {
+                transform: none;
+                box-shadow: var(--shadow-base);
             }
         }
         

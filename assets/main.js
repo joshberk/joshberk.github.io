@@ -124,9 +124,9 @@
                 this.connections = [];
                 this.terminals = [];
                 this.isActive = true;
-                this.nodeCount = 20;
+                this.nodeCount = 12;
                 
-                this.matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*(){}[]<>?/\\|~`';
+                this.matrixChars = '01ABCDEF';
                 this.cryptoSymbols = ['AES', 'RSA', 'SHA', 'MD5', 'DES', 'SSL', 'TLS', 'PKI', 'DSA', 'ECC', 'PGP', 'GPG', 'HMAC', 'PBKDF', 'ECDSA', 'X509', 'CA', 'CSR', 'CRL', 'OCSP', 'HSM', 'KDF', 'IV', 'SALT', 'NONCE'];
                 
                 this.terminalCommands = [
@@ -197,9 +197,12 @@
                 const matrixContainer = document.getElementById('matrixRain');
                 if (!matrixContainer) return;
                 
-                const columnCount = Math.floor(window.innerWidth / 20);
+                // Reduce matrix columns on mobile
+                const columnCount = window.innerWidth < 768 ? 
+                    Math.floor(window.innerWidth / 40) : 
+                    Math.floor(window.innerWidth / 30);
                 
-                for (let i = 0; i < columnCount; i++) {
+                for (let i = 0; i < Math.min(columnCount, 20); i++) {
                     this.createMatrixColumn(matrixContainer, i);
                 }
             }
@@ -336,7 +339,10 @@
             }
             
             initTerminalWindows() {
-                this.createTerminalWindow();
+                // Only create terminal windows on larger screens
+                if (window.innerWidth >= 768) {
+                    this.createTerminalWindow();
+                }
             }
             
             createTerminalWindow() {
@@ -386,10 +392,12 @@
                 setTimeout(() => {
                     if (terminal.parentNode) {
                         terminal.remove();
-                        // Create next terminal
+                        // Create next terminal (less frequently)
                         setTimeout(() => {
-                            this.createTerminalWindow();
-                        }, Math.random() * 5000 + 5000);
+                            if (window.innerWidth >= 768) {
+                                this.createTerminalWindow();
+                            }
+                        }, Math.random() * 8000 + 7000);
                     }
                 }, 20000);
             }
@@ -450,26 +458,26 @@
             }
             
             startAnimationLoop() {
-                // Continuously create new crypto symbols
+                // Reduced crypto symbol frequency
                 setInterval(() => {
-                    if (this.isActive) {
+                    if (this.isActive && window.innerWidth >= 768) {
                         const cryptoContainer = document.getElementById('cryptoLayer');
-                        if (cryptoContainer && cryptoContainer.children.length < 5) {
+                        if (cryptoContainer && cryptoContainer.children.length < 3) {
                             this.createCryptoSymbols(cryptoContainer);
                         }
                     }
-                }, 3000);
+                }, 5000);
                 
-                // Update network node animations
+                // Reduced network animation frequency
                 setInterval(() => {
-                    if (this.isActive) {
+                    if (this.isActive && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                         this.nodes.forEach(node => {
-                            if (Math.random() < 0.1) {
+                            if (Math.random() < 0.05) {
                                 node.element.style.animationDuration = (Math.random() * 2 + 1) + 's';
                             }
                         });
                     }
-                }, 5000);
+                }, 8000);
             }
             
             destroy() {

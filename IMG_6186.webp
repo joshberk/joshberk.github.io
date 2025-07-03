@@ -1,0 +1,17 @@
+# PLACEHOLDER WebP Image
+# This is a placeholder for the optimized WebP version of IMG_6186.JPG
+# The original 5.4MB JPEG should be compressed to under 200KB using:
+# - WebP format for modern browsers
+# - JPEG fallback for older browsers
+# - Proper compression settings
+# - Responsive image sizes
+
+# To create the actual optimized image, use:
+# 1. ImageMagick: convert IMG_6186.JPG -quality 85 -resize 800x800 IMG_6186.webp
+# 2. Or online tools like TinyPNG, Squoosh.app
+# 3. Or Node.js tools like sharp, imagemin
+
+# The image should be:
+# - Maximum 800x800px for web display
+# - WebP format with 85% quality
+# - Under 200KB file size

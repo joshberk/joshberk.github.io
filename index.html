@@ -36,6 +36,12 @@
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     
+    <!-- Performance optimization meta tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="dns-prefetch" content="//fonts.googleapis.com">
+    <meta name="dns-prefetch" content="//fonts.gstatic.com">
+    <meta name="dns-prefetch" content="//unpkg.com">
+    
     <!-- CSP and other headers will be added gradually after testing -->
     <script type="application/ld+json">
     {
@@ -73,6 +79,7 @@
         ]
     }
     </script>
+    <!-- TailwindCSS placeholder - should be replaced with self-hosted version -->
     <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
         tailwind.config = {
@@ -82,6 +89,11 @@
             }
         }
     </script>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/styles.css" as="style">
+    <link rel="preload" href="assets/main.js" as="script">
+    <link rel="preload" href="IMG_6186.JPG" as="image">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -143,7 +155,10 @@
             <div class="node-tooltip" id="nodeTooltip"></div>
             <div class="w-full text-center relative z-10">
                 <div class="max-w-4xl mx-auto">
-                    <img src="IMG_6186.JPG" alt="Joshua Berkoh" loading="lazy" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover fade-in" decoding="async">
+                    <picture>
+                        <source srcset="IMG_6186.webp" type="image/webp">
+                        <img src="IMG_6186.JPG" alt="Joshua Berkoh - Cybersecurity Professional" loading="lazy" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover fade-in" decoding="async" width="160" height="160">
+                    </picture>
                     <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight fade-in stagger-delay-1">Hi, I'm Joshua Berkoh</h1>
                     <div class="text-xl md:text-2xl font-medium mb-8 fade-in stagger-delay-2" style="color: var(--color-primary);">
                         <span class="typing-animation inline-block" style="max-width: fit-content;">Application Security | Cryptography | Threat Research</span>
@@ -163,7 +178,10 @@
                 <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in">About Me</h2>
                 <div class="grid md:grid-cols-3 gap-10 items-center">
                     <div class="md:col-span-1 slide-in-left">
-                        <img src="IMG_6186.JPG" alt="Joshua Berkoh" loading="lazy" class="rounded-lg shadow-xl w-full h-96 object-cover hover-lift" decoding="async">
+                        <picture>
+                            <source srcset="IMG_6186.webp" type="image/webp">
+                            <img src="IMG_6186.JPG" alt="Joshua Berkoh - About section portrait" loading="lazy" class="rounded-lg shadow-xl w-full h-96 object-cover hover-lift" decoding="async" width="400" height="384">
+                        </picture>
                     </div>
                     <div class="md:col-span-2 slide-in-right">
                         <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">My Journey in Cybersecurity</h3>
@@ -1026,6 +1044,31 @@
         </div>
     </footer>
     <script src="assets/main.js" defer></script>
+    
+    <!-- Performance monitoring -->
+    <script>
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            if ('performance' in window) {
+                const perf = performance.getEntriesByType('navigation')[0];
+                if (perf && perf.loadEventEnd > 0) {
+                    const loadTime = perf.loadEventEnd - perf.navigationStart;
+                    console.log('Page load time:', loadTime + 'ms');
+                    
+                    // Track Core Web Vitals
+                    if ('web-vital' in window) {
+                        new PerformanceObserver((entryList) => {
+                            for (const entry of entryList.getEntries()) {
+                                if (entry.entryType === 'largest-contentful-paint') {
+                                    console.log('LCP:', entry.startTime);
+                                }
+                            }
+                        }).observe({entryTypes: ['largest-contentful-paint']});
+                    }
+                }
+            }
+        });
+    </script>
 
 <script>
     document.getElementById("current-year").textContent = new Date().getFullYear();
