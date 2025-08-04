@@ -12,10 +12,6 @@ python3 -m http.server
 
 Then navigate to `http://localhost:8000` in your browser.
 
-## Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request with improvements or bug fixes. Please keep the code and documentation clear and concise.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
