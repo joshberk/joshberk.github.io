@@ -39,38 +39,40 @@
     <!-- Blog Post Content -->
     <article class="blog-post">
       <p>
-        Encryption is the process of converting readable <em>plaintext</em> into an
-        unintelligible <em>ciphertext</em> using a key, and decryption is the
-        reverse operation of recovering the original message【96254854322167†L108-L114】.
-        The purpose of this transformation is to ensure that even if an
+        According to the
+        <a href="https://www.geeksforgeeks.org/cryptography-introduction/"
+          >GeeksforGeeks introduction to cryptography</a
+        >, encryption is the process of converting readable
+        <em>plaintext</em> into an unintelligible <em>ciphertext</em> using a key,
+        and decryption is the reverse operation of recovering the original
+        message. The purpose of this transformation is to ensure that even if an
         adversary intercepts the data they cannot understand it without the
         secret key. Cryptography, therefore, is fundamentally about enabling
         communication in the presence of malicious actors and is guided by
         principles such as confidentiality, integrity, authentication and
-        non‑repudiation【96254854322167†L86-L105】.
+        non‑repudiation.
       </p>
       <p>
-        In <strong>symmetric‑key</strong> cryptography a single secret key is
-        used for both encryption and decryption【96254854322167†L139-L142】. This
-        simplicity allows for efficient algorithms like the Advanced
-        Encryption Standard (AES), but it also requires that both parties
-        securely share and store the same key. In contrast,
-        <strong>asymmetric‑key</strong> or public‑key cryptography uses a pair of
-        mathematically related keys – one public and one private – where the
-        public key encrypts data and only the private key can decrypt it【96254854322167†L139-L147】.
-        Asymmetric schemes such as RSA and elliptic‑curve cryptography enable
-        secure key exchange and digital signatures but are computationally
-        heavier than symmetric ciphers.
+        In <strong><a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm">symmetric‑key</a></strong> cryptography a single secret key is used for both encryption and
+        decryption. This simplicity allows for efficient algorithms like the
+        Advanced Encryption Standard (AES), but it also requires that both
+        parties securely share and store the same key. In contrast,
+        <strong><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">asymmetric‑key</a></strong> or public‑key cryptography uses a pair of mathematically related keys –
+        one public and one private – where the public key encrypts data and only
+        the private key can decrypt it. Asymmetric schemes such as RSA and
+        elliptic‑curve cryptography enable secure key exchange and digital
+        signatures but are computationally heavier than symmetric ciphers.
       </p>
       <p>
-        Beyond encryption there are other primitives like <em>hash functions</em>
+        Beyond encryption there are other primitives like
+        <em><a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">hash functions</a></em>
         that map input data to fixed‑length outputs and play a critical role in
-        ensuring data integrity【96254854322167†L149-L151】. Understanding these
-        basic building blocks is essential before delving into more advanced
-        topics such as key exchange protocols, authenticated encryption and
-        zero‑knowledge proofs. In the coming weeks I will build on these
-        foundations to explore how cryptographic tools are applied in real
-        systems and where their limitations lie.
+        ensuring data integrity. Understanding these basic building blocks is
+        essential before delving into more advanced topics such as key exchange
+        protocols, authenticated encryption and zero‑knowledge proofs. In the
+        coming weeks I will build on these foundations to explore how
+        cryptographic tools are applied in real systems and where their
+        limitations lie.
       </p>
     </article>
 
