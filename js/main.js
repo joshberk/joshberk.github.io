@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toggle the mobile navigation menu
   hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', (!expanded).toString());
     navMenu.classList.toggle('open');
     hamburger.classList.toggle('open');
   });
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navMenu.classList.contains('open')) {
         navMenu.classList.remove('open');
         hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       }
     });
   });
