@@ -28,13 +28,14 @@
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
 
-      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode">🌙</button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode" aria-pressed="false" type="button">🌙</button>
     </nav>
 
+    <main>
     <!-- Blog Section -->
     <section id="blog" aria-label="Blog Posts">
       <div class="container">
-        <h2>Blog</h2>
+        <h1>Blog</h1>
         <p>
           Welcome to my blog! Here I share insights from capture‑the‑flag
           competitions, reflections on my research and practical advice for
@@ -43,7 +44,7 @@
         </p>
         <div class="blog-list">
           <article class="blog-card">
-            <h3><a href="blog/appsec-lessons.html">Lessons from the Security Innovation AppSec Challenge</a></h3>
+            <h2><a href="blog/appsec-lessons.html">Lessons from the Security Innovation AppSec Challenge</a></h2>
             <span class="post-date">June 2024</span>
             <p>
               Key takeaways from competing in a challenging AppSec capture‑the‑flag
@@ -52,7 +53,7 @@
             </p>
           </article>
           <article class="blog-card">
-            <h3><a href="blog/apt-demystified.html">Demystifying Advanced Persistent Threats</a></h3>
+            <h2><a href="blog/apt-demystified.html">Demystifying Advanced Persistent Threats</a></h2>
             <span class="post-date">April 2023</span>
             <p>
               A reflection on researching advanced persistent threats, analysing
@@ -63,7 +64,7 @@
           <!-- New blog posts sourced from the author's Medium writing. The slugs mirror
                the Medium articles and the cards include brief summaries. -->
           <article class="blog-card">
-            <h3><a href="blog/pivoting-cryptography.html">Pivoting to Cryptography With Purpose</a></h3>
+            <h2><a href="blog/pivoting-cryptography.html">Pivoting to Cryptography With Purpose</a></h2>
             <span class="post-date">March 2025</span>
             <p>
               Reflections on transitioning from general cybersecurity to the rigorous world
@@ -72,7 +73,7 @@
             </p>
           </article>
           <article class="blog-card">
-            <h3><a href="blog/week-1-foundational-encryption-concepts.html">Week 1: Foundational Encryption Concepts</a></h3>
+            <h2><a href="blog/week-1-foundational-encryption-concepts.html">Week 1: Foundational Encryption Concepts</a></h2>
             <span class="post-date">January 2025</span>
             <p>
               An accessible introduction to core encryption principles, comparing
@@ -83,6 +84,8 @@
         </div>
       </div>
     </section>
+
+    </main>
 
     <footer>
       <p>
