@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.querySelector('.navbar ul');
   const navLinks = document.querySelectorAll('.navbar a');
   const hamburger = document.querySelector('.hamburger');
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll('main section');
 
   // Add background and shadow when scrolled beyond a certain amount
   window.addEventListener('scroll', () => {
