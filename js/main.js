@@ -126,9 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle the theme when the user clicks the button
     themeToggle.addEventListener('click', () => {
-      const isPressed = themeToggle.getAttribute('aria-pressed') === 'true';
-      const next = isPressed ? 'light' : 'dark';
-      themeToggle.setAttribute('aria-pressed', (!isPressed).toString());
+      const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
+      themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
       applyTheme(next);
       localStorage.setItem('theme', next);
     });
