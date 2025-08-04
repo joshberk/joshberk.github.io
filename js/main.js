@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('main section');
   const yearSpan = document.getElementById('year');
 
+  // Mark the top section as active on initial load
+  const heroLink = document.querySelector('.navbar a[href="#hero"]');
+  if (heroLink && document.getElementById('hero')) {
+    heroLink.classList.add('active');
+  }
+
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
