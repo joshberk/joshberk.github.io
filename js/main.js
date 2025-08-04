@@ -11,7 +11,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   const navMenu = document.querySelector('.navbar ul');
-  const navLinks = document.querySelectorAll('.navbar a');
+  // Select only navigation links within the menu list, excluding brand links
+  const navLinks = document.querySelectorAll('.navbar ul li a');
   const hamburger = document.querySelector('.hamburger');
   const sections = document.querySelectorAll('main section');
   const yearSpan = document.getElementById('year');
