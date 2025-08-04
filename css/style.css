@@ -598,11 +598,12 @@ footer a:hover {
     right: -100%;
     width: 200px;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     flex-direction: column;
     padding-top: 80px;
     transition: right 0.4s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: var(--text-color);
   }
   .navbar ul.open {
     right: 0;
