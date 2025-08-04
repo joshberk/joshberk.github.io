@@ -107,15 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       applyTheme(savedTheme);
+      themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
     } else {
       // Default to light theme if nothing saved
       applyTheme('light');
+      themeToggle.setAttribute('aria-pressed', 'false');
     }
 
     // Toggle the theme when the user clicks the button
     themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      const next = current === 'dark' ? 'light' : 'dark';
+      const isPressed = themeToggle.getAttribute('aria-pressed') === 'true';
+      const next = isPressed ? 'light' : 'dark';
+      themeToggle.setAttribute('aria-pressed', (!isPressed).toString());
       applyTheme(next);
       localStorage.setItem('theme', next);
     });
