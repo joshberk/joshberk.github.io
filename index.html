@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal portfolio of Joshua Offe Berkoh, a PhD student in information technology with a passion for applied cryptography and cybersecurity."
+    />
+    <title>Joshua Offe Berkoh | Cryptography & Cybersecurity</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <a href="#hero" class="brand">Joshua O. Berkoh</a>
+      <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Theme toggle button: shows moon for night mode and sun for day mode -->
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode">🌙</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero" aria-label="Introduction">
+      <div class="hero-content">
+        <h1>Hi, I'm <span style="color: var(--accent-color)">Joshua Offe Berkoh</span></h1>
+        <p>
+          PhD candidate and aspiring applied scientist in cryptography, building
+          secure systems and exploring the frontiers of cybersecurity.
+        </p>
+        <a href="#about" class="btn btn-primary">Learn More</a>
+        <a href="assets/resume.pdf" class="btn btn-outline" download>Download CV</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" aria-label="About Joshua">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <img
+            src="assets/images/about.png"
+            alt="Abstract illustration symbolising research in cryptography"
+            loading="lazy"
+          />
+          <div class="text">
+            <p>
+              I'm currently pursuing a Doctor of Philosophy in Information
+              Technology at the University of Cincinnati, with an expected
+              graduation in August 2027. My research interests lie at the
+              intersection of cryptography, secure systems and applied
+              cybersecurity. I enjoy dissecting complex security problems and
+              building practical tools that make the digital world safer. Prior
+              to starting my doctoral studies, I earned my Master of Science in
+              Information Technology from the same institution in August 2024,
+              where I explored advanced topics in network security and
+              cryptanalysis.
+            </p>
+            <p>
+              My professional journey spans both industry and academia. I
+              interned as a security engineer at Intuit Inc. in San Diego,
+              California, where I integrated and streamlined security
+              repositories for red‑teaming campaigns and implemented automated
+              compliance checks that reduced manual effort significantly.
+              As an adjunct instructor at the University of Cincinnati, I
+              redesigned the IT 2030C course, introduced hands‑on lab
+              components and facilitated projects for nearly 50 students. These
+              experiences sharpened my ability to communicate complex concepts
+              and work collaboratively across disciplines.
+            </p>
+            <p>
+              Beyond academia, I have defended critical infrastructures as a
+              security operations analyst for Virtual Infosec Africa, where I
+              monitored networks to achieve a 95 percent detection rate and
+              reduced incident response times for the Bank of Ghana. I also
+              enjoy competing in capture‑the‑flag events and bug bounty
+              programs, having solved numerous challenges on platforms like
+              HackerOne and MetaCTF and earning a hall of fame recognition
+              from several organisations.
+            </p>
+            <p>
+              I’m passionate about sharing knowledge and building community. As
+              a mentor with the OWASP Cincinnati chapter and an AWS Community
+              Builder, I’ve guided aspiring security professionals and
+              contributed documentation to open‑source projects. Looking ahead,
+              I aspire to bridge cutting‑edge research and industry practice as
+              an applied scientist, advancing cryptographic tools that are both
+              theoretically sound and practically deployable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" aria-label="Skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div>
+            <h3>Programming Languages</h3>
+            <ul>
+              <li>Python</li>
+              <li>HTML &amp; CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Security &amp; Analysis Tools</h3>
+            <ul>
+              <li>Burp Suite, Hydra, Curl, ffuf</li>
+              <li>Hashcat, Sqlmap, SQL</li>
+              <li>CyberChef, Threat Modeling</li>
+              <li>Autopsy, FTK Imager, Scalpel</li>
+              <li>Nmap, Metasploit, Nessus</li>
+              <li>Splunk, MITRE ATT&amp;CK, OWASP Top 10</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" aria-label="Experience and Education">
+      <div class="container">
+        <h2>Resume</h2>
+        <!-- Work Experience -->
+        <h3>Professional Experience</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Security Engineer Intern – Intuit Inc.</h4>
+            <div class="time">San Diego, CA • Jun 2023 – Sep 2023</div>
+            <p>
+              Integrated and streamlined existing security repositories into
+              red‑teaming tools, boosting efficiency by 20 percent. Implemented
+              automated compliance checks via tox to reduce manual effort and
+              ensure adherence to standards.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Adjunct Instructor – University of Cincinnati</h4>
+            <div class="time">Cincinnati, OH • Jan 2023 – Apr 2023</div>
+            <p>
+              Revised and improved the IT 2030C curriculum, created new
+              supplementary materials and introduced hands‑on lab components,
+              resulting in higher student engagement and improved performance.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Security Operations Center Analyst – Virtual Infosec Africa</h4>
+            <div class="time">Accra, Ghana • Oct 2021 – Jun 2022</div>
+            <p>
+              Monitored and analysed network traffic for the Bank of Ghana,
+              achieving a 95 percent detection rate and reducing incident
+              response times by 30 percent. Implemented advanced security
+              solutions that lowered cybersecurity incidents by 20 percent.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project & CTF Experience -->
+        <h3>Projects &amp; CTFs</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Security Innovation AppSec Challenge</h4>
+            <div class="time">Remote • Jun 2024</div>
+            <p>
+              Exploited vulnerabilities such as SQL injection, cross‑site
+              scripting, broken access control and cryptographic flaws to
+              complete a challenging AppSec capture‑the‑flag competition.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>HackerOne 101 CTF</h4>
+            <div class="time">Remote • Jan 2024 – Present</div>
+            <p>
+              Solved a series of challenges demonstrating proficiency with
+              broken access control, cryptography, SQL and XSS injections,
+              reconnaissance and open redirects.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>MetaCTF</h4>
+            <div class="time">Remote • May 2024 – Present</div>
+            <p>
+              Completed 26 challenges covering cryptography, hash cracking,
+              reconnaissance, web exploitation and forensics while learning new
+              offensive techniques.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Threat Analysis, Detection &amp; Mitigation</h4>
+            <div class="time">University of Cincinnati • Jan 2023 – Apr 2023</div>
+            <p>
+              Conducted research into advanced persistent threats and their
+              tactics and techniques; integrated behavioural analytics into
+              threat intelligence gathering to develop proactive mitigation
+              strategies.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Bug Bounty Hunter – Bugcrowd</h4>
+            <div class="time">Remote • Jan 2021 – Dec 2021</div>
+            <p>
+              Discovered and reported critical vulnerabilities across seven
+              programmes, earning a hall of fame recognition from Centrify,
+              Arlo Kudos, Humble Bundle, BitDiscovery, Cloudways, Ibotta and
+              ISC2.
+            </p>
+          </div>
+        </div>
+
+        <!-- Volunteering Experience -->
+        <h3>Volunteering &amp; Community</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>OWASP Cincinnati Chapter – Bugbash Mentor</h4>
+            <div class="time">Cincinnati • Jul 2024</div>
+            <p>
+              Mentored local OWASP members to contribute technical
+              documentation on broken access control and injection
+              vulnerabilities, enriching the community cheatsheet.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>ISC2 – Examination Developer</h4>
+            <div class="time">Remote • Nov 2023 – Mar 2024</div>
+            <p>
+              Reviewed and revised cybersecurity certification content with
+              subject matter experts to improve quality and candidate
+              satisfaction, and authored new questions that increased pass
+              rates.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>AWS Community Builder</h4>
+            <div class="time">Remote • Jan 2022 – Jan 2024</div>
+            <p>
+              Provided product feedback and insights that helped improve AWS
+              services and enhanced community engagement.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h4>Tracelabs – OSINT CTF Player &amp; Judge</h4>
+            <div class="time">Remote • Jan 2021 – Dec 2022</div>
+            <p>
+              Leveraged advanced OSINT techniques to increase critical lead
+              identification for missing‑person cases by 40 percent and
+              supported law enforcement training programmes to reduce search
+              times.
+            </p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <h3>Education</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>PhD, Information Technology</h4>
+            <div class="time">University of Cincinnati • Cincinnati, OH • Expected Aug 2027</div>
+            <p>Doctoral research in cryptography, secure systems and applied cybersecurity.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>M.Sc., Information Technology</h4>
+            <div class="time">University of Cincinnati • Cincinnati, OH • Aug 2024</div>
+            <p>Master’s studies focused on advanced network security and cryptanalysis.</p>
+          </div>
+        </div>
+
+        <!-- Competitions -->
+        <h3>Competitions &amp; Awards</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Security Innovation AppSec Cyber Range</h4>
+            <div class="time">2024 • June Competition</div>
+            <p>Participated in the 2024 June cyber range competition hosted by Security Innovation.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Security Innovation AppSec Cyber Range</h4>
+            <div class="time">2021 • Competition</div>
+            <p>Completed the 2021 Security Innovation AppSec cyber range competition, gaining early experience in application security challenges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" aria-label="Publications">
+      <div class="container">
+        <h2>Publications</h2>
+        <p>
+          My academic publications are currently in preparation and will be
+          available here soon. Please check back for updates on upcoming
+          conference papers and journal articles.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" aria-label="Contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="contact-details">
+          <!-- Provide direct links to email and social profiles without a form. -->
+          <p>Email: <a href="mailto:joshuaberkoh19@gmail.com">joshuaberkoh19@gmail.com</a></p>
+          <div class="social-icons">
+            <!-- LinkedIn icon -->
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn profile">
+              <img src="assets/images/linkedin.png" alt="LinkedIn icon" loading="lazy" />
+            </a>
+            <!-- X (formerly Twitter) icon -->
+            <a href="https://twitter.com" target="_blank" aria-label="X profile">
+              <img src="assets/images/x-logo.png" alt="X social icon" class="x-icon" loading="lazy" />
+            </a>
+            <!-- Medium icon represented by a stylised letter M. A simple CSS styled circle avoids
+                 external dependencies and remains legible across themes. -->
+            <a href="https://medium.com/@unseeable06" target="_blank" aria-label="Medium profile">
+              <span class="medium-icon" aria-hidden="true">M</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Joshua Offe Berkoh. All rights reserved.
+        &nbsp;|&nbsp; Built with care by Joshua.
+      </p>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

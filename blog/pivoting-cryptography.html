@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Reflections on transitioning into cryptography, exploring the need for rigorous security definitions and mathematical foundations."
+    />
+    <title>Pivoting to Cryptography With Purpose | Joshua Offe Berkoh</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled">
+      <a href="../index.html#hero" class="brand">Joshua O. Berkoh</a>
+      <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#resume">Resume</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode">🌙</button>
+    </nav>
+
+    <!-- Blog Post Header -->
+    <header class="blog-post-header">
+      <h1>Pivoting to Cryptography With Purpose</h1>
+      <p class="post-meta">March 2025 • Reflection</p>
+    </header>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post">
+      <p>
+        When I first entered the field of cyber security my focus was largely on
+        systems hardening and offensive techniques such as penetration testing
+        and capture‑the‑flag competitions. Over time, however, I realised that
+        to build truly resilient systems I needed to understand the theoretical
+        foundations that underpin them. This realisation led me to pivot toward
+        cryptography, a discipline that blends mathematics, computer science and
+        security into a coherent whole.
+      </p>
+      <p>
+        Modern cryptography emphasises precise <strong>security definitions</strong>
+        and <strong>formal models</strong> that allow us to reason rigorously
+        about what it means for a scheme to be secure. Unlike ad‑hoc
+        obfuscation, cryptographic constructions are accompanied by proofs that
+        reduce their security to hard mathematical problems such as factoring or
+        discrete logarithms. This perspective demanded that I deepen my
+        knowledge of number theory, modular arithmetic and finite fields –
+        areas of mathematics that I previously only encountered superficially.
+      </p>
+      <p>
+        At its core, cryptography is about enabling <em>secure communication</em>
+        in the presence of adversaries. As the GeeksforGeeks introduction
+        explains, it develops protocols that prevent malicious parties from
+        learning information that should remain private and it embodies
+        principles such as confidentiality, integrity, authentication and
+        non‑repudiation【96254854322167†L86-L105】. These principles are not
+        abstract ideals; they guide the design of encryption schemes,
+        signature algorithms and key‑exchange protocols used every day.
+      </p>
+      <p>
+        Embarking on this journey has been both challenging and rewarding.
+        Grappling with proofs of security has taught me patience and precision,
+        while building toy implementations of ciphers has kept me grounded in
+        practice. By embracing the rigour of cryptography I hope to contribute
+        to systems that are not only functional but provably secure, bridging
+        the gap between theory and application.
+      </p>
+    </article>
+
+    <footer>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Joshua Offe Berkoh. All rights reserved.
+        &nbsp;|&nbsp; Built with care by Joshua.
+      </p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

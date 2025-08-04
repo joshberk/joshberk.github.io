@@ -1,0 +1,118 @@
+/*
+ * Main JavaScript file for interactivity on the portfolio site.
+ *
+ * This script adds a scroll effect on the navigation bar, toggles the
+ * mobile menu, closes the menu when a navigation link is clicked and
+ * highlights the active navigation item based on scroll position. It
+ * intentionally avoids any external libraries to remain self contained
+ * and lightweight.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.querySelector('.navbar');
+  const navMenu = document.querySelector('.navbar ul');
+  const navLinks = document.querySelectorAll('.navbar a');
+  const hamburger = document.querySelector('.hamburger');
+  const sections = document.querySelectorAll('section');
+
+  // Add background and shadow when scrolled beyond a certain amount
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Toggle the mobile navigation menu
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+
+  // Close the mobile menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+      }
+    });
+  });
+
+  // IntersectionObserver to highlight the active navigation link
+  const observerOptions = {
+    root: null,
+    rootMargin: '-50% 0px -50% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const targetId = link.getAttribute('href').substring(1);
+          if (targetId === entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // --------------------------------------------------
+  // Theme Toggle Functionality
+  //
+  // Allow visitors to switch between light and dark modes. The
+  // interface uses a simple button in the navigation bar. When
+  // clicked, the button toggles the `data-theme` attribute on the
+  // document element, updates its own icon and accessible label, and
+  // persists the choice in localStorage so it remains consistent
+  // across page loads.
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    /**
+     * Apply the requested theme to the document and adjust the
+     * toggle button accordingly.
+     *
+     * @param {string} theme Either 'light' or 'dark'
+     */
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        // Set a data attribute so CSS selectors can apply dark variables
+        document.documentElement.setAttribute('data-theme', 'dark');
+        // Display a sun icon to indicate a return to light mode is possible
+        themeToggle.textContent = '☀️';
+        themeToggle.setAttribute('aria-label', 'Switch to day mode');
+      } else {
+        // Remove the attribute to fall back to the default (light) theme
+        document.documentElement.removeAttribute('data-theme');
+        // Display a moon icon to indicate a switch to dark mode is possible
+        themeToggle.textContent = '🌙';
+        themeToggle.setAttribute('aria-label', 'Switch to night mode');
+      }
+    };
+
+    // On initial load, read the saved preference from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      // Default to light theme if nothing saved
+      applyTheme('light');
+    }
+
+    // Toggle the theme when the user clicks the button
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('theme', next);
+    });
+  }
+});

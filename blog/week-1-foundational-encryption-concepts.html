@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="An accessible introduction to key cryptographic concepts, covering encryption, decryption and the differences between symmetric and asymmetric schemes."
+    />
+    <title>Week 1: Foundational Encryption Concepts | Joshua Offe Berkoh</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled">
+      <a href="../index.html#hero" class="brand">Joshua O. Berkoh</a>
+      <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#resume">Resume</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode">🌙</button>
+    </nav>
+
+    <!-- Blog Post Header -->
+    <header class="blog-post-header">
+      <h1>Week 1: Foundational Encryption Concepts</h1>
+      <p class="post-meta">January 2025 • Study Notes</p>
+    </header>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post">
+      <p>
+        Encryption is the process of converting readable <em>plaintext</em> into an
+        unintelligible <em>ciphertext</em> using a key, and decryption is the
+        reverse operation of recovering the original message【96254854322167†L108-L114】.
+        The purpose of this transformation is to ensure that even if an
+        adversary intercepts the data they cannot understand it without the
+        secret key. Cryptography, therefore, is fundamentally about enabling
+        communication in the presence of malicious actors and is guided by
+        principles such as confidentiality, integrity, authentication and
+        non‑repudiation【96254854322167†L86-L105】.
+      </p>
+      <p>
+        In <strong>symmetric‑key</strong> cryptography a single secret key is
+        used for both encryption and decryption【96254854322167†L139-L142】. This
+        simplicity allows for efficient algorithms like the Advanced
+        Encryption Standard (AES), but it also requires that both parties
+        securely share and store the same key. In contrast,
+        <strong>asymmetric‑key</strong> or public‑key cryptography uses a pair of
+        mathematically related keys – one public and one private – where the
+        public key encrypts data and only the private key can decrypt it【96254854322167†L139-L147】.
+        Asymmetric schemes such as RSA and elliptic‑curve cryptography enable
+        secure key exchange and digital signatures but are computationally
+        heavier than symmetric ciphers.
+      </p>
+      <p>
+        Beyond encryption there are other primitives like <em>hash functions</em>
+        that map input data to fixed‑length outputs and play a critical role in
+        ensuring data integrity【96254854322167†L149-L151】. Understanding these
+        basic building blocks is essential before delving into more advanced
+        topics such as key exchange protocols, authenticated encryption and
+        zero‑knowledge proofs. In the coming weeks I will build on these
+        foundations to explore how cryptographic tools are applied in real
+        systems and where their limitations lie.
+      </p>
+    </article>
+
+    <footer>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Joshua Offe Berkoh. All rights reserved.
+        &nbsp;|&nbsp; Built with care by Joshua.
+      </p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

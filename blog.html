@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Blog posts by Joshua Offe Berkoh, exploring cryptography, cybersecurity and research experiences."
+    />
+    <title>Blog | Joshua Offe Berkoh</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled">
+      <a href="index.html#hero" class="brand">Joshua O. Berkoh</a>
+      <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#resume">Resume</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode">🌙</button>
+    </nav>
+
+    <!-- Blog Section -->
+    <section id="blog" aria-label="Blog Posts">
+      <div class="container">
+        <h2>Blog</h2>
+        <p>
+          Welcome to my blog! Here I share insights from capture‑the‑flag
+          competitions, reflections on my research and practical advice for
+          aspiring security professionals. Select a post to dive deeper into
+          each topic.
+        </p>
+        <div class="blog-list">
+          <article class="blog-card">
+            <h3><a href="blog/appsec-lessons.html">Lessons from the Security Innovation AppSec Challenge</a></h3>
+            <span class="post-date">June 2024</span>
+            <p>
+              Key takeaways from competing in a challenging AppSec capture‑the‑flag
+              competition, exploring vulnerabilities from SQL injection to
+              cryptographic flaws and the tools used to uncover them.
+            </p>
+          </article>
+          <article class="blog-card">
+            <h3><a href="blog/apt-demystified.html">Demystifying Advanced Persistent Threats</a></h3>
+            <span class="post-date">April 2023</span>
+            <p>
+              A reflection on researching advanced persistent threats, analysing
+              attacker tactics and integrating behavioural analytics into
+              proactive defence strategies.
+            </p>
+          </article>
+          <!-- New blog posts sourced from the author's Medium writing. The slugs mirror
+               the Medium articles and the cards include brief summaries. -->
+          <article class="blog-card">
+            <h3><a href="blog/pivoting-cryptography.html">Pivoting to Cryptography With Purpose</a></h3>
+            <span class="post-date">March 2025</span>
+            <p>
+              Reflections on transitioning from general cybersecurity to the rigorous world
+              of cryptography, emphasising the importance of formal definitions,
+              security models and a strong mathematical foundation.
+            </p>
+          </article>
+          <article class="blog-card">
+            <h3><a href="blog/week-1-foundational-encryption-concepts.html">Week 1: Foundational Encryption Concepts</a></h3>
+            <span class="post-date">January 2025</span>
+            <p>
+              An accessible introduction to core encryption principles, comparing
+              symmetric and asymmetric techniques and explaining how keys,
+              plaintext and ciphertext work together in secure communication.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Joshua Offe Berkoh. All rights reserved.
+        &nbsp;|&nbsp; Built with care by Joshua.
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
