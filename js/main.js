@@ -8,6 +8,16 @@
  * and lightweight.
  */
 
+/**
+ * Populate the footer with the current year.
+ */
+const insertCurrentYear = () => {
+  const span = document.getElementById('year');
+  if (span) {
+    span.textContent = new Date().getFullYear();
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   const navMenu = document.querySelector('.navbar ul');
@@ -15,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.navbar ul li a');
   const hamburger = document.querySelector('.hamburger');
   const sections = document.querySelectorAll('main section');
-  const yearSpan = document.getElementById('year');
 
   // Mark the top section as active on initial load
   const heroLink = document.querySelector('.navbar a[href="#hero"]');
@@ -23,9 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroLink.classList.add('active');
   }
 
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  insertCurrentYear();
 
   // Add background and shadow when scrolled beyond a certain amount
   window.addEventListener('scroll', () => {
