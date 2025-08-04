@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.navbar a');
   const hamburger = document.querySelector('.hamburger');
   const sections = document.querySelectorAll('main section');
+  const yearSpan = document.getElementById('year');
+
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
 
   // Add background and shadow when scrolled beyond a certain amount
   window.addEventListener('scroll', () => {
