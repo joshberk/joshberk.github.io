@@ -122,43 +122,39 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // Track whether accessing localStorage is safe
-    let storageAvailable = true;
+    const safeGet = (key) => {
+      try {
+        return localStorage.getItem(key);
+      } catch (err) {
+        return null;
+      }
+    };
 
-    // On initial load, read the saved preference from localStorage
-    let savedTheme = null;
-    try {
-      savedTheme = localStorage.getItem('theme');
-    } catch (err) {
-      storageAvailable = false;
+    const safeSet = (key, value) => {
+      try {
+        localStorage.setItem(key, value);
+        return true;
+      } catch (err) {
+        return false;
+      }
+    };
+
+    const savedTheme = safeGet('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+      themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
+    } else {
       applyTheme('light');
       themeToggle.setAttribute('aria-pressed', 'false');
     }
 
-    if (storageAvailable) {
-      if (savedTheme) {
-        applyTheme(savedTheme);
-        themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
-      } else {
-        // Default to light theme if nothing saved
-        applyTheme('light');
-        themeToggle.setAttribute('aria-pressed', 'false');
-      }
-    }
-
-    // Toggle the theme when the user clicks the button
     themeToggle.addEventListener('click', () => {
       const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
       themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
       applyTheme(next);
-      if (storageAvailable) {
-        try {
-          localStorage.setItem('theme', next);
-        } catch (err) {
-          storageAvailable = false;
-          applyTheme('light');
-          themeToggle.setAttribute('aria-pressed', 'false');
-        }
+      if (!safeSet('theme', next)) {
+        applyTheme('light');
+        themeToggle.setAttribute('aria-pressed', 'false');
       }
     });
   }
