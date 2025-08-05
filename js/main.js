@@ -125,15 +125,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    // Track whether accessing localStorage is safe
+    let storageAvailable = true;
+
     // On initial load, read the saved preference from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      applyTheme(savedTheme);
-      themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
-    } else {
-      // Default to light theme if nothing saved
+    let savedTheme = null;
+    try {
+      savedTheme = localStorage.getItem('theme');
+    } catch (err) {
+      storageAvailable = false;
       applyTheme('light');
       themeToggle.setAttribute('aria-pressed', 'false');
+    }
+
+    if (storageAvailable) {
+      if (savedTheme) {
+        applyTheme(savedTheme);
+        themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
+      } else {
+        // Default to light theme if nothing saved
+        applyTheme('light');
+        themeToggle.setAttribute('aria-pressed', 'false');
+      }
     }
 
     // Toggle the theme when the user clicks the button
@@ -141,7 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
       themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
       applyTheme(next);
-      localStorage.setItem('theme', next);
+      if (storageAvailable) {
+        try {
+          localStorage.setItem('theme', next);
+        } catch (err) {
+          storageAvailable = false;
+          applyTheme('light');
+          themeToggle.setAttribute('aria-pressed', 'false');
+        }
+      }
     });
   }
 });
