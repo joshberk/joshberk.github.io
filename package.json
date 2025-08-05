@@ -2,7 +2,7 @@
   "name": "joshberk.github.io",
   "version": "1.0.0",
   "description": "This repository contains the source code for [Josh Berk's personal website](https://joshberk.github.io). It hosts the site's HTML, CSS, JavaScript, and related assets.",
-  "main": "index.js",
+  "main": "js/main.js",
   "scripts": {
     "test": "node --test"
   },
