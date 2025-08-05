@@ -12,10 +12,7 @@
  * Populate the footer with the current year.
  */
 const insertCurrentYear = () => {
-  const span = document.getElementById('year');
-  if (span) {
-    span.textContent = new Date().getFullYear();
-  }
+  document.getElementById('year').textContent = new Date().getFullYear();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
