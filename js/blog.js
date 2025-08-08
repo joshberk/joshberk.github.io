@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const filterCards = document.querySelectorAll('.category-card');
+  const filterContainer = document.querySelector('.category-filter');
+  const cards = document.querySelectorAll('.category-card');
   const postsContainer = document.getElementById('posts');
   let postsData = [];
 
@@ -35,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderPosts(category) {
     postsContainer.innerHTML = '';
-    if (category === 'All') {
-      const categories = ['Cryptography', 'Open Source Intelligence', 'Malware Reverse Engineering', 'Others'];
+    if (!category) {
+      const categories = [...new Set(postsData.map(p => p.category))];
       categories.forEach(cat => {
         const group = postsData.filter(p => p.category === cat);
         if (group.length) {
@@ -79,20 +80,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  filterCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const selected = card.dataset.category;
-      filterCards.forEach(btn => btn.setAttribute('aria-pressed', 'false'));
-      card.setAttribute('aria-pressed', 'true');
-      renderPosts(selected);
+  function setActiveCard(category) {
+    cards.forEach(card => {
+      card.classList.toggle('active', card.dataset.category === category);
     });
+  }
+
+  filterContainer.addEventListener('click', e => {
+    const card = e.target.closest('.category-card');
+    if (!card) return;
+    e.preventDefault();
+    const selected = card.dataset.category;
+    const params = new URLSearchParams(window.location.search);
+    params.set('category', selected);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    history.replaceState(null, '', newUrl);
+    setActiveCard(selected);
+    renderPosts(selected);
   });
 
   fetch('assets/data/posts.json')
     .then(res => res.json())
     .then(data => {
       postsData = data;
-      renderPosts('All');
+      const params = new URLSearchParams(window.location.search);
+      const initial = params.get('category');
+      setActiveCard(initial);
+      renderPosts(initial);
     });
 });
 
