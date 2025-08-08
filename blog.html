@@ -63,13 +63,21 @@
             Select a post to dive deeper into each topic.
           </p>
 
+
           <div class="category-filter" role="group" aria-label="Filter posts by category">
             <button type="button" class="category-card" data-category="All" aria-pressed="true">All</button>
             <button type="button" class="category-card" data-category="Cryptography" aria-pressed="false">Cryptography</button>
             <button type="button" class="category-card" data-category="OSINT" aria-pressed="false">OSINT</button>
             <button type="button" class="category-card" data-category="Malware" aria-pressed="false">Malware</button>
             <button type="button" class="category-card" data-category="Reverse Engineering" aria-pressed="false">Reverse Engineering</button>
+
+          <div class="category-filter" aria-label="Filter posts by category">
+            <a class="category-card" data-category="Cryptography" href="blog.html?category=Cryptography">Cryptography</a>
+            <a class="category-card" data-category="Open Source Intelligence" href="blog.html?category=Open%20Source%20Intelligence">Open Source Intelligence</a>
+            <a class="category-card" data-category="Malware" href="blog.html?category=Malware">Malware</a>
+
           </div>
+
           <div id="posts"></div>
 
         </div>
@@ -86,7 +94,6 @@
     </footer>
 
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
-
     <script src="js/blog.js"></script>
   </body>
 </html>
