@@ -27,6 +27,7 @@
     <link rel="dns-prefetch" href="//medium.com" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
     <!-- Google tag (gtag.js) -->
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" async src="https://www.googletagmanager.com/gtag/js?id=G-7PNPWV5C4V"></script>
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/analytics.js"></script>
@@ -89,6 +90,7 @@
       function createPostCard(post) {
         const article = document.createElement('article');
         article.className = 'blog-card';
+        article.tabIndex = 0;
 
         const title = document.createElement('h3');
         const link = document.createElement('a');
@@ -100,11 +102,16 @@
         date.className = 'post-date';
         date.textContent = post.date;
 
+        const badge = document.createElement('span');
+        badge.className = 'badge';
+        badge.textContent = post.category;
+
         const summary = document.createElement('p');
         summary.textContent = post.summary;
 
         article.appendChild(title);
         article.appendChild(date);
+        article.appendChild(badge);
         article.appendChild(summary);
 
         return article;
