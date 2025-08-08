@@ -563,6 +563,97 @@ footer a:hover {
   color: var(--text-color);
 }
 
+/* Discipline cards for new blog structure */
+.disciplines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.discipline-card {
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(13, 71, 161, 0.02) 100%);
+  border: 2px solid rgba(13, 71, 161, 0.1);
+  border-radius: 12px;
+  padding: 30px 25px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.discipline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.discipline-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+.discipline-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+  color: var(--primary-color);
+}
+
+.discipline-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.discipline-card p {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.discipline-card .post-count {
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+  background: rgba(13, 71, 161, 0.08);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.discipline-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Dark theme adjustments for discipline cards */
+[data-theme="dark"] .discipline-card {
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(144, 202, 249, 0.05) 100%);
+  border-color: rgba(144, 202, 249, 0.2);
+}
+
+[data-theme="dark"] .discipline-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .discipline-card .post-count {
+  background: rgba(144, 202, 249, 0.15);
+}
+
 /* Blog post page styles */
 .blog-post-header {
   padding: 100px 0 40px;
