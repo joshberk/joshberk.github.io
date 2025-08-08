@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.textContent = '☀️';
         themeToggle.setAttribute('aria-label', 'Switch to day mode');
       } else {
-        // Remove the attribute to fall back to the default (light) theme
-        document.documentElement.removeAttribute('data-theme');
+        // Explicitly set light theme so prefers-color-scheme can be overridden
+        document.documentElement.setAttribute('data-theme', 'light');
         // Display a moon icon to indicate a switch to dark mode is possible
         themeToggle.textContent = '🌙';
         themeToggle.setAttribute('aria-label', 'Switch to night mode');
@@ -139,14 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    const savedTheme = safeGet('theme');
-    if (savedTheme) {
-      applyTheme(savedTheme);
-      themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
-    } else {
-      applyTheme('light');
-      themeToggle.setAttribute('aria-pressed', 'false');
-    }
+      const savedTheme = safeGet('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+      applyTheme(initialTheme);
+      themeToggle.setAttribute('aria-pressed', initialTheme === 'dark' ? 'true' : 'false');
 
     themeToggle.addEventListener('click', () => {
       const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
@@ -157,5 +154,47 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.setAttribute('aria-pressed', 'false');
       }
     });
+  }
+
+  // Load latest blog posts on the homepage
+  const postsList = document.getElementById('latestPosts');
+  if (postsList) {
+    fetch('assets/data/posts.json')
+      .then((response) => response.json())
+      .then((posts) => {
+        posts
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 3)
+          .forEach((post) => {
+            const article = document.createElement('article');
+            article.className = 'post-card';
+
+            const category = document.createElement('span');
+            category.className = 'post-category';
+            category.textContent = post.category;
+            article.appendChild(category);
+
+            const title = document.createElement('h3');
+            const link = document.createElement('a');
+            link.href = post.url;
+            link.textContent = post.title;
+            title.appendChild(link);
+            article.appendChild(title);
+
+            const date = document.createElement('span');
+            date.className = 'post-date';
+            date.textContent = new Date(post.date).toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            });
+            article.appendChild(date);
+
+            postsList.appendChild(article);
+          });
+      })
+      .catch(() => {
+        postsList.innerHTML = '<p>Unable to load posts at this time.</p>';
+      });
   }
 });
