@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const filterContainer = document.querySelector('.category-filter');
+
+
   const cards = document.querySelectorAll('.category-card');
+
   const postsContainer = document.getElementById('posts');
   let postsData = [];
 
@@ -36,7 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderPosts(category) {
     postsContainer.innerHTML = '';
+
+    if (!category || category === 'All') {
+
     if (!category) {
+
       const categories = [...new Set(postsData.map(p => p.category))];
       categories.forEach(cat => {
         const group = postsData.filter(p => p.category === cat);
@@ -81,8 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setActiveCard(category) {
+
+    filterContainer.querySelectorAll('.category-card').forEach(card => {
+      const active = card.dataset.category === category;
+      card.setAttribute('aria-pressed', active ? 'true' : 'false');
+
     cards.forEach(card => {
       card.classList.toggle('active', card.dataset.category === category);
+
     });
   }
 
@@ -92,8 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const selected = card.dataset.category;
     const params = new URLSearchParams(window.location.search);
+
+    if (selected && selected !== 'All') {
+      params.set('category', selected);
+    } else {
+      params.delete('category');
+    }
+    const newUrl = `${window.location.pathname}${params.toString() ? `?${params}` : ''}`;
+
     params.set('category', selected);
     const newUrl = `${window.location.pathname}?${params.toString()}`;
+
     history.replaceState(null, '', newUrl);
     setActiveCard(selected);
     renderPosts(selected);
@@ -104,9 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       postsData = data;
       const params = new URLSearchParams(window.location.search);
+
+      const initial = params.get('category') || 'All';
+
       const initial = params.get('category');
+
       setActiveCard(initial);
       renderPosts(initial);
     });
 });
-
