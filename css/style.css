@@ -525,10 +525,33 @@ footer a:hover {
   outline-offset: 2px;
 }
 
+
+/* Blog category filter pills */
+.category-filters {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-pill {
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.category-pill.active {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+=======
 /* Provide a visible focus style for keyboard navigation */
 a:focus-visible {
   outline: 2px dashed var(--primary-color);
   outline-offset: 2px;
+
 }
 
 /* Blog listing cards */
