@@ -439,22 +439,24 @@ button.hamburger {
   display: block;
 }
 
-/* Invert the colours of the X logo so that it remains visible on both
- * light and dark backgrounds. Without this filter the original black
- * logo would disappear on the dark theme. */
-/* X social icon: apply inversion only in dark mode so the logo remains
- * visible on both light and dark backgrounds. In light mode the
- * original black icon is visible on the white background, while in dark
- * mode we invert it to white. */
-/* Always invert the X logo in light mode so the white logo becomes black on
- * a light background. In dark mode we remove the filter to display the
- * original white-on-black logo. */
+/* X social icon: default dark glyph for light mode, with a white
+ * variant revealed in dark mode via data-theme selectors. */
 .x-icon {
-  filter: invert(1);
+  filter: none;
 }
 
-[data-theme="dark"] .x-icon {
-  filter: none;
+/* Hide the dark-mode variant by default */
+.x-icon[data-theme="dark"] {
+  display: none;
+}
+
+/* When the page is in dark mode, show the white icon and hide the dark one */
+[data-theme="dark"] .x-icon[data-theme="dark"] {
+  display: inline;
+}
+
+[data-theme="dark"] .x-icon[data-theme="light"] {
+  display: none;
 }
 
 /* Medium icon styling: a circular badge containing the letter M. Using a span
