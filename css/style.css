@@ -563,6 +563,37 @@ footer a:hover {
   color: var(--text-color);
 }
 
+/* Category filter pills */
+.category-filter {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-filter button {
+  border: 1px solid var(--primary-color);
+  background: none;
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.category-filter button[aria-pressed="true"] {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.category-section {
+  margin-top: 40px;
+}
+
+.category-section h2 {
+  margin-bottom: 20px;
+}
+
 /* Blog post page styles */
 .blog-post-header {
   padding: 100px 0 40px;

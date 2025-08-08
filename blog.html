@@ -32,7 +32,6 @@
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/analytics.js"></script>
   </head>
   <body>
-    <!-- Navigation Bar -->
     <nav class="navbar scrolled">
       <a href="index.html#hero" class="brand">Joshua O. Berkoh</a>
       <button class="hamburger" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
@@ -48,46 +47,28 @@
         <li><a href="index.html#publications">Publications</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
-
-      <button id="themeToggle" class="theme-toggle" aria-label="Switch to night mode" aria-pressed="false" type="button">🌙</button>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to night mode" aria-pressed="false">🌙</button>
     </nav>
 
     <main>
-    <!-- Blog Section -->
-    <section id="blog" aria-label="Blog Posts">
-      <div class="container">
-        <h1>Blog</h1>
-        <p>
-          Welcome to my blog! Here I share insights from capture‑the‑flag
-          competitions, reflections on my research and practical advice for
-          aspiring security professionals. Select a post to dive deeper into
-          each topic.
-        </p>
-        <div class="blog-list">
-          <!-- New blog posts sourced from the author's Medium writing. The slugs mirror
-               the Medium articles and the cards include brief summaries. -->
-          <article class="blog-card">
-            <h2><a href="blog/pivoting-cryptography.html">Pivoting to Cryptography With Purpose: Embracing The Rigor</a></h2>
-            <span class="post-date">July 2025</span>
-            <p>
-              Reflections on transitioning from general cybersecurity to the rigorous world
-              of cryptography, emphasising the importance of formal definitions,
-              security models and a strong mathematical foundation.
-            </p>
-          </article>
-          <article class="blog-card">
-            <h2><a href="blog/week-1-foundational-encryption-concepts.html">Week 1: Foundational Encryption Concepts</a></h2>
-            <span class="post-date">August 2025</span>
-            <p>
-              An accessible introduction to core encryption principles, comparing
-              symmetric and asymmetric techniques and explaining how keys,
-              plaintext and ciphertext work together in secure communication.
-            </p>
-          </article>
+      <section id="blog" aria-labelledby="blog-heading">
+        <div class="container">
+          <h1 id="blog-heading">Blog</h1>
+          <p>
+            Welcome to my blog! Here I share insights from capture‑the‑flag competitions,
+            reflections on my research and practical advice for aspiring security professionals.
+            Select a post to dive deeper into each topic.
+          </p>
+          <div class="category-filter" role="group" aria-label="Filter posts by category">
+            <button type="button" data-category="All" aria-pressed="true">All</button>
+            <button type="button" data-category="Cryptography" aria-pressed="false">Cryptography</button>
+            <button type="button" data-category="Open Source Intelligence" aria-pressed="false">Open Source Intelligence</button>
+            <button type="button" data-category="Malware Reverse Engineering" aria-pressed="false">Malware Reverse Engineering</button>
+            <button type="button" data-category="Others" aria-pressed="false">Others</button>
+          </div>
+          <div id="posts"></div>
         </div>
-      </div>
-    </section>
-
+      </section>
     </main>
 
     <footer>
@@ -100,5 +81,96 @@
     </footer>
 
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
+    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==">
+      const filterContainer = document.querySelector('.category-filter');
+      const postsContainer = document.getElementById('posts');
+      let postsData = [];
+
+      function createPostCard(post) {
+        const article = document.createElement('article');
+        article.className = 'blog-card';
+
+        const title = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = post.url;
+        link.textContent = post.title;
+        title.appendChild(link);
+
+        const date = document.createElement('span');
+        date.className = 'post-date';
+        date.textContent = post.date;
+
+        const summary = document.createElement('p');
+        summary.textContent = post.summary;
+
+        article.appendChild(title);
+        article.appendChild(date);
+        article.appendChild(summary);
+
+        return article;
+      }
+
+      function renderPosts(category) {
+        postsContainer.innerHTML = '';
+        if (category === 'All') {
+          const categories = ['Cryptography','Open Source Intelligence','Malware Reverse Engineering','Others'];
+          categories.forEach(cat => {
+            const group = postsData.filter(p => p.category === cat);
+            if (group.length) {
+              const section = document.createElement('section');
+              section.className = 'category-section';
+
+              const heading = document.createElement('h2');
+              heading.textContent = cat;
+              section.appendChild(heading);
+
+              const list = document.createElement('div');
+              list.className = 'blog-list';
+              group.forEach(post => list.appendChild(createPostCard(post)));
+              section.appendChild(list);
+
+              postsContainer.appendChild(section);
+            }
+          });
+        } else {
+          const group = postsData.filter(p => p.category === category);
+          const section = document.createElement('section');
+          section.className = 'category-section';
+
+          const heading = document.createElement('h2');
+          heading.textContent = category;
+          section.appendChild(heading);
+
+          if (group.length) {
+            const list = document.createElement('div');
+            list.className = 'blog-list';
+            group.forEach(post => list.appendChild(createPostCard(post)));
+            section.appendChild(list);
+          } else {
+            const msg = document.createElement('p');
+            msg.textContent = 'No posts available.';
+            section.appendChild(msg);
+          }
+
+          postsContainer.appendChild(section);
+        }
+      }
+
+      filterContainer.addEventListener('click', (e) => {
+        if (e.target.matches('button')) {
+          const selected = e.target.dataset.category;
+          filterContainer.querySelectorAll('button').forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+          e.target.setAttribute('aria-pressed', 'true');
+          renderPosts(selected);
+        }
+      });
+
+      fetch('assets/data/posts.json')
+        .then(res => res.json())
+        .then(data => {
+          postsData = data;
+          renderPosts('All');
+        });
+    </script>
   </body>
 </html>
