@@ -3,24 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Blog posts by Joshua Offe Berkoh, exploring cryptography, cybersecurity and research experiences."
-    />
-    <meta name="keywords" content="Joshua Berkoh blog, cryptography, cybersecurity, research, articles" />
-    <meta property="og:title" content="Blog | Joshua Offe Berkoh" />
-    <meta
-      property="og:description"
-      content="Blog posts by Joshua Offe Berkoh, exploring cryptography, cybersecurity and research experiences."
-    />
-    <meta property="og:url" content="https://joshberk.github.io/blog.html" />
-
-    <meta property="og:image" content="assets/images/preview.png" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-2DkuOFQqe/g3DDOTg2/gMg==' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; img-src 'self' https://www.google-analytics.com; style-src 'self'" />
-
-    <meta property="og:image" content="assets/images/hero.png" />
-
     <title>Blog | Joshua Offe Berkoh</title>
+
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="dns-prefetch" href="//www.linkedin.com" />
     <link rel="dns-prefetch" href="//x.com" />
@@ -31,69 +15,115 @@
     <!-- Google tag (gtag.js) -->
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" async src="https://www.googletagmanager.com/gtag/js?id=G-7PNPWV5C4V"></script>
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/analytics.js"></script>
+
+    <link rel="stylesheet" href="css/demo_blog.css" />
+
   </head>
   <body>
-    <nav class="navbar scrolled">
-      <a href="index.html#hero" class="brand">Joshua O. Berkoh</a>
-      <button class="hamburger" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul id="nav-menu">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#resume">Resume</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="index.html#publications">Publications</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to night mode" aria-pressed="false">🌙</button>
+    <header>
+      <h1>Blog</h1>
+    </header>
+    <nav class="category-nav" aria-label="Filter posts">
+      <button class="category-pill" data-category="All" aria-pressed="true">All</button>
+      <button class="category-pill" data-category="Cryptography" aria-pressed="false">Cryptography</button>
+      <button class="category-pill" data-category="OSINT" aria-pressed="false">OSINT</button>
+      <button class="category-pill" data-category="Reverse Engineering" aria-pressed="false">Reverse Engineering</button>
+      <button class="category-pill" data-category="Malware" aria-pressed="false">Malware</button>
     </nav>
+    <main id="posts"></main>
+    <script>
+      const posts = [
+        {
+          title: "Pivoting to Cryptography With Purpose: Embracing The Rigor",
+          date: "July 2025",
+          summary: "Reflections on transitioning from general cybersecurity to the rigorous world of cryptography, emphasising the importance of formal definitions, security models and a strong mathematical foundation.",
+          category: "Cryptography",
+          url: "blog/pivoting-cryptography.html"
+        },
+        {
+          title: "Week 1: Foundational Encryption Concepts",
+          date: "August 2025",
+          summary: "An accessible introduction to core encryption principles, comparing symmetric and asymmetric techniques and explaining how keys, plaintext and ciphertext work together in secure communication.",
+          category: "Cryptography",
+          url: "blog/week-1-foundational-encryption-concepts.html"
+        },
+        {
+          title: "OSINT Techniques for Modern Investigations",
+          date: "March 2024",
+          summary: "Practical open source intelligence workflows for uncovering digital footprints and tracing malicious actors.",
+          category: "OSINT",
+          url: "blog/osint-techniques-for-modern-investigations.html"
+        },
+        {
+          title: "Reverse Engineering a Botnet Sample",
+          date: "November 2023",
+          summary: "A walkthrough of dissecting a simple malware specimen to reveal its command-and-control logic.",
+          category: "Reverse Engineering",
+          url: "blog/reverse-engineering-a-botnet-sample.html"
+        },
+        {
+          title: "Building a Secure Home Lab on a Budget",
+          date: "May 2022",
+          summary: "Tips for assembling a cost-effective lab environment for cybersecurity experiments.",
+          category: "Malware",
+          url: "blog/building-a-secure-home-lab-on-a-budget.html"
+        }
+      ];
 
-    <main>
+      function createCard(post) {
+        const article = document.createElement("article");
+        article.className = "post-card";
 
-    <!-- Blog Section -->
-    <section id="blog" aria-labelledby="blog-heading">
-        <div class="container">
-          <h1 id="blog-heading">Blog</h1>
-          <p>
-            Welcome to my blog! Here I share insights from capture‑the‑flag competitions,
-            reflections on my research and practical advice for aspiring security professionals.
-            Select a post to dive deeper into each topic.
-          </p>
+        const title = document.createElement("h2");
+        const link = document.createElement("a");
+        link.href = post.url;
+        link.textContent = post.title;
+        title.appendChild(link);
 
+        const date = document.createElement("p");
+        date.className = "post-date";
+        date.textContent = post.date;
 
-          <div class="category-filter" role="group" aria-label="Filter posts by category">
-            <button type="button" class="category-card" data-category="All" aria-pressed="true">All</button>
-            <button type="button" class="category-card" data-category="Cryptography" aria-pressed="false">Cryptography</button>
-            <button type="button" class="category-card" data-category="OSINT" aria-pressed="false">OSINT</button>
-            <button type="button" class="category-card" data-category="Malware" aria-pressed="false">Malware</button>
-            <button type="button" class="category-card" data-category="Reverse Engineering" aria-pressed="false">Reverse Engineering</button>
+        const summary = document.createElement("p");
+        summary.textContent = post.summary;
 
-          <div class="category-filter" aria-label="Filter posts by category">
-            <a class="category-card" data-category="Cryptography" href="blog.html?category=Cryptography">Cryptography</a>
-            <a class="category-card" data-category="Open Source Intelligence" href="blog.html?category=Open%20Source%20Intelligence">Open Source Intelligence</a>
-            <a class="category-card" data-category="Malware" href="blog.html?category=Malware">Malware</a>
+        article.appendChild(title);
+        article.appendChild(date);
+        article.appendChild(summary);
 
-          </div>
+        return article;
+      }
 
-          <div id="posts"></div>
+      function renderPosts(category = "All") {
+        const container = document.getElementById("posts");
+        container.innerHTML = "";
+        const filtered =
+          category === "All"
+            ? posts
+            : posts.filter((p) => p.category === category);
 
-        </div>
-      </section>
-    </main>
+        if (filtered.length === 0) {
+          const msg = document.createElement("p");
+          msg.textContent = "No posts available.";
+          container.appendChild(msg);
+          return;
+        }
 
-    <footer>
-      <p>
-        &copy;
-        <span id="year"></span>
-        Joshua Offe Berkoh. All rights reserved.
-        &nbsp;|&nbsp; Built with care by Joshua.
-      </p>
-    </footer>
+        filtered.forEach((post) => container.appendChild(createCard(post)));
+      }
 
-    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
-    <script src="js/blog.js"></script>
+      document
+        .querySelector(".category-nav")
+        .addEventListener("click", (e) => {
+          const pill = e.target.closest(".category-pill");
+          if (!pill) return;
+          document
+            .querySelectorAll(".category-pill")
+            .forEach((b) => b.setAttribute("aria-pressed", b === pill));
+          renderPosts(pill.dataset.category);
+        });
+
+      renderPosts();
+    </script>
   </body>
 </html>
