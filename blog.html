@@ -64,26 +64,11 @@
           </p>
 
           <div class="category-filter" role="group" aria-label="Filter posts by category">
-
             <button type="button" class="category-card" data-category="All" aria-pressed="true">All</button>
             <button type="button" class="category-card" data-category="Cryptography" aria-pressed="false">Cryptography</button>
-            <button type="button" class="category-card" data-category="Open Source Intelligence" aria-pressed="false">Open Source Intelligence</button>
-            <button type="button" class="category-card" data-category="Malware Reverse Engineering" aria-pressed="false">Malware Reverse Engineering</button>
-            <button type="button" class="category-card" data-category="Others" aria-pressed="false">Others</button>
-
-            <button type="button" data-category="All" aria-pressed="true">All</button>
-            <button type="button" data-category="Cryptography" aria-pressed="false">Cryptography</button>
-            <button type="button" data-category="OSINT" aria-pressed="false">OSINT</button>
-            <button type="button" data-category="Malware" aria-pressed="false">Malware</button>
-            <button type="button" data-category="Reverse Engineering" aria-pressed="false">Reverse Engineering</button>
-
-          <div class="category-filter" aria-label="Filter posts by category">
-            <a class="category-card" data-category="Cryptography" href="blog.html?category=Cryptography">Cryptography</a>
-            <a class="category-card" data-category="Open Source Intelligence" href="blog.html?category=Open%20Source%20Intelligence">Open Source Intelligence</a>
-            <a class="category-card" data-category="Malware" href="blog.html?category=Malware">Malware</a>
-            <a class="category-card" data-category="Reverse Engineering" href="blog.html?category=Reverse%20Engineering">Reverse Engineering</a>
-
-
+            <button type="button" class="category-card" data-category="OSINT" aria-pressed="false">OSINT</button>
+            <button type="button" class="category-card" data-category="Malware" aria-pressed="false">Malware</button>
+            <button type="button" class="category-card" data-category="Reverse Engineering" aria-pressed="false">Reverse Engineering</button>
           </div>
           <div id="posts"></div>
 
@@ -103,130 +88,5 @@
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
 
     <script src="js/blog.js"></script>
-
-
-
-    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==">
-      const filterContainer = document.querySelector('.category-filter');
-      const postsContainer = document.getElementById('posts');
-      let postsData = [];
-
-      function createPostCard(post) {
-        const article = document.createElement('article');
-        article.className = 'blog-card';
-        article.tabIndex = 0;
-
-        const title = document.createElement('h3');
-        const link = document.createElement('a');
-        link.href = post.url;
-        link.textContent = post.title;
-        title.appendChild(link);
-
-        const date = document.createElement('span');
-        date.className = 'post-date';
-        date.textContent = post.date;
-
-        const badge = document.createElement('span');
-        badge.className = 'badge';
-        badge.textContent = post.category;
-
-        const summary = document.createElement('p');
-        summary.textContent = post.summary;
-
-        article.appendChild(title);
-        article.appendChild(date);
-        article.appendChild(badge);
-        article.appendChild(summary);
-
-        return article;
-      }
-
-      function renderPosts(category) {
-        postsContainer.innerHTML = '';
-
-        if (category === 'All') {
-            const categories = ['Cryptography','OSINT','Malware','Reverse Engineering'];
-
-        if (!category) {
-          const categories = [...new Set(postsData.map(p => p.category))];
-
-          categories.forEach(cat => {
-            const group = postsData.filter(p => p.category === cat);
-            if (group.length) {
-              const section = document.createElement('section');
-              section.className = 'category-section';
-
-              const heading = document.createElement('h2');
-              heading.textContent = cat;
-              section.appendChild(heading);
-
-              const list = document.createElement('div');
-              list.className = 'blog-list';
-              group.forEach(post => list.appendChild(createPostCard(post)));
-              section.appendChild(list);
-
-              postsContainer.appendChild(section);
-            }
-          });
-        } else {
-          const group = postsData.filter(p => p.category === category);
-          const section = document.createElement('section');
-          section.className = 'category-section';
-
-          const heading = document.createElement('h2');
-          heading.textContent = category;
-          section.appendChild(heading);
-
-          if (group.length) {
-            const list = document.createElement('div');
-            list.className = 'blog-list';
-            group.forEach(post => list.appendChild(createPostCard(post)));
-            section.appendChild(list);
-          } else {
-            const msg = document.createElement('p');
-            msg.textContent = 'No posts available.';
-            section.appendChild(msg);
-          }
-
-          postsContainer.appendChild(section);
-        }
-      }
-
-      function setActiveCard(category) {
-        filterContainer.querySelectorAll('.category-card').forEach(card => {
-          card.classList.toggle('active', card.dataset.category === category);
-        });
-      }
-
-      filterContainer.addEventListener('click', (e) => {
-        const card = e.target.closest('.category-card');
-        if (card) {
-          e.preventDefault();
-          const selected = card.dataset.category;
-          const params = new URLSearchParams(window.location.search);
-          if (selected) {
-            params.set('category', selected);
-          } else {
-            params.delete('category');
-          }
-          const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
-          history.replaceState(null, '', newUrl);
-          setActiveCard(selected);
-          renderPosts(selected);
-        }
-      });
-
-      fetch('assets/data/posts.json')
-        .then(res => res.json())
-        .then(data => {
-          postsData = data;
-          const params = new URLSearchParams(window.location.search);
-          const initial = params.get('category');
-          setActiveCard(initial);
-          renderPosts(initial);
-        });
-    </script>
-
-
   </body>
 </html>
