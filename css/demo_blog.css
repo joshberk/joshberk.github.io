@@ -1,0 +1,85 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 1rem;
+}
+
+header {
+  margin-bottom: 1rem;
+}
+
+.category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-pill {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.category-pill[aria-pressed="true"] {
+  background: #333;
+  color: #fff;
+}
+
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.post-date {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+=======
+/* Styles for demo blog homepage */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+.site-header {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+.latest {
+  padding: 1rem;
+}
+.posts {
+  display: grid;
+  gap: 1rem;
+}
+.post-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+}
+.post-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+.post-category {
+  font-size: 0.8rem;
+  color: #555;
+  text-transform: uppercase;
+}
+.post-date {
+  font-size: 0.8rem;
+  color: #777;
+
+}

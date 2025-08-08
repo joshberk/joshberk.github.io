@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta
       name="description"
       content="Personal portfolio of Joshua Offe Berkoh, a PhD student in information technology with a passion for applied cryptography and cybersecurity."
@@ -29,334 +30,28 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="stylesheet" href="assets/css/demo_blog.css" />
     <!-- Google tag (gtag.js) -->
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" async src="https://www.googletagmanager.com/gtag/js?id=G-7PNPWV5C4V"></script>
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/analytics.js"></script>
+
+    <title>Demo Blog</title>
+    <link rel="stylesheet" href="css/demo_blog.css" />
+
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <a href="#hero" class="brand active">Joshua O. Berkoh</a>
-      <button class="hamburger" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul id="nav-menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <!-- Theme toggle button: shows moon for night mode and sun for day mode -->
-      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to night mode" aria-pressed="false">🌙</button>
-    </nav>
+    <header class="site-header">
+      <h1>Demo Blog</h1>
+      <p>A lightweight demo homepage.</p>
+    </header>
 
     <main>
-    <!-- Hero Section -->
-    <section id="hero" class="hero" aria-label="Introduction">
-      <div class="hero-content">
-        <h1>Hi, I'm <span class="accent-text">Joshua Offe Berkoh</span></h1>
-        <p>
-          PhD candidate and aspiring applied scientist in cryptography, building
-          secure systems and exploring the frontiers of cybersecurity.
-        </p>
-        <a href="#about" class="btn btn-primary">Learn More</a>
-        <a href="assets/resume.pdf" class="btn btn-outline" download>Download CV</a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" aria-label="About Joshua">
-      <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-          <img
-            src="assets/images/about.png"
-            alt="Abstract illustration symbolising research in cryptography"
-            loading="lazy"
-          />
-          <div class="text">
-            <p>
-             I am a PhD candidate in Information Technology at the University of Cincinnati, with an anticipated graduation in August 2028. 
-             My research focuses on applied cryptography, secure systems, and the design of privacy-preserving infrastructure especially within 
-             anonymous communication networks like I2P. At the core of my work is a commitment to developing  secured search solutions but also practical, 
-             scalable, and impactful in real-world security settings.
-            </p>
-            <p>
-              My academic foundation was shaped through both master's and doctoral studies at the University of Cincinnati, 
-              where I earned my MS in Information Technology in August 2024. I have a multi-phase research roadmap to bridge the gap between cryptographic theory and practice. 
-              It starts with the foundational number theory and provable security required for academic rigor and extends through practical implementation to ensure the results 
-              are industry ready.
-            </p>
-            <p>
-              Professionally, I’ve built experience across academia, industry, and high stakes security environments. As a Security Engineer Intern at Intuit Inc.,
-              As an Adjunct Instructor at the University of Cincinnati, I redesigned and delivered undergraduate curricula in IT fundamentals, introducing hands-on labs 
-              that emphasized secure coding and systems thinking training nearly 50 students in each cohort.
-            </p>
-            <p>
-              Previously, I served as a Security Operations Analyst at Virtual Infosec Africa, where I monitored critical financial infrastructure, 
-              helping the Banking system achieve > 60% detection rate and significantly reduce incident response times. I continue to sharpen my offensive 
-              and defensive skills by actively participating in Capture The Flag competitions and bug bounty programs, 
-              with acknowledgments from platforms like HackerOne and MetaCTF and hackinghub.
-            </p>
-            <p>
-              I’m equally passionate about community and mentorship. As a lead mentor with OWASP Cincinnati, an ISC² examination developer, and an AWS Community Builder, 
-              I contribute to open-source documentation, support peer learning, and guide aspiring security professionals. Currently, I’m also building tooling for 
-              cryptographic protocol analysis, integrating Python and Rust for practical implementations of secure systems.
-            </p>
-            <p>
-              Long term, I aim to advance the state of applied cryptography by bridging academic research and industry deployment pioneering systems 
-              that are both provably secure and operationally robust.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" aria-label="Skills">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <div>
-            <h3>Programming Languages</h3>
-            <ul>
-              <li>Python</li>
-              <li>HTML &amp; CSS</li>
-              <li>JavaScript</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Security &amp; Analysis Tools</h3>
-            <ul>
-              <li>Burp Suite, Hydra, Curl, ffuf</li>
-              <li>Hashcat, Sqlmap, SQL</li>
-              <li>CyberChef, Threat Modeling</li>
-              <li>Autopsy, FTK Imager, Scalpel</li>
-              <li>Nmap, Metasploit, Nessus</li>
-              <li>Splunk, MITRE ATT&amp;CK, OWASP Top 10</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" aria-label="Experience and Education">
-      <div class="container">
-        <h2>Resume</h2>
-        <!-- Work Experience -->
-        <h3>Professional Experience</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>Security Engineer Intern – Intuit Inc.</h4>
-            <div class="time">San Diego, CA • Jun 2023 – Sep 2023</div>
-            <p>
-              Integrated and streamlined existing security repositories into
-              red‑teaming tools, boosting efficiency by 20 percent. Implemented
-              automated compliance checks via tox to reduce manual effort and
-              ensure adherence to standards.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>Adjunct Instructor – University of Cincinnati</h4>
-            <div class="time">Cincinnati, OH • Jan 2023 – Apr 2023</div>
-            <p>
-              Revised and improved the IT 2030C curriculum, created new
-              supplementary materials and introduced hands‑on lab components,
-              resulting in higher student engagement and improved performance.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>Security Operations Center Analyst – Virtual Infosec Africa</h4>
-            <div class="time">Accra, Ghana • Oct 2021 – Jun 2022</div>
-            <p>
-              Monitored and analysed network traffic for the Bank of Ghana,
-              achieving a 95 percent detection rate and reducing incident
-              response times by 30 percent. Implemented advanced security
-              solutions that lowered cybersecurity incidents by 20 percent.
-            </p>
-          </div>
-        </div>
-
-        <!-- Project & CTF Experience -->
-        <h3>Projects &amp; CTFs</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>Security Innovation AppSec Challenge</h4>
-            <div class="time">Remote • Jun 2024</div>
-            <p>
-              Exploited vulnerabilities such as SQL injection, cross‑site
-              scripting, broken access control and cryptographic flaws to
-              complete a challenging AppSec capture‑the‑flag competition.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>HackerOne 101 CTF</h4>
-            <div class="time">Remote • Jan 2024 – Present</div>
-            <p>
-              Solved a series of challenges demonstrating proficiency with
-              broken access control, cryptography, SQL and XSS injections,
-              reconnaissance and open redirects.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>MetaCTF</h4>
-            <div class="time">Remote • May 2024 – Present</div>
-            <p>
-              Completed 26 challenges covering cryptography, hash cracking,
-              reconnaissance, web exploitation and forensics while learning new
-              offensive techniques.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>Threat Analysis, Detection &amp; Mitigation</h4>
-            <div class="time">University of Cincinnati • Jan 2023 – Apr 2023</div>
-            <p>
-              Conducted research into advanced persistent threats and their
-              tactics and techniques; integrated behavioural analytics into
-              threat intelligence gathering to develop proactive mitigation
-              strategies.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>Bug Bounty Hunter – Bugcrowd</h4>
-            <div class="time">Remote • Jan 2021 – Dec 2021</div>
-            <p>
-              Discovered and reported critical vulnerabilities across seven
-              programmes, earning a hall of fame recognition from Centrify,
-              Arlo Kudos, Humble Bundle, BitDiscovery, Cloudways, Ibotta and
-              ISC2.
-            </p>
-          </div>
-        </div>
-
-        <!-- Volunteering Experience -->
-        <h3>Volunteering &amp; Community</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>OWASP Cincinnati Chapter – Bugbash Mentor</h4>
-            <div class="time">Cincinnati • Jul 2024</div>
-            <p>
-              Mentored local OWASP members to contribute technical
-              documentation on broken access control and injection
-              vulnerabilities, enriching the community cheatsheet.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>ISC2 – Examination Developer</h4>
-            <div class="time">Remote • Nov 2023 – Mar 2024</div>
-            <p>
-              Reviewed and revised cybersecurity certification content with
-              subject matter experts to improve quality and candidate
-              satisfaction, and authored new questions that increased pass
-              rates.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>AWS Community Builder</h4>
-            <div class="time">Remote • Jan 2022 – Jan 2024</div>
-            <p>
-              Provided product feedback and insights that helped improve AWS
-              services and enhanced community engagement.
-            </p>
-          </div>
-          <div class="timeline-item">
-            <h4>Tracelabs – OSINT CTF Player &amp; Judge</h4>
-            <div class="time">Remote • Jan 2021 – Dec 2022</div>
-            <p>
-              Leveraged advanced OSINT techniques to increase critical lead
-              identification for missing‑person cases by 40 percent and
-              supported law enforcement training programmes to reduce search
-              times.
-            </p>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <h3>Education</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>PhD, Information Technology</h4>
-            <div class="time">University of Cincinnati • Cincinnati, OH • Expected Aug 2028</div>
-            <p>Doctoral research in I2P with interest in cryptography, secure systems and applied cybersecurity.</p>
-          </div>
-          <div class="timeline-item">
-            <h4>M.Sc., Information Technology</h4>
-            <div class="time">University of Cincinnati • Cincinnati, OH • Aug 2024</div>
-            <p>Master’s studies focused on Open-source criminal investigations.</p>
-          </div>
-        </div>
-
-        <!-- Competitions -->
-        <h3>Competitions &amp; Awards</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>Security Innovation AppSec Cyber Range</h4>
-            <div class="time">2024 • June Competition</div>
-            <p>Participated in the 2024 June cyber range competition hosted by Security Innovation.</p>
-          </div>
-          <div class="timeline-item">
-            <h4>Security Innovation AppSec Cyber Range</h4>
-            <div class="time">2021 • Competition</div>
-            <p>Completed the 2021 Security Innovation AppSec cyber range competition, gaining early experience in application security challenges.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest Posts Section -->
-    <section id="latest-posts" class="latest-posts" aria-label="Latest Posts">
-      <div class="container">
+      <section class="latest" aria-label="Latest Posts">
         <h2>Latest Posts</h2>
-        <div id="latestPosts" class="posts-list"></div>
-        <a href="blog.html" class="view-all">View all &rarr;</a>
-      </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications" aria-label="Publications">
-      <div class="container">
-        <h2>Publications</h2>
-        <p>
-          My academic publications are currently in preparation and will be
-          available here soon. Please check back for updates on upcoming
-          conference papers and journal articles.
-        </p>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" aria-label="Contact">
-      <div class="container">
-        <h2>Contact</h2>
-        <div class="contact-details">
-          <!-- Provide direct links to email and social profiles without a form. -->
-          <p>Email: <a href="mailto:joshuaberkoh19@gmail.com">joshuaberkoh19@gmail.com</a></p>
-          <div class="social-icons">
-            <!-- LinkedIn icon -->
-            <a href="https://www.linkedin.com/in/joshfiifi/" rel="noopener noreferrer" target="_blank" aria-label="LinkedIn profile">
-              <img src="assets/images/linkedin.png" alt="LinkedIn icon" loading="lazy" />
-            </a>
-            <!-- X (formerly Twitter) icon -->
-            <a href="https://x.com/BerkohJ" rel="noopener noreferrer" target="_blank" aria-label="X profile">
-              <img src="assets/images/x-logo.svg" alt="X social icon" class="x-icon" data-theme="light" loading="lazy" />
-              <img src="assets/images/x-logo-white.png" alt="X social icon" class="x-icon" data-theme="dark" loading="lazy" />
-            </a>
-            <!-- Medium icon represented by a stylised letter M. A simple CSS styled circle avoids
-                 external dependencies and remains legible across themes. -->
-            <a href="https://medium.com/@unseeable06" rel="noopener noreferrer" target="_blank" aria-label="Medium profile">
-              <span class="medium-icon" aria-hidden="true">M</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div id="latest-posts" class="posts"></div>
+      </section>
     </main>
+
 
     <!-- Footer -->
     <footer>
@@ -371,5 +66,71 @@
     <!-- Main JavaScript -->
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="assets/data/posts.js"></script>
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
+
+    <script>
+      const posts = [
+        {
+          title: "Pivoting to Cryptography With Purpose: Embracing The Rigor",
+          date: "July 2025",
+          category: "Cryptography",
+          url: "blog/pivoting-cryptography.html"
+        },
+        {
+          title: "Week 1: Foundational Encryption Concepts",
+          date: "August 2025",
+          category: "Cryptography",
+          url: "blog/week-1-foundational-encryption-concepts.html"
+        },
+        {
+          title: "OSINT Techniques for Modern Investigations",
+          date: "March 2024",
+          category: "OSINT",
+          url: "blog/osint-techniques-for-modern-investigations.html"
+        },
+        {
+          title: "Reverse Engineering a Botnet Sample",
+          date: "November 2023",
+          category: "Reverse Engineering",
+          url: "blog/reverse-engineering-a-botnet-sample.html"
+        },
+        {
+          title: "Building a Secure Home Lab on a Budget",
+          date: "May 2022",
+          category: "Malware",
+          url: "blog/building-a-secure-home-lab-on-a-budget.html"
+        }
+      ];
+
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const container = document.getElementById('latest-posts');
+      posts.slice(0, 3).forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'post-card';
+
+        const category = document.createElement('span');
+        category.className = 'post-category';
+        category.textContent = post.category;
+        article.appendChild(category);
+
+        const title = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = post.url;
+        link.textContent = post.title;
+        title.appendChild(link);
+        article.appendChild(title);
+
+        const date = document.createElement('span');
+        date.className = 'post-date';
+        date.textContent = new Date(post.date).toLocaleDateString(undefined, {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+        article.appendChild(date);
+
+        container.appendChild(article);
+      });
+    </script>
+
   </body>
 </html>
