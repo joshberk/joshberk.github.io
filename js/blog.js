@@ -1,48 +1,98 @@
-// JavaScript for handling blog category filtering and deep linking via query params.
-// Reads the `category` parameter from the URL, activates the corresponding
-// filter pill and adjusts the page title accordingly.
 document.addEventListener('DOMContentLoaded', () => {
-  const pills = document.querySelectorAll('.category-pill');
-  const posts = document.querySelectorAll('.blog-card');
-  const baseTitle = 'Blog | Joshua Offe Berkoh';
+  const filterCards = document.querySelectorAll('.category-card');
+  const postsContainer = document.getElementById('posts');
+  let postsData = [];
 
-  const filterPosts = (category) => {
-    pills.forEach(pill => {
-      pill.classList.toggle('active', pill.dataset.category === category || (!category && pill.dataset.category === 'All'));
-    });
+  function createPostCard(post) {
+    const article = document.createElement('article');
+    article.className = 'blog-card';
+    article.tabIndex = 0;
 
-    posts.forEach(post => {
-      const cats = post.dataset.categories ? post.dataset.categories.split(',').map(c => c.trim()) : [];
-      if (!category || category === 'All' || cats.includes(category)) {
-        post.style.display = '';
-      } else {
-        post.style.display = 'none';
-      }
-    });
+    const title = document.createElement('h3');
+    const link = document.createElement('a');
+    link.href = post.url;
+    link.textContent = post.title;
+    title.appendChild(link);
 
-    if (category && category !== 'All') {
-      document.title = `Blog | ${category} | Joshua Offe Berkoh`;
+    const date = document.createElement('span');
+    date.className = 'post-date';
+    date.textContent = post.date;
+
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+    badge.textContent = post.category;
+
+    const summary = document.createElement('p');
+    summary.textContent = post.summary;
+
+    article.appendChild(title);
+    article.appendChild(date);
+    article.appendChild(badge);
+    article.appendChild(summary);
+
+    return article;
+  }
+
+  function renderPosts(category) {
+    postsContainer.innerHTML = '';
+    if (category === 'All') {
+      const categories = ['Cryptography', 'Open Source Intelligence', 'Malware Reverse Engineering', 'Others'];
+      categories.forEach(cat => {
+        const group = postsData.filter(p => p.category === cat);
+        if (group.length) {
+          const section = document.createElement('section');
+          section.className = 'category-section';
+
+          const heading = document.createElement('h2');
+          heading.textContent = cat;
+          section.appendChild(heading);
+
+          const list = document.createElement('div');
+          list.className = 'blog-list';
+          group.forEach(post => list.appendChild(createPostCard(post)));
+          section.appendChild(list);
+
+          postsContainer.appendChild(section);
+        }
+      });
     } else {
-      document.title = baseTitle;
-    }
-  };
+      const group = postsData.filter(p => p.category === category);
+      const section = document.createElement('section');
+      section.className = 'category-section';
 
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const category = pill.dataset.category;
-      const params = new URLSearchParams(window.location.search);
-      if (category && category !== 'All') {
-        params.set('category', category);
+      const heading = document.createElement('h2');
+      heading.textContent = category;
+      section.appendChild(heading);
+
+      if (group.length) {
+        const list = document.createElement('div');
+        list.className = 'blog-list';
+        group.forEach(post => list.appendChild(createPostCard(post)));
+        section.appendChild(list);
       } else {
-        params.delete('category');
+        const msg = document.createElement('p');
+        msg.textContent = 'No posts available.';
+        section.appendChild(msg);
       }
-      const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
-      history.replaceState(null, '', newUrl);
-      filterPosts(category);
+
+      postsContainer.appendChild(section);
+    }
+  }
+
+  filterCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const selected = card.dataset.category;
+      filterCards.forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+      card.setAttribute('aria-pressed', 'true');
+      renderPosts(selected);
     });
   });
 
-  const params = new URLSearchParams(window.location.search);
-  const initial = params.get('category') || 'All';
-  filterPosts(initial);
+  fetch('assets/data/posts.json')
+    .then(res => res.json())
+    .then(data => {
+      postsData = data;
+      renderPosts('All');
+    });
 });
+
