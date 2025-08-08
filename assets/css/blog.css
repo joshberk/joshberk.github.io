@@ -90,7 +90,8 @@
 }
 
 .category-card:hover,
-.category-card:focus {
+.category-card:focus,
+.category-card.active {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
