@@ -33,6 +33,18 @@
   --card-bg: #152341;
 }
 
+/* Respect the user's system preference when no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary-color: #90caf9;
+    --secondary-color: #64b5f6;
+    --accent-color: #42a5f5;
+    --background-color: #0a192f;
+    --text-color: #e5edf5;
+    --card-bg: #152341;
+  }
+}
+
 /* When the page is in dark mode and the navbar is scrolled, use a
    dark translucent background for the bar instead of the light
    background defined in the default `.navbar.scrolled` rule. This
@@ -513,6 +525,35 @@ footer a:hover {
   outline-offset: 2px;
 }
 
+
+/* Blog category filter pills */
+.category-filters {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-pill {
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.category-pill.active {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+=======
+/* Provide a visible focus style for keyboard navigation */
+a:focus-visible {
+  outline: 2px dashed var(--primary-color);
+  outline-offset: 2px;
+
+}
+
 /* Blog listing cards */
 .blog-list {
   display: grid;
@@ -533,6 +574,8 @@ footer a:hover {
   transform: translateY(-4px);
 }
 
+
+.blog-card h2,
 .blog-card h3 {
   margin-bottom: 10px;
   font-size: 1.2rem;
@@ -542,11 +585,13 @@ footer a:hover {
 /* Ensure links inside blog card headings inherit the primary colour.
  * Without this rule, anchor tags revert to the browser default
  * blue which can be hard to read on dark backgrounds. */
+.blog-card h2 a,
 .blog-card h3 a {
   color: inherit;
   text-decoration: none;
 }
 
+.blog-card h2 a:hover,
 .blog-card h3 a:hover {
   text-decoration: underline;
 }
@@ -561,6 +606,37 @@ footer a:hover {
 .blog-card p {
   font-size: 0.95rem;
   color: var(--text-color);
+}
+
+/* Category filter pills */
+.category-filter {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-filter button {
+  border: 1px solid var(--primary-color);
+  background: none;
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.category-filter button[aria-pressed="true"] {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.category-section {
+  margin-top: 40px;
+}
+
+.category-section h2 {
+  margin-bottom: 20px;
 }
 
 /* Blog post page styles */
