@@ -1,0 +1,37 @@
+/* Styles for demo blog homepage */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+.site-header {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+.latest {
+  padding: 1rem;
+}
+.posts {
+  display: grid;
+  gap: 1rem;
+}
+.post-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+}
+.post-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+.post-category {
+  font-size: 0.8rem;
+  color: #555;
+  text-transform: uppercase;
+}
+.post-date {
+  font-size: 0.8rem;
+  color: #777;
+}
