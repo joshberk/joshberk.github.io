@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const filterContainer = document.querySelector('.category-filter');
-
-
-  const cards = document.querySelectorAll('.category-card');
-
   const postsContainer = document.getElementById('posts');
   let postsData = [];
 
@@ -41,9 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     postsContainer.innerHTML = '';
 
     if (!category || category === 'All') {
-
-    if (!category) {
-
       const categories = [...new Set(postsData.map(p => p.category))];
       categories.forEach(cat => {
         const group = postsData.filter(p => p.category === cat);
@@ -88,14 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setActiveCard(category) {
-
     filterContainer.querySelectorAll('.category-card').forEach(card => {
-      const active = card.dataset.category === category;
+      const active = card.dataset.category === category || (!category && card.dataset.category === 'All');
       card.setAttribute('aria-pressed', active ? 'true' : 'false');
-
-    cards.forEach(card => {
-      card.classList.toggle('active', card.dataset.category === category);
-
+      card.classList.toggle('active', active);
     });
   }
 
@@ -112,26 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
       params.delete('category');
     }
     const newUrl = `${window.location.pathname}${params.toString() ? `?${params}` : ''}`;
-
-    params.set('category', selected);
-    const newUrl = `${window.location.pathname}?${params.toString()}`;
-
     history.replaceState(null, '', newUrl);
     setActiveCard(selected);
     renderPosts(selected);
   });
 
-  fetch('assets/data/posts.json')
-    .then(res => res.json())
-    .then(data => {
-      postsData = data;
-      const params = new URLSearchParams(window.location.search);
+  postsData = Array.isArray(window.posts)
+    ? window.posts.slice().sort((a, b) => new Date(b.date) - new Date(a.date))
+    : [];
 
-      const initial = params.get('category') || 'All';
-
-      const initial = params.get('category');
-
-      setActiveCard(initial);
-      renderPosts(initial);
-    });
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get('category') || 'All';
+  setActiveCard(initial);
+  renderPosts(initial);
 });

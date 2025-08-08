@@ -159,42 +159,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load latest blog posts on the homepage
   const postsList = document.getElementById('latestPosts');
   if (postsList) {
-    fetch('assets/data/posts.json')
-      .then((response) => response.json())
-      .then((posts) => {
-        posts
-          .sort((a, b) => new Date(b.date) - new Date(a.date))
-          .slice(0, 3)
-          .forEach((post) => {
-            const article = document.createElement('article');
-            article.className = 'post-card';
+    const source = Array.isArray(window.posts) ? window.posts : [];
+    if (!source.length) {
+      postsList.innerHTML = '<p>Unable to load posts at this time.</p>';
+    } else {
+      source
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 3)
+        .forEach((post) => {
+          const article = document.createElement('article');
+          article.className = 'post-card';
 
-            const category = document.createElement('span');
-            category.className = 'post-category';
-            category.textContent = post.category;
-            article.appendChild(category);
+          const category = document.createElement('span');
+          category.className = 'post-category';
+          category.textContent = post.category;
+          article.appendChild(category);
 
-            const title = document.createElement('h3');
-            const link = document.createElement('a');
-            link.href = post.url;
-            link.textContent = post.title;
-            title.appendChild(link);
-            article.appendChild(title);
+          const title = document.createElement('h3');
+          const link = document.createElement('a');
+          link.href = post.url;
+          link.textContent = post.title;
+          title.appendChild(link);
+          article.appendChild(title);
 
-            const date = document.createElement('span');
-            date.className = 'post-date';
-            date.textContent = new Date(post.date).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric'
-            });
-            article.appendChild(date);
-
-            postsList.appendChild(article);
+          const date = document.createElement('span');
+          date.className = 'post-date';
+          date.textContent = new Date(post.date).toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
           });
-      })
-      .catch(() => {
-        postsList.innerHTML = '<p>Unable to load posts at this time.</p>';
-      });
+          article.appendChild(date);
+
+          postsList.appendChild(article);
+        });
+    }
   }
 });
