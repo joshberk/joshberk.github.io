@@ -1,0 +1,55 @@
+/* Styles specific to the homepage */
+.latest-posts .posts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.latest-posts .post-card {
+  background-color: var(--card-bg);
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.latest-posts .post-category {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.latest-posts .post-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.latest-posts .post-card h3 a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.latest-posts .post-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.latest-posts .post-date {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+}
+
+.latest-posts .view-all {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.latest-posts .view-all:hover {
+  text-decoration: underline;
+}
