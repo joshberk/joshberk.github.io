@@ -63,10 +63,16 @@
           aspiring security professionals. Select a post to dive deeper into
           each topic.
         </p>
+        <div class="category-filters">
+          <button class="category-pill active" data-category="All">All</button>
+          <button class="category-pill" data-category="Cryptography">Cryptography</button>
+          <button class="category-pill" data-category="Reflection">Reflection</button>
+          <button class="category-pill" data-category="Study Notes">Study Notes</button>
+        </div>
         <div class="blog-list">
           <!-- New blog posts sourced from the author's Medium writing. The slugs mirror
                the Medium articles and the cards include brief summaries. -->
-          <article class="blog-card">
+          <article class="blog-card" data-categories="Cryptography,Reflection">
             <h2><a href="blog/pivoting-cryptography.html">Pivoting to Cryptography With Purpose: Embracing The Rigor</a></h2>
             <span class="post-date">July 2025</span>
             <p>
@@ -75,7 +81,7 @@
               security models and a strong mathematical foundation.
             </p>
           </article>
-          <article class="blog-card">
+          <article class="blog-card" data-categories="Cryptography,Study Notes">
             <h2><a href="blog/week-1-foundational-encryption-concepts.html">Week 1: Foundational Encryption Concepts</a></h2>
             <span class="post-date">August 2025</span>
             <p>
@@ -100,5 +106,6 @@
     </footer>
 
     <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
+    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/blog.js"></script>
   </body>
 </html>
