@@ -17,21 +17,21 @@
     "title": "OSINT Techniques for Modern Investigations",
     "date": "March 2024",
     "summary": "Practical open source intelligence workflows for uncovering digital footprints and tracing malicious actors.",
-    "category": "Open Source Intelligence",
+    "category": "OSINT",
     "url": "#"
   },
   {
     "title": "Reverse Engineering a Botnet Sample",
     "date": "November 2023",
     "summary": "A walkthrough of dissecting a simple malware specimen to reveal its command-and-control logic.",
-    "category": "Malware Reverse Engineering",
+    "category": "Reverse Engineering",
     "url": "#"
   },
   {
     "title": "Building a Secure Home Lab on a Budget",
     "date": "May 2022",
     "summary": "Tips for assembling a cost-effective lab environment for cybersecurity experiments.",
-    "category": "Others",
+    "category": "Malware",
     "url": "#"
   }
 ]
