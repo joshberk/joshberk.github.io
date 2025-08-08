@@ -65,9 +65,9 @@
           <div class="category-filter" role="group" aria-label="Filter posts by category">
             <button type="button" data-category="All" aria-pressed="true">All</button>
             <button type="button" data-category="Cryptography" aria-pressed="false">Cryptography</button>
-            <button type="button" data-category="Open Source Intelligence" aria-pressed="false">Open Source Intelligence</button>
-            <button type="button" data-category="Malware Reverse Engineering" aria-pressed="false">Malware Reverse Engineering</button>
-            <button type="button" data-category="Others" aria-pressed="false">Others</button>
+            <button type="button" data-category="OSINT" aria-pressed="false">OSINT</button>
+            <button type="button" data-category="Malware" aria-pressed="false">Malware</button>
+            <button type="button" data-category="Reverse Engineering" aria-pressed="false">Reverse Engineering</button>
           </div>
           <div id="posts"></div>
 
@@ -125,7 +125,7 @@
       function renderPosts(category) {
         postsContainer.innerHTML = '';
         if (category === 'All') {
-          const categories = ['Cryptography','Open Source Intelligence','Malware Reverse Engineering','Others'];
+            const categories = ['Cryptography','OSINT','Malware','Reverse Engineering'];
           categories.forEach(cat => {
             const group = postsData.filter(p => p.category === cat);
             if (group.length) {
