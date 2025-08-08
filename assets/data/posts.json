@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Pivoting to Cryptography With Purpose: Embracing The Rigor",
+    "date": "2025-07-01",
+    "summary": "Reflections on transitioning from general cybersecurity to the rigorous world of cryptography, emphasising the importance of formal definitions, security models and a strong mathematical foundation.",
+    "url": "blog/pivoting-cryptography.html",
+    "category": "Cryptography"
+  },
+  {
+    "title": "Week 1: Foundational Encryption Concepts",
+    "date": "2025-08-01",
+    "summary": "An accessible introduction to core encryption principles, comparing symmetric and asymmetric techniques and explaining how keys, plaintext and ciphertext work together in secure communication.",
+    "url": "blog/week-1-foundational-encryption-concepts.html",
+    "category": "Cryptography"
+  },
+  {
+    "title": "New Post Title",
+    "date": "YYYY-MM-DD",
+    "summary": "Brief summary of the post.",
+    "url": "blog/post-slug.html",
+    "category": "Others"
+  }
+]
