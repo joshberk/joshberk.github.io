@@ -641,17 +641,42 @@ footer a:hover {
 
 /* Dark theme adjustments for discipline cards */
 [data-theme="dark"] .discipline-card {
-  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(144, 202, 249, 0.05) 100%);
-  border-color: rgba(144, 202, 249, 0.2);
+  background: linear-gradient(135deg, #1a2937 0%, rgba(144, 202, 249, 0.08) 100%);
+  border-color: rgba(144, 202, 249, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(144, 202, 249, 0.1);
 }
 
 [data-theme="dark"] .discipline-card:hover {
-  border-color: var(--primary-color);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-color: #90caf9;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(144, 202, 249, 0.3);
+  background: linear-gradient(135deg, #1e2f3e 0%, rgba(144, 202, 249, 0.12) 100%);
 }
 
 [data-theme="dark"] .discipline-card .post-count {
-  background: rgba(144, 202, 249, 0.15);
+  background: rgba(144, 202, 249, 0.25);
+  color: #90caf9;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .discipline-icon {
+  color: #90caf9;
+  text-shadow: 0 0 20px rgba(144, 202, 249, 0.3);
+}
+
+/* Coming soon section styling for dark theme */
+[data-theme="dark"] .coming-soon {
+  background: linear-gradient(135deg, #1a2937 0%, rgba(144, 202, 249, 0.05) 100%) !important;
+  border: 2px dashed rgba(144, 202, 249, 0.4) !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .coming-soon h2 {
+  color: #90caf9 !important;
+}
+
+[data-theme="dark"] .coming-soon p {
+  color: var(--text-color) !important;
+  opacity: 0.8 !important;
 }
 
 /* Blog post page styles */
