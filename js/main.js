@@ -48,6 +48,7 @@ const initializeAboutExpander = () => {
   };
 
   toggleButton.addEventListener('click', toggleExpansion);
+  toggleButton.addEventListener('touchstart', toggleExpansion);
   toggleButton.setAttribute('aria-expanded', 'false');
   toggleButton.setAttribute('aria-controls', 'about-expandable');
   expandableContent.hidden = true;
