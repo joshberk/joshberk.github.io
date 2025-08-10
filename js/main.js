@@ -11,14 +11,14 @@
 /**
  * Populate the footer with the current year.
  */
-const insertCurrentYear = () => {
+function insertCurrentYear() {
   document.getElementById('year').textContent = new Date().getFullYear();
-};
+}
 
 /**
  * Initialize the expandable About Me section functionality.
  */
-const initializeAboutExpander = () => {
+function initializeAboutExpander() {
   const expandableContent = document.getElementById('about-expandable');
   const toggleButton = document.getElementById('read-more-btn');
   
@@ -29,7 +29,7 @@ const initializeAboutExpander = () => {
   
   let isExpanded = false;
 
-  const toggleExpansion = () => {
+  function toggleExpansion() {
     isExpanded = !isExpanded;
 
     if (isExpanded) {
@@ -45,15 +45,15 @@ const initializeAboutExpander = () => {
       toggleIcon.textContent = '▼';
       toggleButton.setAttribute('aria-expanded', 'false');
     }
-  };
+  }
 
   toggleButton.addEventListener('click', toggleExpansion);
   toggleButton.setAttribute('aria-expanded', 'false');
   toggleButton.setAttribute('aria-controls', 'about-expandable');
   expandableContent.hidden = true;
-};
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   const navbar = document.querySelector('.navbar');
   const navMenu = document.querySelector('.navbar ul');
   // Select only navigation links within the menu list, excluding brand links
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeAboutExpander();
 
   // Add background and shadow when scrolled beyond a certain amount
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', function () {
     if (window.scrollY > 80) {
       navbar.classList.add('scrolled');
     } else {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.setAttribute('aria-controls', navMenu.id);
 
     // Toggle the mobile navigation menu
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', function () {
       const expanded = hamburger.getAttribute('aria-expanded') === 'true';
       hamburger.setAttribute('aria-expanded', (!expanded).toString());
       navMenu.classList.toggle('open');
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close the mobile menu when a link is clicked
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
         if (navMenu.classList.contains('open')) {
           navMenu.classList.remove('open');
           hamburger.classList.remove('open');
@@ -111,29 +111,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // IntersectionObserver to highlight the active navigation link
-  const observerOptions = {
-    root: null,
-    rootMargin: '-50% 0px -50% 0px',
-    threshold: 0
-  };
+  if ('IntersectionObserver' in window) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          const targetId = link.getAttribute('href').substring(1);
-          if (targetId === entry.target.id) {
-            link.classList.add('active');
-          }
-        });
-      }
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (link) {
+            link.classList.remove('active');
+            const targetId = link.getAttribute('href').substring(1);
+            if (targetId === entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(function (section) {
+      observer.observe(section);
     });
-  }, observerOptions);
-
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+  }
 
   // --------------------------------------------------
   // Theme Toggle Functionality
@@ -152,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
      *
      * @param {string} theme Either 'light' or 'dark'
      */
-    const applyTheme = (theme) => {
+    function applyTheme(theme) {
       if (theme === 'dark') {
         // Set a data attribute so CSS selectors can apply dark variables
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -166,24 +168,24 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.textContent = '🌙';
         themeToggle.setAttribute('aria-label', 'Switch to night mode');
       }
-    };
+    }
 
-    const safeGet = (key) => {
+    function safeGet(key) {
       try {
         return localStorage.getItem(key);
       } catch (err) {
         return null;
       }
-    };
+    }
 
-    const safeSet = (key, value) => {
+    function safeSet(key, value) {
       try {
         localStorage.setItem(key, value);
         return true;
       } catch (err) {
         return false;
       }
-    };
+    }
 
     const savedTheme = safeGet('theme');
     if (savedTheme) {
@@ -194,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggle.setAttribute('aria-pressed', 'false');
     }
 
-    themeToggle.addEventListener('click', () => {
+    themeToggle.addEventListener('click', function () {
       const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
       themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
       applyTheme(next);
