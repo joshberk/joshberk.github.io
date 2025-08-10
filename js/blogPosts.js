@@ -19,8 +19,8 @@ const blogPosts = [
 
 function getLatestPosts(count = 3) {
   return blogPosts
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, count);
+  .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
+  .slice(0, count);
 }
 
 function formatDate(dateStr) {
@@ -37,17 +37,19 @@ function renderLatestPosts() {
 
   const latestPosts = getLatestPosts(3);
   
-  container.innerHTML = latestPosts.map(post => `
-    <article class="post-card">
-      <a href="${post.url}">
-        <div class="post-meta">
-          <span class="post-discipline">${post.discipline}</span>
-          <span class="post-type">${post.type}</span>
-        </div>
-        <h3>${post.title}</h3>
-        <p>${post.description}</p>
-        <time datetime="${post.date}">${formatDate(post.date)}</time>
-      </a>
-    </article>
-  `).join('');
+  container.innerHTML = latestPosts.map(function (post) {
+    return `
+      <article class="post-card">
+        <a href="${post.url}">
+          <div class="post-meta">
+            <span class="post-discipline">${post.discipline}</span>
+            <span class="post-type">${post.type}</span>
+          </div>
+          <h3>${post.title}</h3>
+          <p>${post.description}</p>
+          <time datetime="${post.date}">${formatDate(post.date)}</time>
+        </a>
+      </article>
+    `;
+  }).join('');
 }

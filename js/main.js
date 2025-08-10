@@ -11,14 +11,14 @@
 /**
  * Populate the footer with the current year.
  */
-const insertCurrentYear = () => {
+function insertCurrentYear() {
   document.getElementById('year').textContent = new Date().getFullYear();
-};
+}
 
 /**
  * Initialize the expandable About Me section functionality.
  */
-const initializeAboutExpander = () => {
+function initializeAboutExpander() {
   const expandableContent = document.getElementById('about-expandable');
   const toggleButton = document.getElementById('read-more-btn');
 
@@ -29,7 +29,7 @@ const initializeAboutExpander = () => {
 
   let isExpanded = false;
 
-  const toggleExpansion = () => {
+  function toggleExpansion() {
     isExpanded = !isExpanded;
 
     if (isExpanded) {
@@ -45,15 +45,17 @@ const initializeAboutExpander = () => {
       toggleIcon.textContent = '▼';
       toggleButton.setAttribute('aria-expanded', 'false');
     }
-  };
+  }
 
   toggleButton.addEventListener('click', toggleExpansion);
   toggleButton.addEventListener('touchstart', toggleExpansion);
   toggleButton.setAttribute('aria-expanded', 'false');
   toggleButton.setAttribute('aria-controls', 'about-expandable');
   expandableContent.hidden = true;
-};
+}
 
+
+document.addEventListener('DOMContentLoaded', function () {
 const navbar = document.querySelector('.navbar');
 const navMenu = document.querySelector('.navbar ul');
 // Select only navigation links within the menu list, excluding brand links
@@ -83,12 +85,34 @@ window.addEventListener('scroll', () => {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
+
   }
 });
 
 if (hamburger && navMenu) {
   // Ensure the button points to the navigation menu for accessibility
   hamburger.setAttribute('aria-controls', navMenu.id);
+
+
+  // Add background and shadow when scrolled beyond a certain amount
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  if (hamburger && navMenu) {
+    // Ensure the button points to the navigation menu for accessibility
+    hamburger.setAttribute('aria-controls', navMenu.id);
+
+    // Toggle the mobile navigation menu
+    hamburger.addEventListener('click', function () {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', (!expanded).toString());
+      navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open');
 
   // Toggle the mobile navigation menu
   hamburger.addEventListener('click', () => {
@@ -106,9 +130,19 @@ if (hamburger && navMenu) {
         hamburger.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
       }
+
     });
   });
 }
+
+
+    // Close the mobile menu when a link is clicked
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (navMenu.classList.contains('open')) {
+          navMenu.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
 
 // IntersectionObserver to highlight the active navigation link
 const observerOptions = {
@@ -125,11 +159,90 @@ const observer = new IntersectionObserver((entries) => {
         const targetId = link.getAttribute('href').substring(1);
         if (targetId === entry.target.id) {
           link.classList.add('active');
+
         }
       });
     }
   });
 }, observerOptions);
+
+
+  // IntersectionObserver to highlight the active navigation link
+  if ('IntersectionObserver' in window) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (link) {
+            link.classList.remove('active');
+            const targetId = link.getAttribute('href').substring(1);
+            if (targetId === entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
+  // --------------------------------------------------
+  // Theme Toggle Functionality
+  //
+  // Allow visitors to switch between light and dark modes. The
+  // interface uses a simple button in the navigation bar. When
+  // clicked, the button toggles the `data-theme` attribute on the
+  // document element, updates its own icon and accessible label, and
+  // persists the choice in localStorage so it remains consistent
+  // across page loads.
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    /**
+     * Apply the requested theme to the document and adjust the
+     * toggle button accordingly.
+     *
+     * @param {string} theme Either 'light' or 'dark'
+     */
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        // Set a data attribute so CSS selectors can apply dark variables
+        document.documentElement.setAttribute('data-theme', 'dark');
+        // Display a sun icon to indicate a return to light mode is possible
+        themeToggle.textContent = '☀️';
+        themeToggle.setAttribute('aria-label', 'Switch to day mode');
+      } else {
+        // Remove the attribute to fall back to the default (light) theme
+        document.documentElement.removeAttribute('data-theme');
+        // Display a moon icon to indicate a switch to dark mode is possible
+        themeToggle.textContent = '🌙';
+        themeToggle.setAttribute('aria-label', 'Switch to night mode');
+      }
+    }
+
+    function safeGet(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function safeSet(key, value) {
+      try {
+        localStorage.setItem(key, value);
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
 
 sections.forEach(section => {
   observer.observe(section);
@@ -194,6 +307,7 @@ if (themeToggle) {
     themeToggle.setAttribute('aria-pressed', 'false');
   }
 
+
   themeToggle.addEventListener('click', () => {
     const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
     themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
@@ -204,4 +318,17 @@ if (themeToggle) {
     }
   });
 }
+
+
+    themeToggle.addEventListener('click', function () {
+      const next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
+      themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+      applyTheme(next);
+      if (!safeSet('theme', next)) {
+        applyTheme('light');
+        themeToggle.setAttribute('aria-pressed', 'false');
+      }
+    });
+  }
+});
 
