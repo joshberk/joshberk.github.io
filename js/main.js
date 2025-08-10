@@ -22,10 +22,24 @@ function initializeAboutExpander() {
   const expandableContent = document.getElementById('about-expandable');
   const toggleButton = document.getElementById('read-more-btn');
 
-  if (!expandableContent || !toggleButton) return;
+  if (!expandableContent || !toggleButton) {
+    console.warn('Read more elements not found:', {
+      expandableContent: !!expandableContent,
+      toggleButton: !!toggleButton
+    });
+    return;
+  }
 
   const toggleText = toggleButton.querySelector('.read-more-text');
   const toggleIcon = toggleButton.querySelector('.read-more-icon');
+
+  if (!toggleText || !toggleIcon) {
+    console.warn('Toggle button child elements not found:', {
+      toggleText: !!toggleText,
+      toggleIcon: !!toggleIcon
+    });
+    return;
+  }
 
   let isExpanded = false;
 
@@ -73,6 +87,8 @@ insertCurrentYear();
 // Render latest blog posts if container exists
 if (typeof renderLatestPosts === 'function') {
   renderLatestPosts();
+} else {
+  console.warn('renderLatestPosts function not found. Check if blogPosts.js is loaded.');
 }
 
 // Initialize expandable About section

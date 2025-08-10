@@ -33,7 +33,10 @@ function formatDate(dateStr) {
 
 function renderLatestPosts() {
   const container = document.getElementById('latest-blog-container');
-  if (!container) return;
+  if (!container) {
+    console.warn('Latest blog container not found');
+    return;
+  }
 
   const latestPosts = getLatestPosts(3);
   
