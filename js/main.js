@@ -48,7 +48,6 @@ function initializeAboutExpander() {
   }
 
   toggleButton.addEventListener('click', toggleExpansion);
-  toggleButton.addEventListener('touchstart', toggleExpansion);
   toggleButton.setAttribute('aria-expanded', 'false');
   toggleButton.setAttribute('aria-controls', 'about-expandable');
   expandableContent.hidden = true;
@@ -85,22 +84,12 @@ window.addEventListener('scroll', () => {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
-
   }
 });
 
 if (hamburger && navMenu) {
   // Ensure the button points to the navigation menu for accessibility
   hamburger.setAttribute('aria-controls', navMenu.id);
-
-  // Add background and shadow when scrolled beyond a certain amount
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 80) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
 
   // Toggle the mobile navigation menu
   hamburger.addEventListener('click', () => {
@@ -123,57 +112,31 @@ if (hamburger && navMenu) {
 }
 
 // IntersectionObserver to highlight the active navigation link
-const observerOptions = {
-  root: null,
-  rootMargin: '-50% 0px -50% 0px',
-  threshold: 0
-};
+if ('IntersectionObserver' in window) {
+  const observerOptions = {
+    root: null,
+    rootMargin: '-50% 0px -50% 0px',
+    threshold: 0
+  };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        const targetId = link.getAttribute('href').substring(1);
-        if (targetId === entry.target.id) {
-          link.classList.add('active');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const targetId = link.getAttribute('href').substring(1);
+          if (targetId === entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
 
-        }
-      });
-    }
+  sections.forEach(section => {
+    observer.observe(section);
   });
-}, observerOptions);
-
-
-  // IntersectionObserver to highlight the active navigation link
-  if ('IntersectionObserver' in window) {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (link) {
-            link.classList.remove('active');
-            const targetId = link.getAttribute('href').substring(1);
-            if (targetId === entry.target.id) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, observerOptions);
-
-sections.forEach(function (section) {
-  observer.observe(section);
-});
 }
-sections.forEach(section => {
-  observer.observe(section);
-});
 
 // --------------------------------------------------
 // Theme Toggle Functionality
