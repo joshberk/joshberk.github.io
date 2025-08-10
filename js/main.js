@@ -144,29 +144,6 @@ if (hamburger && navMenu) {
           hamburger.classList.remove('open');
           hamburger.setAttribute('aria-expanded', 'false');
 
-// IntersectionObserver to highlight the active navigation link
-const observerOptions = {
-  root: null,
-  rootMargin: '-50% 0px -50% 0px',
-  threshold: 0
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        const targetId = link.getAttribute('href').substring(1);
-        if (targetId === entry.target.id) {
-          link.classList.add('active');
-
-        }
-      });
-    }
-  });
-}, observerOptions);
-
-
   // IntersectionObserver to highlight the active navigation link
   if ('IntersectionObserver' in window) {
     const observerOptions = {
@@ -235,18 +212,14 @@ const observer = new IntersectionObserver((entries) => {
       }
     }
 
-    function safeSet(key, value) {
-      try {
-        localStorage.setItem(key, value);
-        return true;
-      } catch (err) {
-        return false;
-      }
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (err) {
+      return false;
     }
-
-sections.forEach(section => {
-  observer.observe(section);
-});
+  }
 
 // --------------------------------------------------
 // Theme Toggle Functionality
