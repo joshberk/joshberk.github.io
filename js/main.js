@@ -15,6 +15,41 @@ const insertCurrentYear = () => {
   document.getElementById('year').textContent = new Date().getFullYear();
 };
 
+/**
+ * Initialize the expandable About Me section functionality.
+ */
+const initializeAboutExpander = () => {
+  const expandableContent = document.getElementById('about-expandable');
+  const toggleButton = document.getElementById('read-more-btn');
+  
+  if (!expandableContent || !toggleButton) return;
+
+  const toggleText = toggleButton.querySelector('.read-more-text');
+  const toggleIcon = toggleButton.querySelector('.read-more-icon');
+  
+  let isExpanded = false;
+
+  const toggleExpansion = () => {
+    isExpanded = !isExpanded;
+    
+    if (isExpanded) {
+      expandableContent.classList.add('expanded');
+      toggleText.textContent = 'Read Less';
+      toggleIcon.textContent = '▲';
+      toggleButton.setAttribute('aria-expanded', 'true');
+    } else {
+      expandableContent.classList.remove('expanded');
+      toggleText.textContent = 'Read More';
+      toggleIcon.textContent = '▼';
+      toggleButton.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  toggleButton.addEventListener('click', toggleExpansion);
+  toggleButton.setAttribute('aria-expanded', 'false');
+  toggleButton.setAttribute('aria-controls', 'about-expandable');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   const navMenu = document.querySelector('.navbar ul');
@@ -35,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof renderLatestPosts === 'function') {
     renderLatestPosts();
   }
+
+  // Initialize expandable About section
+  initializeAboutExpander();
 
   // Add background and shadow when scrolled beyond a certain amount
   window.addEventListener('scroll', () => {

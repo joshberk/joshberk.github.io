@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://joshberk.github.io/" />
 
     <meta property="og:image" content="assets/images/preview.png" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-2DkuOFQqe/g3DDOTg2/gMg==' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; img-src 'self' https://www.google-analytics.com; style-src 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-n5xQzyiOCJZAFRrBi+KjcQ==' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; img-src 'self' https://www.google-analytics.com; style-src 'self'" />
 
     <meta property="og:image" content="assets/images/hero.png" />
 
@@ -29,9 +29,9 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- Google tag (gtag.js) -->
-    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" async src="https://www.googletagmanager.com/gtag/js?id=G-7PNPWV5C4V"></script>
-    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/analytics.js"></script>
-    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/blogPosts.js"></script>
+    <script nonce="n5xQzyiOCJZAFRrBi+KjcQ==" async src="https://www.googletagmanager.com/gtag/js?id=G-7PNPWV5C4V"></script>
+    <script nonce="n5xQzyiOCJZAFRrBi+KjcQ==" src="js/analytics.js"></script>
+    <script nonce="n5xQzyiOCJZAFRrBi+KjcQ==" src="js/blogPosts.js"></script>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -92,26 +92,34 @@
               It starts with the foundational number theory and provable security required for academic rigor and extends through practical implementation to ensure the results 
               are industry ready.
             </p>
-            <p>
-              Professionally, I’ve built experience across academia, industry, and high stakes security environments. As a Security Engineer Intern at Intuit Inc.,
-              As an Adjunct Instructor at the University of Cincinnati, I redesigned and delivered undergraduate curricula in IT fundamentals, introducing hands-on labs 
-              that emphasized secure coding and systems thinking training nearly 50 students in each cohort.
-            </p>
-            <p>
-              Previously, I served as a Security Operations Analyst at Virtual Infosec Africa, where I monitored critical financial infrastructure, 
-              helping the Banking system achieve > 60% detection rate and significantly reduce incident response times. I continue to sharpen my offensive 
-              and defensive skills by actively participating in Capture The Flag competitions and bug bounty programs, 
-              with acknowledgments from platforms like HackerOne and MetaCTF and hackinghub.
-            </p>
-            <p>
-              I’m equally passionate about community and mentorship. As a lead mentor with OWASP Cincinnati, an ISC² examination developer, and an AWS Community Builder, 
-              I contribute to open-source documentation, support peer learning, and guide aspiring security professionals. Currently, I’m also building tooling for 
-              cryptographic protocol analysis, integrating Python and Rust for practical implementations of secure systems.
-            </p>
-            <p>
-              Long term, I aim to advance the state of applied cryptography by bridging academic research and industry deployment pioneering systems 
-              that are both provably secure and operationally robust.
-            </p>
+            
+            <div class="about-expandable" id="about-expandable">
+              <p>
+                Professionally, I've built experience across academia, industry, and high stakes security environments. As a Security Engineer Intern at Intuit Inc.,
+                As an Adjunct Instructor at the University of Cincinnati, I redesigned and delivered undergraduate curricula in IT fundamentals, introducing hands-on labs 
+                that emphasized secure coding and systems thinking training nearly 50 students in each cohort.
+              </p>
+              <p>
+                Previously, I served as a Security Operations Analyst at Virtual Infosec Africa, where I monitored critical financial infrastructure, 
+                helping the Banking system achieve > 60% detection rate and significantly reduce incident response times. I continue to sharpen my offensive 
+                and defensive skills by actively participating in Capture The Flag competitions and bug bounty programs, 
+                with acknowledgments from platforms like HackerOne and MetaCTF and hackinghub.
+              </p>
+              <p>
+                I'm equally passionate about community and mentorship. As a lead mentor with OWASP Cincinnati, an ISC² examination developer, and an AWS Community Builder, 
+                I contribute to open-source documentation, support peer learning, and guide aspiring security professionals. Currently, I'm also building tooling for 
+                cryptographic protocol analysis, integrating Python and Rust for practical implementations of secure systems.
+              </p>
+              <p>
+                Long term, I aim to advance the state of applied cryptography by bridging academic research and industry deployment pioneering systems 
+                that are both provably secure and operationally robust.
+              </p>
+            </div>
+            
+            <button class="read-more-btn" id="read-more-btn" type="button">
+              <span class="read-more-text">Read More</span>
+              <span class="read-more-icon">▼</span>
+            </button>
           </div>
         </div>
       </div>
@@ -370,6 +378,6 @@
     </footer>
 
     <!-- Main JavaScript -->
-    <script nonce="2DkuOFQqe/g3DDOTg2/gMg==" src="js/main.js"></script>
+    <script nonce="n5xQzyiOCJZAFRrBi+KjcQ==" src="js/main.js"></script>
   </body>
 </html>

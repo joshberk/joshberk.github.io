@@ -270,6 +270,65 @@ button.hamburger {
   line-height: 1.8;
 }
 
+/* Expandable About section */
+.about-expandable {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.about-expandable.expanded {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.read-more-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+.read-more-btn:active {
+  transform: translateY(0);
+}
+
+.read-more-icon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.read-more-btn[aria-expanded="true"] .read-more-icon {
+  transform: rotate(180deg);
+}
+
+/* Dark theme support for read more button */
+[data-theme="dark"] .read-more-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 4px 12px rgba(144, 202, 249, 0.2);
+}
+
+[data-theme="dark"] .read-more-btn:hover {
+  box-shadow: 0 6px 16px rgba(144, 202, 249, 0.3);
+}
+
 /* Skills section */
 .skills-grid {
   display: grid;
