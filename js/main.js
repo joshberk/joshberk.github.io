@@ -93,27 +93,6 @@ if (hamburger && navMenu) {
   // Ensure the button points to the navigation menu for accessibility
   hamburger.setAttribute('aria-controls', navMenu.id);
 
-
-  // Add background and shadow when scrolled beyond a certain amount
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 80) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-
-  if (hamburger && navMenu) {
-    // Ensure the button points to the navigation menu for accessibility
-    hamburger.setAttribute('aria-controls', navMenu.id);
-
-    // Toggle the mobile navigation menu
-    hamburger.addEventListener('click', function () {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', (!expanded).toString());
-      navMenu.classList.toggle('open');
-      hamburger.classList.toggle('open');
-
   // Toggle the mobile navigation menu
   hamburger.addEventListener('click', () => {
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -130,20 +109,9 @@ if (hamburger && navMenu) {
         hamburger.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
       }
-
     });
   });
 }
-
-
-    // Close the mobile menu when a link is clicked
-    navLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (navMenu.classList.contains('open')) {
-          navMenu.classList.remove('open');
-          hamburger.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', 'false');
-
 // IntersectionObserver to highlight the active navigation link
 const observerOptions = {
   root: null,
