@@ -35,6 +35,7 @@ const scriptHashes = scriptFiles.map(file => {
 const scriptSrc = [
   "'self'",
   "'strict-dynamic'",
+  "'unsafe-inline'", // Fallback for older browsers
   ...scriptHashes,
   "https://www.googletagmanager.com",
   "https://www.google-analytics.com"
