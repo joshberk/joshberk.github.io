@@ -732,8 +732,8 @@ footer a:hover {
   font-weight: 600;
 }
 
-/* Latest Posts Section */
-#latest-posts {
+/* Latest Blog Section */
+#latest-blog {
   background: linear-gradient(135deg, var(--background-color) 0%, rgba(13, 71, 161, 0.02) 100%);
   border-top: 1px solid rgba(13, 71, 161, 0.1);
 }
@@ -831,7 +831,7 @@ footer a:hover {
 }
 
 /* Dark theme adjustments for posts */
-[data-theme="dark"] #latest-posts {
+[data-theme="dark"] #latest-blog {
   background: linear-gradient(135deg, var(--background-color) 0%, rgba(144, 202, 249, 0.05) 100%);
   border-top-color: rgba(144, 202, 249, 0.2);
 }
