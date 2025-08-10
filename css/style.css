@@ -271,15 +271,17 @@ button.hamburger {
 }
 
 /* Expandable About section */
-.about-expandable {
+.about-expandable[hidden] {
   display: none;
+}
+
+.about-expandable {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .about-expandable.expanded {
-  display: block;
   opacity: 1;
   transform: translateY(0);
   animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);

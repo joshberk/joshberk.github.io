@@ -31,13 +31,15 @@ const initializeAboutExpander = () => {
 
   const toggleExpansion = () => {
     isExpanded = !isExpanded;
-    
+
     if (isExpanded) {
+      expandableContent.hidden = false;
       expandableContent.classList.add('expanded');
       toggleText.textContent = 'Read Less';
       toggleIcon.textContent = '▲';
       toggleButton.setAttribute('aria-expanded', 'true');
     } else {
+      expandableContent.hidden = true;
       expandableContent.classList.remove('expanded');
       toggleText.textContent = 'Read More';
       toggleIcon.textContent = '▼';
@@ -48,6 +50,7 @@ const initializeAboutExpander = () => {
   toggleButton.addEventListener('click', toggleExpansion);
   toggleButton.setAttribute('aria-expanded', 'false');
   toggleButton.setAttribute('aria-controls', 'about-expandable');
+  expandableContent.hidden = true;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
