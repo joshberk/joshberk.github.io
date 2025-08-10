@@ -84,15 +84,18 @@ if (heroLink && document.getElementById('hero')) {
 
 insertCurrentYear();
 
-// Render latest blog posts if container exists
-if (typeof renderLatestPosts === 'function') {
-  renderLatestPosts();
-} else {
-  console.warn('renderLatestPosts function not found. Check if blogPosts.js is loaded.');
-}
+// Small delay to ensure DOM is fully rendered
+setTimeout(() => {
+  // Render latest blog posts if container exists
+  if (typeof renderLatestPosts === 'function') {
+    renderLatestPosts();
+  } else {
+    console.warn('renderLatestPosts function not found. Check if blogPosts.js is loaded.');
+  }
 
-// Initialize expandable About section
-initializeAboutExpander();
+  // Initialize expandable About section
+  initializeAboutExpander();
+}, 10);
 
 // Add background and shadow when scrolled beyond a certain amount
 window.addEventListener('scroll', () => {
