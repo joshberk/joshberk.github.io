@@ -2,7 +2,7 @@ const blogPosts = [
   {
     title: "Week 1: Foundational Encryption Concepts",
     url: "blog/cryptography/week-1-foundational-encryption-concepts.html",
-    date: "2025-08",
+    date: "2025-08-01",
     discipline: "Cryptography",
     description: "An accessible introduction to key cryptographic concepts, covering encryption, decryption and the differences between symmetric and asymmetric schemes.",
     type: "Study Notes"
@@ -10,7 +10,7 @@ const blogPosts = [
   {
     title: "Pivoting to Cryptography With Purpose: Embracing The Rigor",
     url: "blog/cryptography/pivoting-cryptography.html",
-    date: "2025-07",
+    date: "2025-07-01",
     discipline: "Cryptography",
     description: "Reflections on transitioning into cryptography, exploring the need for rigorous security definitions and mathematical foundations.",
     type: "Reflection"

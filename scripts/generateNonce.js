@@ -6,8 +6,8 @@ const crypto = require('crypto');
 const files = [
   'index.html',
   'blog.html',
-  path.join('blog', 'pivoting-cryptography.html'),
-  path.join('blog', 'week-1-foundational-encryption-concepts.html')
+  path.join('blog', 'cryptography', 'pivoting-cryptography.html'),
+  path.join('blog', 'cryptography', 'week-1-foundational-encryption-concepts.html')
 ];
 
 // Generate a base64 nonce
