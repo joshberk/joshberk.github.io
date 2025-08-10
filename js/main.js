@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   insertCurrentYear();
+  
+  // Render latest blog posts if container exists
+  if (typeof renderLatestPosts === 'function') {
+    renderLatestPosts();
+  }
 
   // Add background and shadow when scrolled beyond a certain amount
   window.addEventListener('scroll', () => {

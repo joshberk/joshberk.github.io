@@ -658,6 +658,126 @@ footer a:hover {
   font-weight: 600;
 }
 
+/* Latest Posts Section */
+#latest-posts {
+  background: linear-gradient(135deg, var(--background-color) 0%, rgba(13, 71, 161, 0.02) 100%);
+  border-top: 1px solid rgba(13, 71, 161, 0.1);
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.post-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.post-card:hover::before {
+  transform: scaleX(1);
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-color);
+}
+
+.post-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.post-meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+.post-discipline {
+  color: var(--primary-color);
+  font-weight: 600;
+  background: rgba(13, 71, 161, 0.08);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.post-type {
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.post-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.post-card p {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  opacity: 0.85;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-card time {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+/* Dark theme adjustments for posts */
+[data-theme="dark"] #latest-posts {
+  background: linear-gradient(135deg, var(--background-color) 0%, rgba(144, 202, 249, 0.05) 100%);
+  border-top-color: rgba(144, 202, 249, 0.2);
+}
+
+[data-theme="dark"] .post-card {
+  background: var(--card-bg);
+  border-color: rgba(144, 202, 249, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .post-card:hover {
+  border-color: #90caf9;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .post-discipline {
+  background: rgba(144, 202, 249, 0.25);
+  color: #90caf9;
+}
+
 [data-theme="dark"] .discipline-icon {
   color: #90caf9;
   text-shadow: 0 0 20px rgba(144, 202, 249, 0.3);
