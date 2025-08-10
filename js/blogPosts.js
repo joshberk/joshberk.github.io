@@ -32,7 +32,7 @@ function formatDate(dateStr) {
 }
 
 function renderLatestPosts() {
-  const container = document.getElementById('latest-posts-container');
+  const container = document.getElementById('latest-blog-container');
   if (!container) return;
 
   const latestPosts = getLatestPosts(3);
