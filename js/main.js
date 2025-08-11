@@ -93,6 +93,13 @@ setTimeout(() => {
     console.warn('renderLatestPosts function not found. Check if blogPosts.js is loaded.');
   }
 
+  // Update post counts if function exists
+  if (typeof updatePostCounts === 'function') {
+    updatePostCounts();
+  } else {
+    console.warn('updatePostCounts function not found. Check if blogPosts.js is loaded.');
+  }
+
   // Initialize expandable About section
   initializeAboutExpander();
 }, 10);

@@ -2,7 +2,7 @@ const blogPosts = [
 
   {
     title: "Week 2 - The Birth of Modern Security",
-    url: "blog/cryptography/week-2-the_birth_of_modern_day_security.html",
+    url: "blog/cryptography/week-2-the_birth_of_modern_security.html",
     date: "2025-08-11",
     discipline: "Cryptography",
     description: "My second week's dive into cryptography, exploring the transition from classical ciphers to modern security. This post unpacks Kerckhoffs's Principle, attack models, and why mathematical rigor is essential.",
@@ -37,6 +37,35 @@ function formatDate(dateStr) {
   return date.toLocaleDateString('en-US', { 
     year: 'numeric', 
     month: 'long' 
+  });
+}
+
+function getPostCountByDiscipline(discipline) {
+  return blogPosts.filter(function(post) {
+    return post.discipline === discipline;
+  }).length;
+}
+
+function updatePostCounts() {
+  const disciplines = {
+    'Cryptography': getPostCountByDiscipline('Cryptography'),
+    'Malware Reverse Engineering': getPostCountByDiscipline('Malware Reverse Engineering'),
+    'OSINT': getPostCountByDiscipline('OSINT'),
+    'Others': getPostCountByDiscipline('Others')
+  };
+
+  Object.keys(disciplines).forEach(function(discipline) {
+    const cards = document.querySelectorAll('.discipline-card');
+    cards.forEach(function(card) {
+      const title = card.querySelector('h3');
+      if (title && title.textContent.trim() === discipline) {
+        const countElement = card.querySelector('.post-count');
+        const count = disciplines[discipline];
+        if (countElement) {
+          countElement.textContent = count > 0 ? count + ' post' + (count === 1 ? '' : 's') : 'Coming soon';
+        }
+      }
+    });
   });
 }
 
