@@ -888,6 +888,7 @@ footer a:hover {
 .blog-post-header .post-meta {
   font-size: 0.9rem;
   color: var(--secondary-color);
+  justify-content: center;
 }
 
 .blog-post {
