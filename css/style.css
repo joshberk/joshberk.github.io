@@ -281,8 +281,8 @@ button.hamburger {
 .about-content img {
   width: 100%;
   aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 50%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   animation: profilePulse 4s ease-in-out infinite;
