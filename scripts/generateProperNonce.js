@@ -49,20 +49,18 @@ htmlFiles.forEach((file) => {
     `$1${cspPolicy}$3`
   );
 
-  // Remove ALL existing nonce attributes first to prevent duplicates
-  content = content.replace(/\s*nonce="[^"]*"/g, '');
+    // Add nonce to ALL local script tags, replacing any existing nonce
+    content = content.replace(
+      /<script([^>]*)\s+src="(?!https?:|\/\/)([^"]*)"([^>]*?)>/g,
+      (match, before, src, after) => {
+        // Remove any existing nonce attributes in captured groups
+        const cleanBefore = before.replace(/\s*nonce="[^"]*"/gi, '').trim();
+        const cleanAfter = after.replace(/\s*nonce="[^"]*"/gi, '').trim();
 
-  // Add nonce to ALL script tags with src attributes (local scripts)
-  content = content.replace(
-    /<script([^>]*)\s+src="(js\/[^"]*)"([^>]*?)>/g,
-    (match, before, src, after) => {
-      // Clean up any extra spaces and ensure proper formatting
-      const cleanBefore = before.trim();
-      const cleanAfter = after.trim();
-      
-      return `<script${cleanBefore ? ' ' + cleanBefore : ''} src="${src}" nonce="${nonce}"${cleanAfter ? ' ' + cleanAfter : ''}>`;
-    }
-  );
+        // Reconstruct the script tag without altering the src attribute
+        return `<script${cleanBefore ? ' ' + cleanBefore : ''} src="${src}" nonce="${nonce}"${cleanAfter ? ' ' + cleanAfter : ''}>`;
+      }
+    );
 
   fs.writeFileSync(file, content);
   console.log(`Updated ${file}`);
