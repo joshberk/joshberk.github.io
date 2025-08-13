@@ -85,17 +85,17 @@ if (heroLink && document.getElementById('hero')) {
 insertCurrentYear();
 
 // Small delay to ensure DOM is fully rendered
-setTimeout(() => {
+setTimeout(async () => {
   // Render latest blog posts if container exists
   if (typeof renderLatestPosts === 'function') {
-    renderLatestPosts();
+    await renderLatestPosts();
   } else {
     console.warn('renderLatestPosts function not found. Check if blogPosts.js is loaded.');
   }
 
   // Update post counts if function exists
   if (typeof updatePostCounts === 'function') {
-    updatePostCounts();
+    await updatePostCounts();
   } else {
     console.warn('updatePostCounts function not found. Check if blogPosts.js is loaded.');
   }
