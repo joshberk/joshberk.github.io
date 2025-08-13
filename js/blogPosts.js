@@ -47,25 +47,24 @@ function getPostCountByDiscipline(discipline) {
 }
 
 function updatePostCounts() {
-  const disciplines = {
+  const counts = {
     'Cryptography': getPostCountByDiscipline('Cryptography'),
     'Malware Reverse Engineering': getPostCountByDiscipline('Malware Reverse Engineering'),
     'OSINT': getPostCountByDiscipline('OSINT'),
     'Others': getPostCountByDiscipline('Others')
   };
 
-  Object.keys(disciplines).forEach(function(discipline) {
-    const cards = document.querySelectorAll('.discipline-card');
-    cards.forEach(function(card) {
-      const title = card.querySelector('h3');
-      if (title && title.textContent.trim() === discipline) {
-        const countElement = card.querySelector('.post-count');
-        const count = disciplines[discipline];
-        if (countElement) {
-          countElement.textContent = count > 0 ? count + ' post' + (count === 1 ? '' : 's') : 'Coming soon';
-        }
-      }
-    });
+  const cards = document.querySelectorAll('.discipline-card');
+  cards.forEach(function(card) {
+    const title = card.querySelector('h3');
+    if (!title) return;
+
+    const discipline = title.textContent.trim();
+    const countElement = card.querySelector('.post-count');
+    if (!countElement) return;
+
+    const count = counts[discipline] || 0;
+    countElement.textContent = count > 0 ? count + ' post' + (count === 1 ? '' : 's') : 'Coming soon';
   });
 }
 
@@ -93,4 +92,9 @@ function renderLatestPosts() {
       </article>
     `;
   }).join('');
+}
+
+// Exports for testing in Node environments
+if (typeof module !== 'undefined') {
+  module.exports = { blogPosts, getPostCountByDiscipline, updatePostCounts };
 }
