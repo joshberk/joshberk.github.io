@@ -1,42 +1,43 @@
-const blogPosts = [
+let blogPosts = [];
+let postsPromise = null;
 
-  {
-    title: "Week 2 - The Birth of Modern Security",
-    url: "blog/cryptography/week-2-the_birth_of_modern_security.html",
-    date: "2025-08-11",
-    discipline: "Cryptography",
-    description: "My second week's dive into cryptography, exploring the transition from classical ciphers to modern security. This post unpacks Kerckhoffs's Principle, attack models, and why mathematical rigor is essential.",
-    type: "Study Notes"
-  },
-  {
-    title: "Week 1: Foundational Encryption Concepts",
-    url: "blog/cryptography/week-1-foundational-encryption-concepts.html",
-    date: "2025-08-01",
-    discipline: "Cryptography",
-    description: "An accessible introduction to key cryptographic concepts, covering encryption, decryption and the differences between symmetric and asymmetric schemes.",
-    type: "Study Notes"
-  },
-  {
-    title: "Pivoting to Cryptography With Purpose: Embracing The Rigor",
-    url: "blog/cryptography/pivoting-cryptography.html",
-    date: "2025-07-01",
-    discipline: "Cryptography",
-    description: "Reflections on transitioning into cryptography, exploring the need for rigorous security definitions and mathematical foundations.",
-    type: "Reflection"
+async function fetchBlogPosts() {
+  if (blogPosts.length) {
+    return blogPosts;
   }
-];
+  if (!postsPromise) {
+    postsPromise = fetch('/blog/posts.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch posts: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        blogPosts = data;
+        return blogPosts;
+      })
+      .catch((err) => {
+        console.error('Error loading blog posts:', err);
+        blogPosts = [];
+        return blogPosts;
+      });
+  }
+  return postsPromise;
+}
 
-function getLatestPosts(count = 3) {
+async function getLatestPosts(count = 3) {
+  await fetchBlogPosts();
   return blogPosts
-  .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
-  .slice(0, count);
+    .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
+    .slice(0, count);
 }
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long' 
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long'
   });
 }
 
@@ -46,7 +47,8 @@ function getPostCountByDiscipline(discipline) {
   }).length;
 }
 
-function updatePostCounts() {
+async function updatePostCounts() {
+  await fetchBlogPosts();
   const disciplines = {
     'Cryptography': getPostCountByDiscipline('Cryptography'),
     'Malware Reverse Engineering': getPostCountByDiscipline('Malware Reverse Engineering'),
@@ -69,15 +71,15 @@ function updatePostCounts() {
   });
 }
 
-function renderLatestPosts() {
+async function renderLatestPosts() {
   const container = document.getElementById('latest-blog-container');
   if (!container) {
     console.warn('Latest blog container not found');
     return;
   }
 
-  const latestPosts = getLatestPosts(3);
-  
+  const latestPosts = await getLatestPosts(3);
+
   container.innerHTML = latestPosts.map(function (post) {
     return `
       <article class="post-card">
