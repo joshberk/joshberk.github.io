@@ -4,6 +4,21 @@
     Deny from all
 </Files>
 
+<Files "_config.yml">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "Gemfile">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "Gemfile.lock">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
 <Directory "scripts">
     Order Allow,Deny
     Deny from all
@@ -24,16 +39,40 @@
     Deny from all
 </Directory>
 
+<Directory "_layouts">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "_posts">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "_includes">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "_sass">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
 # Block access to hidden files and directories
-<FilesMatch "^\.">
+<FilesMatch "^[\._]">
     Order Allow,Deny
     Deny from all
 </FilesMatch>
 
-# Block access to common sensitive file types
-<FilesMatch "\.(json|js)$">
-    <RequireAll>
-        Require not expr "%{REQUEST_URI} =~ m#^/js/#"
-        Require not expr "%{REQUEST_URI} =~ m#^/assets/#"
-    </RequireAll>
+# Block access to Jekyll source files
+<FilesMatch "\.(yml|yaml|rb)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Allow access to compiled assets
+<FilesMatch "^(assets|css|js)/.*\.(css|js|png|jpg|jpeg|gif|svg|pdf)$">
+    Order Allow,Deny
+    Allow from all
 </FilesMatch>

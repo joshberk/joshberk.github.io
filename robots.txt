@@ -4,5 +4,12 @@ Disallow: /scripts/
 Disallow: /test/
 Disallow: /data/
 Disallow: /includes/
+Disallow: /_layouts/
+Disallow: /_posts/
+Disallow: /_includes/
+Disallow: /_sass/
 Disallow: /package.json
+Disallow: /_config.yml
+Disallow: /Gemfile
+Disallow: /Gemfile.lock
 Sitemap: https://www.joshuaberkoh.engineer/sitemap.xml
