@@ -3,7 +3,46 @@
 
 @import "{{ site.theme }}";
 
+/* Additional imports for better compatibility */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
 /* Custom enhancements to the Hacker theme for Joshua Berkoh's site */
+
+/* Header navigation styling */
+.header-nav {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.nav-link {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  color: #00ff00;
+  text-decoration: none;
+  border: 1px solid #00ff00;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover {
+  background: #00ff00;
+  color: #000;
+  box-shadow: 0 0 15px #00ff00;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 255, 0, 0.2);
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
 
 /* Color palette that complements the hacker theme */
 :root {

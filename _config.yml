@@ -5,29 +5,30 @@ baseurl: ""
 
 # Theme
 remote_theme: pages-themes/hacker@v0.2.0
+
+# GitHub Pages compatible plugins
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Author information
 author:
   name: "Joshua Offe Berkoh"
-  email: "your-email@example.com"
 
-# Social links (customize as needed)
-github_username: joshberk
-linkedin_username: joshua-berkoh
+# GitHub settings for theme
+github:
+  repository_name: "joshberk.github.io"
+  repository_url: "https://github.com/joshberk/joshberk.github.io"
 
 # Blog settings
 show_excerpts: true
-paginate: 5
 
-# Collections for blog posts
+# Collections for blog posts (simplified)
 collections:
   posts:
     output: true
-    permalink: /blog/:categories/:title/
 
 # Default values for posts
 defaults:
@@ -45,7 +46,7 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-# Exclude files from processing
+# Exclude files from processing (GitHub Pages compatible)
 exclude:
   - scripts/
   - test/
@@ -56,3 +57,4 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - "*.config.js"
