@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://joshberk.github.io/sitemap.xml
+Disallow: /scripts/
+Disallow: /test/
+Disallow: /data/
+Disallow: /includes/
+Disallow: /package.json
+Sitemap: https://www.joshuaberkoh.engineer/sitemap.xml

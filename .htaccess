@@ -1,0 +1,39 @@
+# Block access to sensitive directories and files
+<Files "package.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Directory "scripts">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "test">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "data">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "includes">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+# Block access to hidden files and directories
+<FilesMatch "^\.">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block access to common sensitive file types
+<FilesMatch "\.(json|js)$">
+    <RequireAll>
+        Require not expr "%{REQUEST_URI} =~ m#^/js/#"
+        Require not expr "%{REQUEST_URI} =~ m#^/assets/#"
+    </RequireAll>
+</FilesMatch>
