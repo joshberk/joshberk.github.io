@@ -25,14 +25,14 @@ function initializeTheme() {
   if (!themeToggle) return;
   
   const applyTheme = (theme) => {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      themeToggle.textContent = '☀️';
-      themeToggle.setAttribute('aria-label', 'Switch to light mode');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
       themeToggle.textContent = '🌙';
       themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeToggle.textContent = '☀️';
+      themeToggle.setAttribute('aria-label', 'Switch to light mode');
     }
   };
 
@@ -57,13 +57,13 @@ function initializeTheme() {
   // Initialize theme from localStorage or default
   const savedTheme = safeGet('theme') || 'dark'; // Default to dark for hacker theme
   applyTheme(savedTheme);
-  themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
+  themeToggle.setAttribute('aria-pressed', savedTheme === 'light' ? 'true' : 'false');
 
   // Theme toggle click handler
   themeToggle.addEventListener('click', () => {
-    const current = themeToggle.getAttribute('aria-pressed') === 'true' ? 'dark' : 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+    const current = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    themeToggle.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
     applyTheme(next);
     safeSet('theme', next);
   });

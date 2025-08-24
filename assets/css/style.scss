@@ -34,6 +34,36 @@
   box-shadow: 0 0 15px #00ff00;
 }
 
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--hacker-green);
+  border-radius: 3px;
+  color: var(--hacker-green);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--hacker-green);
+  color: var(--hacker-bg);
+  box-shadow: 0 0 15px var(--hacker-green);
+}
+
+[data-theme="light"] .nav-link {
+  color: var(--hacker-green);
+  border-color: var(--hacker-green);
+}
+
+[data-theme="light"] .nav-link:hover {
+  background: var(--hacker-green);
+  color: var(--hacker-bg);
+  box-shadow: 0 0 15px rgba(13, 71, 161, 0.3);
+}
+
 /* Footer styling */
 footer {
   margin-top: 3rem;
@@ -52,6 +82,45 @@ footer {
   --accent-blue: #64b5f6;
   --card-bg: rgba(0, 255, 0, 0.02);
   --border-green: rgba(0, 255, 0, 0.2);
+}
+
+/* Light theme variables */
+[data-theme="light"] {
+  --hacker-green: #0d47a1;
+  --hacker-bg: #ffffff;
+  --academic-blue: #1976d2;
+  --accent-blue: #64b5f6;
+  --card-bg: rgba(13, 71, 161, 0.02);
+  --border-green: rgba(13, 71, 161, 0.2);
+}
+
+/* Override the default hacker theme colors when in light mode */
+[data-theme="light"] body {
+  background: #ffffff !important;
+  color: #333333 !important;
+}
+
+[data-theme="light"] header {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  color: #333333 !important;
+}
+
+[data-theme="light"] header h1,
+[data-theme="light"] header h2 {
+  color: #0d47a1 !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .container {
+  background: #ffffff !important;
+}
+
+[data-theme="light"] a {
+  color: #0d47a1 !important;
+}
+
+[data-theme="light"] a:hover {
+  color: #1976d2 !important;
 }
 
 /* Enhance the default hacker theme with custom styling */
