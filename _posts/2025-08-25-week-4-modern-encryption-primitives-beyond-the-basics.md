@@ -49,16 +49,12 @@ Perhaps the most radical shift in encryption is **Fully Homomorphic Encryption (
 It allows computations to be performed **directly on ciphertexts** without decryption.  
 
 Formally, given encryption:  
-$$
-C = \mathrm{Enc}_K(P),
-$$  
+$$C = \mathrm{Enc}_K(P)$$  
 
 there exists an evaluation function such that:  
-$$
-\mathrm{Eval}_f(C) = \mathrm{Enc}_K(f(P)),
-$$  
+$$\mathrm{Eval}_f(C) = \mathrm{Enc}_K(f(P))$$  
 
-for any function \(f\).  
+for any function $f$.  
 
 ### Why this matters:
 - Cloud providers can process encrypted data without ever seeing plaintext.  
@@ -97,13 +93,11 @@ Encryption hides data, but what if you want to **search** encrypted databases?
 
 Tweakable encryption extends block ciphers with an additional input: a **tweak**.  
 
-$$
-C = \mathrm{Enc}_K^T(P)
-$$
+$$C = \mathrm{Enc}_K^T(P)$$
 
-- \(K\): secret key  
-- \(T\): tweak (public, non-secret)  
-- \(P\): plaintext  
+- $K$: secret key  
+- $T$: tweak (public, non-secret)  
+- $P$: plaintext  
 
 The tweak allows the same key to encrypt data differently in different contexts.  
 
