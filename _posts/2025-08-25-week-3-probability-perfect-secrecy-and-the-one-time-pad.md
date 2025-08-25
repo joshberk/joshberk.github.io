@@ -34,13 +34,16 @@ This example highlights the principle: **Confidentiality hides, Authentication v
 Cryptography is inseparable from probability.  
 
 - **Independence**: If two events are independent,  
-  $$\Pr[E \wedge F] = \Pr[E] \cdot \Pr[F]$$
+
+$$\Pr[E \wedge F] = \Pr[E] \cdot \Pr[F]$$
 
 - **Mutually Exclusive Events**: If two events cannot happen together,  
-  $$\Pr[E \vee F] = \Pr[E] + \Pr[F]$$
+
+$$\Pr[E \vee F] = \Pr[E] + \Pr[F]$$
 
 - **Conditional Probability**:  
-  $$\Pr[E \mid F] = \frac{\Pr[E \wedge F]}{\Pr[F]}$$
+
+$$\Pr[E \mid F] = \frac{\Pr[E \wedge F]}{\Pr[F]}$$
 
 These rules are the engine for analyzing ciphers, distributions, and adversarial advantage.
 

@@ -15,6 +15,23 @@
     <meta property="og:image" content="{{ site.url }}/assets/images/hero.png">
 
     {% seo %}
+    
+    <!-- MathJax Configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      displayAlign: "center",
+      "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 1}}
+      }
+    });
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
 
   <body>
