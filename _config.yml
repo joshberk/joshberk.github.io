@@ -46,6 +46,9 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
   math_engine: mathjax
+  math_engine_opts:
+    preview: true
+    preview_as_code: false
 
 # Exclude files from processing (GitHub Pages compatible)
 exclude:
