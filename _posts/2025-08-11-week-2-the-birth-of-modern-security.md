@@ -17,29 +17,21 @@ My study this week focused on both the historic roots and the fundamental princi
 
 A great example is the **Shift Cipher**, a variant of the Caesar cipher. In this scheme, the key k is a number between 0 and 25, and encryption involves shifting each letter of the plaintext forward by k positions. Mathematically, if we equate the English alphabet with the set {0, ..., 25}, the encryption of a message m = m1, ..., me is given by:
 
-```
-Enc_k(m1, ..., me) = c1, ..., ce
-```
+$$\text{Enc}_k(m_1, \ldots, m_e) = c_1, \ldots, c_e$$
 
-where ci = [(mi + k) mod 26].
+where $$c_i = (m_i + k) \bmod 26$$.
 
 The decryption process reverses this, using the formula:
 
-```
-mi = [(ci - k) mod 26]
-```
+$$m_i = (c_i - k) \bmod 26$$
 
 I also explored the concept of a **One-Time Pad**, a theoretical "perfect cipher". The One-Time Pad takes a plaintext P and a random key K of the same length, with the ciphertext C defined as the bitwise exclusive OR (XOR) operation of the two:
 
-```
-C := P ^ K
-```
+$$C := P \oplus K$$
 
 Decryption is then simply reversing the operation:
 
-```
-P := C ^ K
-```
+$$P := C \oplus K$$
 
 For an encryption scheme to be secure, it must not be vulnerable to a brute-force or exhaustive search attack, which is an attack that involves trying every possible key. This observation leads to the **"Sufficient Key-Space Principle,"** which states that a secure encryption scheme must have a key space that is large enough to make an exhaustive search attack infeasible. Given modern computing resources, a key size of at least 2^80 is needed.
 
@@ -47,9 +39,7 @@ However, a large key space is not a sufficient condition for security. For examp
 
 A private-key encryption scheme is defined by specifying a message space M along with three algorithms: a key generation procedure (`Gen`), an encryption procedure (`Enc`), and a decryption procedure (`Dec`). An encryption scheme must satisfy the following correctness requirement: for every key k output by `Gen` and every message m ∈ M, it holds that:
 
-```
-Dec_k(Enc_k(m)) = m
-```
+$$\text{Dec}_k(\text{Enc}_k(m)) = m$$
 
 ## Applied Realities: Attack Models and Modern Constructs
 
@@ -64,9 +54,7 @@ A security notion is the combination of a security goal and an attack model. An 
 
 Semantically secure encryption is a security goal. It is defined as a cipher where nothing can be learned about the plaintext as long as the key is secret. To achieve IND-CPA security, encryption schemes must return a different ciphertext for every plaintext, even if a user keeps encrypting the same plaintext. Semantically Secure encryption is often constructed using a deterministic random bit generator (DRBG) that returns random-looking bits given some secret seed. This can be represented by the formula:
 
-```
-E(K,P,R) := (DRBG(K||R) ⊕ P, R)
-```
+$$E(K,P,R) := (\text{DRBG}(K||R) \oplus P, R)$$
 
 **Authenticated Encryption with Associated Data (AEAD)** is a powerful modern scheme that protects both the integrity and confidentiality of data, as well as providing an authentication tag to prevent replay attacks. The key exchange or how to get a Shared Secret has been a hard problem to solve and asymmetric keys are referred to as public key Cryptography, which makes great use of different keys for different functions or provides different types of protection of view to different participants.
 
