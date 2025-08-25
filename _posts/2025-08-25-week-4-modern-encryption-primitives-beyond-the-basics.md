@@ -1,6 +1,6 @@
 ---
 title: "Week 4 - Modern Encryption Primitives Beyond the Basics"
-date: 2025-09-01
+date: 2025-08-25
 categories: [cryptography, study-notes]
 description: "Building on probability and secrecy, this week I explore advanced cryptographic primitives: Format-Preserving Encryption, Fully Homomorphic Encryption, Searchable Encryption, and Tweakable Encryption. I also examine how weak ciphers and wrong models undermine security."
 type: "Study Notes"
