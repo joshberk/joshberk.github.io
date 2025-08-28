@@ -50,6 +50,9 @@ kramdown:
     preview: true
     preview_as_code: false
 
+# Google Analytics
+google_analytics: G-499691721
+
 # Exclude files from processing (GitHub Pages compatible)
 exclude:
   - scripts/
