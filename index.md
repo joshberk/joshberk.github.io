@@ -84,7 +84,6 @@ title: Home
 - Python
 - HTML & CSS  
 - JavaScript
-- Rust
 - SQL
 
 ### Cybersecurity & Cryptography
