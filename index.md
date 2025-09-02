@@ -108,6 +108,5 @@ Coming soon - my research on privacy-preserving infrastructure and anonymous com
 
 Ready to collaborate on cryptography research or cybersecurity projects? Let's connect:
 
-- **Email**: [Contact me](mailto:joshuaberkoh19@gmail.com)
 - **LinkedIn**: [Joshua Berkoh](https://linkedin.com/in/joshua-berkoh)
 - **GitHub**: [@joshberk](https://github.com/joshberk)
