@@ -34,17 +34,54 @@
     
     <!-- Google Analytics -->
     {% if site.google_analytics %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ site.google_analytics }}');
+      function loadAnalytics() {
+        if (window.gtagLoaded) return;
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}';
+        script.async = true;
+        script.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', '{{ site.google_analytics }}', { 'anonymize_ip': true });
+        };
+        document.head.appendChild(script);
+        window.gtagLoaded = true;
+      }
     </script>
     {% endif %}
   </head>
 
   <body>
+    {% if site.google_analytics %}
+    <div id="consent-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#f5f5f5; padding:1em; box-shadow:0 -2px 5px rgba(0,0,0,0.1);">
+      <span>This site uses cookies for analytics.</span>
+      <button id="consent-accept" type="button">Accept</button>
+      <button id="consent-decline" type="button">Decline</button>
+    </div>
+    <script>
+      (function(){
+        var banner = document.getElementById('consent-banner');
+        var consent = localStorage.getItem('ga_consent');
+        if (consent === 'true') {
+          loadAnalytics();
+        } else {
+          banner.style.display = 'block';
+          document.getElementById('consent-accept').addEventListener('click', function(){
+            localStorage.setItem('ga_consent', 'true');
+            banner.style.display = 'none';
+            loadAnalytics();
+          });
+          document.getElementById('consent-decline').addEventListener('click', function(){
+            localStorage.setItem('ga_consent', 'false');
+            banner.style.display = 'none';
+          });
+        }
+      })();
+    </script>
+    {% endif %}
     <header>
       <div class="container">
         <a id="a-title" href="{{ '/' | relative_url }}">
