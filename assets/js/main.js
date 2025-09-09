@@ -206,7 +206,6 @@ function initializeTerminalCommands() {
     'help': 'Available commands: about, skills, contact, blog, clear',
     'about': 'PhD candidate in Information Technology focusing on applied cryptography',
     'skills': 'Python, JavaScript, Rust, Cryptography, Security Analysis',
-    'contact': 'Email: your-email@example.com | LinkedIn: joshua-berkoh',
     'blog': 'Visit /blog for latest posts on cryptography and cybersecurity',
     'clear': ''
   };
