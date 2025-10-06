@@ -7,7 +7,7 @@ title: Home
   <h1>Hi, I'm <span class="accent-text">{{ site.title }}</span></h1>
   <p class="hero-description">{{ site.description }}</p>
   <div class="hero-buttons">
-    <a href="#about" class="btn btn-primary">Learn More</a>
+    <a href="#about-me" class="btn btn-primary">Learn More</a>
     <a href="assets/resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">View CV</a>
   </div>
 </div>
@@ -80,20 +80,20 @@ title: Home
 
 ## Skills
 
-### Programming Languages
+#### Programming Languages
 - Python
 - HTML & CSS  
 - JavaScript
 - SQL
 
-### Cybersecurity & Cryptography
+#### Cybersecurity & Cryptography
 - Applied Cryptography
 - Security Analysis
 - Vulnerability Assessment
 - Incident Response
 - Secure Systems Design
 
-### Tools & Frameworks
+#### Tools & Frameworks
 - Git & Version Control
 - Linux/Unix Systems
 - Cloud Platforms (AWS)
