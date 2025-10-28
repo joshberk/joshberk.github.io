@@ -7,9 +7,18 @@
     <loc>https://joshberk.github.io/blog.html</loc>
   </url>
   <url>
-    <loc>https://joshberk.github.io/blog/pivoting-cryptography.html</loc>
+    <loc>https://joshberk.github.io/blog/pivoting-to-cryptography-with-purpose.html</loc>
   </url>
   <url>
     <loc>https://joshberk.github.io/blog/week-1-foundational-encryption-concepts.html</loc>
+  </url>
+  <url>
+    <loc>https://joshberk.github.io/blog/week-2-the-birth-of-modern-security.html</loc>
+  </url>
+  <url>
+    <loc>https://joshberk.github.io/blog/week-3-probability-perfect-secrecy-and-the-one-time-pad.html</loc>
+  </url>
+  <url>
+    <loc>https://joshberk.github.io/blog/week-4-modern-encryption-primitives-beyond-the-basics.html</loc>
   </url>
 </urlset>
