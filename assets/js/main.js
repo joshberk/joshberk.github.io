@@ -223,7 +223,13 @@ function initializeTerminalCommands() {
       if (command === 'clear') {
         output.innerHTML = '';
       } else {
-        output.innerHTML += `<div class="terminal-line">$ ${input.value}</div>`;
+      const sanitizeHTML = (str) => {
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+      };
+
+        output.innerHTML += `<div class="terminal-line">$ ${sanitizeHTML(input.value)}</div>`;
         if (response) {
           output.innerHTML += `<div class="terminal-response">${response}</div>`;
         }
