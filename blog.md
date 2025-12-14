@@ -96,6 +96,18 @@ permalink: /blog/
   </div>
 </div>
 
+<div class="blog-sections">
+  <div class="blog-section">
+    <h2 class="section-title">Cryptography</h2>
+    <p class="section-notice"><strong>It is paused for Academic reasons.</strong></p>
+  </div>
+
+  <div class="blog-section">
+    <h2 class="section-title">Threat Detection Engineering</h2>
+    <p class="section-coming-soon">Coming soon.</p>
+  </div>
+</div>
+
 <div class="blog-footer">
   <a href="/" class="btn btn-outline">← Back to Home</a>
 </div>
