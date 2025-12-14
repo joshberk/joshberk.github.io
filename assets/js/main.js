@@ -253,6 +253,8 @@ function initializeBlogFilters() {
   const posts = document.querySelectorAll('.post-card, .featured-post');
   const visibleCountEl = document.getElementById('visible-count');
   const noPostsMessage = document.getElementById('no-posts');
+  const cryptographyNotice = document.getElementById('cryptography-notice');
+  const threatDetectionNotice = document.getElementById('threat-detection-notice');
 
   if (!filterButtons.length || !posts.length) return;
 
@@ -263,6 +265,14 @@ function initializeBlogFilters() {
       // Update active button state
       filterButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
+
+      // Show/hide category notices
+      if (cryptographyNotice) {
+        cryptographyNotice.style.display = filter === 'cryptography' ? 'block' : 'none';
+      }
+      if (threatDetectionNotice) {
+        threatDetectionNotice.style.display = filter === 'threat-detection' ? 'block' : 'none';
+      }
 
       // Filter posts
       let visibleCount = 0;
