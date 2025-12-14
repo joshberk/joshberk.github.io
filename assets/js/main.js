@@ -6,15 +6,19 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize theme functionality
   initializeTheme();
-  
+
   // Initialize any terminal-like effects
   initializeTerminalEffects();
-  
+
   // Initialize scroll effects for any navigation if present
   initializeScrollEffects();
-  
+
   // Add current year to footer
   insertCurrentYear();
+
+  // Initialize blog page functionality
+  initializeBlogFilters();
+  initializeBlogViewToggle();
 });
 
 /**
@@ -239,4 +243,118 @@ function initializeTerminalCommands() {
       terminal.scrollTop = terminal.scrollHeight;
     }
   });
+}
+
+/**
+ * Blog page filtering functionality
+ */
+function initializeBlogFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const posts = document.querySelectorAll('.post-card, .featured-post');
+  const visibleCountEl = document.getElementById('visible-count');
+  const noPostsMessage = document.getElementById('no-posts');
+
+  if (!filterButtons.length || !posts.length) return;
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+
+      // Update active button state
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Filter posts
+      let visibleCount = 0;
+
+      posts.forEach(post => {
+        const category = post.dataset.category || '';
+        const tags = post.dataset.tags || '';
+
+        const matchesFilter =
+          filter === 'all' ||
+          category.toLowerCase().includes(filter.toLowerCase()) ||
+          tags.toLowerCase().includes(filter.toLowerCase());
+
+        if (matchesFilter) {
+          post.classList.remove('hidden');
+          post.style.display = '';
+          visibleCount++;
+        } else {
+          post.classList.add('hidden');
+          post.style.display = 'none';
+        }
+      });
+
+      // Update visible count
+      if (visibleCountEl) {
+        visibleCountEl.textContent = visibleCount;
+      }
+
+      // Show/hide no posts message
+      if (noPostsMessage) {
+        noPostsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      // Re-trigger animations
+      posts.forEach((post, index) => {
+        if (!post.classList.contains('hidden')) {
+          post.style.animation = 'none';
+          post.offsetHeight; // Trigger reflow
+          post.style.animation = `fadeInUp 0.4s ease forwards ${index * 0.05}s`;
+        }
+      });
+    });
+  });
+}
+
+/**
+ * Blog page view toggle (grid/list)
+ */
+function initializeBlogViewToggle() {
+  const viewButtons = document.querySelectorAll('.view-btn');
+  const postsContainer = document.getElementById('posts-container');
+
+  if (!viewButtons.length || !postsContainer) return;
+
+  // Load saved view preference
+  const savedView = localStorage.getItem('blogView') || 'grid';
+  applyView(savedView);
+
+  viewButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const view = button.dataset.view;
+
+      // Update active button state
+      viewButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Apply view
+      applyView(view);
+
+      // Save preference
+      try {
+        localStorage.setItem('blogView', view);
+      } catch (e) {
+        // Ignore storage errors
+      }
+    });
+  });
+
+  function applyView(view) {
+    if (view === 'list') {
+      postsContainer.classList.add('list-view');
+    } else {
+      postsContainer.classList.remove('list-view');
+    }
+
+    // Update active button
+    viewButtons.forEach(btn => {
+      if (btn.dataset.view === view) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
 }
