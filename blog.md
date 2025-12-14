@@ -15,6 +15,7 @@ permalink: /blog/
     <button class="filter-btn" data-filter="study-notes">Study Notes</button>
     <button class="filter-btn" data-filter="reflection">Reflections</button>
     <button class="filter-btn" data-filter="cryptography">Cryptography</button>
+    <button class="filter-btn" data-filter="threat-detection">Threat Detection Engineering</button>
   </div>
   <div class="view-toggle">
     <button class="view-btn active" data-view="grid" title="Grid View">
@@ -28,6 +29,14 @@ permalink: /blog/
 
 <div class="posts-count">
   <span class="count-text">Showing <span id="visible-count">{{ site.posts.size }}</span> of {{ site.posts.size }} posts</span>
+</div>
+
+<div class="category-notice cryptography-notice" id="cryptography-notice" style="display: none;">
+  <strong>Paused for Academic reasons.</strong>
+</div>
+
+<div class="category-notice threat-detection-notice" id="threat-detection-notice" style="display: none;">
+  <strong>Coming soon.</strong>
 </div>
 
 {% if site.posts.size > 0 %}
@@ -93,18 +102,6 @@ permalink: /blog/
     <span class="empty-icon">🔍</span>
     <p>No posts found in this category.</p>
     <button class="filter-btn" data-filter="all">Show All Posts</button>
-  </div>
-</div>
-
-<div class="blog-sections">
-  <div class="blog-section">
-    <h2 class="section-title">Cryptography</h2>
-    <p class="section-notice"><strong>It is paused for Academic reasons.</strong></p>
-  </div>
-
-  <div class="blog-section">
-    <h2 class="section-title">Threat Detection Engineering</h2>
-    <p class="section-coming-soon">Coming soon.</p>
   </div>
 </div>
 
