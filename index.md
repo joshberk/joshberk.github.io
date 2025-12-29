@@ -12,6 +12,22 @@ title: Home
   </div>
 </div>
 
+<div class="philosophy-quote">
+  <div class="terminal-header">
+    <span class="terminal-dot red"></span>
+    <span class="terminal-dot yellow"></span>
+    <span class="terminal-dot green"></span>
+    <span class="terminal-path">~/philosophy</span>
+  </div>
+  <div class="terminal-body">
+    <p class="terminal-command"><span class="prompt">$</span> cat /etc/philosophy.conf</p>
+    <blockquote class="terminal-quote">
+      "Each problem that I solved became a rule which served afterwards to solve other problems."
+    </blockquote>
+    <p class="terminal-author"># — René Descartes</p>
+  </div>
+</div>
+
 ## About Me
 
 <div class="about-content">

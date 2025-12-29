@@ -1018,3 +1018,97 @@ pre code {
   border: 2px solid var(--accent-blue);
   color: var(--accent-blue);
 }
+
+/* Philosophy Quote - Terminal Style */
+.philosophy-quote {
+  background: #0d0d0d;
+  border: 1px solid var(--border-green);
+  border-radius: 8px;
+  margin: 2rem 0 3rem;
+  overflow: hidden;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-green);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red {
+  background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+  background: #ffbd2e;
+}
+
+.terminal-dot.green {
+  background: #27c93f;
+}
+
+.terminal-path {
+  color: #666;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.terminal-body {
+  padding: 1.5rem;
+}
+
+.terminal-command {
+  color: var(--hacker-green);
+  margin-bottom: 1rem;
+}
+
+.terminal-command .prompt {
+  color: #666;
+  margin-right: 0.5rem;
+}
+
+.terminal-quote {
+  border-left: 3px solid var(--hacker-green);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--hacker-green);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.terminal-author {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+[data-theme="light"] .philosophy-quote {
+  background: #f5f5f5;
+  border-color: var(--border-green);
+}
+
+[data-theme="light"] .terminal-header {
+  background: #e8e8e8;
+}
+
+[data-theme="light"] .terminal-path {
+  color: #888;
+}
+
+[data-theme="light"] .terminal-command .prompt {
+  color: #888;
+}
+
+[data-theme="light"] .terminal-author {
+  color: #888;
+}
