@@ -48,16 +48,16 @@
   <body>
     <header>
       <div class="container">
-        <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-
         <nav class="header-nav">
-          <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-          <a href="{{ '/blog/' | relative_url }}" class="nav-link">Blog</a>
-          <a href="{{ '/assets/resume.pdf' | relative_url }}" class="nav-link" target="_blank">CV</a>
-          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">☀️</button>
+          <a id="a-title" href="{{ '/' | relative_url }}" class="site-brand">
+            <span class="brand-name">{{ site.title | default: site.github.repository_name }}</span>
+          </a>
+          <div class="nav-links">
+            <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+            <a href="{{ '/blog/' | relative_url }}" class="nav-link">Blog</a>
+            <a href="{{ '/assets/resume.pdf' | relative_url }}" class="nav-link" target="_blank">CV</a>
+            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">☀️</button>
+          </div>
         </nav>
       </div>
     </header>
