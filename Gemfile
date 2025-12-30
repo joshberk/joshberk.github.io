@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "~> 2.5"
+# Pinned Hacker theme (vendored as a gem, not remote)
+gem "jekyll-theme-hacker", "~> 0.2.0"
 
 # GitHub Pages gem
 gem "github-pages", "~> 231", group: :jekyll_plugins
@@ -13,7 +13,6 @@ gem "github-pages", "~> 231", group: :jekyll_plugins
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-sitemap"
-  gem "jekyll-remote-theme"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
