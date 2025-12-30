@@ -427,13 +427,56 @@ Move inline scripts to external files, then update CSP:
 
 ---
 
+## Implemented Fixes (December 2025)
+
+The following security recommendations have been implemented:
+
+### 1. Dependabot Configuration
+**File:** `.github/dependabot.yml`
+- Automated weekly scanning for Ruby/Bundler dependencies
+- GitHub Actions ecosystem monitoring
+- Auto-creates PRs for vulnerable dependencies
+
+### 2. Strict CSP - Inline Scripts Removed
+**Files:** `_layouts/default.html`, `assets/js/mathjax-config.js`, `assets/js/analytics.js`
+- Migrated inline MathJax configuration to external file
+- Migrated inline Google Analytics initialization to external file
+- Removed `'unsafe-inline'` from `script-src` directive
+- CSP now only allows scripts from trusted sources
+
+### 3. Invalid SRI Hash Fixed
+**File:** `_layouts/default.html`
+- Removed incorrect SRI hash from Google Analytics tag (GA doesn't support SRI)
+- Documented SRI approach for MathJax (using @3 tag without SRI due to version resolution)
+
+### 4. Security Headers Synchronized
+**Files:** `_layouts/default.html`, `.htaccess`
+- CSP now identical between meta tag and Apache headers
+- Removed deprecated `X-XSS-Protection` header from `.htaccess`
+- Both configurations now include `cdn.jsdelivr.net` for MathJax
+
+### Summary of Changes
+
+| File | Change |
+|------|--------|
+| `.github/dependabot.yml` | NEW - Automated vulnerability scanning |
+| `_layouts/default.html` | Updated CSP, external scripts, removed invalid SRI |
+| `assets/js/mathjax-config.js` | NEW - External MathJax configuration |
+| `assets/js/analytics.js` | NEW - External Google Analytics initialization |
+| `.htaccess` | Synchronized CSP, removed X-XSS-Protection |
+| `SECURITY_REVIEW.md` | Updated with implementation status |
+
+---
+
 ## Conclusion
 
-This static Jekyll site demonstrates a **mature security posture** for its architecture. The primary areas for improvement are:
+This static Jekyll site demonstrates a **mature security posture** for its architecture. ~~The primary areas for improvement are:~~
 
-1. **Supply chain security** - Automated dependency scanning
-2. **CSP hardening** - Removing `'unsafe-inline'` allowances
-3. **SRI consistency** - Correcting invalid integrity hashes
+~~1. **Supply chain security** - Automated dependency scanning~~
+~~2. **CSP hardening** - Removing `'unsafe-inline'` allowances~~
+~~3. **SRI consistency** - Correcting invalid integrity hashes~~
+
+**All high-priority recommendations have been implemented.** The remaining items are informational or low-priority enhancements.
 
 The absence of backend code, user authentication, and data processing means most OWASP Top 10 categories are not applicable. The implemented controls (CSP, security headers, input sanitization) are appropriate and well-configured for a static site.
 

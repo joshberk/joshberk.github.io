@@ -4,12 +4,12 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="same-origin">
     <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()">
     <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBkPSJNNCAxN0wxMCAxMUw0IDUiLz4KICA8cGF0aCBkPSJNMTIgMTlIMjAiLz4KPC9zdmc+">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    
+
     <!-- Custom meta tags -->
     <meta name="description" content="{{ page.description | default: site.description }}">
     <meta name="keywords" content="Joshua Berkoh, cryptography, cybersecurity, PhD, portfolio, research">
@@ -19,32 +19,19 @@
     <meta property="og:image" content="{{ site.url }}/assets/images/hero.png">
 
     {% seo %}
-    
-    <!-- MathJax Configuration -->
-    <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous"></script>
-    
-    <!-- Google Analytics -->
+
+    <!-- MathJax Configuration (external file for CSP compliance) -->
+    <script src="{{ '/assets/js/mathjax-config.js' | relative_url }}"></script>
+    <!-- MathJax: Using @3 (latest v3.x) from jsdelivr CDN. SRI not used because:
+         1. @3 tag resolves to latest version, which changes SRI hash on updates
+         2. jsdelivr is a trusted CDN with its own integrity verification
+         To pin with SRI: use specific version like mathjax@3.2.2 and generate hash -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
+
+    <!-- Google Analytics (no SRI - GA uses dynamic content that doesn't support integrity checks) -->
     {% if site.google_analytics %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ site.google_analytics }}');
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script src="{{ '/assets/js/analytics.js' | relative_url }}" data-ga-id="{{ site.google_analytics }}"></script>
     {% endif %}
   </head>
 
@@ -73,7 +60,7 @@
 
     <!-- Custom JavaScript -->
     <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
-    
+
     <!-- Footer with current year -->
     <footer>
       <div class="container">
