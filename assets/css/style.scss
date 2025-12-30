@@ -113,50 +113,246 @@ footer {
 /* Color palette that complements the hacker theme */
 :root {
   --hacker-green: #00ff00;
+  --hacker-green-dark: #00cc00;
   --hacker-bg: #000000;
+  --hacker-text: #ffffff;
   --academic-blue: #0d47a1;
   --accent-blue: #64b5f6;
   --card-bg: rgba(0, 255, 0, 0.02);
   --border-green: rgba(0, 255, 0, 0.2);
 }
 
-/* Light theme variables */
+/* Light theme variables - keeping hacker green aesthetic */
 [data-theme="light"] {
-  --hacker-green: #0d47a1;
-  --hacker-bg: #ffffff;
-  --academic-blue: #1976d2;
-  --accent-blue: #64b5f6;
-  --card-bg: rgba(13, 71, 161, 0.02);
-  --border-green: rgba(13, 71, 161, 0.2);
+  --hacker-green: #00aa00;
+  --hacker-green-dark: #008800;
+  --hacker-bg: #0a0a0a;
+  --hacker-text: #1a1a1a;
+  --academic-blue: #006600;
+  --accent-blue: #00cc00;
+  --card-bg: rgba(0, 150, 0, 0.05);
+  --border-green: rgba(0, 150, 0, 0.3);
 }
 
 /* Override the default hacker theme colors when in light mode */
 [data-theme="light"] body {
-  background: #ffffff !important;
-  color: #333333 !important;
+  background: #f0f4f0 !important;
+  color: #1a1a1a !important;
 }
 
 [data-theme="light"] header {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
-  color: #333333 !important;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+  color: #00ff00 !important;
 }
 
 [data-theme="light"] header h1,
 [data-theme="light"] header h2 {
-  color: #0d47a1 !important;
-  text-shadow: none !important;
+  color: #00ff00 !important;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
 }
 
 [data-theme="light"] .container {
-  background: #ffffff !important;
+  background: transparent !important;
 }
 
 [data-theme="light"] a {
-  color: #0d47a1 !important;
+  color: #007700 !important;
 }
 
 [data-theme="light"] a:hover {
-  color: #1976d2 !important;
+  color: #00aa00 !important;
+}
+
+/* Light mode nav styling */
+[data-theme="light"] .nav-link {
+  color: #00ff00 !important;
+  border-color: #00ff00 !important;
+  background: transparent;
+}
+
+[data-theme="light"] .nav-link:hover {
+  background: #00ff00 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+[data-theme="light"] .brand-name {
+  color: #00ff00 !important;
+}
+
+[data-theme="light"] .brand-name:hover {
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+}
+
+[data-theme="light"] .theme-toggle {
+  color: #00ff00 !important;
+  border-color: #00ff00 !important;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: #00ff00 !important;
+  color: #000000 !important;
+}
+
+/* Light mode hero section */
+[data-theme="light"] .hero-section h1 {
+  color: #1a1a1a !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .accent-text {
+  color: #007700 !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .hero-description {
+  color: #333333 !important;
+}
+
+/* Light mode buttons */
+[data-theme="light"] .btn-primary {
+  background: #007700 !important;
+  color: #ffffff !important;
+  border-color: #007700 !important;
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: #00aa00 !important;
+  border-color: #00aa00 !important;
+  box-shadow: 0 0 15px rgba(0, 150, 0, 0.3);
+}
+
+[data-theme="light"] .btn-outline {
+  color: #007700 !important;
+  border-color: #007700 !important;
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: #007700 !important;
+  color: #ffffff !important;
+}
+
+/* Light mode cards and posts */
+[data-theme="light"] .post-preview,
+[data-theme="light"] .post-card,
+[data-theme="light"] .featured-post {
+  background: #ffffff !important;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+}
+
+[data-theme="light"] .post-preview:hover,
+[data-theme="light"] .post-card:hover,
+[data-theme="light"] .featured-post:hover {
+  border-color: #007700 !important;
+  box-shadow: 0 5px 20px rgba(0, 100, 0, 0.1);
+}
+
+[data-theme="light"] .card-header,
+[data-theme="light"] .card-footer {
+  background: rgba(0, 100, 0, 0.03) !important;
+}
+
+[data-theme="light"] .post-date,
+[data-theme="light"] .card-link,
+[data-theme="light"] .featured-link {
+  color: #007700 !important;
+}
+
+[data-theme="light"] .card-badge,
+[data-theme="light"] .meta-tag {
+  background: rgba(0, 100, 0, 0.1) !important;
+  color: #006600 !important;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+}
+
+[data-theme="light"] .featured-label {
+  background: #007700 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .featured-title a {
+  color: #005500 !important;
+}
+
+[data-theme="light"] .featured-title a:hover {
+  color: #007700 !important;
+  text-shadow: none !important;
+}
+
+/* Light mode filter buttons */
+[data-theme="light"] .filter-btn {
+  color: #333333 !important;
+  border-color: rgba(0, 100, 0, 0.3) !important;
+}
+
+[data-theme="light"] .filter-btn:hover {
+  color: #007700 !important;
+  border-color: #007700 !important;
+}
+
+[data-theme="light"] .filter-btn.active {
+  background: #007700 !important;
+  color: #ffffff !important;
+  border-color: #007700 !important;
+}
+
+[data-theme="light"] .view-btn.active {
+  background: #007700 !important;
+  color: #ffffff !important;
+}
+
+/* Light mode blog controls */
+[data-theme="light"] .blog-controls {
+  background: #ffffff !important;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+}
+
+/* Light mode blog title gradient */
+[data-theme="light"] .blog-title {
+  background: linear-gradient(90deg, #006600, #009900) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Light mode headings */
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+  color: #006600 !important;
+}
+
+/* Light mode footer */
+[data-theme="light"] footer {
+  border-top-color: rgba(0, 100, 0, 0.2) !important;
+  color: #555555 !important;
+}
+
+/* Light mode details/summary */
+[data-theme="light"] details {
+  background: #ffffff;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+}
+
+[data-theme="light"] summary {
+  color: #007700 !important;
+}
+
+/* Light mode code blocks */
+[data-theme="light"] code {
+  background: rgba(0, 100, 0, 0.08) !important;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+  color: #005500 !important;
+}
+
+[data-theme="light"] pre {
+  background: #f5f8f5 !important;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+}
+
+/* Light mode list markers */
+[data-theme="light"] li::before {
+  color: #007700 !important;
 }
 
 /* Enhance the default hacker theme with custom styling */
