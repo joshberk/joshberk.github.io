@@ -3,12 +3,11 @@ description: "PhD Candidate · Security Researcher · Detection Engineer"
 url: "https://www.joshuaberkoh.engineer"
 baseurl: ""
 
-# Theme
-remote_theme: pages-themes/hacker@v0.2.0
+# Theme (pinned gem instead of remote fetch)
+theme: jekyll-theme-hacker
 
 # GitHub Pages compatible plugins
 plugins:
-  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
