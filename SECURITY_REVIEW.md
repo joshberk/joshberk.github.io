@@ -1,38 +1,27 @@
 # Security Review (OWASP Top 10)
 
 ## Scope and approach
-Re-evaluation of the static Jekyll site against OWASP Top 10 (2021) with emphasis on client-side, supply-chain, and hosting-layer misconfigurations relevant to GitHub Pages. The site remains static and does not process user data; therefore, authentication/authorization categories are low risk by design.
+Static Jekyll site hosted on GitHub Pages. Review covers repository content (layouts, scripts, configuration) against OWASP Top 10 2021 with emphasis on client-side behavior, supply chain, and hosting-layer headers. No server-side code or data processing is present.
 
-## Current findings
+## Current controls and observations
+- **Hardened response headers (A05 Security Misconfiguration):** The layout sets a meta-delivered Content Security Policy, Referrer-Policy, and Permissions-Policy to constrain external resources and disable powerful browser features by default.【F:_layouts/default.html†L4-L15】
+- **Supply-chain pinning (A06 Vulnerable and Outdated Components):** Jekyll dependencies are pinned via `github-pages` and the `jekyll-theme-hacker` gem rather than a remote theme fetch, reducing runtime code drift.【F:Gemfile†L1-L16】
+- **Client-side output handling (A03 Injection):** Dynamic text rendering in the faux terminal uses `textContent`-based escaping to avoid DOM injection.【F:assets/js/main.js†L113-L140】
 
-### A01: Broken Access Control
-* No dynamic routes or authenticated resources are present. This category remains low risk for the current static deployment.
-
-### A05: Security Misconfiguration
-* **New-tab navigation hardened.** The CV link now includes `rel="noopener noreferrer"`, closing the reverse-tabnabbing vector for the PDF target.
-  * Evidence: `_layouts/default.html` CV link now sets `rel="noopener noreferrer"`.【F:_layouts/default.html†L49-L52】
-
-* **Baseline browser-hardening headers added.** A meta-delivered Content Security Policy restricts scripts to self, jsDelivr, and Google Tag Manager/Analytics; styles to self and Google Fonts; fonts to self and fonts.gstatic; images to self/data; and locks down framing/base/form origins. Referrer-Policy and Permissions-Policy are also defined for defensive privacy defaults.
-  * Evidence: `_layouts/default.html` injects CSP, Referrer-Policy, and Permissions-Policy meta tags in the head.【F:_layouts/default.html†L6-L10】
-
-### A06: Vulnerable and Outdated Components
-* **Theme supply chain reduced.** The build now uses the pinned `jekyll-theme-hacker` gem instead of the remote theme fetch, removing network-time code retrieval and relying on the version locked in the repo.
-  * Evidence: `_config.yml` uses `theme: jekyll-theme-hacker` and drops `jekyll-remote-theme`.【F:_config.yml†L6-L14】
-
-* **External scripts protected with SRI.** MathJax and Google Analytics scripts include Subresource Integrity hashes and `crossorigin="anonymous"` to detect CDN tampering while retaining version pinning.
-  * Evidence: `_layouts/default.html` script tags now include `integrity` attributes for both external scripts.【F:_layouts/default.html†L22-L35】
-
-### A08: Software and Data Integrity Failures
-* **Reduced external JavaScript risk.** CSP scoping and SRI on MathJax/Analytics shrink the supply-chain blast radius. Maintain hashes when upgrading versions and consider migrating inline scripts to nonce-based policies to remove the `'unsafe-inline'` allowance.
-
-### A09: Security Logging and Monitoring Failures
-* Application-level logging is not applicable to the static site; operational visibility should rely on hosting logs and analytics.
-
-### Additional observations
-* Client-side `localStorage` is used for theme and view preferences with try/catch guards; data stored is non-sensitive and low risk.
+## Risk assessment by OWASP category
+1. **A01 Broken Access Control** – Not applicable: no authenticated routes or protected resources exist.
+2. **A02 Cryptographic Failures** – Low risk: the site does not handle secrets or user data; TLS enforcement depends on GitHub Pages configuration (not in-repo).
+3. **A03 Injection** – Low risk: there are no server-side inputs; limited client-side rendering escapes user-supplied strings before insertion.【F:assets/js/main.js†L125-L140】
+4. **A04 Insecure Design** – Low risk: static content only. Future interactive features should design for least privilege and explicit trust boundaries.
+5. **A05 Security Misconfiguration** – Moderate residual risk: CSP still allows `'unsafe-inline'` scripts/styles to accommodate inline configuration blocks, leaving room for DOM-based injection if new inline scripts are added.【F:_layouts/default.html†L6-L8】 Consider migrating inline scripts to external files with nonces/hashes to remove this allowance.
+6. **A06 Vulnerable and Outdated Components** – Moderate residual risk: dependency versions are pinned but rely on the GitHub Pages stack; no automated vulnerability scanning is configured in-repo. Adding periodic `bundler-audit` or Dependabot checks would improve coverage.【F:Gemfile†L1-L16】
+7. **A07 Identification and Authentication Failures** – Not applicable for a static site without authentication flows.
+8. **A08 Software and Data Integrity Failures** – Moderate residual risk: external scripts (MathJax, Google Analytics) rely on CDN integrity and CSP. Keep SRI hashes current when upgrading, and prefer self-hosting or subresource pinning to limit tampering exposure.【F:_layouts/default.html†L21-L36】
+9. **A09 Security Logging and Monitoring Failures** – Low inherent risk: no server-side events. Operational visibility should rely on GitHub Pages logs or CSP report endpoints if enabled.
+10. **A10 Server-Side Request Forgery** – Not applicable: no server-side network calls exist.
 
 ## Recommendations (prioritized)
-1. When updating MathJax or Google Analytics, regenerate SRI hashes and validate the CSP still permits required domains without over-broadening it; progressively replace inline scripts with nonce-based ones to remove `'unsafe-inline'` from `script-src`.
-2. Add operational validation: monitor for CSP violations (e.g., via `report-uri`/`report-to`) and confirm security headers are present on the deployed GitHub Pages response path.
-3. Continue to pin or vendor the Hacker theme gem and track upstream changelogs for security fixes before bumping versions.
-4. Ensure any future `target="_blank"` links include `rel="noopener noreferrer"` (or `rel="noreferrer"`) to preserve tab isolation.
+1. Remove `'unsafe-inline'` from the CSP by moving inline configuration/analytics scripts to external files and applying nonces or hashes; verify CSP after changes.【F:_layouts/default.html†L6-L8】
+2. Add automated dependency and vulnerability scanning (e.g., GitHub Dependabot and `bundler-audit`) to detect outdated gems despite pinning.【F:Gemfile†L1-L16】
+3. Periodically validate deployed response headers (CSP, Referrer-Policy, Permissions-Policy) on GitHub Pages and add a CSP reporting endpoint to surface violations.【F:_layouts/default.html†L4-L15】
+4. Document a policy that any new external scripts or `target="_blank"` links include SRI (where applicable) and `rel="noopener noreferrer"` to preserve tab isolation.【F:_layouts/default.html†L43-L48】
