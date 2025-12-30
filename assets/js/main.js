@@ -205,7 +205,7 @@ function initializeMatrixEffect() {
 function initializeTerminalCommands() {
   const terminal = document.querySelector('.terminal');
   if (!terminal) return;
-  
+
   const commands = {
     'help': 'Available commands: about, skills, contact, blog, clear',
     'about': 'PhD candidate in Information Technology focusing on applied cryptography',
@@ -213,32 +213,32 @@ function initializeTerminalCommands() {
     'blog': 'Visit /blog for latest posts on cryptography and cybersecurity',
     'clear': ''
   };
-  
+
   const input = terminal.querySelector('.terminal-input');
   const output = terminal.querySelector('.terminal-output');
-  
+
   if (!input || !output) return;
-  
+
+  const sanitizeHTML = (str) => {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+  };
+
   input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       const command = input.value.toLowerCase().trim();
       const response = commands[command] || `Command not found: ${command}. Type 'help' for available commands.`;
-      
+
       if (command === 'clear') {
         output.innerHTML = '';
       } else {
-      const sanitizeHTML = (str) => {
-        const div = document.createElement('div');
-        div.appendChild(document.createTextNode(str));
-        return div.innerHTML;
-      };
-
         output.innerHTML += `<div class="terminal-line">$ ${sanitizeHTML(input.value)}</div>`;
         if (response) {
-          output.innerHTML += `<div class="terminal-response">${response}</div>`;
+          output.innerHTML += `<div class="terminal-response">${sanitizeHTML(response)}</div>`;
         }
       }
-      
+
       input.value = '';
       terminal.scrollTop = terminal.scrollHeight;
     }
