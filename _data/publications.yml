@@ -1,18 +1,9 @@
-- title: "Example: Privacy-Preserving Protocols in Anonymous Networks"
-  authors: "Joshua Berkoh, Co-Author Name"
-  venue: "Proceedings of the IEEE Symposium on Security and Privacy (S&P)"
-  date: 2024-05-20
-  description: "A novel approach to enhancing privacy in I2P networks using advanced cryptographic primitives."
-  links:
-    - text: "PDF"
-      url: "#"
-    - text: "Code"
-      url: "#"
-- title: "Another Example: Quantitative Analysis of mix-nets"
-  authors: "Joshua Berkoh"
-  venue: "ACM Conference on Computer and Communications Security (CCS)"
-  date: 2023-11-15
-  description: "An extensive analysis of mix-net performance under various attack scenarios."
-  links:
-    - text: "PDF"
-      url: "#"
+# Add your publications here in the format:
+# - title: "Paper Title"
+#   authors: "Author Names"
+#   venue: "Conference Name"
+#   date: YYYY-MM-DD
+#   description: "Description"
+#   links:
+#     - text: "PDF"
+#       url: "link_to_pdf"
