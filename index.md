@@ -118,11 +118,11 @@ title: Home
 
 ## Publications & Research
 
-Coming soon - my research on privacy-preserving infrastructure and anonymous communication networks.
+{% include publications.html %}
 
 ## Contact
 
 Ready to collaborate on cryptography research or cybersecurity projects? Let's connect:
 
-- **LinkedIn**: [Joshua Berkoh](https://linkedin.com/in/joshua-berkoh)
-- **GitHub**: [@joshberk](https://github.com/joshberk)
+- **LinkedIn**: [Joshua Berkoh](https://linkedin.com/in/joshua-berkoh){:rel="me"}
+- **GitHub**: [@joshberk](https://github.com/joshberk){:rel="me"}
