@@ -32,7 +32,7 @@ title: Home
 
 <div class="about-content">
   <div class="profile-section">
-    <img src="assets/images/jjc.JPG" alt="Joshua Offe Berkoh profile photo" class="profile-image" loading="lazy" />
+    <img src="assets/images/jjc.JPG" alt="Joshua Offe Berkoh profile photo" class="profile-image" loading="lazy" width="200" height="300" />
   </div>
   
   <div class="about-text">
@@ -53,9 +53,10 @@ title: Home
     <details>
       <summary>Read More</summary>
       <p>
-        Professionally, I've built experience across academia, industry, and high stakes security environments. As a Security Engineer Intern at Intuit Inc.,
-        As an Adjunct Instructor at the University of Cincinnati, I redesigned and delivered undergraduate curricula in IT fundamentals, introducing hands-on labs 
-        that emphasized secure coding and systems thinking training nearly 50 students in each cohort.
+        Professionally, I've built experience across academia, industry, and high-stakes security environments. As a Security Engineer Intern at Intuit Inc.,
+        I contributed to internal security tooling and infrastructure hardening within a large-scale cloud environment. As an Adjunct Instructor at the University of Cincinnati,
+        I redesigned and delivered undergraduate curricula in IT fundamentals, introducing hands-on labs that emphasized secure coding and systems thinking,
+        training nearly 50 students in each cohort.
       </p>
       <p>
         Previously, I served as a Security Operations Analyst at Virtual Infosec Africa, where I monitored critical financial infrastructure, 
@@ -97,24 +98,31 @@ title: Home
 ## Skills
 
 #### Programming Languages
-- Python
-- HTML & CSS  
-- JavaScript
-- SQL
+<div class="skills-group">
+  <span class="skill-badge">Python</span>
+  <span class="skill-badge">HTML &amp; CSS</span>
+  <span class="skill-badge">JavaScript</span>
+  <span class="skill-badge">SQL</span>
+  <span class="skill-badge">Rust</span>
+</div>
 
-#### Cybersecurity & Cryptography
-- Applied Cryptography
-- Security Analysis
-- Vulnerability Assessment
-- Incident Response
-- Secure Systems Design
+#### Cybersecurity &amp; Cryptography
+<div class="skills-group">
+  <span class="skill-badge">Applied Cryptography</span>
+  <span class="skill-badge">Security Analysis</span>
+  <span class="skill-badge">Vulnerability Assessment</span>
+  <span class="skill-badge">Incident Response</span>
+  <span class="skill-badge">Secure Systems Design</span>
+</div>
 
-#### Tools & Frameworks
-- Git & Version Control
-- Linux/Unix Systems
-- Cloud Platforms (AWS)
-- Docker & Containerization
-- Research & Academic Writing
+#### Tools &amp; Frameworks
+<div class="skills-group">
+  <span class="skill-badge">Git &amp; Version Control</span>
+  <span class="skill-badge">Linux / Unix</span>
+  <span class="skill-badge">AWS</span>
+  <span class="skill-badge">Docker</span>
+  <span class="skill-badge">Research &amp; Academic Writing</span>
+</div>
 
 ## Publications & Research
 
