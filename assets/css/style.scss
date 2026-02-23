@@ -363,15 +363,16 @@ footer {
 /* Enhance the default hacker theme with custom styling */
 body {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* Hero section styling */
 .hero-section {
-  text-align: center;
-  padding: 3rem 0;
-  margin-bottom: 2rem;
+  text-align: left;
+  padding: 2.75rem 0 2.25rem;
+  margin: 0 auto 2.5rem;
   border-bottom: 1px solid var(--border-green);
+  max-width: 860px;
 }
 
 /* Publications include styles moved from _includes/publications.html to avoid inline styles */
@@ -414,13 +415,15 @@ body {
 }
 
 .featured-projects h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.6rem;
+  letter-spacing: 0.6px;
 }
 
 .github-contrib-intro {
-  margin: 0 0 1rem;
-  opacity: 0.9;
+  margin: 0 0 1.2rem;
+  opacity: 0.82;
+  font-size: 0.96rem;
 }
 
 .projects-grid {
@@ -432,28 +435,36 @@ body {
 .project-card {
   background: var(--card-bg);
   border: 1px solid var(--border-green);
-  padding: 1rem;
-  border-radius: 6px;
+  padding: 1.15rem;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .project-title a {
   color: var(--hacker-green);
+  text-decoration: none;
+}
+
+.project-card:hover {
+  border-color: rgba(0, 255, 0, 0.45);
+  transform: translateY(-2px);
 }
 
 .project-description {
-  margin: 0.5rem 0;
-  color: rgba(255,255,255,0.85);
+  margin: 0.55rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.55;
 }
 
 .project-meta {
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 0.82;
 }
 
 .repo-updated {
   margin-top: 0.5rem;
   font-size: 0.8rem;
-  opacity: 0.75;
+  opacity: 0.72;
 }
 
 [data-theme="light"] .project-card {
@@ -481,41 +492,43 @@ body {
 
 
 .hero-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px var(--hacker-green);
+  font-size: 2.35rem;
+  margin-bottom: 0.8rem;
+  text-shadow: none;
+  line-height: 1.2;
 }
 
 .accent-text {
   color: var(--hacker-green);
-  text-shadow: 0 0 5px var(--hacker-green);
+  text-shadow: none;
 }
 
 .hero-description {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.8;
+  font-size: 1.1rem;
+  margin-bottom: 1.7rem;
+  opacity: 0.82;
+  max-width: 700px;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  gap: 0.8rem;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 /* Button styles that complement the hacker theme */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.68rem 1.35rem;
   text-decoration: none;
   border: 1px solid var(--hacker-green);
-  border-radius: 3px;
+  border-radius: 4px;
   transition: all 0.3s ease;
   font-family: inherit;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0.2px;
+  font-size: 0.92rem;
 }
 
 .btn-primary {
@@ -526,7 +539,7 @@ body {
 .btn-primary:hover {
   background: transparent;
   color: var(--hacker-green);
-  box-shadow: 0 0 15px var(--hacker-green);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.35);
 }
 
 .btn-outline {
@@ -537,7 +550,7 @@ body {
 .btn-outline:hover {
   background: var(--hacker-green);
   color: var(--hacker-bg);
-  box-shadow: 0 0 15px var(--hacker-green);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.35);
 }
 
 /* About section */
@@ -546,13 +559,14 @@ body {
   grid-template-columns: 200px 1fr;
   gap: 2rem;
   margin: 2rem 0;
+  align-items: start;
 }
 
 .profile-image {
   width: 100%;
   border-radius: 8px;
   border: 2px solid var(--border-green);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .about-text {
@@ -567,21 +581,22 @@ body {
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.3rem;
   margin: 2rem 0;
 }
 
 .post-preview {
   background: var(--card-bg);
   border: 1px solid var(--border-green);
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .post-preview:hover {
-  border-color: var(--hacker-green);
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+  border-color: rgba(0, 255, 0, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
 }
 
 .post-preview h3 {
@@ -594,7 +609,7 @@ body {
 }
 
 .post-preview h3 a:hover {
-  text-shadow: 0 0 5px var(--hacker-green);
+  text-shadow: none;
 }
 
 .post-meta {
@@ -779,6 +794,11 @@ pre code {
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .hero-section {
+    text-align: center;
+    padding-top: 2rem;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1364,9 +1384,9 @@ pre code {
 
 /* Philosophy Quote - Terminal Style */
 .philosophy-quote {
-  background: #0d0d0d;
+  background: #0f1110;
   border: 1px solid var(--border-green);
-  border-radius: 8px;
+  border-radius: 10px;
   margin: 2rem 0 3rem;
   overflow: hidden;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
@@ -1406,12 +1426,13 @@ pre code {
 }
 
 .terminal-body {
-  padding: 1.5rem;
+  padding: 1.35rem 1.5rem;
 }
 
 .terminal-command {
-  color: var(--hacker-green);
-  margin-bottom: 1rem;
+  color: rgba(0, 255, 0, 0.75);
+  margin-bottom: 0.85rem;
+  font-size: 0.95rem;
 }
 
 .terminal-command .prompt {
@@ -1421,10 +1442,10 @@ pre code {
 
 .terminal-quote {
   border-left: 3px solid var(--hacker-green);
-  padding-left: 1rem;
-  margin: 1rem 0;
-  color: var(--hacker-green);
-  font-size: 1.1rem;
+  padding-left: 0.9rem;
+  margin: 0.9rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
   line-height: 1.6;
   font-style: normal;
 }
@@ -1483,25 +1504,25 @@ pre code {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0.75rem 0 1.5rem 0;
+  margin: 0.55rem 0 1.35rem 0;
 }
 
 .skill-badge {
-  background: rgba(0, 255, 0, 0.1);
+  background: rgba(0, 255, 0, 0.07);
   color: var(--hacker-green);
-  border: 1px solid var(--border-green);
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
+  border: 1px solid rgba(0, 255, 0, 0.24);
+  padding: 0.3rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.35px;
   transition: all 0.2s ease;
 }
 
 .skill-badge:hover {
-  background: rgba(0, 255, 0, 0.2);
-  border-color: var(--hacker-green);
-  box-shadow: 0 0 8px rgba(0, 255, 0, 0.2);
+  background: rgba(0, 255, 0, 0.14);
+  border-color: rgba(0, 255, 0, 0.5);
+  box-shadow: 0 0 6px rgba(0, 255, 0, 0.16);
 }
 
 [data-theme="light"] .skill-badge {
