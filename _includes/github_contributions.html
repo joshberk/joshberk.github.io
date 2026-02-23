@@ -4,21 +4,21 @@
 
   {% assign repos = site.data.projects.projects %}
   {% if repos and repos.size > 0 %}
-    <div class="projects-grid">
+    <div class="posts-grid">
       {% for repo in repos %}
-        <article class="project-card">
-          <h3 class="project-title">
+        <article class="post-preview">
+          <h3>
             <a href="{{ repo.url }}" target="_blank" rel="noopener noreferrer">{{ repo.full_name | default: repo.name | escape }}</a>
           </h3>
-          <p class="project-description">{{ repo.description | default: "No description provided." | escape }}</p>
-          <p class="project-meta">
-            {% if repo.language %}{{ repo.language | escape }}{% endif %}
-            {% if repo.stars != nil %}{% if repo.language %} • {% endif %}★ {{ repo.stars }}{% endif %}
+          <p class="post-meta">
+            {% if repo.updated %}
+              <time datetime="{{ repo.updated | date_to_xmlschema }}">{{ repo.updated | date: "%B %d, %Y" }}</time>
+            {% endif %}
+            {% if repo.language %}{% if repo.updated %} • {% endif %}{{ repo.language | escape }}{% endif %}
+            {% if repo.stars != nil %} • ★ {{ repo.stars }}{% endif %}
             {% if repo.forks != nil %} • Forks {{ repo.forks }}{% endif %}
           </p>
-          {% if repo.updated %}
-            <p class="repo-updated">Updated {{ repo.updated | date: "%b %d, %Y" }}</p>
-          {% endif %}
+          <p>{{ repo.description | default: "No description provided." | escape }}</p>
         </article>
       {% endfor %}
     </div>
