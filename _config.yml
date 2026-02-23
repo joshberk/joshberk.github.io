@@ -6,8 +6,7 @@ baseurl: ""
 # Site-wide image used by jekyll-seo-tag for og:image / twitter:image
 image: /assets/images/hero.png
 
-# Theme (pinned gem instead of remote fetch)
-theme: jekyll-theme-hacker
+# Theme is fully custom via layouts + assets/css/style.scss
 
 # GitHub Pages compatible plugins
 plugins:

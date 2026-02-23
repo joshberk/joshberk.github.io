@@ -1,6 +1,6 @@
 /**
- * Main JavaScript for Joshua Berkoh's Jekyll site with Hacker theme
- * Preserves core functionality while adapting to Jekyll structure
+ * Main JavaScript for Joshua Berkoh's Jekyll site
+ * Handles theme switching, blog filters, and lightweight UI effects.
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -22,22 +22,23 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
- * Theme toggle functionality - adapted for hacker theme
+ * Theme toggle functionality
  */
 function initializeTheme() {
   const themeToggle = document.getElementById('themeToggle');
   if (!themeToggle) return;
   
   const applyTheme = (theme) => {
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '🌙';
-      themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
       themeToggle.textContent = '☀️';
       themeToggle.setAttribute('aria-label', 'Switch to light mode');
+      return;
     }
+
+    document.documentElement.removeAttribute('data-theme');
+    themeToggle.textContent = '🌙';
+    themeToggle.setAttribute('aria-label', 'Switch to dark mode');
   };
 
   // Safe localStorage operations
@@ -59,15 +60,15 @@ function initializeTheme() {
   };
 
   // Initialize theme from localStorage or default
-  const savedTheme = safeGet('theme') || 'dark'; // Default to dark for hacker theme
+  const savedTheme = safeGet('theme') || 'light';
   applyTheme(savedTheme);
-  themeToggle.setAttribute('aria-pressed', savedTheme === 'light' ? 'true' : 'false');
+  themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
 
   // Theme toggle click handler
   themeToggle.addEventListener('click', () => {
-    const current = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
-    themeToggle.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+    const current = themeToggle.getAttribute('aria-pressed') === 'true' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
     applyTheme(next);
     safeSet('theme', next);
   });
@@ -109,7 +110,7 @@ function initializeTerminalEffects() {
       i++;
       setTimeout(typeWriter, 100);
     } else {
-      // Re-attach the original styled span — preserves green glow and CSS
+      // Re-attach the original styled span and restore normal title state
       heroTitle.appendChild(accentSpan);
       setTimeout(() => heroTitle.classList.remove('cursor'), 2000);
     }
