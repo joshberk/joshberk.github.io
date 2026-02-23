@@ -1,3 +1,6 @@
-# List repository names (exact repo.name) to feature on the homepage
-# The GitHub Action updates _data/projects.yml; add repo names below to show them.
-featured: ["joshberk.github.io", "Agentic-Threat-Intel-Feed"]
+# Dedicated list of public repositories to showcase on the homepage.
+# You can use either repo names (resolved with `owner`) or full `owner/repo` slugs.
+owner: "joshberk"
+repos:
+  - "joshberk.github.io"
+  - "Agentic-Threat-Intel-Feed"

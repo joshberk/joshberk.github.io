@@ -95,7 +95,7 @@ title: Home
 
 <a href="/blog" class="btn btn-outline">View All Posts →</a>
 
-{% include projects.html %}
+{% include github_contributions.html %}
 
 ## Skills
 

@@ -418,6 +418,11 @@ body {
   font-size: 1.6rem;
 }
 
+.github-contrib-intro {
+  margin: 0 0 1rem;
+  opacity: 0.9;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -445,6 +450,12 @@ body {
   opacity: 0.8;
 }
 
+.repo-updated {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
 [data-theme="light"] .project-card {
   background: #ffffff !important;
   border-color: rgba(0, 100, 0, 0.2) !important;
@@ -459,6 +470,11 @@ body {
 }
 
 [data-theme="light"] .project-meta {
+  color: #333333 !important;
+  opacity: 1;
+}
+
+[data-theme="light"] .repo-updated {
   color: #333333 !important;
   opacity: 1;
 }

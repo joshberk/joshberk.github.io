@@ -1,6 +1,6 @@
 name: Update Projects Data
 
-# Fetch public repositories for the user and write _data/projects.yml
+# Fetch selected public repositories and write _data/projects.yml
 on:
   workflow_dispatch:
   schedule:
@@ -19,27 +19,58 @@ jobs:
       - name: Fetch GitHub repos
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_USER: joshberk
         run: |
           set -euo pipefail
-          export LC_ALL=C.UTF-8
-          API="https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated"
-          echo "Fetching repos from $API"
-          resp=$(curl -fsSL \
-            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            "$API")
+          ruby <<'RUBY'
+          require "yaml"
+          require "json"
+          require "uri"
+          require "net/http"
 
-          echo "projects:" > _data/projects.yml
-          echo "$resp" | jq -r '
-            .[] |
-            "  - name: \(.name | @json)\n" +
-            "    description: \(((.description // \"\") | gsub(\"[\\r\\n]+\"; \" \")) | @json)\n" +
-            "    url: \(.html_url | @json)\n" +
-            "    language: \((.language // \"\") | @json)\n" +
-            "    stars: \(.stargazers_count)\n" +
-            "    updated: \(.updated_at | @json)"
-          ' >> _data/projects.yml
+          token = ENV.fetch("GITHUB_TOKEN")
+          config = YAML.load_file("_data/featured_projects.yml") || {}
+          owner = (config["owner"] || "").strip
+          repos = config["repos"] || config["featured"] || []
+
+          repo_slugs = repos.map do |repo|
+            value = repo.to_s.strip
+            next nil if value.empty?
+            value.include?("/") ? value : [owner, value].reject(&:empty?).join("/")
+          end.compact
+
+          if repo_slugs.empty?
+            abort("No repositories configured in _data/featured_projects.yml")
+          end
+
+          projects = []
+          repo_slugs.each do |slug|
+            uri = URI("https://api.github.com/repos/#{slug}")
+            req = Net::HTTP::Get.new(uri)
+            req["Authorization"] = "Bearer #{token}"
+            req["Accept"] = "application/vnd.github+json"
+            req["User-Agent"] = "github-actions/update-projects"
+
+            res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(req) }
+            unless res.is_a?(Net::HTTPSuccess)
+              abort("Failed to fetch #{slug}: HTTP #{res.code} #{res.message}")
+            end
+
+            data = JSON.parse(res.body)
+            projects << {
+              "name" => data["name"],
+              "full_name" => data["full_name"],
+              "description" => (data["description"] || "").gsub(/[\r\n]+/, " ").strip,
+              "url" => data["html_url"],
+              "language" => data["language"] || "",
+              "stars" => data["stargazers_count"] || 0,
+              "forks" => data["forks_count"] || 0,
+              "updated" => data["pushed_at"] || data["updated_at"]
+            }
+          end
+
+          File.write("_data/projects.yml", { "projects" => projects }.to_yaml)
+          puts "Wrote #{projects.length} repositories to _data/projects.yml"
+          RUBY
 
       - name: Commit & Push
         run: |
