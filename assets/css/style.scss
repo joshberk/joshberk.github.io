@@ -445,6 +445,24 @@ body {
   opacity: 0.8;
 }
 
+[data-theme="light"] .project-card {
+  background: #ffffff !important;
+  border-color: rgba(0, 100, 0, 0.2) !important;
+}
+
+[data-theme="light"] .project-title a {
+  color: #005500 !important;
+}
+
+[data-theme="light"] .project-description {
+  color: #1a1a1a !important;
+}
+
+[data-theme="light"] .project-meta {
+  color: #333333 !important;
+  opacity: 1;
+}
+
 
 .hero-section h1 {
   font-size: 2.5rem;
