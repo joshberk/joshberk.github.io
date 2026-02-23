@@ -171,6 +171,16 @@ function initializeBlogFilters() {
   const cryptographyNotice = document.getElementById('cryptography-notice');
   const threatDetectionNotice = document.getElementById('threat-detection-notice');
 
+  const setHidden = (el, hidden) => {
+    if (!el) return;
+    el.classList.toggle('hidden', hidden);
+  };
+
+  // Ensure notices are hidden on initial render regardless of CSP inline-style behavior.
+  setHidden(cryptographyNotice, true);
+  setHidden(threatDetectionNotice, true);
+  setHidden(noPostsMessage, true);
+
   if (!filterButtons.length || !posts.length) return;
 
   filterButtons.forEach(button => {
@@ -182,12 +192,8 @@ function initializeBlogFilters() {
       button.classList.add('active');
 
       // Show/hide category notices
-      if (cryptographyNotice) {
-        cryptographyNotice.style.display = filter === 'cryptography' ? 'block' : 'none';
-      }
-      if (threatDetectionNotice) {
-        threatDetectionNotice.style.display = filter === 'threat-detection' ? 'block' : 'none';
-      }
+      setHidden(cryptographyNotice, filter !== 'cryptography');
+      setHidden(threatDetectionNotice, filter !== 'threat-detection');
 
       // Filter posts
       let visibleCount = 0;
@@ -203,11 +209,9 @@ function initializeBlogFilters() {
 
         if (matchesFilter) {
           post.classList.remove('hidden');
-          post.style.display = '';
           visibleCount++;
         } else {
           post.classList.add('hidden');
-          post.style.display = 'none';
         }
       });
 
@@ -217,18 +221,7 @@ function initializeBlogFilters() {
       }
 
       // Show/hide no posts message
-      if (noPostsMessage) {
-        noPostsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
-      }
-
-      // Re-trigger animations
-      posts.forEach((post, index) => {
-        if (!post.classList.contains('hidden')) {
-          post.style.animation = 'none';
-          post.offsetHeight; // Trigger reflow
-          post.style.animation = `fadeInUp 0.4s ease forwards ${index * 0.05}s`;
-        }
-      });
+      setHidden(noPostsMessage, visibleCount !== 0);
     });
   });
 }

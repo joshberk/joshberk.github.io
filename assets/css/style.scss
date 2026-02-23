@@ -601,6 +601,10 @@ summary {
   display: none;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .category-notice {
   margin: 0.75rem 0;
   border-radius: var(--radius-sm);

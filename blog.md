@@ -31,11 +31,11 @@ permalink: /blog/
   <span class="count-text">Showing <span id="visible-count">{{ site.posts.size }}</span> of {{ site.posts.size }} posts</span>
 </div>
 
-<div class="category-notice cryptography-notice" id="cryptography-notice" style="display: none;">
+<div class="category-notice cryptography-notice hidden" id="cryptography-notice">
   <strong>Paused for Academic reasons.</strong>
 </div>
 
-<div class="category-notice threat-detection-notice" id="threat-detection-notice" style="display: none;">
+<div class="category-notice threat-detection-notice hidden" id="threat-detection-notice">
   <strong>Coming soon.</strong>
 </div>
 
@@ -97,7 +97,7 @@ permalink: /blog/
   {% endfor %}
 </div>
 
-<div class="no-posts-message" id="no-posts" style="display: none;">
+<div class="no-posts-message hidden" id="no-posts">
   <div class="empty-state">
     <span class="empty-icon">🔍</span>
     <p>No posts found in this category.</p>
