@@ -1,0 +1,3 @@
+# List repository names (exact repo.name) to feature on the homepage
+# The GitHub Action updates _data/projects.yml; add repo names below to show them.
+featured: ["joshberk.github.io", "Agentic-Threat-Intel-Feed"]

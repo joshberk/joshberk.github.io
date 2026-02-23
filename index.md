@@ -95,6 +95,8 @@ title: Home
 
 <a href="/blog" class="btn btn-outline">View All Posts →</a>
 
+{% include projects.html %}
+
 ## Skills
 
 #### Programming Languages

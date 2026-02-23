@@ -1,0 +1,38 @@
+name: Update Projects Data
+
+# Fetch public repositories for the user and write _data/projects.yml
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *' # daily at 06:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch GitHub repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: joshberk
+        run: |
+          set -euo pipefail
+          API="https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated"
+          echo "Fetching repos from $API"
+          resp=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$API")
+
+          echo "projects:" > _data/projects.yml
+          echo "$resp" | jq -r '.[] | "  - name: \"\(.name)\"\n    description: \"\((.description // "") | gsub("\""; "\\\"") )\"\n    url: \"\(.html_url)\"\n    language: \"\(.language // "")\"\n    stars: \(.stargazers_count)\n    updated: \"\(.updated_at)\""' >> _data/projects.yml
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/projects.yml
+          git commit -m "chore: update _data/projects.yml (auto)" || echo "No changes to commit"
+          git push
