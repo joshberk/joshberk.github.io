@@ -8,7 +8,7 @@ title: Home
   <p class="hero-description">{{ site.description }}</p>
   <div class="hero-buttons">
     <a href="#about-me" class="btn btn-primary">Learn More</a>
-    <a href="assets/resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">View CV</a>
+    <a href="assets/resume.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View CV</a>
   </div>
 </div>
 

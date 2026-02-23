@@ -374,6 +374,40 @@ body {
   border-bottom: 1px solid var(--border-green);
 }
 
+/* Publications include styles moved from _includes/publications.html to avoid inline styles */
+.publications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.publication-item {
+  border-left: 3px solid var(--accent-color, #00ff00);
+  padding-left: 1.5rem;
+}
+
+.pub-meta {
+  color: var(--text-color-secondary, #888);
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+}
+
+.pub-authors {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.pub-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85em;
+}
+
 .hero-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
