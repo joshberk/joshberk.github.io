@@ -2,8 +2,14 @@
   <h2>Featured Projects</h2>
   {% assign projects = site.data.projects.projects %}
   {% assign featured = site.data.featured_projects.featured %}
-  {% assign parts = site.github.repository_url | remove: 'https://github.com/' | split: '/' %}
-  {% assign gh_user = parts | first %}
+  {% assign gh_user = site.github.owner_name | default: site.github.owner_login %}
+  {% if gh_user == nil or gh_user == "" %}
+    {% assign repo_url = site.github.repository_url | default: "" %}
+    {% if repo_url != "" %}
+      {% assign parts = repo_url | remove: 'https://github.com/' | split: '/' %}
+      {% assign gh_user = parts | first %}
+    {% endif %}
+  {% endif %}
 
   {% if (featured and featured.size > 0) or (projects and projects.size > 0) %}
     <div class="projects-grid">
@@ -13,32 +19,42 @@
           {% assign match = projects | where: "name", name %}
           {% if match and match.size > 0 %}
             {% assign proj = match[0] %}
-            <div class="project-card" role="article">
-              <h3 class="project-title"><a href="{{ proj.url }}" target="_blank" rel="noopener noreferrer">{{ proj.name }}</a></h3>
-              {% if proj.description %}
-              <p class="project-description">{{ proj.description }}</p>
-              {% endif %}
-              <p class="project-meta">{% if proj.language %}{{ proj.language }}{% endif %}{% if proj.stars %} • ★ {{ proj.stars }}{% endif %}</p>
-            </div>
+            {% include project_card.html
+              name=proj.name
+              url=proj.url
+              description=proj.description
+              language=proj.language
+              stars=proj.stars
+            %}
           {% else %}
             {%- comment -%} Projects data not available for this repo — build a simple GitHub link using repo owner {%- endcomment -%}
-            <div class="project-card" role="article">
-              <h3 class="project-title"><a href="https://github.com/{{ gh_user }}/{{ name }}" target="_blank" rel="noopener noreferrer">{{ name }}</a></h3>
-              <p class="project-description">Repository on GitHub — description unavailable.</p>
-              <p class="project-meta">GitHub: {{ gh_user }}/{{ name }}</p>
-            </div>
+            {% if gh_user %}
+              {% assign fallback_url = "https://github.com/" | append: gh_user | append: "/" | append: name %}
+              {% assign fallback_meta = "GitHub: " | append: gh_user | append: "/" | append: name %}
+              {% include project_card.html
+                name=name
+                url=fallback_url
+                description="Repository on GitHub; description unavailable."
+                meta=fallback_meta
+              %}
+            {% else %}
+              {% include project_card.html
+                name=name
+                description="Repository metadata unavailable during local preview."
+              %}
+            {% endif %}
           {% endif %}
         {% endfor %}
       {% else %}
         {%- comment -%} No manual featured list — show first 4 projects as fallback {%- endcomment -%}
         {% for proj in projects limit:4 %}
-          <div class="project-card" role="article">
-            <h3 class="project-title"><a href="{{ proj.url }}" target="_blank" rel="noopener noreferrer">{{ proj.name }}</a></h3>
-            {% if proj.description %}
-            <p class="project-description">{{ proj.description }}</p>
-            {% endif %}
-            <p class="project-meta">{% if proj.language %}{{ proj.language }}{% endif %}{% if proj.stars %} • ★ {{ proj.stars }}{% endif %}</p>
-          </div>
+          {% include project_card.html
+            name=proj.name
+            url=proj.url
+            description=proj.description
+            language=proj.language
+            stars=proj.stars
+          %}
         {% endfor %}
       {% endif %}
     </div>

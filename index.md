@@ -28,7 +28,7 @@ title: Home
   </div>
 </div>
 
-## About Me
+## About Me {#about-me}
 
 <div class="about-content">
   <div class="profile-section">
