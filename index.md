@@ -135,5 +135,5 @@ title: Home
 
 Ready to collaborate on cryptography research or cybersecurity projects? Let's connect:
 
-- **LinkedIn**: [Joshua Berkoh](https://linkedin.com/in/joshfiifi){:rel="me"}
+- **LinkedIn**: [Joshua Berkoh](https://linkedin.com/in/joshfiifii){:rel="me"}
 - **GitHub**: [@joshberk](https://github.com/joshberk){:rel="me"}

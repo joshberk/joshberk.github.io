@@ -2,15 +2,21 @@
     {% if site.data.publications.size > 0 %}
     {% for pub in site.data.publications %}
     <div class="publication-item">
-        <h3>{{ pub.title }}</h3>
+        <h3>
+            {{ pub.title }}
+            {% if pub.status %}
+            <span class="pub-status">{{ pub.status }}</span>
+            {% endif %}
+        </h3>
         <p class="pub-meta">
-            <strong>{{ pub.venue }}</strong> • {{ pub.date | date: "%Y" }}
+            <strong>{{ pub.venue }}</strong> • {{ pub.year }}
         </p>
+        {% if pub.authors %}
         <p class="pub-authors">{{ pub.authors }}</p>
+        {% endif %}
         {% if pub.description %}
         <p class="pub-description">{{ pub.description }}</p>
         {% endif %}
-
         {% if pub.links %}
         <div class="pub-links">
             {% for link in pub.links %}

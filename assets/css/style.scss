@@ -446,6 +446,20 @@ summary {
   color: var(--text-muted);
 }
 
+.pub-status {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-color, #e6f0ff);
+  color: var(--primary-color, #1a56db);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
 .pub-links {
   display: flex;
   gap: 0.5rem;

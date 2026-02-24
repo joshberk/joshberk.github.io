@@ -12,7 +12,7 @@ projects:
     stars: 0
     updated: "2026-02-21T12:00:30Z"
   - name: "PVE-Resource-monitor"
-    description: "A Python-based telemetry tool for Proxmox Virtual Environments running on Supermicro hardware. This script provides daily resource utilization reports and real-time hardware power consumption stats via Slack."
+    description: "Infrastructure monitoring tool for my Proxmox-based security research lab. Tracks resource utilization and hardware power consumption across lab nodes, delivering daily reports and real-time Slack alerts when thresholds are exceeded."
     url: "https://github.com/joshberk/PVE-Resource-monitor"
     language: "Python"
     stars: 1
