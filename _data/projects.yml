@@ -11,6 +11,12 @@ projects:
     language: "Python"
     stars: 0
     updated: "2026-02-21T12:00:30Z"
+  - name: "PVE-Resource-monitor"
+    description: "A Python-based telemetry tool for Proxmox Virtual Environments running on Supermicro hardware. This script provides daily resource utilization reports and real-time hardware power consumption stats via Slack."
+    url: "https://github.com/joshberk/PVE-Resource-monitor"
+    language: "Python"
+    stars: 1
+    updated: "2026-02-24T15:06:18Z"
   - name: "DetectSim"
     description: "A gamified \"Cyber Range\" where you learn to write high-fidelity detection rules, hunt threats, and avoid false positives."
     url: "https://github.com/joshberk/DetectSim"

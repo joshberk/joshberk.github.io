@@ -1,8 +1,5 @@
 source "https://rubygems.org"
 
-# Pinned Hacker theme (vendored as a gem, not remote)
-gem "jekyll-theme-hacker", "~> 0.2.0"
-
 # GitHub Pages gem
 gem "github-pages", "~> 231", group: :jekyll_plugins
 

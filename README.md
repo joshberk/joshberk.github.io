@@ -6,8 +6,8 @@ This is the source code for my personal website and blog, built with Jekyll and 
 
 *   **Jekyll:** A static site generator that is well-suited for this type of project.
 *   **GitHub Pages:** A free and reliable hosting service for static websites.
-*   **Hacker Theme:** A Jekyll theme that provides a distinctive "hacker" aesthetic.
-*   **SCSS:** A CSS preprocessor that is used to customize the theme and add new styles.
+*   **Custom Theme:** A fully custom professional design built with SCSS — no external Jekyll theme.
+*   **SCSS:** CSS variables, light/dark mode theming, and responsive layouts.
 *   **JavaScript:** Used to add interactive features like a theme toggle, terminal effects, and smooth scrolling.
 
 ## Getting Started

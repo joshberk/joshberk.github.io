@@ -4,7 +4,7 @@ url: "https://www.joshuaberkoh.engineer"
 baseurl: ""
 
 # Site-wide image used by jekyll-seo-tag for og:image / twitter:image
-image: /assets/images/hero.png
+image: /assets/images/hero.jpg
 
 # Theme is fully custom via layouts + assets/css/style.scss
 
