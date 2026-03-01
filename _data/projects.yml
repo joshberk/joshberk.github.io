@@ -7,7 +7,7 @@ projects:
   language: SCSS
   stars: 1
   forks: 0
-  updated: '2026-02-24T20:00:52Z'
+  updated: '2026-03-01T03:44:47Z'
 - name: Agentic-Threat-Intel-Feed
   full_name: joshberk/Agentic-Threat-Intel-Feed
   description: This is my agentic threat intelligence feed project.
@@ -25,7 +25,7 @@ projects:
   language: Python
   stars: 1
   forks: 0
-  updated: '2026-02-24T14:54:07Z'
+  updated: '2026-03-01T04:00:07Z'
 - name: DetectSim
   full_name: joshberk/DetectSim
   description: A gamified "Cyber Range" where you learn to write high-fidelity detection
