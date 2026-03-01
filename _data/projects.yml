@@ -1,25 +1,37 @@
+---
 projects:
-  - name: "joshberk.github.io"
-    description: "This is my Personal Website"
-    url: "https://github.com/joshberk/joshberk.github.io"
-    language: "SCSS"
-    stars: 0
-    updated: "2026-02-23T03:12:56Z"
-  - name: "Agentic-Threat-Intel-Feed"
-    description: "This is my agentic threat intelligence feed project. "
-    url: "https://github.com/joshberk/Agentic-Threat-Intel-Feed"
-    language: "Python"
-    stars: 0
-    updated: "2026-02-21T12:00:30Z"
-  - name: "PVE-Resource-monitor"
-    description: "Infrastructure monitoring tool for my Proxmox-based security research lab. Tracks resource utilization and hardware power consumption across lab nodes, delivering daily reports and real-time Slack alerts when thresholds are exceeded."
-    url: "https://github.com/joshberk/PVE-Resource-monitor"
-    language: "Python"
-    stars: 1
-    updated: "2026-02-24T15:06:18Z"
-  - name: "DetectSim"
-    description: "A gamified \"Cyber Range\" where you learn to write high-fidelity detection rules, hunt threats, and avoid false positives."
-    url: "https://github.com/joshberk/DetectSim"
-    language: "JavaScript"
-    stars: 0
-    updated: "2026-01-06T14:55:45Z"
+- name: joshberk.github.io
+  full_name: joshberk/joshberk.github.io
+  description: This is my Personal Website
+  url: https://github.com/joshberk/joshberk.github.io
+  language: SCSS
+  stars: 1
+  forks: 0
+  updated: '2026-02-24T20:00:52Z'
+- name: Agentic-Threat-Intel-Feed
+  full_name: joshberk/Agentic-Threat-Intel-Feed
+  description: This is my agentic threat intelligence feed project.
+  url: https://github.com/joshberk/Agentic-Threat-Intel-Feed
+  language: Python
+  stars: 1
+  forks: 0
+  updated: '2026-02-23T19:13:07Z'
+- name: PVE-Resource-monitor
+  full_name: joshberk/PVE-Resource-monitor
+  description: A Python-based telemetry tool for Proxmox Virtual Environments running
+    on Supermicro hardware. This script provides daily resource utilization reports
+    and real-time hardware power consumption stats via Slack.
+  url: https://github.com/joshberk/PVE-Resource-monitor
+  language: Python
+  stars: 1
+  forks: 0
+  updated: '2026-02-24T14:54:07Z'
+- name: DetectSim
+  full_name: joshberk/DetectSim
+  description: A gamified "Cyber Range" where you learn to write high-fidelity detection
+    rules, hunt threats, and avoid false positives.
+  url: https://github.com/joshberk/DetectSim
+  language: JavaScript
+  stars: 0
+  forks: 0
+  updated: '2026-01-06T14:55:41Z'
