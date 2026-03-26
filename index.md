@@ -16,6 +16,30 @@ title: Home
       </div>
     </div>
     <aside class="hero-panel">
+      <div class="hero-network" aria-hidden="true">
+        <svg viewBox="0 0 320 220" class="hero-network-svg" role="presentation">
+          <g class="network-edges">
+            <path d="M34 52 L108 38 L168 78 L228 52 L286 96" />
+            <path d="M58 150 L120 122 L168 78 L206 156 L274 174" />
+            <path d="M108 38 L120 122 L58 150" />
+            <path d="M228 52 L206 156 L274 174" />
+            <path d="M120 122 L206 156" />
+            <path d="M168 78 L248 126" />
+          </g>
+          <g class="network-nodes">
+            <circle cx="34" cy="52" r="5" />
+            <circle cx="108" cy="38" r="4" />
+            <circle cx="168" cy="78" r="6" />
+            <circle cx="228" cy="52" r="4" />
+            <circle cx="286" cy="96" r="5" />
+            <circle cx="58" cy="150" r="4" />
+            <circle cx="120" cy="122" r="5" />
+            <circle cx="206" cy="156" r="5" />
+            <circle cx="248" cy="126" r="3" />
+            <circle cx="274" cy="174" r="4" />
+          </g>
+        </svg>
+      </div>
       <p class="hero-panel-label">Current Focus</p>
       <ul class="hero-panel-list">
         <li>Privacy-preserving infrastructure research</li>
