@@ -1,5 +1,7 @@
 <div class="featured-projects" id="github-contributions">
+  {% unless include.hide_title %}
   <h2>GitHub Contributions</h2>
+  {% endunless %}
   <p class="github-contrib-intro">Selected public repositories I actively build and maintain.</p>
 
   {% assign repos = site.data.projects.projects %}

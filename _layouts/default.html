@@ -12,7 +12,7 @@
     <!-- Google Fonts: typography stack for a research-focused visual style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,650;7..72,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
@@ -41,7 +41,16 @@
     {% endif %}
   </head>
 
-  <body>
+  {% assign page_kind = 'default' %}
+  {% if page.url == '/' %}
+    {% assign page_kind = 'home' %}
+  {% elsif page.url contains '/blog' %}
+    {% assign page_kind = 'blog' %}
+  {% elsif page.layout == 'post' %}
+    {% assign page_kind = 'post' %}
+  {% endif %}
+
+  <body data-page="{{ page_kind }}">
     <header>
       <div class="container">
         <nav class="header-nav" aria-label="Main navigation">

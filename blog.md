@@ -37,7 +37,7 @@ permalink: /blog/
 
 {% if site.posts.size > 0 %}
   {% assign latest_post = site.posts.first %}
-  <article class="featured-post" data-category="{{ latest_post.type | slugify }}" data-tags="{{ latest_post.categories | join: ' ' }}">
+  <article class="featured-post" data-type="{{ latest_post.type | slugify }}" data-discipline="{{ latest_post.discipline | slugify }}" data-tags="{{ latest_post.categories | join: ' ' | slugify }}">
     <div class="featured-label">
       <span class="pulse"></span>
       Latest Post
@@ -67,7 +67,7 @@ permalink: /blog/
 
 <div class="posts-grid" id="posts-container">
   {% for post in site.posts offset:1 %}
-    <article class="post-card" data-category="{{ post.type | slugify }}" data-tags="{{ post.categories | join: ' ' }}">
+    <article class="post-card" data-type="{{ post.type | slugify }}" data-discipline="{{ post.discipline | slugify }}" data-tags="{{ post.categories | join: ' ' | slugify }}">
       <div class="card-header">
         <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
           {{ post.date | date: "%b %d" }}

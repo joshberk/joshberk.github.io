@@ -50,6 +50,7 @@ body {
   line-height: 1.7;
   color: var(--text);
   background: radial-gradient(circle at 0 0, rgba(25, 74, 141, 0.05), transparent 36%), var(--bg);
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -176,11 +177,45 @@ h4 {
 p {
   margin: 0 0 1rem;
   color: var(--text);
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+li,
+.post-description,
+.hero-description,
+.section-intro,
+.project-description,
+.pub-authors,
+.pub-description,
+.featured-description,
+.card-excerpt,
+.github-contrib-intro,
+.terminal-quote {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero-section {
   padding: 1.2rem 0 1.8rem;
   border-bottom: 1px solid var(--line);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.eyebrow,
+.section-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
 }
 
 .accent-text {
@@ -198,6 +233,68 @@ p {
   display: flex;
   gap: 0.7rem;
   flex-wrap: wrap;
+}
+
+.hero-panel,
+.summary-card,
+.skills-panel,
+.contact-card,
+.home-section {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.hero-panel {
+  padding: 1rem 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+.hero-panel-label,
+.summary-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.hero-panel-list,
+.contact-links {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.home-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1.35rem 0 0;
+}
+
+.summary-card {
+  padding: 0.95rem 1rem;
+}
+
+.home-section {
+  padding: 1.35rem 1.35rem 1.45rem;
+  margin-top: 1.5rem;
+}
+
+.home-section-emphasis {
+  background:
+    linear-gradient(180deg, rgba(25, 74, 141, 0.04), transparent 42%),
+    var(--surface);
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+}
+
+.section-intro {
+  max-width: 72ch;
+  color: var(--text-muted);
 }
 
 .btn {
@@ -328,6 +425,16 @@ p {
   max-width: 76ch;
 }
 
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.skills-panel {
+  padding: 1rem;
+}
+
 details {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -394,7 +501,7 @@ summary {
 }
 
 .featured-projects {
-  margin: 2rem 0;
+  margin: 0;
 }
 
 .github-contrib-intro {
@@ -681,6 +788,15 @@ summary {
   max-width: 76ch;
 }
 
+.post-content p,
+.post-content li,
+.post-content blockquote,
+.about-text p,
+.contact-card p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .post-content h1,
 .post-content h2,
 .post-content h3,
@@ -761,6 +877,10 @@ footer {
   padding: 1.3rem 0 2rem;
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+footer p {
+  text-align: left;
 }
 
 .rss-link {
@@ -1197,6 +1317,13 @@ footer {
   .profile-section {
     max-width: 260px;
   }
+
+  .hero-grid,
+  .home-summary,
+  .skills-columns,
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1219,6 +1346,10 @@ footer {
     width: 100%;
   }
 
+  .home-section {
+    padding: 1.1rem;
+  }
+
   .posts-grid,
   .posts-grid#posts-container {
     grid-template-columns: 1fr;
@@ -1232,7 +1363,6 @@ footer {
     flex-direction: column;
   }
 
-  .insight-grid,
   .lab-post .toc-inline ol,
   .lab-post .arch-row,
   .lab-post .tool-grid {
