@@ -122,11 +122,11 @@ title: Home
   <div class="posts-grid">
     {% for post in site.posts limit:3 %}
       <article class="post-preview">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
         <p class="post-meta">
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-          {% if post.discipline %} • {{ post.discipline }}{% endif %}
-          {% if post.type %} • {{ post.type }}{% endif %}
+          {% if post.discipline %} • {{ post.discipline | escape }}{% endif %}
+          {% if post.type %} • {{ post.type | escape }}{% endif %}
         </p>
         <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
       </article>

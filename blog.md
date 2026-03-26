@@ -43,22 +43,22 @@ permalink: /blog/
       Latest Post
     </div>
     <div class="featured-content">
-      <h2 class="featured-title"><a href="{{ latest_post.url }}">{{ latest_post.title }}</a></h2>
+      <h2 class="featured-title"><a href="{{ latest_post.url | relative_url }}">{{ latest_post.title | escape }}</a></h2>
       <div class="featured-meta">
         <time datetime="{{ latest_post.date | date_to_xmlschema }}">
           <span class="meta-icon">📅</span> {{ latest_post.date | date: "%B %d, %Y" }}
         </time>
         {% if latest_post.discipline %}
-          <span class="meta-tag discipline">{{ latest_post.discipline }}</span>
+          <span class="meta-tag discipline">{{ latest_post.discipline | escape }}</span>
         {% endif %}
         {% if latest_post.type %}
-          <span class="meta-tag type">{{ latest_post.type }}</span>
+          <span class="meta-tag type">{{ latest_post.type | escape }}</span>
         {% endif %}
       </div>
       <p class="featured-description">
         {{ latest_post.description | default: latest_post.excerpt | strip_html | truncatewords: 60 }}
       </p>
-      <a href="{{ latest_post.url }}" class="featured-link">
+      <a href="{{ latest_post.url | relative_url }}" class="featured-link">
         Read Full Article <span class="arrow">→</span>
       </a>
     </div>
@@ -78,16 +78,16 @@ permalink: /blog/
         {% endif %}
       </div>
       <div class="card-body">
-        <h3 class="card-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
         <p class="card-excerpt">
           {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 }}
         </p>
       </div>
       <div class="card-footer">
         {% if post.discipline %}
-          <span class="card-tag">{{ post.discipline }}</span>
+          <span class="card-tag">{{ post.discipline | escape }}</span>
         {% endif %}
-        <a href="{{ post.url }}" class="card-link">Read more →</a>
+        <a href="{{ post.url | relative_url }}" class="card-link">Read more →</a>
       </div>
     </article>
   {% endfor %}
