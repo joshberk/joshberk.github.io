@@ -35,10 +35,6 @@ permalink: /blog/
   <strong>Paused for Academic reasons.</strong>
 </div>
 
-<div class="category-notice threat-detection-notice hidden" id="threat-detection-notice">
-  <strong>Coming soon.</strong>
-</div>
-
 {% if site.posts.size > 0 %}
   {% assign latest_post = site.posts.first %}
   <article class="featured-post" data-category="{{ latest_post.type | slugify }}" data-tags="{{ latest_post.categories | join: ' ' }}">
