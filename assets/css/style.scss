@@ -812,6 +812,36 @@ footer {
   margin-top: 1rem;
 }
 
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.insight-card,
+.next-steps {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1rem 1.05rem;
+}
+
+.insight-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.insight-card p:last-child,
+.next-steps p:last-child,
+.next-steps ul:last-child {
+  margin-bottom: 0;
+}
+
 .lab-post-lead {
   font-size: 1.05rem;
   color: var(--text-muted);
@@ -864,11 +894,6 @@ footer {
   color: #6f4aa8;
   border-color: rgba(111, 74, 168, 0.24);
   background: rgba(111, 74, 168, 0.08);
-}
-
-.lab-post .tag-compact {
-  font-size: 0.62rem;
-  padding: 0.15rem 0.45rem;
 }
 
 .lab-post .toc-inline {
@@ -929,6 +954,15 @@ footer {
 
 .lab-post .callout p {
   margin: 0;
+}
+
+.lab-post .callout-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.lab-post .callout-list li:last-child {
+  margin-bottom: 0;
 }
 
 .lab-post .callout-warn {
@@ -1116,43 +1150,6 @@ footer {
   margin-top: 0.1rem;
 }
 
-.lab-post .spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.92rem;
-  margin: 1.25rem 0 1.75rem;
-}
-
-.lab-post .spec-table th {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--line-strong);
-  padding: 0.6rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-}
-
-.lab-post .spec-table td {
-  padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid var(--line);
-  color: var(--text);
-  vertical-align: top;
-}
-
-.lab-post .spec-table td:first-child {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-
-.lab-post .spec-table tr:last-child td {
-  border-bottom: none;
-}
-
 .lab-post .divider {
   border: none;
   border-top: 1px solid var(--line);
@@ -1235,6 +1232,7 @@ footer {
     flex-direction: column;
   }
 
+  .insight-grid,
   .lab-post .toc-inline ol,
   .lab-post .arch-row,
   .lab-post .tool-grid {
