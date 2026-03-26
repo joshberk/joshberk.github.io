@@ -53,6 +53,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(25, 74, 141, 0.06), transparent 20%),
+    radial-gradient(circle at 84% 18%, rgba(25, 74, 141, 0.04), transparent 18%),
+    radial-gradient(circle at 22% 78%, rgba(25, 74, 141, 0.045), transparent 22%);
+  z-index: -2;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -74,6 +86,55 @@ header {
 .container {
   width: min(1120px, calc(100vw - 2rem));
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.page-network {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.26;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.page-network-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.page-network-edges path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 20%, var(--line-strong));
+  stroke-width: 1.05;
+  stroke-linecap: round;
+}
+
+.page-network-edges-back path {
+  stroke-dasharray: 8 14;
+  animation: networkShift 34s linear infinite;
+}
+
+.page-network-edges-front path {
+  stroke-dasharray: 4 10;
+  animation: networkShiftReverse 42s linear infinite;
+}
+
+.page-network-nodes circle {
+  fill: color-mix(in srgb, var(--accent) 34%, var(--surface));
+  stroke: color-mix(in srgb, var(--surface) 55%, var(--accent));
+  stroke-width: 1;
+  animation: pageNodePulse 8.5s ease-in-out infinite;
+}
+
+.page-network-nodes circle:nth-child(2n) {
+  animation-delay: 1.3s;
+}
+
+.page-network-nodes circle:nth-child(3n) {
+  animation-delay: 2.7s;
 }
 
 .header-nav {
@@ -246,60 +307,8 @@ li,
 }
 
 .hero-panel {
-  position: relative;
-  overflow: hidden;
   padding: 1rem 1.05rem;
   box-shadow: var(--shadow);
-}
-
-.hero-network {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.58;
-}
-
-.hero-network::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-}
-
-.hero-network-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.network-edges path {
-  fill: none;
-  stroke: color-mix(in srgb, var(--accent) 26%, var(--line-strong));
-  stroke-width: 1.2;
-  stroke-linecap: round;
-  stroke-dasharray: 6 8;
-  animation: networkShift 18s linear infinite;
-}
-
-.network-nodes circle {
-  fill: color-mix(in srgb, var(--accent) 42%, var(--surface));
-  stroke: color-mix(in srgb, var(--surface) 55%, var(--accent));
-  stroke-width: 1.2;
-  animation: networkPulse 6.5s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.network-nodes circle:nth-child(2n) {
-  animation-delay: 1.2s;
-}
-
-.network-nodes circle:nth-child(3n) {
-  animation-delay: 2.1s;
-}
-
-.hero-panel > *:not(.hero-network) {
-  position: relative;
-  z-index: 1;
 }
 
 .hero-panel-label,
@@ -935,6 +944,39 @@ footer p {
   text-align: left;
 }
 
+.resume-page {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  padding: 1.35rem;
+  box-shadow: var(--shadow);
+}
+
+.resume-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.15rem;
+}
+
+.resume-frame {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-alt);
+  min-height: 78vh;
+}
+
+.resume-object {
+  width: 100%;
+  height: 78vh;
+  display: block;
+}
+
+.resume-fallback {
+  padding: 1.25rem;
+}
+
 .rss-link {
   margin-left: 0.6rem;
 }
@@ -976,16 +1018,16 @@ footer p {
   }
 }
 
-@keyframes networkPulse {
+@keyframes pageNodePulse {
   0%,
   100% {
-    opacity: 0.68;
+    opacity: 0.48;
     transform: scale(1);
   }
 
   50% {
-    opacity: 1;
-    transform: scale(1.08);
+    opacity: 0.9;
+    transform: scale(1.12);
   }
 }
 
@@ -996,6 +1038,16 @@ footer p {
 
   to {
     stroke-dashoffset: -84;
+  }
+}
+
+@keyframes networkShiftReverse {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 96;
   }
 }
 
