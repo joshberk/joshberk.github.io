@@ -169,7 +169,6 @@ function initializeBlogFilters() {
   const visibleCountEl = document.getElementById('visible-count');
   const noPostsMessage = document.getElementById('no-posts');
   const cryptographyNotice = document.getElementById('cryptography-notice');
-  const threatDetectionNotice = document.getElementById('threat-detection-notice');
 
   const setHidden = (el, hidden) => {
     if (!el) return;
@@ -178,7 +177,6 @@ function initializeBlogFilters() {
 
   // Ensure notices are hidden on initial render regardless of CSP inline-style behavior.
   setHidden(cryptographyNotice, true);
-  setHidden(threatDetectionNotice, true);
   setHidden(noPostsMessage, true);
 
   if (!filterButtons.length || !posts.length) return;
@@ -186,8 +184,7 @@ function initializeBlogFilters() {
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
-      const isAnnouncementOnly =
-        filter === 'cryptography' || filter === 'threat-detection';
+      const isAnnouncementOnly = filter === 'cryptography';
 
       // Update active button state
       filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -195,7 +192,6 @@ function initializeBlogFilters() {
 
       // Show/hide category notices
       setHidden(cryptographyNotice, filter !== 'cryptography');
-      setHidden(threatDetectionNotice, filter !== 'threat-detection');
 
       // For announcement-only categories, hide all posts and only show the prompt.
       if (isAnnouncementOnly) {
