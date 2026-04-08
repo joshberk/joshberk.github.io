@@ -50,6 +50,19 @@ body {
   line-height: 1.7;
   color: var(--text);
   background: radial-gradient(circle at 0 0, rgba(25, 74, 141, 0.05), transparent 36%), var(--bg);
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(25, 74, 141, 0.06), transparent 20%),
+    radial-gradient(circle at 84% 18%, rgba(25, 74, 141, 0.04), transparent 18%),
+    radial-gradient(circle at 22% 78%, rgba(25, 74, 141, 0.045), transparent 22%);
+  z-index: -2;
 }
 
 a {
@@ -73,6 +86,55 @@ header {
 .container {
   width: min(1120px, calc(100vw - 2rem));
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.page-network {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.26;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.page-network-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.page-network-edges path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 20%, var(--line-strong));
+  stroke-width: 1.05;
+  stroke-linecap: round;
+}
+
+.page-network-edges-back path {
+  stroke-dasharray: 8 14;
+  animation: networkShift 34s linear infinite;
+}
+
+.page-network-edges-front path {
+  stroke-dasharray: 4 10;
+  animation: networkShiftReverse 42s linear infinite;
+}
+
+.page-network-nodes circle {
+  fill: color-mix(in srgb, var(--accent) 34%, var(--surface));
+  stroke: color-mix(in srgb, var(--surface) 55%, var(--accent));
+  stroke-width: 1;
+  animation: pageNodePulse 8.5s ease-in-out infinite;
+}
+
+.page-network-nodes circle:nth-child(2n) {
+  animation-delay: 1.3s;
+}
+
+.page-network-nodes circle:nth-child(3n) {
+  animation-delay: 2.7s;
 }
 
 .header-nav {
@@ -176,11 +238,45 @@ h4 {
 p {
   margin: 0 0 1rem;
   color: var(--text);
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+li,
+.post-description,
+.hero-description,
+.section-intro,
+.project-description,
+.pub-authors,
+.pub-description,
+.featured-description,
+.card-excerpt,
+.github-contrib-intro,
+.terminal-quote {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero-section {
   padding: 1.2rem 0 1.8rem;
   border-bottom: 1px solid var(--line);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.eyebrow,
+.section-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
 }
 
 .accent-text {
@@ -198,6 +294,68 @@ p {
   display: flex;
   gap: 0.7rem;
   flex-wrap: wrap;
+}
+
+.hero-panel,
+.summary-card,
+.skills-panel,
+.contact-card,
+.home-section {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.hero-panel {
+  padding: 1rem 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+.hero-panel-label,
+.summary-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.hero-panel-list,
+.contact-links {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.home-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1.35rem 0 0;
+}
+
+.summary-card {
+  padding: 0.95rem 1rem;
+}
+
+.home-section {
+  padding: 1.35rem 1.35rem 1.45rem;
+  margin-top: 1.5rem;
+}
+
+.home-section-emphasis {
+  background:
+    linear-gradient(180deg, rgba(25, 74, 141, 0.04), transparent 42%),
+    var(--surface);
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+}
+
+.section-intro {
+  max-width: 72ch;
+  color: var(--text-muted);
 }
 
 .btn {
@@ -328,6 +486,16 @@ p {
   max-width: 76ch;
 }
 
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.skills-panel {
+  padding: 1rem;
+}
+
 details {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -394,7 +562,7 @@ summary {
 }
 
 .featured-projects {
-  margin: 2rem 0;
+  margin: 0;
 }
 
 .github-contrib-intro {
@@ -681,6 +849,15 @@ summary {
   max-width: 76ch;
 }
 
+.post-content p,
+.post-content li,
+.post-content blockquote,
+.about-text p,
+.contact-card p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .post-content h1,
 .post-content h2,
 .post-content h3,
@@ -763,6 +940,43 @@ footer {
   font-size: 0.9rem;
 }
 
+footer p {
+  text-align: left;
+}
+
+.resume-page {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  padding: 1.35rem;
+  box-shadow: var(--shadow);
+}
+
+.resume-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.15rem;
+}
+
+.resume-frame {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-alt);
+  min-height: 78vh;
+}
+
+.resume-object {
+  width: 100%;
+  height: 78vh;
+  display: block;
+}
+
+.resume-fallback {
+  padding: 1.25rem;
+}
+
 .rss-link {
   margin-left: 0.6rem;
 }
@@ -804,12 +1018,75 @@ footer {
   }
 }
 
+@keyframes pageNodePulse {
+  0%,
+  100% {
+    opacity: 0.48;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes networkShift {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -84;
+  }
+}
+
+@keyframes networkShiftReverse {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 96;
+  }
+}
+
 .post-card {
   animation: fadeInUp 0.35s ease both;
 }
 
 .lab-post {
   margin-top: 1rem;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.insight-card,
+.next-steps {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1rem 1.05rem;
+}
+
+.insight-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.insight-card p:last-child,
+.next-steps p:last-child,
+.next-steps ul:last-child {
+  margin-bottom: 0;
 }
 
 .lab-post-lead {
@@ -864,11 +1141,6 @@ footer {
   color: #6f4aa8;
   border-color: rgba(111, 74, 168, 0.24);
   background: rgba(111, 74, 168, 0.08);
-}
-
-.lab-post .tag-compact {
-  font-size: 0.62rem;
-  padding: 0.15rem 0.45rem;
 }
 
 .lab-post .toc-inline {
@@ -929,6 +1201,15 @@ footer {
 
 .lab-post .callout p {
   margin: 0;
+}
+
+.lab-post .callout-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.lab-post .callout-list li:last-child {
+  margin-bottom: 0;
 }
 
 .lab-post .callout-warn {
@@ -1116,43 +1397,6 @@ footer {
   margin-top: 0.1rem;
 }
 
-.lab-post .spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.92rem;
-  margin: 1.25rem 0 1.75rem;
-}
-
-.lab-post .spec-table th {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--line-strong);
-  padding: 0.6rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-}
-
-.lab-post .spec-table td {
-  padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid var(--line);
-  color: var(--text);
-  vertical-align: top;
-}
-
-.lab-post .spec-table td:first-child {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-
-.lab-post .spec-table tr:last-child td {
-  border-bottom: none;
-}
-
 .lab-post .divider {
   border: none;
   border-top: 1px solid var(--line);
@@ -1200,6 +1444,13 @@ footer {
   .profile-section {
     max-width: 260px;
   }
+
+  .hero-grid,
+  .home-summary,
+  .skills-columns,
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1220,6 +1471,10 @@ footer {
 
   .hero-buttons {
     width: 100%;
+  }
+
+  .home-section {
+    padding: 1.1rem;
   }
 
   .posts-grid,

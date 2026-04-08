@@ -4,11 +4,10 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+  const page = document.body.dataset.page || 'default';
+
   // Initialize theme functionality
   initializeTheme();
-
-  // Initialize any terminal-like effects
-  initializeTerminalEffects();
 
   // Initialize scroll effects for any navigation if present
   initializeScrollEffects();
@@ -16,9 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Add current year to footer
   insertCurrentYear();
 
-  // Initialize blog page functionality
-  initializeBlogFilters();
-  initializeBlogViewToggle();
+  if (page === 'home') {
+    initializeTerminalEffects();
+  }
+
+  if (page === 'blog') {
+    initializeBlogFilters();
+    initializeBlogViewToggle();
+  }
 });
 
 /**
@@ -207,12 +211,14 @@ function initializeBlogFilters() {
       let visibleCount = 0;
 
       posts.forEach(post => {
-        const category = post.dataset.category || '';
+        const type = post.dataset.type || '';
+        const discipline = post.dataset.discipline || '';
         const tags = post.dataset.tags || '';
 
         const matchesFilter =
           filter === 'all' ||
-          category.toLowerCase().includes(filter.toLowerCase()) ||
+          type.toLowerCase().includes(filter.toLowerCase()) ||
+          discipline.toLowerCase().includes(filter.toLowerCase()) ||
           tags.toLowerCase().includes(filter.toLowerCase());
 
         if (matchesFilter) {
