@@ -3,24 +3,28 @@
     {% for pub in site.data.publications %}
     <div class="publication-item">
         <h3>
-            {{ pub.title }}
+            {{ pub.title | escape }}
             {% if pub.status %}
-            <span class="pub-status">{{ pub.status }}</span>
+            <span class="pub-status">{{ pub.status | escape }}</span>
             {% endif %}
         </h3>
         <p class="pub-meta">
-            <strong>{{ pub.venue }}</strong> • {{ pub.year }}
+            <strong>{{ pub.venue | escape }}</strong> • {{ pub.year | escape }}
         </p>
         {% if pub.authors %}
-        <p class="pub-authors">{{ pub.authors }}</p>
+        <p class="pub-authors">{{ pub.authors | escape }}</p>
         {% endif %}
         {% if pub.description %}
-        <p class="pub-description">{{ pub.description }}</p>
+        <p class="pub-description">{{ pub.description | escape }}</p>
         {% endif %}
         {% if pub.links %}
         <div class="pub-links">
             {% for link in pub.links %}
-            <a href="{{ link.url }}" class="btn btn-sm btn-outline">{{ link.text }}</a>
+            {% assign safe_url = link.url | to_s | strip %}
+            {% assign url_prefix = safe_url | slice: 0, 1 %}
+            {% if url_prefix == '/' or safe_url contains 'https://' or safe_url contains 'http://' %}
+            <a href="{{ safe_url | escape }}" class="btn btn-sm btn-outline" rel="noopener noreferrer">{{ link.text | escape }}</a>
+            {% endif %}
             {% endfor %}
         </div>
         {% endif %}
