@@ -52,7 +52,8 @@ jobs:
 
             res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(req) }
             unless res.is_a?(Net::HTTPSuccess)
-              abort("Failed to fetch #{slug}: HTTP #{res.code} #{res.message}")
+              warn("Skipping #{slug}: HTTP #{res.code} (repo may be private or inaccessible)")
+              next
             end
 
             data = JSON.parse(res.body)
