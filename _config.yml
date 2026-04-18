@@ -3,8 +3,10 @@ description: "PhD Candidate · Security Researcher · Detection Engineer"
 url: "https://www.joshuaberkoh.engineer"
 baseurl: ""
 
-# Theme (pinned gem instead of remote fetch)
-theme: jekyll-theme-hacker
+# Site-wide image used by jekyll-seo-tag for og:image / twitter:image
+image: /assets/images/hero.jpg
+
+# Theme is fully custom via layouts + assets/css/style.scss
 
 # GitHub Pages compatible plugins
 plugins:
@@ -37,6 +39,7 @@ defaults:
     values:
       layout: "post"
       author: "Joshua Berkoh"
+      math: true   # Load MathJax on all posts; set math: false on non-math posts
 
 # Build settings
 markdown: kramdown

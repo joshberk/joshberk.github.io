@@ -1,10 +1,7 @@
 source "https://rubygems.org"
 
-# Pinned Hacker theme (vendored as a gem, not remote)
-gem "jekyll-theme-hacker", "~> 0.2.0"
-
 # GitHub Pages gem
-gem "github-pages", "~> 231", group: :jekyll_plugins
+gem "github-pages", "~> 232", group: :jekyll_plugins
 
 # If you want to use Jekyll native, uncomment the line below and comment out the github-pages line.
 # gem "jekyll", "~> 4.3.0"

@@ -1,14 +1,13 @@
 /**
- * Main JavaScript for Joshua Berkoh's Jekyll site with Hacker theme
- * Preserves core functionality while adapting to Jekyll structure
+ * Main JavaScript for Joshua Berkoh's Jekyll site
+ * Handles theme switching, blog filters, and lightweight UI effects.
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+  const page = document.body.dataset.page || 'default';
+
   // Initialize theme functionality
   initializeTheme();
-
-  // Initialize any terminal-like effects
-  initializeTerminalEffects();
 
   // Initialize scroll effects for any navigation if present
   initializeScrollEffects();
@@ -16,28 +15,34 @@ document.addEventListener('DOMContentLoaded', function () {
   // Add current year to footer
   insertCurrentYear();
 
-  // Initialize blog page functionality
-  initializeBlogFilters();
-  initializeBlogViewToggle();
+  if (page === 'home') {
+    initializeTerminalEffects();
+  }
+
+  if (page === 'blog') {
+    initializeBlogFilters();
+    initializeBlogViewToggle();
+  }
 });
 
 /**
- * Theme toggle functionality - adapted for hacker theme
+ * Theme toggle functionality
  */
 function initializeTheme() {
   const themeToggle = document.getElementById('themeToggle');
   if (!themeToggle) return;
   
   const applyTheme = (theme) => {
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '🌙';
-      themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
       themeToggle.textContent = '☀️';
       themeToggle.setAttribute('aria-label', 'Switch to light mode');
+      return;
     }
+
+    document.documentElement.removeAttribute('data-theme');
+    themeToggle.textContent = '🌙';
+    themeToggle.setAttribute('aria-label', 'Switch to dark mode');
   };
 
   // Safe localStorage operations
@@ -59,15 +64,15 @@ function initializeTheme() {
   };
 
   // Initialize theme from localStorage or default
-  const savedTheme = safeGet('theme') || 'dark'; // Default to dark for hacker theme
+  const savedTheme = safeGet('theme') || 'light';
   applyTheme(savedTheme);
-  themeToggle.setAttribute('aria-pressed', savedTheme === 'light' ? 'true' : 'false');
+  themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
 
   // Theme toggle click handler
   themeToggle.addEventListener('click', () => {
-    const current = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
-    themeToggle.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+    const current = themeToggle.getAttribute('aria-pressed') === 'true' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
     applyTheme(next);
     safeSet('theme', next);
   });
@@ -75,6 +80,10 @@ function initializeTheme() {
 
 /**
  * Terminal-like typing effects and cursor animations
+ *
+ * The typewriter animates only the static prefix "Hi, I'm " and then
+ * re-attaches the existing accent <span> so its CSS styling is preserved.
+ * DOM nodes are built with createTextNode (no innerHTML) to prevent XSS.
  */
 function initializeTerminalEffects() {
   // Add cursor effect to specific elements
@@ -82,31 +91,36 @@ function initializeTerminalEffects() {
   elements.forEach(element => {
     element.classList.add('cursor');
   });
-  
-  // Typewriter effect for hero text
+
+  // Typewriter effect: animate the prefix, then restore the styled accent span
   const heroTitle = document.querySelector('.hero-section h1');
-  if (heroTitle && heroTitle.textContent) {
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    heroTitle.classList.add('cursor');
-    
-    let i = 0;
-    const typeWriter = () => {
-      if (i < text.length) {
-        heroTitle.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-      } else {
-        // Remove cursor after typing is complete
-        setTimeout(() => {
-          heroTitle.classList.remove('cursor');
-        }, 2000);
-      }
-    };
-    
-    // Start typing effect after a short delay
-    setTimeout(typeWriter, 1000);
-  }
+  if (!heroTitle) return;
+
+  const accentSpan = heroTitle.querySelector('.accent-text');
+  if (!accentSpan) return;
+
+  // Capture the prefix text node that precedes the accent span
+  const prefix = "Hi, I'm ";
+
+  // Clear the title, preserving the accent span in memory
+  heroTitle.innerHTML = '';
+  heroTitle.classList.add('cursor');
+
+  let i = 0;
+  const typeWriter = () => {
+    if (i < prefix.length) {
+      // createTextNode prevents any XSS from the prefix string
+      heroTitle.appendChild(document.createTextNode(prefix.charAt(i)));
+      i++;
+      setTimeout(typeWriter, 100);
+    } else {
+      // Re-attach the original styled span and restore normal title state
+      heroTitle.appendChild(accentSpan);
+      setTimeout(() => heroTitle.classList.remove('cursor'), 2000);
+    }
+  };
+
+  setTimeout(typeWriter, 1000);
 }
 
 /**
@@ -151,101 +165,6 @@ function insertCurrentYear() {
 }
 
 /**
- * Matrix-like digital rain effect (optional enhancement)
- */
-function initializeMatrixEffect() {
-  const canvas = document.getElementById('matrix-canvas');
-  if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-  const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-  const matrixArray = matrix.split("");
-  
-  const fontSize = 10;
-  const columns = canvas.width / fontSize;
-  const drops = [];
-  
-  for(let x = 0; x < columns; x++) {
-    drops[x] = 1;
-  }
-  
-  function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    ctx.fillStyle = '#00ff00';
-    ctx.font = fontSize + 'px monospace';
-    
-    for(let i = 0; i < drops.length; i++) {
-      const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      
-      if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-  }
-  
-  setInterval(draw, 35);
-  
-  // Resize canvas on window resize
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-}
-
-/**
- * Terminal command simulation for interactive elements
- */
-function initializeTerminalCommands() {
-  const terminal = document.querySelector('.terminal');
-  if (!terminal) return;
-
-  const commands = {
-    'help': 'Available commands: about, skills, contact, blog, clear',
-    'about': 'PhD candidate in Information Technology focusing on applied cryptography',
-    'skills': 'Python, JavaScript, Rust, Cryptography, Security Analysis',
-    'blog': 'Visit /blog for latest posts on cryptography and cybersecurity',
-    'clear': ''
-  };
-
-  const input = terminal.querySelector('.terminal-input');
-  const output = terminal.querySelector('.terminal-output');
-
-  if (!input || !output) return;
-
-  const sanitizeHTML = (str) => {
-    const temp = document.createElement('div');
-    temp.textContent = str;
-    return temp.innerHTML;
-  };
-
-  input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const command = input.value.toLowerCase().trim();
-      const response = commands[command] || `Command not found: ${command}. Type 'help' for available commands.`;
-
-      if (command === 'clear') {
-        output.innerHTML = '';
-      } else {
-        output.innerHTML += `<div class="terminal-line">$ ${sanitizeHTML(input.value)}</div>`;
-        if (response) {
-          output.innerHTML += `<div class="terminal-response">${sanitizeHTML(response)}</div>`;
-        }
-      }
-
-      input.value = '';
-      terminal.scrollTop = terminal.scrollHeight;
-    }
-  });
-}
-
-/**
  * Blog page filtering functionality
  */
 function initializeBlogFilters() {
@@ -254,45 +173,59 @@ function initializeBlogFilters() {
   const visibleCountEl = document.getElementById('visible-count');
   const noPostsMessage = document.getElementById('no-posts');
   const cryptographyNotice = document.getElementById('cryptography-notice');
-  const threatDetectionNotice = document.getElementById('threat-detection-notice');
+
+  const setHidden = (el, hidden) => {
+    if (!el) return;
+    el.classList.toggle('hidden', hidden);
+  };
+
+  // Ensure notices are hidden on initial render regardless of CSP inline-style behavior.
+  setHidden(cryptographyNotice, true);
+  setHidden(noPostsMessage, true);
 
   if (!filterButtons.length || !posts.length) return;
 
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
+      const isAnnouncementOnly = filter === 'cryptography';
 
       // Update active button state
       filterButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
 
       // Show/hide category notices
-      if (cryptographyNotice) {
-        cryptographyNotice.style.display = filter === 'cryptography' ? 'block' : 'none';
-      }
-      if (threatDetectionNotice) {
-        threatDetectionNotice.style.display = filter === 'threat-detection' ? 'block' : 'none';
+      setHidden(cryptographyNotice, filter !== 'cryptography');
+
+      // For announcement-only categories, hide all posts and only show the prompt.
+      if (isAnnouncementOnly) {
+        posts.forEach(post => post.classList.add('hidden'));
+        if (visibleCountEl) {
+          visibleCountEl.textContent = '0';
+        }
+        setHidden(noPostsMessage, true);
+        return;
       }
 
       // Filter posts
       let visibleCount = 0;
 
       posts.forEach(post => {
-        const category = post.dataset.category || '';
+        const type = post.dataset.type || '';
+        const discipline = post.dataset.discipline || '';
         const tags = post.dataset.tags || '';
 
         const matchesFilter =
           filter === 'all' ||
-          category.toLowerCase().includes(filter.toLowerCase()) ||
+          type.toLowerCase().includes(filter.toLowerCase()) ||
+          discipline.toLowerCase().includes(filter.toLowerCase()) ||
           tags.toLowerCase().includes(filter.toLowerCase());
 
         if (matchesFilter) {
           post.classList.remove('hidden');
-          post.style.display = '';
           visibleCount++;
         } else {
           post.classList.add('hidden');
-          post.style.display = 'none';
         }
       });
 
@@ -302,18 +235,7 @@ function initializeBlogFilters() {
       }
 
       // Show/hide no posts message
-      if (noPostsMessage) {
-        noPostsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
-      }
-
-      // Re-trigger animations
-      posts.forEach((post, index) => {
-        if (!post.classList.contains('hidden')) {
-          post.style.animation = 'none';
-          post.offsetHeight; // Trigger reflow
-          post.style.animation = `fadeInUp 0.4s ease forwards ${index * 0.05}s`;
-        }
-      });
+      setHidden(noPostsMessage, visibleCount !== 0);
     });
   });
 }

@@ -1,0 +1,30 @@
+<div class="featured-projects" id="github-contributions">
+  {% unless include.hide_title %}
+  <h2>GitHub Contributions</h2>
+  {% endunless %}
+  <p class="github-contrib-intro">Selected public repositories I actively build and maintain.</p>
+
+  {% assign repos = site.data.projects.projects %}
+  {% if repos and repos.size > 0 %}
+    <div class="posts-grid">
+      {% for repo in repos %}
+        <article class="post-preview">
+          <h3>
+            <a href="{{ repo.url }}" target="_blank" rel="noopener noreferrer">{{ repo.full_name | default: repo.name | escape }}</a>
+          </h3>
+          <p class="post-meta">
+            {% if repo.updated %}
+              <time datetime="{{ repo.updated | date_to_xmlschema }}">{{ repo.updated | date: "%B %d, %Y" }}</time>
+            {% endif %}
+            {% if repo.language %}{% if repo.updated %} • {% endif %}{{ repo.language | escape }}{% endif %}
+            {% if repo.stars != nil %} • ★ {{ repo.stars }}{% endif %}
+            {% if repo.forks != nil %} • Forks {{ repo.forks }}{% endif %}
+          </p>
+          <p>{{ repo.description | default: "No description provided." | escape }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Repository details are being refreshed. Please check back shortly.</p>
+  {% endif %}
+</div>

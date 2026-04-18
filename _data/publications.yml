@@ -1,0 +1,15 @@
+# Add your publications here in the format:
+# - title: "Paper Title"
+#   authors: "Author Names"
+#   venue: "Conference/Journal Name"
+#   year: YYYY
+#   status: "Under Review" # optional — omit for published work
+#   description: "Description"
+#   links:
+#     - text: "PDF"
+#       url: "link_to_pdf"
+
+- title: "A Behavioural Graph Temporal Neural Network Framework"
+  venue: "IEEE Transactions on Network and Service Management (TNSM)"
+  year: 2026
+  status: "Under Review"

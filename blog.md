@@ -31,38 +31,34 @@ permalink: /blog/
   <span class="count-text">Showing <span id="visible-count">{{ site.posts.size }}</span> of {{ site.posts.size }} posts</span>
 </div>
 
-<div class="category-notice cryptography-notice" id="cryptography-notice" style="display: none;">
+<div class="category-notice cryptography-notice hidden" id="cryptography-notice">
   <strong>Paused for Academic reasons.</strong>
-</div>
-
-<div class="category-notice threat-detection-notice" id="threat-detection-notice" style="display: none;">
-  <strong>Coming soon.</strong>
 </div>
 
 {% if site.posts.size > 0 %}
   {% assign latest_post = site.posts.first %}
-  <article class="featured-post" data-category="{{ latest_post.type | slugify }}" data-tags="{{ latest_post.categories | join: ' ' }}">
+  <article class="featured-post" data-type="{{ latest_post.type | slugify }}" data-discipline="{{ latest_post.discipline | slugify }}" data-tags="{{ latest_post.categories | join: ' ' | slugify }}">
     <div class="featured-label">
       <span class="pulse"></span>
       Latest Post
     </div>
     <div class="featured-content">
-      <h2 class="featured-title"><a href="{{ latest_post.url }}">{{ latest_post.title }}</a></h2>
+      <h2 class="featured-title"><a href="{{ latest_post.url | relative_url }}">{{ latest_post.title | escape }}</a></h2>
       <div class="featured-meta">
         <time datetime="{{ latest_post.date | date_to_xmlschema }}">
           <span class="meta-icon">📅</span> {{ latest_post.date | date: "%B %d, %Y" }}
         </time>
         {% if latest_post.discipline %}
-          <span class="meta-tag discipline">{{ latest_post.discipline }}</span>
+          <span class="meta-tag discipline">{{ latest_post.discipline | escape }}</span>
         {% endif %}
         {% if latest_post.type %}
-          <span class="meta-tag type">{{ latest_post.type }}</span>
+          <span class="meta-tag type">{{ latest_post.type | escape }}</span>
         {% endif %}
       </div>
       <p class="featured-description">
         {{ latest_post.description | default: latest_post.excerpt | strip_html | truncatewords: 60 }}
       </p>
-      <a href="{{ latest_post.url }}" class="featured-link">
+      <a href="{{ latest_post.url | relative_url }}" class="featured-link">
         Read Full Article <span class="arrow">→</span>
       </a>
     </div>
@@ -71,7 +67,7 @@ permalink: /blog/
 
 <div class="posts-grid" id="posts-container">
   {% for post in site.posts offset:1 %}
-    <article class="post-card" data-category="{{ post.type | slugify }}" data-tags="{{ post.categories | join: ' ' }}">
+    <article class="post-card" data-type="{{ post.type | slugify }}" data-discipline="{{ post.discipline | slugify }}" data-tags="{{ post.categories | join: ' ' | slugify }}">
       <div class="card-header">
         <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
           {{ post.date | date: "%b %d" }}
@@ -82,22 +78,22 @@ permalink: /blog/
         {% endif %}
       </div>
       <div class="card-body">
-        <h3 class="card-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
         <p class="card-excerpt">
           {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 }}
         </p>
       </div>
       <div class="card-footer">
         {% if post.discipline %}
-          <span class="card-tag">{{ post.discipline }}</span>
+          <span class="card-tag">{{ post.discipline | escape }}</span>
         {% endif %}
-        <a href="{{ post.url }}" class="card-link">Read more →</a>
+        <a href="{{ post.url | relative_url }}" class="card-link">Read more →</a>
       </div>
     </article>
   {% endfor %}
 </div>
 
-<div class="no-posts-message" id="no-posts" style="display: none;">
+<div class="no-posts-message hidden" id="no-posts">
   <div class="empty-state">
     <span class="empty-icon">🔍</span>
     <p>No posts found in this category.</p>
