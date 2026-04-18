@@ -1,0 +1,7 @@
+# Dedicated list of public repositories to showcase on the homepage.
+# You can use either repo names (resolved with `owner`) or full `owner/repo` slugs.
+owner: "joshberk"
+repos:
+  - "joshberk.github.io"
+  - "Agentic-Threat-Intel-Feed"
+  - "PVE-Resource-monitor"
