@@ -52,7 +52,8 @@ jobs:
 
             res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(req) }
             unless res.is_a?(Net::HTTPSuccess)
-              abort("Failed to fetch #{slug}: HTTP #{res.code} #{res.message}")
+              warn("Skipping #{slug}: HTTP #{res.code} #{res.message}")
+              next
             end
 
             data = JSON.parse(res.body)
@@ -66,6 +67,10 @@ jobs:
               "forks" => data["forks_count"] || 0,
               "updated" => data["pushed_at"] || data["updated_at"]
             }
+          end
+
+          if projects.empty?
+            abort("No configured repositories could be fetched")
           end
 
           File.write("_data/projects.yml", { "projects" => projects }.to_yaml)

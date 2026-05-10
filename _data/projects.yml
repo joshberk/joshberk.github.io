@@ -26,12 +26,3 @@ projects:
   stars: 1
   forks: 0
   updated: '2026-03-03T03:22:08Z'
-- name: DetectSim
-  full_name: joshberk/DetectSim
-  description: A gamified "Cyber Range" where you learn to write high-fidelity detection
-    rules, hunt threats, and avoid false positives.
-  url: https://github.com/joshberk/DetectSim
-  language: JavaScript
-  stars: 0
-  forks: 0
-  updated: '2026-04-08T12:59:11Z'
