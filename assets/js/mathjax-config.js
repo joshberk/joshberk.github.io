@@ -11,5 +11,8 @@ window.MathJax = {
   },
   options: {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  },
+  svg: {
+    fontCache: 'local'
   }
 };

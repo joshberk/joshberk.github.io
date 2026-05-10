@@ -10,15 +10,21 @@
       {% for repo in repos %}
         <article class="post-preview">
           <h3>
-            <a href="{{ repo.url }}" target="_blank" rel="noopener noreferrer">{{ repo.full_name | default: repo.name | escape }}</a>
+            {% assign repo_url = repo.url | to_s | strip %}
+            {% assign github_prefix = repo_url | slice: 0, 19 %}
+            {% if github_prefix == 'https://github.com/' %}
+              <a href="{{ repo_url | escape }}" target="_blank" rel="noopener noreferrer">{{ repo.full_name | default: repo.name | escape }}</a>
+            {% else %}
+              {{ repo.full_name | default: repo.name | escape }}
+            {% endif %}
           </h3>
           <p class="post-meta">
             {% if repo.updated %}
               <time datetime="{{ repo.updated | date_to_xmlschema }}">{{ repo.updated | date: "%B %d, %Y" }}</time>
             {% endif %}
             {% if repo.language %}{% if repo.updated %} • {% endif %}{{ repo.language | escape }}{% endif %}
-            {% if repo.stars != nil %} • ★ {{ repo.stars }}{% endif %}
-            {% if repo.forks != nil %} • Forks {{ repo.forks }}{% endif %}
+            {% if repo.stars != nil %} • ★ {{ repo.stars | escape }}{% endif %}
+            {% if repo.forks != nil %} • Forks {{ repo.forks | escape }}{% endif %}
           </p>
           <p>{{ repo.description | default: "No description provided." | escape }}</p>
         </article>

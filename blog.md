@@ -37,13 +37,13 @@ permalink: /blog/
 
 {% if site.posts.size > 0 %}
   {% assign latest_post = site.posts.first %}
-  <article class="featured-post" data-type="{{ latest_post.type | slugify }}" data-discipline="{{ latest_post.discipline | slugify }}" data-tags="{{ latest_post.categories | join: ' ' | slugify }}">
+  <article class="featured-post" data-type="{{ latest_post.type | slugify | escape }}" data-discipline="{{ latest_post.discipline | slugify | escape }}" data-tags="{{ latest_post.categories | join: ' ' | slugify | escape }}">
     <div class="featured-label">
       <span class="pulse"></span>
       Latest Post
     </div>
     <div class="featured-content">
-      <h2 class="featured-title"><a href="{{ latest_post.url | relative_url }}">{{ latest_post.title | escape }}</a></h2>
+      <h2 class="featured-title"><a href="{{ latest_post.url | relative_url | escape }}">{{ latest_post.title | escape }}</a></h2>
       <div class="featured-meta">
         <time datetime="{{ latest_post.date | date_to_xmlschema }}">
           <span class="meta-icon">📅</span> {{ latest_post.date | date: "%B %d, %Y" }}
@@ -56,9 +56,9 @@ permalink: /blog/
         {% endif %}
       </div>
       <p class="featured-description">
-        {{ latest_post.description | default: latest_post.excerpt | strip_html | truncatewords: 60 }}
+        {{ latest_post.description | default: latest_post.excerpt | strip_html | truncatewords: 60 | escape }}
       </p>
-      <a href="{{ latest_post.url | relative_url }}" class="featured-link">
+      <a href="{{ latest_post.url | relative_url | escape }}" class="featured-link">
         Read Full Article <span class="arrow">→</span>
       </a>
     </div>
@@ -67,27 +67,27 @@ permalink: /blog/
 
 <div class="posts-grid" id="posts-container">
   {% for post in site.posts offset:1 %}
-    <article class="post-card" data-type="{{ post.type | slugify }}" data-discipline="{{ post.discipline | slugify }}" data-tags="{{ post.categories | join: ' ' | slugify }}">
+    <article class="post-card" data-type="{{ post.type | slugify | escape }}" data-discipline="{{ post.discipline | slugify | escape }}" data-tags="{{ post.categories | join: ' ' | slugify | escape }}">
       <div class="card-header">
         <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
           {{ post.date | date: "%b %d" }}
           <span class="post-year">{{ post.date | date: "%Y" }}</span>
         </time>
         {% if post.type %}
-          <span class="card-badge">{{ post.type }}</span>
+          <span class="card-badge">{{ post.type | escape }}</span>
         {% endif %}
       </div>
       <div class="card-body">
-        <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <h3 class="card-title"><a href="{{ post.url | relative_url | escape }}">{{ post.title | escape }}</a></h3>
         <p class="card-excerpt">
-          {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 }}
+          {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 | escape }}
         </p>
       </div>
       <div class="card-footer">
         {% if post.discipline %}
           <span class="card-tag">{{ post.discipline | escape }}</span>
         {% endif %}
-        <a href="{{ post.url | relative_url }}" class="card-link">Read more →</a>
+        <a href="{{ post.url | relative_url | escape }}" class="card-link">Read more →</a>
       </div>
     </article>
   {% endfor %}

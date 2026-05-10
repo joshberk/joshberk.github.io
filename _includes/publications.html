@@ -22,7 +22,13 @@
             {% for link in pub.links %}
             {% assign safe_url = link.url | to_s | strip %}
             {% assign url_prefix = safe_url | slice: 0, 1 %}
-            {% if url_prefix == '/' or safe_url contains 'https://' or safe_url contains 'http://' %}
+            {% assign second_char = safe_url | slice: 1, 1 %}
+            {% assign https_prefix = safe_url | slice: 0, 8 %}
+            {% assign is_local_url = false %}
+            {% if url_prefix == '/' and second_char != '/' %}
+              {% assign is_local_url = true %}
+            {% endif %}
+            {% if is_local_url or https_prefix == 'https://' %}
             <a href="{{ safe_url | escape }}" class="btn btn-sm btn-outline" rel="noopener noreferrer">{{ link.text | escape }}</a>
             {% endif %}
             {% endfor %}

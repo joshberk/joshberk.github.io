@@ -16,8 +16,8 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-*   Ruby
-*   Bundler
+*   Ruby with RubyGems 3.3.22 or newer
+*   Bundler 2.3.27
 *   Jekyll
 
 ### Installation
@@ -28,12 +28,20 @@ To get a local copy up and running, follow these simple steps.
     ```
 2.  Install dependencies
     ```sh
+    gem install bundler:2.3.27
     bundle install
     ```
 3.  Run the development server
     ```sh
     bundle exec jekyll serve
     ```
+
+## Security Headers
+
+The site includes a `_headers` file for hosts that support static response header
+configuration, such as Cloudflare Pages or Netlify. GitHub Pages does not enforce
+that file directly, so use a CDN/reverse proxy if you need HTTP-level CSP,
+`frame-ancestors`, HSTS, or Permissions-Policy enforcement in production.
 
 ## Contributing
 

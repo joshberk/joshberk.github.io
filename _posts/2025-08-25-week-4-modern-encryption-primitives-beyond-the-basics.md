@@ -5,6 +5,7 @@ categories: [cryptography, study-notes]
 description: "Building on probability and secrecy, this week I explore advanced cryptographic primitives: Format-Preserving Encryption, Fully Homomorphic Encryption, Searchable Encryption, and Tweakable Encryption. I also examine how weak ciphers and wrong models undermine security."
 type: "Study Notes"
 discipline: "cryptography"
+math: true
 ---
 
 ## Introduction: Beyond Perfect Secrecy

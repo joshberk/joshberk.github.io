@@ -7,8 +7,8 @@ title: Home
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">Security Research · Applied Cryptography · Detection Engineering</p>
-      <h1>Hi, I'm <span class="accent-text">{{ site.title }}</span></h1>
-      <p class="hero-description">{{ site.description }}</p>
+      <h1>Hi, I'm <span class="accent-text">{{ site.title | escape }}</span></h1>
+      <p class="hero-description">{{ site.description | escape }}</p>
       <div class="hero-buttons">
         <a href="#about-me" class="btn btn-primary">Learn More</a>
         <a href="https://linkedin.com/in/joshfiifi" class="btn btn-outline" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
@@ -122,13 +122,13 @@ title: Home
   <div class="posts-grid">
     {% for post in site.posts limit:3 %}
       <article class="post-preview">
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <h3><a href="{{ post.url | relative_url | escape }}">{{ post.title | escape }}</a></h3>
         <p class="post-meta">
           <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
           {% if post.discipline %} • {{ post.discipline | escape }}{% endif %}
           {% if post.type %} • {{ post.type | escape }}{% endif %}
         </p>
-        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 | escape }}</p>
       </article>
     {% endfor %}
   </div>
@@ -207,7 +207,7 @@ title: Home
   <div class="contact-card">
     <p>Ready to collaborate on cryptography research or cybersecurity projects? Let's connect.</p>
     <ul class="contact-links">
-      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/joshfiifii" rel="me">Joshua Berkoh</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/joshfiifi" rel="me">Joshua Berkoh</a></li>
       <li><strong>GitHub:</strong> <a href="https://github.com/joshberk" rel="me">@joshberk</a></li>
     </ul>
   </div>

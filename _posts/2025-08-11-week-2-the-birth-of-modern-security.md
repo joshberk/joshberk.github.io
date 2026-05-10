@@ -5,6 +5,7 @@ categories: [cryptography, study-notes]
 description: "My second week's dive into cryptography, exploring the transition from classical ciphers to modern security. This post unpacks Kerckhoffs's Principle, attack models, and why mathematical rigor is essential."
 type: "Study Notes"
 discipline: "cryptography"
+math: true
 ---
 
 ## Introduction: From Classical Ciphers to Provable Security

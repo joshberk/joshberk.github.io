@@ -142,9 +142,18 @@ function initializeScrollEffects() {
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+
+      let target = null;
+      try {
+        target = document.querySelector(href);
+      } catch (err) {
+        return;
+      }
+
       if (target) {
+        e.preventDefault();
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
@@ -250,7 +259,12 @@ function initializeBlogViewToggle() {
   if (!viewButtons.length || !postsContainer) return;
 
   // Load saved view preference
-  const savedView = localStorage.getItem('blogView') || 'grid';
+  let savedView = 'grid';
+  try {
+    savedView = localStorage.getItem('blogView') || 'grid';
+  } catch (e) {
+    savedView = 'grid';
+  }
   applyView(savedView);
 
   viewButtons.forEach(button => {

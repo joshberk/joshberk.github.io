@@ -3,6 +3,8 @@
 # GitHub Pages does not process Apache .htaccess files, so rules placed here are
 # not enforced in production. Real protections for this site must come from:
 # - HTML-level controls that the static site can emit, such as the CSP meta tag
+# - _headers when deployed through a host/proxy that supports it, such as
+#   Cloudflare Pages or Netlify
 # - GitHub Pages / GitHub repository settings
 # - A reverse proxy or CDN in front of the site if stronger response headers are needed
 #

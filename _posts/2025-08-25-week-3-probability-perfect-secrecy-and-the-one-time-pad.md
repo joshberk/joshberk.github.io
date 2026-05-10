@@ -5,6 +5,7 @@ categories: [cryptography, study-notes]
 description: "My third week dives into probability, conditional distributions, and formal definitions of secrecy. I work through shift cipher examples, Bayes’ Theorem, and the rigorous proof that the One-Time Pad achieves perfect secrecy."
 type: "Study Notes"
 discipline: "cryptography"
+math: true
 ---
 
 ## Introduction: From Intuition to Probability

@@ -26,6 +26,11 @@ github:
 # Blog settings
 show_excerpts: true
 
+# Files beginning with an underscore are normally skipped by Jekyll.
+# Include _headers for hosts such as Cloudflare Pages/Netlify that enforce it.
+include:
+  - _headers
+
 # Collections for blog posts (simplified)
 collections:
   posts:
@@ -39,7 +44,7 @@ defaults:
     values:
       layout: "post"
       author: "Joshua Berkoh"
-      math: true   # Load MathJax on all posts; set math: false on non-math posts
+      math: false  # Enable MathJax only on posts that need it.
 
 # Build settings
 markdown: kramdown
