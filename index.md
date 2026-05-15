@@ -71,41 +71,16 @@ title: Home
     
     <div class="about-text">
       <p>
-       I am a PhD candidate in Information Technology at the University of Cincinnati, with an anticipated graduation in August 2028. 
-       My research focuses on applied cryptography, secure systems, and the design of privacy-preserving infrastructure especially within 
-       anonymous communication networks like I2P. At the core of my work is a commitment to developing secured search solutions but also practical, 
-       scalable, and impactful in real-world security settings.
-      </p>
-      
-      <p>
-        My academic foundation was shaped through both master's and doctoral studies at the University of Cincinnati, 
-        where I earned my MS in Information Technology in August 2024. I have a multi-phase research roadmap to bridge the gap between cryptographic theory and practice. 
-        It starts with the foundational number theory and provable security required for academic rigor and extends through practical implementation to ensure the results 
-        are industry ready.
+        Joshua Berkoh is a PhD candidate in Information Technology at the University of Cincinnati, where his dissertation develops a cross-layer graph framework for measuring the I2P anonymous overlay network. His research fuses network-layer router data with application-layer eepsite crawls into a single directed multiplex graph, making it possible to study how anonymity infrastructure and the hidden services that ride on top of it interact as one system rather than two disconnected layers. Joshua's broader research interests center on the application of graph theory to complex, real-world systems, with extensions into anonymous communications, applied cryptography, detection engineering, and machine learning for security. He is particularly interested in research and applied settings, including national laboratories, federal research programs, and industry research labs where graph-theoretic methods can be brought to bear on hard problems in security, infrastructure, and large-scale networked systems.
       </p>
 
       <details>
         <summary>Read More</summary>
         <p>
-          Professionally, I've built experience across academia, industry, and high-stakes security environments. As a Security Engineer Intern at Intuit Inc.,
-          I contributed to internal security tooling and infrastructure hardening within a large-scale cloud environment. As an Adjunct Instructor at the University of Cincinnati,
-          I redesigned and delivered undergraduate curricula in IT fundamentals, introducing hands-on labs that emphasized secure coding and systems thinking,
-          training nearly 50 students in each cohort.
+          Alongside his academic work, Joshua is a practicing detection engineer and SOC analyst. He previously served as a Security Operations Center Analyst at Virtual Infosec Africa, defending the security systems of financial institutions, and as a Security Engineering Intern at Intuit, where he integrated automated compliance checks into the security pipeline. He maintains a home detection lab built on Elastic Stack, Sysmon, and KQL rules mapped to MITRE ATT&CK, which he uses both for self-directed research and as a teaching platform.
         </p>
         <p>
-          Previously, I served as a Security Operations Analyst at Virtual Infosec Africa, where I monitored critical financial infrastructure, 
-          helping the Banking system achieve > 60% detection rate and significantly reduce incident response times. I continue to sharpen my offensive 
-          and defensive skills by actively participating in Capture The Flag competitions and bug bounty programs, 
-          with acknowledgments from platforms like HackerOne and MetaCTF and hackinghub.
-        </p>
-        <p>
-          I'm equally passionate about community and mentorship. As a lead mentor with OWASP Cincinnati, an ISC² examination developer, and an AWS Community Builder, 
-          I contribute to open-source documentation, support peer learning, and guide aspiring security professionals. Currently, I'm also building tooling for 
-          cryptographic protocol analysis, integrating Python and Rust for practical implementations of secure systems.
-        </p>
-        <p>
-          Long term, I aim to advance the state of applied cryptography by bridging academic research and industry deployment pioneering systems 
-          that are both provably secure and operationally robust.
+          Joshua's professional path has been shaped by a long history of community involvement and applied practice. He has served as an adjunct instructor at the University of Cincinnati, mentored at the OWASP Cincinnati Chapter, contributed to ISC2 as a certification examination developer, and held an AWS Community Builder role. He is also a former bug bounty researcher, with hall-of-fame recognition across multiple programs, and has competed in cybersecurity capture-the-flag events including Security Innovation, Hacker101, MetaCTF, and Tracelabs OSINT.
         </p>
       </details>
     </div>
