@@ -7,13 +7,13 @@ projects:
   language: SCSS
   stars: 1
   forks: 0
-  updated: '2026-06-11T10:15:39Z'
+  updated: '2026-06-12T10:03:34Z'
 - name: Agentic-Threat-Intel-Feed
   full_name: joshberk/Agentic-Threat-Intel-Feed
   description: This is my agentic threat intelligence feed project.
   url: https://github.com/joshberk/Agentic-Threat-Intel-Feed
   language: Python
-  stars: 1
+  stars: 2
   forks: 0
   updated: '2026-02-23T19:13:07Z'
 - name: PVE-Resource-monitor
