@@ -5,17 +5,18 @@ permalink: /blog/
 ---
 
 <div class="blog-hero">
-  <h1 class="blog-title">Blog<span class="cursor"></span></h1>
-  <p class="blog-subtitle">Insights on cryptography, cybersecurity, and my journey through PhD research.</p>
+  <h1 class="blog-title">Blog & Portfolio<span class="cursor"></span></h1>
+  <p class="blog-subtitle">Insights on cryptography, cybersecurity, and end-to-end incident response investigations.</p>
 </div>
 
 <div class="blog-controls">
   <div class="filter-tabs">
     <button class="filter-btn active" data-filter="all">All Posts</button>
+    <button class="filter-btn" data-filter="dfir-portfolio">DFIR Portfolio</button>
+    <button class="filter-btn" data-filter="threat-detection">Threat Detection Engineering</button>
     <button class="filter-btn" data-filter="study-notes">Study Notes</button>
     <button class="filter-btn" data-filter="reflection">Reflections</button>
     <button class="filter-btn" data-filter="cryptography">Cryptography</button>
-    <button class="filter-btn" data-filter="threat-detection">Threat Detection Engineering</button>
   </div>
   <div class="view-toggle">
     <button class="view-btn active" data-view="grid" title="Grid View">
@@ -35,9 +36,10 @@ permalink: /blog/
   <strong>Paused for Academic reasons.</strong>
 </div>
 
-{% if site.posts.size > 0 %}
-  {% assign latest_post = site.posts.first %}
-  <article class="featured-post" data-type="{{ latest_post.type | slugify | escape }}" data-discipline="{{ latest_post.discipline | slugify | escape }}" data-tags="{{ latest_post.categories | join: ' ' | slugify | escape }}">
+{% assign non_portfolio_posts = site.posts | reject_exp: "item", "item.categories contains 'dfir-portfolio'" %}
+{% if non_portfolio_posts.size > 0 %}
+  {% assign latest_post = non_portfolio_posts.first %}
+  <article class="featured-post" data-type="{{ latest_post.type | slugify | escape }}" data-discipline="{{ latest_post.discipline | slugify | escape }}" data-tags="{% for cat in latest_post.categories %}{{ cat | slugify }} {% endfor %}">
     <div class="featured-label">
       <span class="pulse"></span>
       Latest Post
@@ -66,30 +68,88 @@ permalink: /blog/
 {% endif %}
 
 <div class="posts-grid" id="posts-container">
-  {% for post in site.posts offset:1 %}
-    <article class="post-card" data-type="{{ post.type | slugify | escape }}" data-discipline="{{ post.discipline | slugify | escape }}" data-tags="{{ post.categories | join: ' ' | slugify | escape }}">
-      <div class="card-header">
-        <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
-          {{ post.date | date: "%b %d" }}
-          <span class="post-year">{{ post.date | date: "%Y" }}</span>
-        </time>
-        {% if post.type %}
-          <span class="card-badge">{{ post.type | escape }}</span>
-        {% endif %}
-      </div>
-      <div class="card-body">
-        <h3 class="card-title"><a href="{{ post.url | relative_url | escape }}">{{ post.title | escape }}</a></h3>
-        <p class="card-excerpt">
-          {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 | escape }}
-        </p>
-      </div>
-      <div class="card-footer">
-        {% if post.discipline %}
-          <span class="card-tag">{{ post.discipline | escape }}</span>
-        {% endif %}
-        <a href="{{ post.url | relative_url | escape }}" class="card-link">Read more →</a>
-      </div>
-    </article>
+  {% for post in site.posts %}
+    {% if latest_post and post.url == latest_post.url %}
+      {% continue %}
+    {% endif %}
+
+    {% assign is_portfolio = false %}
+    {% if post.categories contains 'dfir-portfolio' %}
+      {% assign is_portfolio = true %}
+    {% endif %}
+
+    {% if is_portfolio %}
+      <article class="post-card portfolio-card{% if post.status == 'Coming Soon' %} coming-soon-card{% endif %}" data-type="{{ post.type | slugify | escape }}" data-discipline="{{ post.discipline | slugify | escape }}" data-tags="{% for cat in post.categories %}{{ cat | slugify }} {% endfor %}">
+        <div class="card-header">
+          <div class="portfolio-badges">
+            {% for tag in post.tags %}
+              {% assign tag_lower = tag | downcase %}
+              {% if tag_lower contains 'critical' or tag_lower contains 'infrastructure' %}
+                <span class="portfolio-badge badge-amber">{{ tag | escape }}</span>
+              {% elsif tag_lower contains 'supply' or tag_lower contains 'chain' or tag_lower contains 'tracking' %}
+                <span class="portfolio-badge badge-blue">{{ tag | escape }}</span>
+              {% elsif tag_lower contains 'insider' or tag_lower contains 'threat' or tag_lower contains 'loss' %}
+                <span class="portfolio-badge badge-rose">{{ tag | escape }}</span>
+              {% elsif tag_lower contains 'apt' or tag_lower contains 'campaign' %}
+                <span class="portfolio-badge badge-purple">{{ tag | escape }}</span>
+              {% else %}
+                <span class="portfolio-badge badge-slate">{{ tag | escape }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">
+            {% if post.status == 'Coming Soon' %}
+              {{ post.title | escape }}
+            {% else %}
+              <a href="{{ post.url | relative_url | escape }}">{{ post.title | escape }}</a>
+            {% endif %}
+          </h3>
+          <p class="card-excerpt">
+            {{ post.description | default: post.excerpt | strip_html | escape }}
+          </p>
+        </div>
+        <div class="card-footer portfolio-footer">
+          <span class="focus-text">
+            {% if post.status == 'Coming Soon' %}
+              Status: Investigation in Progress
+            {% else %}
+              Focus: {{ post.focus | escape }}
+            {% endif %}
+          </span>
+          {% if post.status == 'Coming Soon' %}
+            <span class="coming-soon-badge">Coming Soon</span>
+          {% else %}
+            <a href="{{ post.url | relative_url | escape }}" class="card-link font-medium">Read Report &rarr;</a>
+          {% endif %}
+        </div>
+      </article>
+    {% else %}
+      <article class="post-card" data-type="{{ post.type | slugify | escape }}" data-discipline="{{ post.discipline | slugify | escape }}" data-tags="{% for cat in post.categories %}{{ cat | slugify }} {% endfor %}">
+        <div class="card-header">
+          <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+            {{ post.date | date: "%b %d" }}
+            <span class="post-year">{{ post.date | date: "%Y" }}</span>
+          </time>
+          {% if post.type %}
+            <span class="card-badge">{{ post.type | escape }}</span>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"><a href="{{ post.url | relative_url | escape }}">{{ post.title | escape }}</a></h3>
+          <p class="card-excerpt">
+            {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 | escape }}
+          </p>
+        </div>
+        <div class="card-footer">
+          {% if post.discipline %}
+            <span class="card-tag">{{ post.discipline | escape }}</span>
+          {% endif %}
+          <a href="{{ post.url | relative_url | escape }}" class="card-link">Read more →</a>
+        </div>
+      </article>
+    {% endif %}
   {% endfor %}
 </div>
 

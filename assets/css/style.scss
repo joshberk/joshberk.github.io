@@ -1055,6 +1055,125 @@ footer p {
   animation: fadeInUp 0.35s ease both;
 }
 
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  .card-header {
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--line);
+    padding: 0.75rem 0.9rem;
+  }
+  
+  .portfolio-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  
+  .portfolio-badge {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .badge-amber {
+    background: rgba(218, 163, 58, 0.08);
+    color: var(--warning);
+    border-color: rgba(218, 163, 58, 0.22);
+  }
+  
+  .badge-blue {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 24%, transparent);
+  }
+  
+  .badge-rose {
+    background: rgba(222, 95, 88, 0.08);
+    color: #de5f58;
+    border-color: rgba(222, 95, 88, 0.22);
+  }
+  
+  .badge-purple {
+    background: rgba(111, 74, 168, 0.08);
+    color: #9d66eb;
+    border-color: rgba(111, 74, 168, 0.22);
+  }
+  
+  .badge-slate {
+    background: var(--surface-alt);
+    color: var(--text-muted);
+    border-color: var(--line-strong);
+  }
+  
+  .card-body {
+    flex-grow: 1;
+    padding: 0.95rem;
+  }
+  
+  .card-title {
+    font-size: 1.22rem;
+    font-weight: 700;
+    margin-bottom: 0.55rem;
+    
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  }
+  
+  .card-excerpt {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .portfolio-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.9rem;
+    background: var(--surface-alt);
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+  }
+  
+  .focus-text {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  
+  .coming-soon-badge {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+  
+  &.coming-soon-card {
+    opacity: 0.74;
+    border-style: dashed;
+    
+    .card-title {
+      color: var(--text-muted);
+    }
+  }
+}
+
 .lab-post {
   margin-top: 1rem;
 }
