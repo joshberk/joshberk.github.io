@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Incident Investigation Report: Operation DOCKSHOCK"
-date: 2026-06-20
+date: 2026-06-22
 categories: [threat-detection, dfir-portfolio]
 tags: [Critical Infrastructure, Supply Chain]
 status: "Coming Soon"
