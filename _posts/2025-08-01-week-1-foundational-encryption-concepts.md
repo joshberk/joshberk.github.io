@@ -1,10 +1,13 @@
 ---
+layout: post
 title: "Week 1: Foundational Encryption Concepts"
 date: 2025-08-01
-categories: [cryptography, study-notes]
-description: "An accessible introduction to key cryptographic concepts, covering encryption, decryption and the differences between symmetric and asymmetric schemes."
+categories: [cryptography]
+tags: [Symmetric Encryption, Asymmetric Encryption]
 type: "Study Notes"
-discipline: "cryptography"
+discipline: "Cryptography"
+description: "My first week introduces foundational cryptographic concepts—encryption, decryption, and the difference between symmetric and asymmetric schemes."
+math: false
 ---
 
 Week One marks the start of my structured deep dive into the heart of cryptography. As I cracked open foundational texts and concepts, one theme stood out: the pivotal role of the secret key in shaping how we protect information. In this post, I'll unpack the distinction between symmetric and asymmetric encryption and explore how these theoretical pillars guide real-world systems, all while revealing the crucial principle that ties them all together.

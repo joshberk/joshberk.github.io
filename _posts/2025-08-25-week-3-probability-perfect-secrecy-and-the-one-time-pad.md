@@ -1,10 +1,12 @@
 ---
-title: "Week 3 - Probability, Perfect Secrecy, and the One-Time Pad"
+layout: post
+title: "Week 3: Probability, Perfect Secrecy, and the One-Time Pad"
 date: 2025-08-25
-categories: [cryptography, study-notes]
-description: "My third week dives into probability, conditional distributions, and formal definitions of secrecy. I work through shift cipher examples, Bayes’ Theorem, and the rigorous proof that the One-Time Pad achieves perfect secrecy."
+categories: [cryptography]
+tags: [Perfect Secrecy, One-Time Pad, Probability]
 type: "Study Notes"
-discipline: "cryptography"
+discipline: "Cryptography"
+description: "My third week dives into probability, conditional distributions, and formal definitions of secrecy. I work through shift cipher examples, Bayes’ Theorem, and the rigorous proof that the One-Time Pad achieves perfect secrecy."
 math: true
 ---
 

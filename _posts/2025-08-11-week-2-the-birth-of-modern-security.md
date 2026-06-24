@@ -1,10 +1,12 @@
 ---
-title: "Week 2 - The Birth of Modern Security"
+layout: post
+title: "Week 2: The Birth of Modern Security"
 date: 2025-08-11
-categories: [cryptography, study-notes]
-description: "My second week's dive into cryptography, exploring the transition from classical ciphers to modern security. This post unpacks Kerckhoffs's Principle, attack models, and why mathematical rigor is essential."
+categories: [cryptography]
+tags: [Classical Ciphers, Kerckhoffs's Principle, Attack Models]
 type: "Study Notes"
-discipline: "cryptography"
+discipline: "Cryptography"
+description: "My second week's dive into cryptography, exploring the transition from classical ciphers to modern security. This post unpacks Kerckhoffs's Principle, attack models, and why mathematical rigor is essential."
 math: true
 ---
 

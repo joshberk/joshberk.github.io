@@ -6,10 +6,10 @@ categories: [threat-detection, dfir-portfolio]
 tags: [APT Campaign, Infrastructure Tracking]
 status: "Coming Soon"
 focus: "Investigation in Progress"
-description: "Investigating a high-stakes, state-sponsored campaign targeting election infrastructure. Reconstructing attacker persistence mechanisms, multi-hop C2 structures, and domain registrar anomalies."
-permalink: /blog/valdoria-votes.html
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+description: "Investigating a high-stakes, state-sponsored campaign targeting election infrastructure. Reconstructing attacker persistence mechanisms, multi-hop C2 structures, and domain registrar anomalies."
+permalink: /blog/valdoria-votes.html
 math: false
 ---
 

@@ -197,24 +197,13 @@ function initializeBlogFilters() {
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
-      const isAnnouncementOnly = filter === 'cryptography';
 
       // Update active button state
       filterButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
 
-      // Show/hide category notices
+      // Show the cryptography notice as a banner above its posts (series is paused).
       setHidden(cryptographyNotice, filter !== 'cryptography');
-
-      // For announcement-only categories, hide all posts and only show the prompt.
-      if (isAnnouncementOnly) {
-        posts.forEach(post => post.classList.add('hidden'));
-        if (visibleCountEl) {
-          visibleCountEl.textContent = '0';
-        }
-        setHidden(noPostsMessage, true);
-        return;
-      }
 
       // Filter posts
       let visibleCount = 0;

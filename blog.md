@@ -38,7 +38,7 @@ permalink: /blog/
 
 {% assign latest_post = nil %}
 {% for post in site.posts %}
-  {% unless post.categories contains 'dfir-portfolio' %}
+  {% unless post.status == 'Coming Soon' %}
     {% assign latest_post = post %}
     {% break %}
   {% endunless %}

@@ -6,10 +6,10 @@ categories: [threat-detection, dfir-portfolio]
 tags: [Insider Threat, Data Loss Prevention]
 status: "Coming Soon"
 focus: "Investigation in Progress"
-description: "Deconstructing a high-risk internal data diversion scheme. Correlating identity authentication logs with endpoint process arguments to map out unauthorized internal reconnaissance and decode obfuscated, reverse-string PowerShell command arrays."
-permalink: /blog/inside-encryptodera.html
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+description: "Deconstructing a high-risk internal data diversion scheme. Correlating identity authentication logs with endpoint process arguments to map out unauthorized internal reconnaissance and decode obfuscated, reverse-string PowerShell command arrays."
+permalink: /blog/inside-encryptodera.html
 math: false
 ---
 

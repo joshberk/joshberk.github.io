@@ -5,10 +5,10 @@ date: 2026-06-22
 categories: [threat-detection, dfir-portfolio]
 tags: [Critical Infrastructure, Supply Chain]
 focus: "Supply Chain Espionage, Source-Code Exfiltration"
-description: "Triaging a complex supply-chain intrusion targeting regional energy distribution. Tracks the complete lifecycle from perimeter XSS probing and weaponized phishing documents to lateral movement and source-code exfiltration using raw web utilities."
-permalink: /blog/operation-dockshock.html
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+description: "Triaging a complex supply-chain intrusion targeting regional energy distribution. Tracks the complete lifecycle from perimeter XSS probing and weaponized phishing documents to lateral movement and source-code exfiltration using raw web utilities."
+permalink: /blog/operation-dockshock.html
 math: false
 ---
 

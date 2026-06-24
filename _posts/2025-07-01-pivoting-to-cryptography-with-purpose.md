@@ -1,10 +1,13 @@
 ---
-title: "Pivoting to Cryptography With Purpose: Embracing The Rigor"
+layout: post
+title: "Pivoting to Cryptography With Purpose: Embracing the Rigor"
 date: 2025-07-01
-categories: [cryptography, career]
-description: "Reflections on transitioning into cryptography, exploring the need for rigorous security definitions and mathematical foundations."
+categories: [cryptography]
+tags: [Career, Research Mindset]
 type: "Reflection"
-discipline: "cryptography"
+discipline: "Cryptography"
+description: "Reflections on transitioning into cryptography, exploring the need for rigorous security definitions and mathematical foundations."
+math: false
 ---
 
 ### The Strategic Shift: Why Cryptography Now?
