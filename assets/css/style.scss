@@ -549,6 +549,45 @@ summary {
   }
 }
 
+.post-coming-soon {
+  .coming-soon-panel {
+    margin-top: 1.5rem;
+    padding: 2rem 1.75rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface-alt);
+    text-align: center;
+  }
+
+  .coming-soon-badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  .coming-soon-status {
+    margin: 0.75rem 0 0;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .post-description {
+    margin: 1rem auto;
+    max-width: 48ch;
+  }
+
+  .btn {
+    margin-top: 0.5rem;
+  }
+}
+
 .post-preview:hover,
 .post-card:hover,
 .project-card:hover {

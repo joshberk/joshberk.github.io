@@ -3,49 +3,75 @@ layout: default
 math: true
 ---
 
-{% assign words = content | number_of_words %}
-{% assign reading_time = words | divided_by: 200 %}
-{% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
+{% if page.status == 'Coming Soon' %}
+  <article class="post post-coming-soon">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+      <div class="post-meta">
+        {% if page.discipline %}
+          <span class="post-discipline">{{ page.discipline | escape }}</span>
+        {% endif %}
+        {% if page.type %}
+          <span class="post-type">{{ page.type | escape }}</span>
+        {% endif %}
+      </div>
+    </header>
 
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      <span class="reading-time" aria-label="{{ reading_time }} minute read">· {{ reading_time }} min read</span>
-      {% if page.discipline %}
-        <span class="post-discipline">{{ page.discipline | escape }}</span>
+    <div class="coming-soon-panel">
+      <span class="coming-soon-badge">Coming Soon</span>
+      <p class="coming-soon-status">Status: Investigation in Progress</p>
+      {% if page.description %}
+        <p class="post-description">{{ page.description | escape }}</p>
       {% endif %}
-      {% if page.type %}
-        <span class="post-type">{{ page.type | escape }}</span>
-      {% endif %}
-      {% if page.categories %}
-        <div class="post-categories">
-          {% for category in page.categories %}
-            <span class="category">{{ category | escape }}</span>
-          {% endfor %}
-        </div>
-      {% endif %}
+      <p>This investigation is still in progress. The full report will be published here once it is complete.</p>
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
     </div>
-    {% if page.description %}
-      <p class="post-description">{{ page.description | escape }}</p>
-    {% endif %}
-  </header>
+  </article>
+{% else %}
+  {% assign words = content | number_of_words %}
+  {% assign reading_time = words | divided_by: 200 %}
+  {% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        <span class="reading-time" aria-label="{{ reading_time }} minute read">· {{ reading_time }} min read</span>
+        {% if page.discipline %}
+          <span class="post-discipline">{{ page.discipline | escape }}</span>
+        {% endif %}
+        {% if page.type %}
+          <span class="post-type">{{ page.type | escape }}</span>
+        {% endif %}
+        {% if page.categories %}
+          <div class="post-categories">
+            {% for category in page.categories %}
+              <span class="category">{{ category | escape }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      {% if page.description %}
+        <p class="post-description">{{ page.description | escape }}</p>
+      {% endif %}
+    </header>
 
-  <footer class="post-footer">
-    <div class="post-navigation">
-      {% if page.previous.url %}
-        <a class="prev-post" href="{{ page.previous.url | relative_url | escape }}">&laquo; {{ page.previous.title | escape }}</a>
-      {% endif %}
-      {% if page.next.url %}
-        <a class="next-post" href="{{ page.next.url | relative_url | escape }}">{{ page.next.title | escape }} &raquo;</a>
-      {% endif %}
+    <div class="post-content">
+      {{ content }}
     </div>
-  </footer>
-</article>
+
+    <footer class="post-footer">
+      <div class="post-navigation">
+        {% if page.previous.url and page.previous.status != 'Coming Soon' %}
+          <a class="prev-post" href="{{ page.previous.url | relative_url | escape }}">&laquo; {{ page.previous.title | escape }}</a>
+        {% endif %}
+        {% if page.next.url and page.next.status != 'Coming Soon' %}
+          <a class="next-post" href="{{ page.next.url | relative_url | escape }}">{{ page.next.title | escape }} &raquo;</a>
+        {% endif %}
+      </div>
+    </footer>
+  </article>
+{% endif %}
