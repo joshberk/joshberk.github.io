@@ -549,6 +549,22 @@ summary {
   }
 }
 
+.post-attribution {
+  margin-top: 0.9rem;
+  padding: 0.55rem 0.85rem;
+  border-left: 3px solid var(--line-strong);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
 .post-coming-soon {
   .coming-soon-panel {
     margin-top: 1.5rem;

@@ -8,6 +8,8 @@ status: "Coming Soon"
 focus: "Investigation in Progress"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+source_name: "KC7 Cyber Detective Game"
+source_url: "https://kc7cyber.com"
 description: "Deconstructing a high-risk internal data diversion scheme. Correlating identity authentication logs with endpoint process arguments to map out unauthorized internal reconnaissance and decode obfuscated, reverse-string PowerShell command arrays."
 permalink: /blog/inside-encryptodera.html
 math: false

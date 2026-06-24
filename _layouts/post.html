@@ -15,6 +15,13 @@ math: true
           <span class="post-type">{{ page.type | escape }}</span>
         {% endif %}
       </div>
+      {% if page.source_name %}
+        <p class="post-attribution">
+          Based on a scenario from
+          {% if page.source_url %}
+            <a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ page.source_name | escape }}</a>{% else %}{{ page.source_name | escape }}{% endif %}. The investigation and write-up are my own.
+        </p>
+      {% endif %}
     </header>
 
     <div class="coming-soon-panel">
@@ -56,6 +63,13 @@ math: true
       </div>
       {% if page.description %}
         <p class="post-description">{{ page.description | escape }}</p>
+      {% endif %}
+      {% if page.source_name %}
+        <p class="post-attribution">
+          Based on a scenario from
+          {% if page.source_url %}
+            <a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ page.source_name | escape }}</a>{% else %}{{ page.source_name | escape }}{% endif %}. The investigation and write-up are my own.
+        </p>
       {% endif %}
     </header>
 
