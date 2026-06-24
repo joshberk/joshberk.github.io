@@ -532,6 +532,23 @@ summary {
   padding: 1rem 1.05rem;
 }
 
+.post-preview.coming-soon-preview {
+  opacity: 0.74;
+  border-style: dashed;
+
+  h3 {
+    color: var(--text-muted);
+  }
+
+  .coming-soon-badge {
+    display: inline-block;
+    margin-top: 0.6rem;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+}
+
 .post-preview:hover,
 .post-card:hover,
 .project-card:hover {
