@@ -5,7 +5,7 @@
         <h3>
             {{ pub.title | escape }}
             {% if pub.status %}
-            <span class="pub-status">{{ pub.status | escape }}</span>
+            <span class="pub-status pub-status--{{ pub.status | slugify }}">{{ pub.status | escape }}</span>
             {% endif %}
         </h3>
         <p class="pub-meta">

@@ -700,6 +700,11 @@ summary {
   margin-left: 0.5rem;
 }
 
+.pub-status--not-accepted {
+  background: rgba(220, 38, 38, 0.12);
+  color: #dc2626;
+}
+
 .pub-links {
   display: flex;
   gap: 0.5rem;
