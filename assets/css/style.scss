@@ -549,6 +549,26 @@ summary {
   }
 }
 
+.post-figure {
+  margin: 1.5rem 0;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+}
+
 .post-attribution {
   margin-top: 0.9rem;
   padding: 0.55rem 0.85rem;
