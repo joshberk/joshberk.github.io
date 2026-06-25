@@ -58,3 +58,6 @@ node_modules/
 # Backup files
 *.bak
 *.backup
+
+# Working/source documents (not part of the published site)
+review.docx

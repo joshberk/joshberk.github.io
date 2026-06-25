@@ -549,6 +549,32 @@ summary {
   }
 }
 
+.post-content {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    border: 1px solid var(--line);
+    padding: 0.5rem 0.7rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: var(--surface-alt);
+    font-weight: 600;
+  }
+
+  tbody tr:nth-child(even) {
+    background: var(--surface-alt);
+  }
+}
+
 .post-figure {
   margin: 1.5rem 0;
   text-align: center;
