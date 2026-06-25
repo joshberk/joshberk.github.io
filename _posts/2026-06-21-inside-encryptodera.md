@@ -1,144 +1,176 @@
 ---
 layout: post
-title: "Project CryptoStealer: Credential Misuse & Exfiltration"
+title: "Inside Encryptodera: An Insider Threat Scenario"
 date: 2026-06-21
 categories: [threat-detection, dfir-portfolio]
-tags: [Insider Threat, Data Loss Prevention]
-status: "Coming Soon"
-focus: "Investigation in Progress"
+tags: [Insider Threat, Active Directory Ransomware]
+focus: "Insider Exfiltration, Active Directory Ransomware"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
-description: "Deconstructing a high-risk internal data diversion scheme. Correlating identity authentication logs with endpoint process arguments to map out unauthorized internal reconnaissance and decode obfuscated, reverse-string PowerShell command arrays."
+description: "A dual-track insider-threat investigation at Encryptodera Financial: a contractor's 27-day FTP exfiltration of cold-storage crypto-wallet secrets running in parallel with a hijacked-identity intrusion that escalates to a domain-wide Active Directory ransomware deployment across 306 endpoints."
 permalink: /blog/inside-encryptodera.html
 math: false
 ---
 
-<div class="lab-post">
-  <div class="lab-post-tags">
-    <span class="tag tag-rose">Insider Threat</span>
-    <span class="tag tag-amber">DLP</span>
-    <span class="tag tag-blue">Obfuscation Analysis</span>
-    <span class="tag tag-purple">Identity Logs</span>
-  </div>
+| Inside Encryptodera | At a Glance |
+|---|---|
+| **Target Organization** | Encryptodera Financial |
+| **Incident Window** | December 26, 2023 – February 17, 2024 |
+| **Attack Classification** | Dual insider-threat compromise escalating to an external Active Directory ransomware takeover |
+| **Initial Access Vector** | Hijacked un-decommissioned mailbox + internal spear-phishing (MITRE T1078.001 / T1534) |
+| **Confirmed Impact** | Cold-storage crypto-wallet data exfiltration; domain-wide ransomware across 306 endpoints |
+| **Threat Actors** | Jane Smith (insider contractor), Barry Shmelly (saboteur), external AD threat actor |
+| **Investigated By** | Joshua Berkoh (Security Analyst II) · Report dated June 25, 2026 |
 
-  <p class="lab-post-lead">
-    Insider threats are notoriously difficult to detect because actors leverage legitimate credentials and authorized administrative access. This case study details the forensic investigation of <strong>Project CryptoStealer</strong>, an internal threat actor who abused privileged domain access to locate and exfiltrate database credential backups and certificate private keys from a staging server.
-  </p>
+## Executive Summary
 
-  <div class="insight-grid">
-    <div class="insight-card">
-      <p class="insight-label">Vector</p>
-      <p>Legitimate administrative session misuse paired with custom obfuscated PowerShell scripts.</p>
-    </div>
-    <div class="insight-card">
-      <p class="insight-label">Telemetry</p>
-      <p>Windows Event Logs (Security channel: Event IDs 4624, 4672) correlated with EDR process command lines.</p>
-    </div>
-    <div class="insight-card">
-      <p class="insight-label">Exfiltration</p>
-      <p>Sensitive configuration backups moved outbound via DNS tunneling payloads.</p>
-    </div>
-  </div>
+Between late December 2023 and February 2024, **Encryptodera Financial** was subjected to two severe, parallel security compromises stemming from corporate insider risks. The first narrative involves an intentional insider defector, **Jane Smith** (Blockchain Contractor), who systematically mapped and exfiltrated sensitive details concerning the company's cold-storage cryptocurrency wallets to an external adversary over a 27-day pipeline.
 
-  <div class="toc-inline">
-    <p>Contents</p>
-    <ol>
-      <li><a href="#incident-detection">Anomaly Detection & Initial Alerts</a></li>
-      <li><a href="#identity-correlation">Identity Correlation & Session Hijacking</a></li>
-      <li><a href="#obfuscation">De-obfuscating the PowerShell Payload</a></li>
-      <li><a href="#data-access">Accessing the Credential Vault</a></li>
-      <li><a href="#detection-kql">Detection & Hunting KQL Queries</a></li>
-      <li><a href="#mitigations">Prevention & Access Control Controls</a></li>
-    </ol>
-  </div>
+The second narrative involves a disgruntled employee, **Barry Shmelly**, whose initial intellectual-property theft left behind compromised corporate account credentials. An external threat actor hijacked Shmelly's identity to deploy targeted phishing lures internally, harvest local administrative rights, move laterally to dump domain-controller access tokens via Mimikatz, and orchestrate a catastrophic Active Directory group-policy ransomware deployment impacting 306 corporate endpoints.
 
-  <h2 id="incident-detection" class="anchor">1. Anomaly Detection & Initial Alerts</h2>
-  
-  <p>
-    The incident was identified when the SOC received a threat alert detailing a high volume of DNS query requests targeting a subdomain of <code>aws-update-service.net</code> from a system hosting a critical staging application database (<code>STG-DB-02</code>).
-  </p>
-  <p>
-    A standard DNS lookup of the domain showed it was not owned by Amazon Web Services, but rather registered through a private domain service in Eastern Europe. The query logs showed a repetitive sequence of TXT and A-record queries carrying hex-encoded subdomains, characteristic of DNS exfiltration (tunneling).
-  </p>
+## 1. Incident Timeline
 
-  <h2 id="identity-correlation" class="anchor">2. Identity Correlation & Session Hijacking</h2>
+*   **[Dec 26, 14:00 UTC]** ── Insider Barry Shmelly begins researching exfiltration methods.
+*   **[Jan 15, 06:03 UTC]** ── Shmelly posts public grievances regarding upcoming layoffs.
+*   **[Jan 15, 09:00 UTC]** ── Shmelly stages proprietary software algorithms and M&A documents.
+*   **[Jan 18, 11:37 UTC]** ── Shmelly delivers an extortion email to the CEO and separates from the company.
+*   **[Jan 21, 11:45 UTC]** ── Contractor Jane Smith initiates rogue exfiltration routing setup via FTP.
+*   **[Feb 01, 03:55 UTC]** ── External actor hijacks Shmelly's account to phish Risk Analyst Robin Kirby.
+*   **[Feb 01, 07:46 UTC]** ── Attacker uses local admin tokens to pivot from Kirby to Admin Valerie Orozco.
+*   **[Feb 02, 03:32 UTC]** ── Attacker dumps credentials via Mimikatz, gaining Domain Admin status.
+*   **[Feb 05, 13:28 UTC]** ── Jane Smith executes the final exfiltration data dump over FTP.
+*   **[Feb 17, 02:30 UTC]** ── Attacker deploys a malicious GPO pushing ransomware to 306 machines.
 
-  <p>
-    Security analysts reviewed authentication logs for <code>STG-DB-02</code>. They found a successful Logon Session (Event ID 4624) corresponding to a senior engineer's administrator account:
-  </p>
-  
-  <ul>
-    <li><strong>Logon Type:</strong> Type 3 (Network Logon) via SMB / Kerberos.</li>
-    <li><strong>Source Network Address:</strong> <code>10.10.14.88</code> (assigned to a contractor workstation).</li>
-    <li><strong>Privileges:</strong> Event ID 4672 (Special privileges assigned: <code>SeDebugPrivilege</code>, <code>SeBackupPrivilege</code>).</li>
-  </ul>
+## 2. Phase-by-Phase Technical Walkthrough
 
-  <p>
-    The engineer associated with the logon was confirmed to be out of the office on annual leave, pointing to either session theft, remote credential theft, or malicious insider activity using shared credentials.
-  </p>
+### Threat Thread A: The Malicious Insider Exfiltration (Jane Smith)
 
-  <h2 id="obfuscation" class="anchor">3. De-obfuscating the PowerShell Payload</h2>
+Independent of the ransomware timeline, environment network mapping caught a massive outbound data flow directed to an external rogue IP endpoint (182.56.23.121) utilizing **File Transfer Protocol (FTP)** over a 27-day active operational window.
 
-  <p>
-    Process audit log events (Event ID 4688) showed that the compromised user session spawned a PowerShell process with a highly obfuscated command line:
-  </p>
+```kql
+// Tracking anomalous volumetric data outbound transfers
+NetworkFlow
+| where dest_ip == "182.56.23.121"
+| summarize TotalBytes = sum(bytes), DistinctDays = dcount(format_datetime(timestamp, 'yyyy-MM-dd')) by dest_ip
+```
 
-  <pre data-lang="powershell"><code>powershell.exe -w hidden -c "$s='txet.tseuqerderc\pmt\swodniw\:c egapkaB-tcatxE.tpyrcsnwod$'; iex ($s.ToCharArray() | % {$o += $_}; [Array]::Reverse($o); $o -join '')"</code></pre>
+{% include figure.html src="/assets/images/posts/inside-encryptodera/q-1.png" alt="KQL NetworkFlow query result showing 208,138 total bytes exfiltrated to 182.56.23.121 across 27 distinct days" caption="Figure 1: Outbound FTP volume to 182.56.23.121 — 208,138 bytes across 27 distinct active days." %}
 
-  <p>
-    Let's deconstruct the script to understand how it bypasses signature-based security rules:
-  </p>
-  <ol>
-    <li>The variable <code>$s</code> holds a reversed string: <code>'txet.tseuqerderc\pmt\swodniw\:c egapkaB-tcatxE.tpyrcsnwod$'</code>.</li>
-    <li><code>$s.ToCharArray() | % {$o += $_}; [Array]::Reverse($o); $o -join ''</code> converts the string to an array, reverses the character order, and joins them back together.</li>
-    <li>Evaluating the reversed string yields the actual payload: <code>$downscript.Extract-Backupage c:\windows\temp\credrequest.text</code>.</li>
-  </ol>
-  
-  <p>
-    The decrypted target file (<code>credrequest.text</code>) contained script instructions to copy registry hive keys using native utilities to obtain local password hashes:
-  </p>
+*   **Total Volume Lost:** 208,138 bytes transferred across 27 distinct active days.
+*   **The Attacking Identity:** The source IP mapping isolated a single corporate entity — Jane Smith (jasmith), operating under the role of "Crypto Bruh" (Blockchain Contractor) on host GOTI-LAPTOP.
 
-  <pre data-lang="cmd"><code>reg save HKLM\SAM C:\windows\temp\sam.bak
-reg save HKLM\SYSTEM C:\windows\temp\system.bak</code></pre>
+Pivoting into her local web access records revealed extensive unauthorized probing behavior targeting directory strings protecting the company's **cold-storage crypto wallets**. Corporate mailbox checks caught her in active collusion with an external adversary profile (elboss@westealurcrypto.com), requesting an explicit endpoint landing pad to ship the secrets. Endpoint process auditing on GOTI-LAPTOP captured the download of localized data-collection and staging tools (`crypto_stealer.exe` and `ftp_client.exe`). To stage the exfiltration files daily, Jane executed an obfuscated, reversed-string PowerShell array containing her explicit deployment passphrase:
 
-  <h2 id="data-access" class="anchor">4. Accessing the Credential Vault</h2>
+```powershell
+C:\Windows\System32\powershell.exe -Nop -ExecutionPolicy bypass -enc <Base64_String>
+```
 
-  <p>
-    Using the local admin privileges, the attacker targeted staging database connection strings and TLS private key certificates stored in the system vault:
-  </p>
-  <pre data-lang="powershell"><code>Get-ChildItem Cert:\LocalMachine\My | Export-Certificate -Type CERT -FilePath C:\windows\temp\server_key.cer</code></pre>
-  <p>
-    The data was packed into a byte stream and chunked via the rogue AWS update subdomain using an automated DNS utility script, transmitting small pieces of data within DNS query host headers.
-  </p>
+*   **Staging Directory Target:** C:\Users\jasmith\ToTheMoon\
+*   **Decoded Execution Passphrase:** Ugot2muchCRYTOw3llt4k3it0FFurH4ND5
 
-  <h2 id="detection-kql" class="anchor">5. Detection & Hunting KQL Queries</h2>
+### Threat Thread B: The Corporate Saboteur (Barry Shmelly)
 
-  <p>
-    Implement these KQL rules inside your SIEM to monitor for administrative session misuse and command-line string reversal tricks.
-  </p>
+On January 15, 2024, "StackOverflow Copy Paster" Barry Shmelly (bashmelly) expressed extreme public dissatisfaction regarding rumored corporate layoffs.
 
-  <h3>Detecting PowerShell Command String Reversals</h3>
-  <pre data-lang="kql"><code>DeviceProcessEvents
-| where ProcessCommandLine contains "Reverse" or ProcessCommandLine contains "ToCharArray"
-| where ProcessCommandLine contains "iex" or ProcessCommandLine contains "Invoke-Expression"
-| project TimeGenerated, DeviceName, InitiatingProcessFileName, ProcessCommandLine, AccountName</code></pre>
+```kql
+// Reviewing file access anomalies for disgruntled profiles
+FileCreationEvents
+| where username == "bashmelly"
+| project timestamp, filename, path, process_name
+```
 
-  <h3>Anomalous Registry Save Operations</h3>
-  <pre data-lang="kql"><code>DeviceProcessEvents
-| where FileName =~ "reg.exe"
-| where ProcessCommandLine contains "save" and (ProcessCommandLine contains "SAM" or ProcessCommandLine contains "SYSTEM" or ProcessCommandLine contains "SECURITY")
-| project TimeGenerated, DeviceName, FileName, ProcessCommandLine, AccountName, FolderPath</code></pre>
+{% include figure.html src="/assets/images/posts/inside-encryptodera/q-2.png" alt="KQL FileCreationEvents query result listing high-value corporate files created by the bashmelly user account" caption="Figure 2: File-creation telemetry for the bashmelly account — staging of high-value corporate files." %}
 
-  <h2 id="mitigations" class="anchor">6. Prevention & Access Control Controls</h2>
+A review of his local endpoint telemetry showed that Shmelly had spent weeks researching covert data-collection methods. On January 15 and 16, he compiled several high-value corporate files:
 
-  <div class="callout callout-tip">
-    <div class="callout-title">Hardening Recommendations</div>
-    <ul class="callout-list">
-      <li><strong>Disable Registry Export:</strong> Restrict non-system execution access to <code>reg.exe</code> and <code>regedit.exe</code>.</li>
-      <li><strong>Enforce Logon Boundaries:</strong> Restrict local administrative logins from network segments that contain user workstations.</li>
-      <li><strong>DNS Tunneling Detection:</strong> Enable machine-learning threat detection in local firewalls and domain controllers to flag anomalous high-frequency subdomain requests.</li>
-    </ul>
-  </div>
-</div>
+*   SECRET_MergersAndAcquisitions_Strategy2025.docx
+*   ExecutiveSalaryNegotiations.docx
+*   Encryptodera_Proprietary_Algorithms.zip (compressed via 7-Zip using password `securepass123`)
+
+Shmelly copied these assets directly onto an external hard drive labeled E:\SchmellyDrive\. He then sent insubordinate emails to several Social Media Managers and an extortion message to the Chief Executive Officer before separating from the firm on January 18.
+
+### Threat Thread C: Identity Hijacking & Active Directory Domain Takeover
+
+Although Barry Shmelly left the organization on January 18, his active corporate mailbox remained un-decommissioned. On February 1, 2024, an external threat actor operating from IP 143.38.175.105 successfully authenticated into Shmelly's account profile. The hijacked account was immediately used to send 9 highly sophisticated internal phishing lures.
+
+The malicious messages contained a double-extension file designed to execute code silently: `Company_Financials_Q1_2024_Review.xlsx.exe`.
+
+```kql
+// Tracking successful internal phishing execution and lateral tracking
+let hosts = ProcessEvents | where process_commandline has "systeminfo" | distinct hostname;
+AuthenticationEvents
+| where hostname in (hosts)
+| summarize dcount(hostname) by src_ip
+| order by dcount_hostname desc
+```
+
+{% include figure.html src="/assets/images/posts/inside-encryptodera/q-3.png" alt="KQL AuthenticationEvents query result ranking source IPs by distinct hostnames authenticated, led by 10.10.0.138" caption="Figure 3: Authentication fan-out by source IP — 10.10.0.138 driving connections across all 8 target hosts." %}
+
+Our lateral-movement investigation focused on tracking common authentication patterns across the 8 corporate hosts that executed the `systeminfo` discovery string. By building a unified `let` array, we mapped out the internal source IPs driving these wide-scale authentications.
+
+The telemetry isolated internal IP address 10.10.0.138 making a massive volume of 554 successful authentication connections across all 8 target workstations. While this IP footprint officially maps back to System Administrator Lynda Smith (MEED-DESKTOP), cross-referencing active session logs exposed a credential-misuse anomaly: the high-privilege account tokens were being systematically abused by an external actor using a compromised staging point to hop across network sectors undetected.
+
+The most critical of these lateral pivots occurred on February 2, 2024, at 03:32:53 UTC, when the compromised administrative pipeline initiated an RDP connection, successfully authenticating straight into the DOMAIN_CONTROLLER_SERVER under the Domain Admin context of `lihenry_domain_admin`.
+
+### Threat Thread D: Tracking the Delivery and Credential Chain
+
+Risk Analyst Robin Kirby executed the attachment on February 1 at 03:59:30 UTC. The script dropped an instant remote-access agent (`screenconnect_client.exe`) and harvested localized administrator tokens (`systadmi_local_admin`) right from the system memory cache.
+
+The adversary used these local admin credentials to move laterally from Robin Kirby's machine to the laptop of System Administrator Valerie Orozco (GJ95-LAPTOP). Once inside the administrator's host segment, the attacker dropped a credential dumper masquerading under a benign name to extract high-privilege domain validation structures:
+
+```text
+totally_not_mimikatz.exe "sekurlsa::logonpasswords"
+```
+
+This dumped the cleartext tokens for the Domain Administrator account: `lihenry_domain_admin`. On February 2, 2024, at 03:32:36 UTC, the attacker pivoted from internal host 10.10.0.138, successfully authenticated into the core DOMAIN_CONTROLLER_SERVER, and ran system reconnaissance checks using `nltest /dclist` to map out the company's complete network catalog.
+
+To discover how the adversary hijacked these administrative accounts in the first place, we reversed the timeline to analyze the initial staging points. The tracking led back to February 1, 2024, when the adversary authenticated into Barry Shmelly's un-decommissioned mailbox from the external 143.38.175.105 and distributed 9 localized phishing links containing the double-extension file `Company_Financials_Q1_2024_Review.xlsx.exe`.
+
+### Threat Thread E: Automated Ransomware Deployment
+
+**The Identity Governance Gap:** The adversary retained total control of the Active Directory environment for **15 consecutive days** (February 2 – February 17) undetected. This visibility gap existed because the adversary was operating entirely under the context of authorized administrative tokens.
+
+On February 17, 2024, at 02:30:50 UTC, the adversary executed their final objective. They staged a malicious Group Policy Object (GPO) on the Domain Controller and forced an immediate policy replication sequence across the entire corporate fleet:
+
+```kql
+// Identifying wide-scale malicious Group Policy enforcement strings
+ProcessEvents
+| where process_commandline contains "gpupdate /force"
+| count
+```
+
+{% include figure.html src="/assets/images/posts/inside-encryptodera/q-4.png" alt="KQL ProcessEvents count query result showing 306 endpoints executed gpupdate /force" caption="Figure 4: Scope of the malicious GPO — 306 endpoints forced to run gpupdate /force." %}
+
+The GPO forced **306 separate workstations** to pull down and launch the ransomware payload binary (`files_go_byebye.exe`) simultaneously. The automated utility targeted user data structures, appending the `.umadbro` extension to encrypted files and dropping the text-based ransom note `YOU_GOT_CRYTOED_SO_GIMME_CRYPTO.txt`.
+
+## 3. MITRE ATT&CK Matrix Mapping
+
+| Tactic | Technique ID | Technique Name | Operational Context |
+|---|---|---|---|
+| Initial Access | T1078.001 | Valid Accounts: Default Accounts | External authentication into Barry Shmelly's un-decommissioned mailbox. |
+| Lateral Movement | T1534 | Internal Spearphishing | Mailbox abuse used to distribute Company_Financials_Q1_2024_Review.xlsx.exe. |
+| Defense Evasion | T1036.005 | Masquerading: Match Legitimate Name | Running credential-harvesting components under the filename totally_not_mimikatz.exe. |
+| Credential Access | T1003.001 | OS Credential Dumping: LSASS Memory | Memory dumping via Mimikatz to harvest Domain Admin tokens. |
+| Discovery | T1016 | System Network Configuration Discovery | Domain mapping via native utility execution: nltest /dclist. |
+| Lateral Movement | T1021.001 | Remote Services: Remote Desktop Protocol | Pivoting to the Active Directory Controller from internal asset 10.10.0.138. |
+| Impact | T1484.001 | Domain Policy Modification: Group Policy | Leveraging GPO replication channels via gpupdate /force to distribute ransomware. |
+| Impact | T1486 | Data Encrypted for Impact | Fleet-wide file lockdown using files_go_byebye.exe -encrypt. |
+
+<!-- Section: Proactive Detection Engineering (Sigma & KQL rules) — to be added later, once the detections can be operationally justified. -->
+
+## 4. Consolidated Indicators of Compromise (IOCs)
+
+| Type | Indicator | Context / Association |
+|---|---|---|
+| IP Address | 143.38.175.105 | External threat-actor initial-access landing node |
+| IP Address | 182.56.23.121 | External rogue FTP destination server (Jane Smith collusion) |
+| Domain | notification-finance-services.com | Ransomware C2 domain staging indicator |
+| Domain | update-finance-security.biz | Phishing document file-server root |
+| Filename | Company_Financials_Q1_2024_Review.xlsx.exe | Double-extension weaponized phishing payload |
+| Filename | files_go_byebye.exe | Enterprise ransomware encryption binary |
+| Filename | totally_not_mimikatz.exe | Masqueraded LSASS credential dumper |
+| File Extension | .umadbro | Ransomware cryptographic suffix |
+| Ransom Note | YOU_GOT_CRYTOED_SO_GIMME_CRYPTO.txt | Post-encryption ransom extortion document |
+| Account Name | systadmi_local_admin | Hijacked local administrative maintenance identity |
