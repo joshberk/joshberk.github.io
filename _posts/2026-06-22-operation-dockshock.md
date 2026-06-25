@@ -16,7 +16,7 @@ math: false
 
 | Operation DOCKSHOCK | At a Glance |
 |---|---|
-| **Target Organization** | Solvi Systems — vendor of the DOCKS Industrial Control Systems (ICS) software |
+| **Target Organization** | Solvi Systems: vendor of the DOCKS Industrial Control Systems (ICS) software |
 | **Sector / Impact Zone** | Energy distribution across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia |
 | **Attack Classification** | Multi-stage supply-chain espionage |
 | **Incident Window** | May 1 – May 28, 2024 |
@@ -27,7 +27,7 @@ math: false
 
 ## Executive Summary
 
-Between May 1 and May 28, 2024, a targeted, multi-stage cyber-espionage campaign successfully compromised **Solvi Systems**. Because Solvi Systems develops the proprietary **DOCKS Industrial Control Systems (ICS)** software — which manages energy distribution networks across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia — this intrusion represented a severe regional critical-infrastructure supply-chain risk and a latent public-safety threat.
+Between May 1 and May 28, 2024, a targeted, multi-stage cyber-espionage campaign successfully compromised **Solvi Systems**. Because Solvi Systems develops the proprietary **DOCKS Industrial Control Systems (ICS)** software which manages energy distribution networks across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia — this intrusion represented a severe regional critical-infrastructure supply-chain risk and a latent public-safety threat.
 
 The adversary used initial web reconnaissance and defensive-evasion techniques to deliver targeted spear-phishing lures. After gaining initial access to a corporate operations endpoint, the actor established persistent Command-and-Control (C2) beaconing via custom malware (`ecobug.exe`), executed localized privilege escalation, and moved laterally into a customer-facing engineering role (Docks Customer Success). The operation culminated in the targeted collection, compression, and exfiltration of sensitive Software Development Lifecycle (SDLC) blueprints and product documentation — exposing downstream utility substations to potential future kinetic disruption.
 
@@ -164,7 +164,7 @@ ProcessEvents
 
 *   **Data Scrape Command:** Copy-Item -Path \\solvisystems.com\SharedDocs\SoftwareDevelopment\CycleDocuments\* -Destination C:\Users\alpetrov\CollectedData\Software_Cycle_Docs
 
-The collected assets were compressed locally into `C:\Users\alpetrov\CollectedData\CollectedData.zip`. To prepare for exfiltration, the actor relocated this staging archive out of the user directory into a localized root path, renaming it to `C:\DataExfil\CollectedData.zip` to streamline programmatic access. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal.solvisystems.com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation 🚨) to gather structural details.
+The collected assets were compressed locally into `C:\Users\alpetrov\CollectedData\CollectedData.zip`. To prepare for exfiltration, the actor relocated this staging archive out of the user directory into a localized root path, renaming it to `C:\DataExfil\CollectedData.zip` to streamline programmatic access. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal.solvisystems.com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation) to gather structural details.
 
 On May 28, 2024, the adversary leveraged `curl.exe` — a native utility that ships by default with modern Windows — as a **Living-off-the-Land Binary (LotLBin)** to bypass standard file-transfer protocol tracking, exfiltrating the source blueprint archive directly over an HTTP POST stream:
 
