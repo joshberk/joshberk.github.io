@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize scroll effects for any navigation if present
   initializeScrollEffects();
+  initializeMobileNavigation();
 
   // Add current year to footer
   insertCurrentYear();
@@ -82,6 +83,34 @@ function initializeInvestigationFilters() {
 }
 
 /**
+ * Small-screen navigation toggle.
+ */
+function initializeMobileNavigation() {
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('primaryNav');
+  if (!toggle || !nav) return;
+
+  const closeNav = () => {
+    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-open');
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    nav.classList.toggle('is-open', !isOpen);
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 920) closeNav();
+  });
+}
+
+/**
  * Theme toggle functionality
  */
 function initializeTheme() {
@@ -91,13 +120,13 @@ function initializeTheme() {
   const applyTheme = (theme) => {
     if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      themeToggle.textContent = '☀️';
+      themeToggle.textContent = 'Light';
       themeToggle.setAttribute('aria-label', 'Switch to light mode');
       return;
     }
 
-    document.documentElement.removeAttribute('data-theme');
-    themeToggle.textContent = '🌙';
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeToggle.textContent = 'Dark';
     themeToggle.setAttribute('aria-label', 'Switch to dark mode');
   };
 
@@ -120,7 +149,7 @@ function initializeTheme() {
   };
 
   // Initialize theme from localStorage or default
-  const savedTheme = safeGet('theme') || 'light';
+  const savedTheme = safeGet('theme') || 'dark';
   applyTheme(savedTheme);
   themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
 

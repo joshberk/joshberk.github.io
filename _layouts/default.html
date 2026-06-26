@@ -123,7 +123,13 @@
             <span class="brand-name">{{ site.title | default: site.github.repository_name | escape }}</span>
             <span class="brand-tagline">{{ site.tagline | escape }}</span>
           </a>
-          <div class="nav-links">
+          <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+            <span class="sr-only">Menu</span>
+          </button>
+          <div id="primaryNav" class="nav-links">
             <a href="{{ '/investigations/' | relative_url }}" class="nav-link{% if page.url contains '/investigations' %} active{% endif %}">Investigations</a>
             <a href="{{ '/research/' | relative_url }}" class="nav-link{% if page.url contains '/research' %} active{% endif %}">Research</a>
             <a href="{{ '/publications/' | relative_url }}" class="nav-link{% if page.url contains '/publications' %} active{% endif %}">Publications</a>
