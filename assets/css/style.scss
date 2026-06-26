@@ -1706,6 +1706,13 @@ footer p {
     gap: 0.6rem;
   }
 
+  /* On phones, let the nav scroll away on report pages so the full screen
+     is available for reading instead of a tall pinned bar covering text. */
+  body[data-page="post"] header {
+    position: static;
+    backdrop-filter: none;
+  }
+
   .nav-links {
     width: 100%;
     flex-wrap: wrap;
