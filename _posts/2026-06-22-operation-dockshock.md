@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Operation DOCKSHOCK: Supply-Chain Intrusion & ICS Espionage"
+title: "Solvi Systems: A tale of Supply Chains and ICS"
 date: 2026-06-22
 categories: [threat-detection, dfir-portfolio]
 tags: [Critical Infrastructure, Supply Chain]
