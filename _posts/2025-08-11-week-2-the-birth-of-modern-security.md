@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "Week 2: The Birth of Modern Security"
 date: 2025-08-11
 categories: [cryptography]

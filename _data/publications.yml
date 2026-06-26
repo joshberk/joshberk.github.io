@@ -12,4 +12,9 @@
 - title: "A Behavioural Graph Temporal Neural Network Framework"
   venue: "IEEE Transactions on Network and Service Management (TNSM)"
   year: 2026
-  status: "Not Accepted"
+  type: "Research Manuscript"
+  status: "Manuscript · Not Peer Reviewed"
+  internal_status: "Not Accepted"   # preserved internally; not used as the public-facing label
+  research_area: "Graph machine learning for network behaviour"
+  summary: "A behavioural graph temporal neural-network framework developed as part of my doctoral research."
+  related: "I2P Hidden Service Ecosystem Analysis"

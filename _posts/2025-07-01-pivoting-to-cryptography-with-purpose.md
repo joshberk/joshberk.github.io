@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "Pivoting to Cryptography With Purpose: Embracing the Rigor"
 date: 2025-07-01
 categories: [cryptography]

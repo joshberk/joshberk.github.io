@@ -23,7 +23,63 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeBlogFilters();
     initializeBlogViewToggle();
   }
+
+  // Investigation portfolio: client-side search + status filtering (self-guards if absent)
+  initializeInvestigationFilters();
 });
+
+/**
+ * Investigation portfolio search + status filter.
+ * No-ops on pages that do not have the investigation list.
+ */
+function initializeInvestigationFilters() {
+  const list = document.getElementById('investigation-list');
+  if (!list) return;
+
+  const cards = Array.from(list.querySelectorAll('.investigation-card'));
+  const searchInput = document.getElementById('investigation-search');
+  const filterButtons = document.querySelectorAll('[data-inv-filter]');
+  const noResults = document.getElementById('inv-no-results');
+
+  let activeFilter = 'all';
+  let query = '';
+
+  const apply = () => {
+    let visible = 0;
+    cards.forEach(card => {
+      const status = card.dataset.status || '';
+      const haystack = card.dataset.search || '';
+      const matchesFilter =
+        activeFilter === 'all' ||
+        (activeFilter === 'completed' && status === 'completed') ||
+        (activeFilter === 'in-progress' && status !== 'completed');
+      const matchesQuery = query === '' || haystack.indexOf(query) !== -1;
+      if (matchesFilter && matchesQuery) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    if (noResults) noResults.classList.toggle('hidden', visible !== 0);
+  };
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      query = e.target.value.toLowerCase().trim();
+      apply();
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      activeFilter = button.dataset.invFilter;
+      apply();
+    });
+  });
+}
 
 /**
  * Theme toggle functionality

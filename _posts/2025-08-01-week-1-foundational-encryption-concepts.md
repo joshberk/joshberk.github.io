@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "Week 1: Foundational Encryption Concepts"
 date: 2025-08-01
 categories: [cryptography]

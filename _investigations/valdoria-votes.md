@@ -1,9 +1,11 @@
 ---
-layout: post
+layout: investigation
 title: "Valdoria Votes: Advanced Persistent Threat Analysis"
 date: 2026-06-20
 categories: [threat-detection, dfir-portfolio]
 tags: [APT Campaign, Infrastructure Tracking]
+sector: "Public Sector / Elections"
+threat_type: "APT"
 status: "Coming Soon"
 focus: "Investigation in Progress"
 type: "Case Study"
@@ -11,7 +13,9 @@ discipline: "Threat Detection Engineering"
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
 description: "Investigating a high-stakes, state-sponsored campaign targeting election infrastructure. Reconstructing attacker persistence mechanisms, multi-hop C2 structures, and domain registrar anomalies."
-permalink: /blog/valdoria-votes.html
+permalink: /investigations/valdoria-votes/
+redirect_from:
+  - /blog/valdoria-votes.html
 math: false
 ---
 

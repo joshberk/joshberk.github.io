@@ -1,16 +1,23 @@
 ---
-layout: post
+layout: investigation
 title: "Inside Encryptodera: An Insider Threat Scenario"
 date: 2026-06-25
 categories: [threat-detection, dfir-portfolio]
 tags: [Insider Threat, Active Directory Ransomware]
+sector: "Financial Services"
+threat_type: "Insider Threat → AD Ransomware"
+attack_count: 8
+status: "Completed"
+confidence: "High"
 focus: "Insider Exfiltration, Active Directory Ransomware"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
 description: "A dual-track insider-threat investigation at Encryptodera Financial: a contractor's 27-day FTP exfiltration of cold-storage crypto-wallet secrets running in parallel with a hijacked-identity intrusion that escalates to a domain-wide Active Directory ransomware deployment across 306 endpoints."
-permalink: /blog/inside-encryptodera.html
+permalink: /investigations/inside-encryptodera/
+redirect_from:
+  - /blog/inside-encryptodera.html
 math: false
 ---
 

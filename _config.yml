@@ -1,5 +1,6 @@
 title: "Joshua Berkoh"
-description: "PhD Candidate · Security Researcher · Detection Engineer"
+tagline: "Cyber Threat Intelligence Lab"
+description: "Cyber Threat Intelligence Lab — threat investigations, intelligence analysis, threat hunting, and dark-web research by Joshua Berkoh."
 url: "https://www.joshuaberkoh.engineer"
 baseurl: ""
 
@@ -13,6 +14,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-redirect-from
 
 # Author information
 author:
@@ -34,6 +36,8 @@ include:
 # Collections for blog posts (simplified)
 collections:
   posts:
+    output: true
+  investigations:
     output: true
 
 # Default values for posts
@@ -74,3 +78,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - "*.config.js"
+  - _templates/

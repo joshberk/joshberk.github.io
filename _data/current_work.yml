@@ -1,0 +1,31 @@
+# Currently working on. Detection Engineering stays a study / in-development capability.
+# Do not list Sigma / YARA / detection rules as completed work.
+- title: "I2P Hidden Service Ecosystem Analysis"
+  status: "In Progress"
+  category: "Dark-Web Intelligence Research"
+  description: "PhD research focused on hidden-service discovery, application-layer crawling, infrastructure mapping, graph-based relationship analysis, and reproducible collection workflows within the I2P anonymity network."
+  link: "/research/"
+
+- title: "KC7 Cyber Investigation Portfolio"
+  status: "In Progress"
+  category: "Threat Investigations"
+  description: "Building a public portfolio of scenario-based cyber threat investigations using KC7 Cyber materials, with emphasis on evidence analysis, KQL queries, IOC pivoting, ATT&CK mapping, and structured reporting."
+  link: "/investigations/"
+
+- title: "Practical Detection Engineering"
+  status: "In Progress"
+  category: "Detection Engineering Study"
+  description: "Studying detection engineering concepts and workflows. This capability is actively developing and will only be published as rules, detections, or validation reports once the work is completed and defensible."
+  link: "/detection-engineering/"
+
+- title: "Cyber Threat Intelligence Research & Writing"
+  status: "In Progress"
+  category: "Technical Writing"
+  description: "Developing public-facing investigation reports, research notes, and technical articles that document analytical reasoning, evidence collection, and security research."
+  link: "/publications/"
+
+- title: "Cyber Threat Intelligence Lab"
+  status: "In Progress"
+  category: "Professional Portfolio"
+  description: "Rebuilding the website as a long-term CTI Lab that connects investigations, research, publications, lab artifacts, and future detection engineering work into a single evidence-based professional identity."
+  link: "/"

@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "Week 3: Probability, Perfect Secrecy, and the One-Time Pad"
 date: 2025-08-25
 categories: [cryptography]

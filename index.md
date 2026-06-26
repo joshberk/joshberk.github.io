@@ -1,198 +1,147 @@
 ---
 layout: default
-title: Home
 ---
 
-<div class="hero-section">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Security Research · Applied Cryptography · Detection Engineering</p>
-      <h1>Hi, I'm <span class="accent-text">{{ site.title | escape }}</span></h1>
-      <p class="hero-description">{{ site.description | escape }}</p>
-      <div class="hero-buttons">
-        <a href="#about-me" class="btn btn-primary">Learn More</a>
-        <a href="https://linkedin.com/in/joshfiifi" class="btn btn-outline" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
-        <a href="/resume/" class="btn btn-outline">View CV</a>
-      </div>
+<section class="hero-section">
+  <div class="hero-copy">
+    <p class="eyebrow">Cyber Threat Intelligence · Threat Hunting · Dark-Web Research</p>
+    <h1>Tracking adversaries.<br>Hunting threats.<br>Producing actionable intelligence.</h1>
+    <p class="hero-description">I'm Joshua Berkoh — a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. I reconstruct intrusions end to end, map adversary tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
+    <div class="hero-buttons">
+      <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">View Investigations</a>
+      <a href="{{ '/research/' | relative_url }}" class="btn btn-outline">Read Research</a>
+      <a href="{{ '/resume/' | relative_url }}" class="btn btn-outline">Download Résumé</a>
     </div>
-    <aside class="hero-panel">
-      <p class="hero-panel-label">Current Focus</p>
-      <ul class="hero-panel-list">
-        <li>Privacy-preserving infrastructure research</li>
-        <li>Detection engineering grounded in real telemetry</li>
-        <li>Secure systems that bridge theory and deployment</li>
-      </ul>
-    </aside>
-  </div>
-</div>
-
-<div class="philosophy-quote">
-  <div class="terminal-header">
-    <span class="terminal-dot red"></span>
-    <span class="terminal-dot yellow"></span>
-    <span class="terminal-dot green"></span>
-    <span class="terminal-path">~/philosophy</span>
-  </div>
-  <div class="terminal-body">
-    <p class="terminal-command"><span class="prompt">$</span> cat /etc/philosophy.conf</p>
-    <blockquote class="terminal-quote">
-      "Each problem that I solved became a rule which served afterwards to solve other problems."
-    </blockquote>
-    <p class="terminal-author"># — René Descartes</p>
-  </div>
-</div>
-
-<div class="home-summary">
-  <article class="summary-card">
-    <p class="summary-label">Research</p>
-    <p>Applied cryptography, secure systems, and privacy-preserving infrastructure.</p>
-  </article>
-  <article class="summary-card">
-    <p class="summary-label">Practice</p>
-    <p>Threat detection engineering, security tooling, and telemetry-driven validation.</p>
-  </article>
-  <article class="summary-card">
-    <p class="summary-label">Direction</p>
-    <p>Bridging academic rigor with operationally useful security outcomes.</p>
-  </article>
-</div>
-
-<section class="home-section" id="about-me">
-  <div class="section-heading">
-    <p class="section-kicker">About</p>
-    <h2>Researcher first, builder always</h2>
-    <p class="section-intro">My work sits at the intersection of rigorous security research and practical implementation.</p>
-  </div>
-
-  <div class="about-content">
-    <div class="profile-section">
-      <img src="assets/images/jjc.JPG" alt="Joshua Offe Berkoh profile photo" class="profile-image" loading="lazy" width="200" height="300" />
-    </div>
-    
-    <div class="about-text">
-      <p>
-        Joshua Berkoh is a PhD candidate in Information Technology at the University of Cincinnati, where his dissertation develops a cross-layer graph framework for measuring the I2P anonymous overlay network. His research fuses network-layer router data with application-layer eepsite crawls into a single directed multiplex graph, making it possible to study how anonymity infrastructure and the hidden services that ride on top of it interact as one system rather than two disconnected layers. Joshua's broader research interests center on the application of graph theory to complex, real-world systems, with extensions into anonymous communications, applied cryptography, detection engineering, and machine learning for security. He is particularly interested in research and applied settings, including national laboratories, federal research programs, and industry research labs where graph-theoretic methods can be brought to bear on hard problems in security, infrastructure, and large-scale networked systems.
-      </p>
-
-      <details>
-        <summary>Read More</summary>
-        <p>
-          Alongside his academic work, Joshua is a practicing detection engineer and SOC analyst. He previously served as a Security Operations Center Analyst at Virtual Infosec Africa, defending the security systems of financial institutions, and as a Security Engineering Intern at Intuit, where he integrated automated compliance checks into the security pipeline. He maintains a home detection lab built on Elastic Stack, Sysmon, and KQL rules mapped to MITRE ATT&CK, which he uses both for self-directed research and as a teaching platform.
-        </p>
-        <p>
-          Joshua's professional path has been shaped by a long history of community involvement and applied practice. He has served as an adjunct instructor at the University of Cincinnati, mentored at the OWASP Cincinnati Chapter, contributed to ISC2 as a certification examination developer, and held an AWS Community Builder role. He is also a former bug bounty researcher, with hall-of-fame recognition across multiple programs, and has competed in cybersecurity capture-the-flag events including Security Innovation, Hacker101, MetaCTF, and Tracelabs OSINT.
-        </p>
-      </details>
-    </div>
+    <p class="hero-stack">MITRE ATT&amp;CK · KQL · OSINT · Threat Hunting · Elastic SIEM · Sysmon · Python · Graph Analysis</p>
   </div>
 </section>
 
-<section class="home-section home-section-emphasis">
+<section class="home-section" id="capabilities">
   <div class="section-heading">
-    <p class="section-kicker">Writing</p>
-    <h2>Recent work and technical notes</h2>
-    <p class="section-intro">A mix of research reflections, study notes, and engineering write-ups grounded in security practice.</p>
+    <p class="section-kicker">Capabilities</p>
+    <h2>What I do</h2>
+    <p class="section-intro">Demonstrated competencies across the intelligence cycle — collection, analysis, and reporting — grounded in completed investigative and research work.</p>
   </div>
+  <div class="home-summary">
+    <article class="summary-card"><h3>Cyber Threat Intelligence</h3><p>Collect, analyze, and report finished intelligence on threats, actors, and tradecraft.</p></article>
+    <article class="summary-card"><h3>Threat Hunting</h3><p>Hypothesis-driven hunts across endpoint and network telemetry using KQL and ATT&amp;CK.</p></article>
+    <article class="summary-card"><h3>Threat Investigations</h3><p>End-to-end intrusion reconstruction — timelines, evidence, IOCs, and assessments.</p></article>
+    <article class="summary-card"><h3>Dark-Web Intelligence</h3><p>Research into anonymity networks, hidden services, and underground infrastructure.</p></article>
+    <article class="summary-card"><h3>Intelligence Research</h3><p>Structured analytic methods, source evaluation, and confidence-based judgments.</p></article>
+    <article class="summary-card"><h3>Security Research</h3><p>Tooling, measurement, and methodology that extend how threats are studied.</p></article>
+  </div>
+</section>
 
-  <div class="posts-grid">
-    {% for post in site.posts limit:3 %}
-      <article class="post-preview{% if post.status == 'Coming Soon' %} coming-soon-preview{% endif %}">
-        <h3>
-          {% if post.status == 'Coming Soon' %}
-            {{ post.title | escape }}
-          {% else %}
-            <a href="{{ post.url | relative_url | escape }}">{{ post.title | escape }}</a>
-          {% endif %}
+<section class="home-section home-section-emphasis" id="investigations">
+  <div class="section-heading">
+    <p class="section-kicker">Investigations</p>
+    <h2>Featured investigations</h2>
+    <p class="section-intro">Threat-investigation case studies: full intrusion reconstructions with timelines, IOC analysis, and MITRE ATT&amp;CK mapping. Developed from KC7 threat scenarios and written to professional intelligence-reporting standards.</p>
+  </div>
+  <div class="investigation-grid">
+    {% assign investigations = site.investigations | sort: "date" | reverse %}
+    {% for post in investigations limit:3 %}
+      <article class="investigation-card">
+        <div class="ic-tags">
+          {% for tag in post.tags %}<span class="ic-tag">{{ tag | escape }}</span>{% endfor %}
+          {% if post.status == 'Coming Soon' %}<span class="ic-tag ic-tag-soon">In Progress</span>{% endif %}
+        </div>
+        <h3 class="ic-title">
+          {% if post.status == 'Coming Soon' %}{{ post.title | escape }}{% else %}<a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>{% endif %}
         </h3>
-        <p class="post-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-          {% if post.discipline %} • {{ post.discipline | escape }}{% endif %}
-          {% if post.type %} • {{ post.type | escape }}{% endif %}
-        </p>
-        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 | escape }}</p>
-        {% if post.status == 'Coming Soon' %}
-          <span class="coming-soon-badge">Coming Soon · Investigation in Progress</span>
-        {% endif %}
+        <p class="ic-desc">{{ post.description | strip_html | truncatewords: 26 | escape }}</p>
+        <div class="ic-meta">
+          {% if post.status == 'Coming Soon' %}<span class="ic-status">Coming soon</span>{% else %}<a class="ic-link" href="{{ post.url | relative_url }}">Read investigation →</a>{% endif %}
+        </div>
       </article>
     {% endfor %}
   </div>
-
-  <a href="/blog" class="btn btn-outline">View All Posts →</a>
+  <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">View all investigations →</a>
 </section>
 
-<section class="home-section">
+<section class="home-section" id="research">
   <div class="section-heading">
-    <p class="section-kicker">Projects</p>
-    <h2>Public repositories and ongoing builds</h2>
-    <p class="section-intro">Selected work that reflects my current engineering interests and experimentation.</p>
+    <p class="section-kicker">Research</p>
+    <h2>Current research — dark-web intelligence</h2>
+    <p class="section-intro">An intelligence-collection lens on anonymity infrastructure: discovering hidden services, mapping the relationships between them, and measuring how the ecosystem behaves at scale.</p>
   </div>
-  {% include github_contributions.html hide_title=true %}
+  <div class="research-feature">
+    <h3>Mapping the I2P anonymous network</h3>
+    <p>I'm building a cross-layer framework that fuses network-layer routing data with application-layer hidden-service ("eepsite") crawls into a single graph — making it possible to study anonymity infrastructure and the services riding on it as one connected threat ecosystem. The work spans hidden-service discovery, infrastructure mapping, large-scale collection, and graph analysis.</p>
+    <div class="research-tags">
+      <span class="ic-tag">Dark-Web Intelligence</span>
+      <span class="ic-tag">Hidden-Service Discovery</span>
+      <span class="ic-tag">Infrastructure Mapping</span>
+      <span class="ic-tag">Graph Analysis</span>
+    </div>
+    <a href="{{ '/research/' | relative_url }}" class="ic-link">Explore the research →</a>
+  </div>
 </section>
 
-<section class="home-section">
+<section class="home-section" id="activity">
   <div class="section-heading">
-    <p class="section-kicker">Capabilities</p>
-    <h2>Technical focus areas</h2>
-    <p class="section-intro">Core languages, security domains, and systems skills that shape my research and engineering work.</p>
+    <p class="section-kicker">Lab activity</p>
+    <h2>Recent intelligence activity</h2>
+    <p class="section-intro">A working record of what I'm building now and how the lab is growing over time.</p>
   </div>
-
-  <div class="skills-columns">
-    <div class="skills-panel">
-      <h4>Programming Languages</h4>
-      <div class="skills-group">
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">HTML &amp; CSS</span>
-        <span class="skill-badge">JavaScript</span>
-        <span class="skill-badge">SQL</span>
-        <span class="skill-badge">Rust</span>
-      </div>
+  <div class="activity-grid">
+    <div class="activity-col">
+      <p class="activity-label">Currently working on</p>
+      <ul class="activity-list">
+        {% for item in site.data.current_work %}
+        <li>{% if item.link %}<a href="{{ item.link | relative_url }}">{{ item.title | escape }}</a>{% else %}{{ item.title | escape }}{% endif %} <span class="tag-dev">{{ item.status | escape }}</span>{% if item.description %}<span class="muted"> — {{ item.description | escape }}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
     </div>
-
-    <div class="skills-panel">
-      <h4>Cybersecurity &amp; Cryptography</h4>
-      <div class="skills-group">
-        <span class="skill-badge">Applied Cryptography</span>
-        <span class="skill-badge">Security Analysis</span>
-        <span class="skill-badge">Vulnerability Assessment</span>
-        <span class="skill-badge">Incident Response</span>
-        <span class="skill-badge">Secure Systems Design</span>
-      </div>
-    </div>
-
-    <div class="skills-panel">
-      <h4>Tools &amp; Frameworks</h4>
-      <div class="skills-group">
-        <span class="skill-badge">Git &amp; Version Control</span>
-        <span class="skill-badge">Linux / Unix</span>
-        <span class="skill-badge">AWS</span>
-        <span class="skill-badge">Docker</span>
-        <span class="skill-badge">Research &amp; Academic Writing</span>
-      </div>
+    <div class="activity-col">
+      <p class="activity-label">Timeline</p>
+      <ul class="timeline-list">
+        {% for entry in site.data.timeline %}
+        <li><span class="tl-date">{{ entry.date | escape }}</span>{% if entry.link %}<a href="{{ entry.link | relative_url }}">{{ entry.title | escape }}</a>{% else %}{{ entry.title | escape }}{% endif %} <span class="tag-dev">{{ entry.status | escape }}</span></li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="home-section">
+<section class="home-section" id="publications">
   <div class="section-heading">
     <p class="section-kicker">Publications</p>
-    <h2>Research in progress</h2>
-    <p class="section-intro">Current academic work and emerging directions in secure systems and privacy-preserving infrastructure.</p>
+    <h2>Reports &amp; papers</h2>
+    <p class="section-intro">Finished intelligence products and research output — investigation reports, research papers, and technical articles.</p>
   </div>
-  {% include publications.html %}
+  <p>Published investigation reports are listed under <a href="{{ '/investigations/' | relative_url }}">Investigations</a>; academic and research output is collected on the Publications page.</p>
+  <a href="{{ '/publications/' | relative_url }}" class="btn btn-outline">View publications →</a>
 </section>
 
-<section class="home-section contact-section">
+<section class="home-section" id="about">
+  <div class="section-heading">
+    <p class="section-kicker">About</p>
+    <h2>Researcher &amp; threat investigator</h2>
+  </div>
+  <div class="about-content">
+    <div class="profile-section">
+      <img src="{{ '/assets/images/jjc.JPG' | relative_url }}" alt="Joshua Berkoh" class="profile-image" loading="lazy" width="200" height="300" />
+    </div>
+    <div class="about-text">
+      <p>I'm a PhD researcher in Information Technology and a practicing security professional. My work sits where intelligence analysis meets hands-on investigation: reconstructing intrusions, hunting for adversary activity in telemetry, and researching the infrastructure that threats rely on. I've served as a SOC analyst defending financial institutions and as a security engineering intern, and I hold hall-of-fame recognition from multiple bug-bounty programs.</p>
+      <p>I write every investigation to be defensible — evidence-first, mapped to MITRE ATT&amp;CK, and honest about confidence. Detection engineering is an area I'm actively studying and will publish as the work matures.</p>
+      <a href="{{ '/about/' | relative_url }}" class="ic-link">More about me →</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-section contact-section" id="contact">
   <div class="section-heading">
     <p class="section-kicker">Contact</p>
-    <h2>Open to research and security collaboration</h2>
-    <p class="section-intro">If your work sits near applied cryptography, secure systems, or detection engineering, let’s talk.</p>
+    <h2>Open to threat intelligence work</h2>
+    <p class="section-intro">If your team works in cyber threat intelligence, threat hunting, or security research, I'd welcome a conversation.</p>
   </div>
-
   <div class="contact-card">
-    <p>Ready to collaborate on cryptography research or cybersecurity projects? Let's connect.</p>
     <ul class="contact-links">
       <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/joshfiifi" rel="me">Joshua Berkoh</a></li>
       <li><strong>GitHub:</strong> <a href="https://github.com/joshberk" rel="me">@joshberk</a></li>
+      <li><strong>Résumé:</strong> <a href="{{ '/resume/' | relative_url }}">View / download CV</a></li>
     </ul>
   </div>
 </section>

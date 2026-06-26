@@ -1,0 +1,78 @@
+---
+layout: default
+---
+
+{% if page.status == 'Coming Soon' %}
+  <article class="post post-coming-soon">
+    <header class="post-header">
+      <p class="eyebrow">Investigation</p>
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+      <div class="investigation-meta">
+        {% if page.sector %}<span class="im-chip"><span class="im-key">Sector</span> {{ page.sector | escape }}</span>{% endif %}
+        {% if page.threat_type %}<span class="im-chip"><span class="im-key">Threat</span> {{ page.threat_type | escape }}</span>{% endif %}
+        <span class="im-chip"><span class="im-key">Status</span> In Progress</span>
+      </div>
+    </header>
+    <div class="coming-soon-panel">
+      <span class="coming-soon-badge">Coming Soon</span>
+      <p class="coming-soon-status">Status: Investigation in Progress</p>
+      {% if page.description %}<p class="post-description">{{ page.description | escape }}</p>{% endif %}
+      <p>This investigation is still in progress. The full report will be published here once it is complete.</p>
+      <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">← Back to Investigations</a>
+    </div>
+  </article>
+{% else %}
+  {% assign words = content | number_of_words %}
+  {% assign reading_time = words | divided_by: 200 %}
+  {% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
+
+  <article class="post investigation">
+    <header class="post-header">
+      <p class="eyebrow">Investigation</p>
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+
+      <div class="investigation-meta">
+        {% if page.sector %}<span class="im-chip"><span class="im-key">Sector</span> {{ page.sector | escape }}</span>{% endif %}
+        {% if page.threat_type %}<span class="im-chip"><span class="im-key">Threat</span> {{ page.threat_type | escape }}</span>{% endif %}
+        {% if page.attack_count %}<span class="im-chip"><span class="im-key">ATT&CK</span> {{ page.attack_count }} techniques</span>{% endif %}
+        {% if page.status %}<span class="im-chip"><span class="im-key">Status</span> {{ page.status | escape }}</span>{% endif %}
+        {% if page.confidence %}<span class="im-chip"><span class="im-key">Confidence</span> {{ page.confidence | escape }}</span>{% endif %}
+        <span class="im-chip"><span class="im-key">Read</span> {{ reading_time }} min</span>
+      </div>
+
+      {% if page.tags %}
+        <div class="ic-tags">
+          {% for tag in page.tags %}<span class="ic-tag">{{ tag | escape }}</span>{% endfor %}
+        </div>
+      {% endif %}
+
+      {% if page.source_name %}
+        <p class="post-attribution">
+          Based on a scenario from
+          {% if page.source_url %}<a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ page.source_name | escape }}</a>{% else %}{{ page.source_name | escape }}{% endif %}. The investigation and write-up are my own.
+        </p>
+      {% endif %}
+    </header>
+
+    <aside class="investigation-card-meta" aria-label="Investigation metadata">
+      <p class="activity-label">Investigation metadata</p>
+      <dl class="meta-dl">
+        <div><dt>Investigation Type</dt><dd>{{ page.investigation_type | default: "Scenario-Based Investigation" }}</dd></div>
+        <div><dt>Environment</dt><dd>{{ page.environment | default: "KC7 Cyber" }}</dd></div>
+        <div><dt>Analyst</dt><dd>{{ page.analyst | default: "Joshua Berkoh" }}</dd></div>
+        <div><dt>Status</dt><dd>{{ page.status | default: "Completed" }}</dd></div>
+        <div><dt>Primary Tools</dt><dd>{{ page.tools | default: "KQL · Azure Data Explorer · OSINT" }}</dd></div>
+        <div><dt>Framework</dt><dd>{{ page.framework | default: "MITRE ATT&CK" }}</dd></div>
+        <div><dt>Report Version</dt><dd>{{ page.report_version | default: "1.0" }}</dd></div>
+      </dl>
+    </aside>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <footer class="post-footer">
+      <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">← Back to Investigations</a>
+    </footer>
+  </article>
+{% endif %}

@@ -751,6 +751,523 @@ summary {
   color: #dc2626;
 }
 
+/* ===== CTI Lab — homepage components ===== */
+.hero-stack {
+  margin-top: 1.1rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.investigation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1.35rem 0;
+}
+
+.investigation-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1rem 1.05rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.investigation-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.ic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.ic-tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+}
+
+.ic-tag-soon {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.ic-title {
+  font-size: 1.05rem;
+  margin: 0 0 0.45rem;
+  line-height: 1.3;
+}
+
+.ic-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.ic-title a:hover {
+  color: var(--accent);
+}
+
+.ic-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  flex-grow: 1;
+  margin: 0 0 0.8rem;
+}
+
+.ic-meta {
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+.ic-status {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.ic-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ic-link:hover {
+  text-decoration: underline;
+}
+
+.research-feature {
+  margin-top: 1.2rem;
+}
+
+.research-feature h3 {
+  margin: 0 0 0.5rem;
+}
+
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.9rem 0;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.activity-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+}
+
+.activity-list,
+.timeline-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.activity-list li,
+.timeline-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+.activity-list li:last-child,
+.timeline-list li:last-child {
+  border-bottom: none;
+}
+
+.timeline-list .tl-date {
+  display: inline-block;
+  min-width: 4.4rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.tag-dev {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px dashed var(--line-strong);
+  color: var(--text-muted);
+  margin-left: 0.35rem;
+  white-space: nowrap;
+}
+
+/* Nav rebrand additions */
+.brand-tagline {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.12rem;
+}
+
+.nav-cta {
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+  border-radius: var(--radius-md);
+  padding: 0.32rem 0.8rem !important;
+}
+
+.nav-cta:hover {
+  background: var(--accent);
+  color: var(--surface) !important;
+  text-decoration: none;
+}
+
+.nav-badge {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.05rem 0.35rem;
+  border-radius: 999px;
+  border: 1px dashed var(--line-strong);
+  color: var(--text-muted);
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 760px) {
+  .investigation-grid,
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== CTI Lab — Investigation portfolio ===== */
+.page-hero {
+  padding: 1.2rem 0 1rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.3rem;
+}
+
+.page-hero h1 {
+  margin: 0.2rem 0 0.6rem;
+}
+
+.page-intro {
+  max-width: 75ch;
+  color: var(--text-muted);
+}
+
+.investigation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.investigation-search {
+  flex: 1 1 280px;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.investigation-search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.investigation-filters {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.ic-metarow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0 0 0.7rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.ic-meta-status {
+  color: var(--accent);
+}
+
+.ic-tagrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.ic-minitag {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  padding: 0.05rem 0.4rem;
+  border-radius: 4px;
+  background: var(--surface-alt);
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem 0;
+}
+
+.investigation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0.8rem;
+}
+
+.im-chip {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.im-key {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-right: 0.3rem;
+}
+
+.investigation-card-meta {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-alt);
+  padding: 1rem 1.1rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.6rem 1.2rem;
+  margin: 0;
+}
+
+.meta-dl div {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-dl dt {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.meta-dl dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+
+/* ===== CTI Lab — Research page ===== */
+.research-status {
+  margin: 0 0 0.9rem;
+}
+
+.status-badge {
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-muted);
+}
+
+.status-progress {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.research-note {
+  border-left: 3px solid var(--line-strong);
+  padding: 0.55rem 0.85rem;
+  margin: 1rem 0;
+  background: var(--surface-alt);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.focus-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.research-qs {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.research-qs li {
+  margin-bottom: 0.6rem;
+}
+
+/* ===== CTI Lab — Publications & Technical Writing ===== */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1.2rem 0;
+}
+
+.pub-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1rem 1.15rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pub-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+}
+
+.pub-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pub-title {
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.pub-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.pub-title a:hover {
+  color: var(--accent);
+}
+
+.pub-type {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0.4rem 0 0;
+}
+
+.pub-meta-line {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.3rem 0 0;
+}
+
+.pub-summary {
+  margin: 0.55rem 0 0.6rem;
+  font-size: 0.93rem;
+}
+
+.pub-related {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.pub-empty {
+  color: var(--text-muted);
+}
+
+/* ===== CTI Lab — "Why this lab exists" closing statement ===== */
+.closing-lead {
+  font-size: 1.18rem;
+  line-height: 1.55;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.why-lab-cta {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 1.15rem;
+}
+
+/* ===== CTI Lab — Detection Engineering (In Development) ===== */
+.status-dev {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  color: var(--text-muted);
+}
+
+.workflow-list {
+  margin: 1.1rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.workflow-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
 .pub-links {
   display: flex;
   gap: 0.5rem;

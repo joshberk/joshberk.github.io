@@ -1,16 +1,23 @@
 ---
-layout: post
+layout: investigation
 title: "Solvi Systems: A tale of Supply Chains and ICS"
 date: 2026-06-22
 categories: [threat-detection, dfir-portfolio]
 tags: [Critical Infrastructure, Supply Chain]
+sector: "Energy / Critical Infrastructure (ICS)"
+threat_type: "Supply-Chain Espionage"
+attack_count: 8
+status: "Completed"
+confidence: "High"
 focus: "Supply Chain Espionage, Source-Code Exfiltration"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
 description: "Triaging a complex supply-chain intrusion targeting regional energy distribution. Tracks the complete lifecycle from perimeter XSS probing and weaponized phishing documents to lateral movement and source-code exfiltration using raw web utilities."
-permalink: /blog/operation-dockshock.html
+permalink: /investigations/solvi-systems/
+redirect_from:
+  - /blog/operation-dockshock.html
 math: false
 ---
 
