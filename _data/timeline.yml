@@ -43,7 +43,7 @@
   link: "/research/"
 
 - date: "2026"
-  title: "Dark-Web Intelligence Research Framing"
+  title: "I2P Research Positioning"
   type: "Research Milestone"
   status: "In Progress"
   description: "Reframed the I2P dissertation work as dark-web intelligence research focused on hidden-service discovery, infrastructure characterization, and ecosystem analysis without overstating adversary attribution."

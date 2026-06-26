@@ -67,7 +67,7 @@ layout: default
   </div>
   <div class="research-feature">
     <h3>Mapping the I2P anonymous network</h3>
-    <p>I'm building a cross-layer framework that fuses network-layer routing data with application-layer hidden-service ("eepsite") crawls into a single graph — making it possible to study anonymity infrastructure and the services riding on it as one connected threat ecosystem. The work spans hidden-service discovery, infrastructure mapping, large-scale collection, and graph analysis.</p>
+    <p>I'm building a cross-layer framework that fuses network-layer routing data with application-layer hidden-service ("eepsite") crawls into a single graph — making it possible to study anonymity infrastructure and the services riding on it as one connected hidden-service ecosystem. The work spans hidden-service discovery, infrastructure mapping, large-scale collection, and graph analysis.</p>
     <div class="research-tags">
       <span class="ic-tag">Dark-Web Intelligence</span>
       <span class="ic-tag">Hidden-Service Discovery</span>
