@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Inside Encryptodera: An Insider Threat Scenario"
-date: 2026-06-21
+date: 2026-06-25
 categories: [threat-detection, dfir-portfolio]
 tags: [Insider Threat, Active Directory Ransomware]
 focus: "Insider Exfiltration, Active Directory Ransomware"
