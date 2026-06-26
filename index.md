@@ -6,13 +6,13 @@ layout: default
   <div class="hero-copy">
     <p class="eyebrow">Cyber Threat Intelligence · Threat Hunting · Dark-Web Research</p>
     <h1>Tracking adversaries.<br>Hunting threats.<br>Producing actionable intelligence.</h1>
-    <p class="hero-description">I'm Joshua Berkoh — a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. I reconstruct intrusions end to end, map adversary tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
+    <p class="hero-description">I'm Joshua Berkoh — a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. Through scenario-based investigations and security research, I reconstruct intrusion activity, map observed tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
     <div class="hero-buttons">
       <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">View Investigations</a>
       <a href="{{ '/research/' | relative_url }}" class="btn btn-outline">Read Research</a>
       <a href="{{ '/resume/' | relative_url }}" class="btn btn-outline">Download Résumé</a>
     </div>
-    <p class="hero-stack">MITRE ATT&amp;CK · KQL · OSINT · Threat Hunting · Elastic SIEM · Sysmon · Python · Graph Analysis</p>
+    <p class="hero-stack">MITRE ATT&amp;CK · KQL · OSINT · IOC Pivoting · Threat Hunting · Python · Graph Analysis</p>
   </div>
 </section>
 
@@ -23,7 +23,7 @@ layout: default
     <p class="section-intro">Demonstrated competencies across the intelligence cycle — collection, analysis, and reporting — grounded in completed investigative and research work.</p>
   </div>
   <div class="home-summary">
-    <article class="summary-card"><h3>Cyber Threat Intelligence</h3><p>Collect, analyze, and report finished intelligence on threats, actors, and tradecraft.</p></article>
+    <article class="summary-card"><h3>Cyber Threat Intelligence</h3><p>Collect, analyze, and report structured intelligence on threat activity, tradecraft, indicators, and investigative findings.</p></article>
     <article class="summary-card"><h3>Threat Hunting</h3><p>Hypothesis-driven hunts across endpoint and network telemetry using KQL and ATT&amp;CK.</p></article>
     <article class="summary-card"><h3>Threat Investigations</h3><p>End-to-end intrusion reconstruction — timelines, evidence, IOCs, and assessments.</p></article>
     <article class="summary-card"><h3>Dark-Web Intelligence</h3><p>Research into anonymity networks, hidden services, and underground infrastructure.</p></article>

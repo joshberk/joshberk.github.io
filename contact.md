@@ -25,7 +25,7 @@ permalink: /contact/
     <span class="ic-tag">OSINT</span>
     <span class="ic-tag">Incident Investigation</span>
     <span class="ic-tag">Intelligence Analysis</span>
-    <span class="ic-tag">Detection Engineering</span>
+    <span class="ic-tag">Detection Engineering — In Development</span>
   </div>
 </section>
 
