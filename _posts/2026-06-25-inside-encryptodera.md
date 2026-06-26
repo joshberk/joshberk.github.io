@@ -47,7 +47,7 @@ The second narrative involves a disgruntled employee, **Barry Shmelly**, whose i
 
 ### Threat Thread A: The Malicious Insider Exfiltration (Jane Smith)
 
-Independent of the ransomware timeline, environment network mapping caught a massive outbound data flow directed to an external rogue IP endpoint (182.56.23.121) utilizing **File Transfer Protocol (FTP)** over a 27-day active operational window.
+Independent of the ransomware timeline, environment network mapping caught a massive outbound data flow directed to an external rogue IP endpoint (182[.]56[.]23[.]121) utilizing **File Transfer Protocol (FTP)** over a 27-day active operational window.
 
 ```kql
 // Tracking anomalous volumetric data outbound transfers
@@ -56,12 +56,12 @@ NetworkFlow
 | summarize TotalBytes = sum(bytes), DistinctDays = dcount(format_datetime(timestamp, 'yyyy-MM-dd')) by dest_ip
 ```
 
-{% include figure.html src="/assets/images/posts/inside-encryptodera/q-1.png" alt="KQL NetworkFlow query result showing 208,138 total bytes exfiltrated to 182.56.23.121 across 27 distinct days" caption="Figure 1: Outbound FTP volume to 182.56.23.121 — 208,138 bytes across 27 distinct active days." %}
+{% include figure.html src="/assets/images/posts/inside-encryptodera/q-1.png" alt="KQL NetworkFlow query result showing 208,138 total bytes exfiltrated to 182[.]56[.]23[.]121 across 27 distinct days" caption="Figure 1: Outbound FTP volume to 182[.]56[.]23[.]121 — 208,138 bytes across 27 distinct active days." %}
 
 *   **Total Volume Lost:** 208,138 bytes transferred across 27 distinct active days.
 *   **The Attacking Identity:** The source IP mapping isolated a single corporate entity — Jane Smith (jasmith), operating under the role of "Crypto Bruh" (Blockchain Contractor) on host GOTI-LAPTOP.
 
-Pivoting into her local web access records revealed extensive unauthorized probing behavior targeting directory strings protecting the company's **cold-storage crypto wallets**. Corporate mailbox checks caught her in active collusion with an external adversary profile (elboss@westealurcrypto.com), requesting an explicit endpoint landing pad to ship the secrets. Endpoint process auditing on GOTI-LAPTOP captured the download of localized data-collection and staging tools (`crypto_stealer.exe` and `ftp_client.exe`). To stage the exfiltration files daily, Jane executed an obfuscated, reversed-string PowerShell array containing her explicit deployment passphrase:
+Pivoting into her local web access records revealed extensive unauthorized probing behavior targeting directory strings protecting the company's **cold-storage crypto wallets**. Corporate mailbox checks caught her in active collusion with an external adversary profile (elboss[@]westealurcrypto[.]com), requesting an explicit endpoint landing pad to ship the secrets. Endpoint process auditing on GOTI-LAPTOP captured the download of localized data-collection and staging tools (`crypto_stealer.exe` and `ftp_client.exe`). To stage the exfiltration files daily, Jane executed an obfuscated, reversed-string PowerShell array containing her explicit deployment passphrase:
 
 ```powershell
 C:\Windows\System32\powershell.exe -Nop -ExecutionPolicy bypass -enc <Base64_String>
@@ -93,7 +93,7 @@ Shmelly copied these assets directly onto an external hard drive labeled E:\Schm
 
 ### Threat Thread C: Identity Hijacking & Active Directory Domain Takeover
 
-Although Barry Shmelly left the organization on January 18, his active corporate mailbox remained un-decommissioned. On February 1, 2024, an external threat actor operating from IP 143.38.175.105 successfully authenticated into Shmelly's account profile. The hijacked account was immediately used to send 9 highly sophisticated internal phishing lures.
+Although Barry Shmelly left the organization on January 18, his active corporate mailbox remained un-decommissioned. On February 1, 2024, an external threat actor operating from IP 143[.]38[.]175[.]105 successfully authenticated into Shmelly's account profile. The hijacked account was immediately used to send 9 highly sophisticated internal phishing lures.
 
 The malicious messages contained a double-extension file designed to execute code silently: `Company_Financials_Q1_2024_Review.xlsx.exe`.
 
@@ -126,7 +126,7 @@ totally_not_mimikatz.exe "sekurlsa::logonpasswords"
 
 This dumped the cleartext tokens for the Domain Administrator account: `lihenry_domain_admin`. On February 2, 2024, at 03:32:36 UTC, the attacker pivoted from internal host 10.10.0.138, successfully authenticated into the core DOMAIN_CONTROLLER_SERVER, and ran system reconnaissance checks using `nltest /dclist` to map out the company's complete network catalog.
 
-To discover how the adversary hijacked these administrative accounts in the first place, we reversed the timeline to analyze the initial staging points. The tracking led back to February 1, 2024, when the adversary authenticated into Barry Shmelly's un-decommissioned mailbox from the external 143.38.175.105 and distributed 9 localized phishing links containing the double-extension file `Company_Financials_Q1_2024_Review.xlsx.exe`.
+To discover how the adversary hijacked these administrative accounts in the first place, we reversed the timeline to analyze the initial staging points. The tracking led back to February 1, 2024, when the adversary authenticated into Barry Shmelly's un-decommissioned mailbox from the external 143[.]38[.]175[.]105 and distributed 9 localized phishing links containing the double-extension file `Company_Financials_Q1_2024_Review.xlsx.exe`.
 
 ### Threat Thread E: Automated Ransomware Deployment
 
@@ -164,10 +164,10 @@ The GPO forced **306 separate workstations** to pull down and launch the ransomw
 
 | Type | Indicator | Context / Association |
 |---|---|---|
-| IP Address | 143.38.175.105 | External threat-actor initial-access landing node |
-| IP Address | 182.56.23.121 | External rogue FTP destination server (Jane Smith collusion) |
-| Domain | notification-finance-services.com | Ransomware C2 domain staging indicator |
-| Domain | update-finance-security.biz | Phishing document file-server root |
+| IP Address | 143[.]38[.]175[.]105 | External threat-actor initial-access landing node |
+| IP Address | 182[.]56[.]23[.]121 | External rogue FTP destination server (Jane Smith collusion) |
+| Domain | notification-finance-services[.]com | Ransomware C2 domain staging indicator |
+| Domain | update-finance-security[.]biz | Phishing document file-server root |
 | Filename | Company_Financials_Q1_2024_Review.xlsx.exe | Double-extension weaponized phishing payload |
 | Filename | files_go_byebye.exe | Enterprise ransomware encryption binary |
 | Filename | totally_not_mimikatz.exe | Masqueraded LSASS credential dumper |
