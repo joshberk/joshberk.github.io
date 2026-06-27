@@ -12,7 +12,7 @@
     <!-- Google Fonts: typography stack for a research-focused visual style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Literata:opsz,wght@7..72,500;7..72,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
@@ -51,73 +51,10 @@
 
   <body data-page="{{ page_kind }}">
     <div class="lab-top-strip" aria-hidden="true">
-      <span>Cyber Threat Intelligence Lab - Open Source</span>
-    </div>
-    <div class="page-network" aria-hidden="true">
-      <svg viewBox="0 0 1440 1200" class="page-network-svg" role="presentation">
-        <g class="page-network-edges page-network-edges-back">
-          <path d="M72 120 L242 84 L390 176 L558 126 L724 214 L902 162 L1128 246 L1310 186" />
-          <path d="M118 428 L286 342 L470 394 L654 318 L834 406 L1018 352 L1212 446" />
-          <path d="M168 766 L318 678 L488 742 L688 662 L874 736 L1076 684 L1264 768" />
-          <path d="M242 84 L286 342 L318 678" />
-          <path d="M390 176 L470 394 L488 742" />
-          <path d="M558 126 L654 318 L688 662" />
-          <path d="M724 214 L834 406 L874 736" />
-          <path d="M902 162 L1018 352 L1076 684" />
-        </g>
-        <g class="page-network-edges page-network-edges-front">
-          <path d="M94 206 L208 286 L412 244 L596 304 L780 264 L962 328 L1178 302" />
-          <path d="M222 548 L414 514 L612 584 L804 546 L1012 612 L1222 578" />
-          <path d="M104 940 L282 878 L462 948 L654 892 L850 962 L1098 918 L1298 974" />
-          <path d="M208 286 L414 514 L282 878" />
-          <path d="M596 304 L612 584 L654 892" />
-          <path d="M962 328 L1012 612 L1098 918" />
-        </g>
-        <g class="page-network-nodes">
-          <circle cx="72" cy="120" r="4" />
-          <circle cx="242" cy="84" r="3" />
-          <circle cx="390" cy="176" r="5" />
-          <circle cx="558" cy="126" r="4" />
-          <circle cx="724" cy="214" r="5" />
-          <circle cx="902" cy="162" r="4" />
-          <circle cx="1128" cy="246" r="4" />
-          <circle cx="1310" cy="186" r="5" />
-          <circle cx="118" cy="428" r="3" />
-          <circle cx="286" cy="342" r="4" />
-          <circle cx="470" cy="394" r="5" />
-          <circle cx="654" cy="318" r="4" />
-          <circle cx="834" cy="406" r="5" />
-          <circle cx="1018" cy="352" r="4" />
-          <circle cx="1212" cy="446" r="4" />
-          <circle cx="168" cy="766" r="3" />
-          <circle cx="318" cy="678" r="4" />
-          <circle cx="488" cy="742" r="4" />
-          <circle cx="688" cy="662" r="5" />
-          <circle cx="874" cy="736" r="4" />
-          <circle cx="1076" cy="684" r="4" />
-          <circle cx="1264" cy="768" r="4" />
-          <circle cx="94" cy="206" r="3" />
-          <circle cx="208" cy="286" r="4" />
-          <circle cx="412" cy="244" r="4" />
-          <circle cx="596" cy="304" r="4" />
-          <circle cx="780" cy="264" r="4" />
-          <circle cx="962" cy="328" r="4" />
-          <circle cx="1178" cy="302" r="5" />
-          <circle cx="222" cy="548" r="3" />
-          <circle cx="414" cy="514" r="4" />
-          <circle cx="612" cy="584" r="4" />
-          <circle cx="804" cy="546" r="4" />
-          <circle cx="1012" cy="612" r="4" />
-          <circle cx="1222" cy="578" r="4" />
-          <circle cx="104" cy="940" r="3" />
-          <circle cx="282" cy="878" r="4" />
-          <circle cx="462" cy="948" r="4" />
-          <circle cx="654" cy="892" r="4" />
-          <circle cx="850" cy="962" r="4" />
-          <circle cx="1098" cy="918" r="4" />
-          <circle cx="1298" cy="974" r="5" />
-        </g>
-      </svg>
+      <div class="strip-inner">
+        <span class="strip-left"><span class="signal-dot"></span>Cyber Threat Intelligence Lab — Open Source</span>
+        <span class="strip-right">OSINT · MITRE ATT&amp;CK · DFIR · Est. 2025</span>
+      </div>
     </div>
     <header>
       <div class="container">
@@ -142,7 +79,7 @@
             <a href="{{ '/about/' | relative_url }}" class="nav-link{% if page.url contains '/about' %} active{% endif %}">About</a>
             <a href="{{ '/contact/' | relative_url }}" class="nav-link{% if page.url contains '/contact' %} active{% endif %}">Contact</a>
             <a href="{{ '/detection-engineering/' | relative_url }}" class="nav-link{% if page.url contains '/detection-engineering' %} active{% endif %}">Detection Engineering<span class="nav-badge">In Dev</span></a>
-            <a href="{{ '/resume/' | relative_url }}" class="nav-link nav-cta">Download Resume</a>
+            <a href="{{ '/resume/' | relative_url }}" class="nav-link nav-cta">Résumé</a>
           </div>
         </nav>
       </div>
@@ -162,24 +99,33 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <span class="brand-mark">JB</span>
-            <div>
+            <div class="footer-brand-row">
+              <span class="brand-mark">JB</span>
               <strong>{{ site.title | default: site.github.repository_name | escape }}</strong>
-              <p>Cyber Threat Intelligence Lab - investigations, research, publications, and evidence-grounded security writing.</p>
             </div>
+            <p>Cyber Threat Intelligence Lab — investigations, research, publications, and detection engineering, built as one evidence-based identity.</p>
           </div>
-          <nav class="footer-links" aria-label="Footer navigation">
-            <a href="{{ '/investigations/' | relative_url }}">Investigations</a>
-            <a href="{{ '/research/' | relative_url }}">Research</a>
-            <a href="{{ '/publications/' | relative_url }}">Publications</a>
-          </nav>
-          <nav class="footer-links" aria-label="Footer contact links">
-            <a href="https://linkedin.com/in/joshfiifi" rel="me">LinkedIn</a>
-            <a href="https://github.com/joshberk" rel="me">GitHub</a>
-            <a href="{{ '/feed.xml' | relative_url }}" class="rss-link" aria-label="RSS Feed">RSS feed</a>
-          </nav>
+          <div>
+            <p class="footer-col-label">Lab</p>
+            <nav class="footer-links" aria-label="Footer navigation">
+              <a href="{{ '/investigations/' | relative_url }}">Investigations</a>
+              <a href="{{ '/research/' | relative_url }}">Research</a>
+              <a href="{{ '/publications/' | relative_url }}">Publications</a>
+            </nav>
+          </div>
+          <div>
+            <p class="footer-col-label">Connect</p>
+            <nav class="footer-links" aria-label="Footer contact links">
+              <a href="https://linkedin.com/in/joshfiifi" rel="me">LinkedIn</a>
+              <a href="https://github.com/joshberk" rel="me">GitHub</a>
+              <a href="{{ '/feed.xml' | relative_url }}" class="rss-link" aria-label="RSS Feed">RSS feed</a>
+            </nav>
+          </div>
         </div>
-        <p class="footer-legal">&copy; <span id="year"></span> {{ site.author.name | default: site.title | escape }}. All rights reserved.</p>
+        <p class="footer-legal">
+          <span>&copy; <span id="year"></span> {{ site.author.name | default: site.title | escape }}. All rights reserved.</span>
+          <span>OSINT · MITRE ATT&amp;CK · DFIR</span>
+        </p>
       </div>
     </footer>
   </body>
