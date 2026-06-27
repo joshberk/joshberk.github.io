@@ -185,7 +185,7 @@ layout: default
         <div><strong>SOC Analyst</strong><span>Financial sector · 2021–22</span></div>
         <div><strong>Security Engineer Intern</strong><span>Intuit · 2023</span></div>
         <div><strong>Bug-Bounty Hall of Fame</strong><span>Multiple programs</span></div>
-        <div><strong>PhD Researcher</strong><span>Information Tech · 2025–</span></div>
+        <div><strong>PhD Researcher</strong><span>Information Tech · 2024–</span></div>
       </div>
       <a href="{{ '/about/' | relative_url }}" class="btn btn-outline btn-sm">More about me →</a>
     </div>
