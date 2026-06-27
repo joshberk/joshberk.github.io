@@ -833,6 +833,35 @@ header {
   white-space: nowrap;
 }
 
+/* Active-learning row (KC7 profile) under lab activity */
+.activity-learning {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line-strong);
+}
+.activity-learning .al-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.activity-learning .al-text { font-size: 0.95rem; color: var(--text-body); }
+.activity-learning a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  white-space: nowrap;
+}
+.activity-learning a:hover { color: var(--accent); }
+
 /* ---------- About ---------- */
 .section-about .about-content,
 .about-content {
@@ -1001,6 +1030,7 @@ footer .container { padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp
 .page-hero h1 { margin: 0 0 1.1rem; max-width: 18ch; }
 .page-intro { max-width: 70ch; font-size: 1.05rem; line-height: 1.62; color: var(--text-body); }
 .research-status { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.4rem; }
+.page-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0; }
 
 /* Inner page sections: keep long-form text readable */
 .home-section > p,

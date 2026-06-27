@@ -168,6 +168,11 @@ layout: default
       </ul>
     </div>
   </div>
+  <p class="activity-learning">
+    <span class="al-label">Active learning</span>
+    <span class="al-text">Hands-on threat-investigation training on KC7 Cyber — scenario-based KQL, IOC pivoting, and ATT&amp;CK mapping.</span>
+    <a href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">View KC7 profile →</a>
+  </p>
 </section>
 
 <section class="home-section section-about" id="about">

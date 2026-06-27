@@ -104,7 +104,7 @@ permalink: /about/
   <p>As a Security Engineer Intern at Intuit, Joshua supported security engineering work involving red team tooling, compliance automation, and remediation of security-related issues before deployment.</p>
 
   <h3>Cyber Threat Investigation Practice</h3>
-  <p>Joshua is building a public investigation portfolio through KC7 Cyber scenario-based investigations. These reports document his use of KQL, IOC pivoting, OSINT, ATT&amp;CK mapping, and evidence-driven analysis.</p>
+  <p>Joshua is building a public investigation portfolio through KC7 Cyber scenario-based investigations. These reports document his use of KQL, IOC pivoting, OSINT, ATT&amp;CK mapping, and evidence-driven analysis. His ongoing hands-on progress is tracked on his <a href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">public KC7 profile</a>.</p>
 
   <h3>Dark-Web Intelligence Research</h3>
   <p>Joshua's PhD research focuses on I2P hidden-service ecosystem analysis, hidden-service discovery, infrastructure characterization, and graph-based relationship analysis.</p>
