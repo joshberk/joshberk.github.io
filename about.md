@@ -13,7 +13,7 @@ permalink: /about/
 <section class="home-section" id="bio">
   <div class="about-content">
     <div class="profile-section">
-      <img src="{{ '/assets/images/jjc.JPG' | relative_url }}" alt="Joshua Berkoh" class="profile-image" loading="lazy" width="200" height="300" />
+      <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="profile-image" loading="lazy" width="1400" height="2100" />
     </div>
     <div class="about-text">
       <p>Joshua Berkoh is a cybersecurity professional and PhD researcher focused on cyber threat intelligence, threat investigations, dark-web intelligence research, and security analysis.</p>
