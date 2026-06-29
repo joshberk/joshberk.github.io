@@ -14,7 +14,7 @@ layout: default
       <div class="hero-buttons">
         <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">View investigations</a>
         <a href="{{ '/research/' | relative_url }}" class="btn btn-outline">Read research</a>
-        <a href="{{ '/resume/' | relative_url }}" class="btn btn-outline">Download résumé</a>
+        <a href="{{ '/resume/' | relative_url }}" class="btn btn-outline">Download resume</a>
       </div>
       <div class="hero-stack" aria-label="Core methods">
         <span>MITRE ATT&amp;CK</span>
@@ -208,7 +208,7 @@ layout: default
       <ul class="contact-links">
         <li><strong>LinkedIn</strong> <a href="https://linkedin.com/in/joshfiifi" rel="me">Joshua Berkoh →</a></li>
         <li><strong>GitHub</strong> <a href="https://github.com/joshberk" rel="me">@joshberk →</a></li>
-        <li><strong>Résumé</strong> <a href="{{ '/resume/' | relative_url }}">View / download CV →</a></li>
+        <li><strong>Resume</strong> <a href="{{ '/resume/' | relative_url }}">View / download CV →</a></li>
       </ul>
     </div>
   </div>
