@@ -7,7 +7,7 @@ permalink: /research/
 <section class="page-hero">
   <p class="eyebrow">Security &amp; Intelligence Research</p>
   <h1>Research</h1>
-  <p class="page-intro">This section collects my security research, dark-web intelligence work, and lab-based technical studies — structured research into how anonymity infrastructure and hidden-service ecosystems behave, and the collection and analysis workflows that make that research reproducible.</p>
+  <p class="page-intro">This section collects my security research, dark-web intelligence work, and lab-based technical studies structured research into how anonymity infrastructure and hidden-service ecosystems behave, and the collection and analysis workflows that make that research reproducible.</p>
 </section>
 
 <section class="home-section home-section-emphasis" id="featured-research">
@@ -18,7 +18,7 @@ permalink: /research/
   <div class="research-status">
     <span class="status-badge status-progress">PhD Research · In Progress</span>
   </div>
-  <p>A PhD research project focused on discovering, collecting, and analyzing application-layer and network-layer observations within the I2P anonymity network — to better understand hidden-service connectivity, infrastructure structure, and ecosystem behavior. The work treats anonymity infrastructure and the hidden services that ride on it as one connected system, and builds a reproducible collection-and-analysis framework around it.</p>
+  <p>A PhD research project focused on discovering, collecting, and analyzing application-layer and network-layer observations within the I2P anonymity network to better understand hidden-service connectivity, infrastructure structure, and ecosystem behavior. The work treats anonymity infrastructure and the hidden services that ride on it as one connected system, and builds a reproducible collection-and-analysis framework around it.</p>
   <p class="research-note">This is a privacy-preserving hidden-service ecosystem study with relevance to cyber threat intelligence. It characterizes darknet infrastructure and connectivity; it does not identify, attribute, or track real-world adversary groups.</p>
   <div class="focus-grid">
     <span class="ic-tag">Hidden-service discovery</span>
@@ -49,7 +49,7 @@ permalink: /research/
     <p class="section-kicker">Methodology</p>
     <h2>Collection &amp; analysis approach</h2>
   </div>
-  <p>At a high level, the framework fuses two layers of observation — network-layer routing data and application-layer hidden-service ("eepsite") crawls — into a single directed graph for analysis.</p>
+  <p>At a high level, the framework fuses two layers of observation network-layer routing data and application-layer hidden-service ("eepsite") crawls into a single directed graph for analysis.</p>
   <div class="home-summary">
     <article class="summary-card"><h3>Collection</h3><p>Application-layer crawling of I2P hidden services via the I2P HTTP proxy, with structured storage in MariaDB.</p></article>
     <article class="summary-card"><h3>Tooling</h3><p>Python collection and processing pipelines built for repeatable, scriptable runs.</p></article>
@@ -81,7 +81,7 @@ permalink: /research/
   <article class="investigation-card">
     <div class="ic-tags"><span class="ic-tag">Security Lab Infrastructure</span><span class="ic-tag">Malware Analysis Lab Environment</span></div>
     <h3 class="ic-title"><a href="{{ '/research/malware-reversing-lab/' | relative_url }}">Building a Malware Reversing Lab on Proxmox</a></h3>
-    <p class="ic-desc">Security lab infrastructure for static and dynamic malware analysis, built on Proxmox alongside a detection-engineering stack feeding Elastic SIEM. Documented as a malware-analysis lab environment — not a CTI report or investigation.</p>
+    <p class="ic-desc">Security lab infrastructure for static and dynamic malware analysis, built on Proxmox alongside a detection-engineering stack feeding Elastic SIEM. Documented as a malware-analysis lab environment not a CTI report or investigation.</p>
     <div class="ic-meta"><a class="ic-link" href="{{ '/research/malware-reversing-lab/' | relative_url }}">View the lab build →</a></div>
   </article>
 </section>
@@ -106,7 +106,7 @@ permalink: /research/
   </div>
   <div class="home-summary">
     <article class="summary-card"><h3>Dark-web infrastructure analysis</h3><p>Extending ecosystem mapping to characterize darknet infrastructure at scale.</p></article>
-    <article class="summary-card"><h3>Threat-informed detection engineering</h3><p>Translating observed tradecraft into detections — once the detection-engineering capability is established.</p></article>
+    <article class="summary-card"><h3>Threat-informed detection engineering</h3><p>Translating observed tradecraft into detections once the detection-engineering capability is established.</p></article>
     <article class="summary-card"><h3>AI-enabled threat analysis</h3><p>Applying machine learning to security measurement and triage.</p></article>
     <article class="summary-card"><h3>Intelligence collection methodology</h3><p>Reproducible, defensible collection workflows for hard-to-observe networks.</p></article>
     <article class="summary-card"><h3>Security measurement research</h3><p>Empirical measurement of security-relevant network ecosystems.</p></article>
