@@ -10,7 +10,7 @@ layout: default
     <div class="hero-copy">
       <p class="eyebrow">Cyber Threat Intelligence · Threat Hunting · Dark-Web Research</p>
       <h1>Tracking adversaries. Hunting threats. Producing actionable intelligence.</h1>
-      <p class="hero-description">I'm Joshua Berkoh — a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. Through scenario-based investigations and security research, I reconstruct intrusion activity, map observed tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
+      <p class="hero-description">I'm Joshua Berkoh, a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. Through scenario-based investigations and security research, I reconstruct intrusion activity, map observed tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
       <div class="hero-buttons">
         <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">View investigations</a>
         <a href="{{ '/research/' | relative_url }}" class="btn btn-outline">Read research</a>
@@ -45,12 +45,12 @@ layout: default
       <p class="section-kicker">01 — Capabilities</p>
       <h2>What I do</h2>
     </div>
-    <p class="section-intro">Demonstrated competencies across the intelligence cycle — collection, analysis, and reporting — grounded in completed investigative and research work.</p>
+    <p class="section-intro">Demonstrated competencies across the intelligence cycle collection, analysis, and reporting grounded in completed investigative and research work.</p>
   </div>
   <div class="capability-grid">
     <article class="summary-card"><div class="card-top"><span class="card-number">01</span><span class="card-badge">Intel Cycle</span></div><h3>Cyber Threat Intelligence</h3><p>Collect, analyze, and report structured intelligence on threat activity, tradecraft, indicators, and investigative findings.</p></article>
     <article class="summary-card"><div class="card-top"><span class="card-number">02</span><span class="card-badge">KQL · ATT&amp;CK</span></div><h3>Threat Hunting</h3><p>Hypothesis-driven hunts across endpoint and network telemetry using KQL and the ATT&amp;CK framework.</p></article>
-    <article class="summary-card"><div class="card-top"><span class="card-number">03</span><span class="card-badge">DFIR</span></div><h3>Threat Investigations</h3><p>End-to-end intrusion reconstruction — timelines, evidence, IOCs, and defensible assessments.</p></article>
+    <article class="summary-card"><div class="card-top"><span class="card-number">03</span><span class="card-badge">DFIR</span></div><h3>Threat Investigations</h3><p>End-to-end intrusion reconstruction timelines, evidence, IOCs, and defensible assessments.</p></article>
     <article class="summary-card"><div class="card-top"><span class="card-number">04</span><span class="card-badge">I2P · Hidden Services</span></div><h3>Dark-Web Intelligence</h3><p>Research into anonymity networks, hidden services, and privacy-preserving infrastructure.</p></article>
     <article class="summary-card"><div class="card-top"><span class="card-number">05</span><span class="card-badge">Analytic Methods</span></div><h3>Intelligence Research</h3><p>Structured analytic methods, source evaluation, and confidence-based judgments.</p></article>
     <article class="summary-card"><div class="card-top"><span class="card-number">06</span><span class="card-badge">Method</span></div><h3>Security Research</h3><p>Tooling, measurement, and methodology that extend how threats are studied.</p></article>
@@ -61,7 +61,7 @@ layout: default
   <div class="section-heading">
     <p class="section-kicker">02 — Investigations</p>
     <h2>Featured investigations</h2>
-    <p class="section-intro">Threat-investigation case studies: full intrusion reconstructions with timelines, IOC analysis, and MITRE ATT&amp;CK mapping — developed from KC7 scenarios and written to professional intelligence-reporting standards.</p>
+    <p class="section-intro">Threat-investigation case studies: full intrusion reconstructions with timelines, IOC analysis, and MITRE ATT&amp;CK mapping developed from KC7 scenarios and written to professional intelligence-reporting standards.</p>
   </div>
   <div class="investigation-grid">
     {% assign investigations = site.investigations | sort: "date" | reverse %}
@@ -104,7 +104,7 @@ layout: default
   <div class="research-feature research-lab-panel">
     <div class="research-copy">
       <h3>Mapping the I2P anonymous network</h3>
-      <p>A cross-layer framework that fuses network-layer routing data with application-layer hidden-service ("eepsite") crawls into a single graph — making it possible to study anonymity infrastructure and the services riding on it as one connected hidden-service ecosystem.</p>
+      <p>A cross-layer framework that fuses network-layer routing data with application-layer hidden-service ("eepsite") crawls into a single graph making it possible to study anonymity infrastructure and the services riding on it as one connected hidden-service ecosystem.</p>
       <p>The work spans hidden-service discovery, infrastructure mapping, large-scale collection, and graph analysis.</p>
       <div class="research-tags">
         <span class="ic-tag">Hidden-Service Discovery</span>
@@ -170,7 +170,7 @@ layout: default
   </div>
   <div class="activity-learning">
     <span class="al-badge"><span class="al-dot" aria-hidden="true"></span>Active Learning</span>
-    <span class="al-text">Hands-on threat-investigation training on KC7 Cyber — scenario-based KQL, IOC pivoting, and ATT&amp;CK mapping.</span>
+    <span class="al-text">Hands-on threat-investigation training on KC7 Cyber scenario-based KQL, IOC pivoting, and ATT&amp;CK mapping.</span>
     <a class="al-link" href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">View KC7 profile →</a>
   </div>
 </section>
@@ -185,7 +185,7 @@ layout: default
       <p class="section-kicker">05 — About</p>
       <h2>Researcher &amp; threat investigator</h2>
       <p>I'm a PhD researcher in Information Technology and a practicing security professional. My work sits where intelligence analysis meets hands-on investigation: reconstructing intrusions, hunting suspicious activity in telemetry, and researching the infrastructure that threats rely on.</p>
-      <p>I write every investigation to be defensible — evidence-first, mapped to MITRE ATT&amp;CK, and honest about confidence. Detection engineering is an area I'm actively studying and will publish as the work matures.</p>
+      <p>I write every investigation to be defensible evidence-first, mapped to MITRE ATT&amp;CK, and honest about confidence. Detection engineering is an area I'm actively studying and will publish as the work matures.</p>
       <div class="about-proof-grid">
         <div><strong>SOC Analyst</strong><span>Financial sector · 2021–22</span></div>
         <div><strong>Security Engineer Intern</strong><span>Intuit · 2023</span></div>
