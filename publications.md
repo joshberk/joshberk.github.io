@@ -7,14 +7,14 @@ permalink: /publications/
 <section class="page-hero">
   <p class="eyebrow">Publications &amp; Technical Writing</p>
   <h1>Publications &amp; Technical Writing</h1>
-  <p class="page-intro">A record of my written work — scenario-based investigation reports, research manuscripts, and technical articles. This archive shows how I document investigations, communicate technical findings, and structure analytical writing.</p>
+  <p class="page-intro">A record of my written work scenario-based investigation reports, research manuscripts, and technical articles. This archive shows how I document investigations, communicate technical findings, and structure analytical writing.</p>
 </section>
 
 <section class="home-section" id="investigation-reports">
   <div class="section-heading">
     <p class="section-kicker">Investigation Reports</p>
     <h2>Scenario-based investigation reports</h2>
-    <p class="section-intro">Full cyber threat investigations completed in the KC7 Cyber Security Analyst program, written to professional intelligence-reporting standards. Scenario-based — not real-world client incidents.</p>
+    <p class="section-intro">Full cyber threat investigations completed in the KC7 Cyber Security Analyst program, written to professional intelligence-reporting standards. Scenario-based not real-world client incidents.</p>
   </div>
   <div class="pub-list">
     {% assign reports = site.investigations | sort: "date" | reverse %}
@@ -39,7 +39,7 @@ permalink: /publications/
   <div class="section-heading">
     <p class="section-kicker">Research Manuscripts</p>
     <h2>Research manuscripts</h2>
-    <p class="section-intro">Manuscripts from my doctoral research — working papers and manuscripts not yet peer reviewed.</p>
+    <p class="section-intro">Manuscripts from my doctoral research working papers and manuscripts not yet peer reviewed.</p>
   </div>
   <div class="pub-list">
     {% for pub in site.data.publications %}
@@ -71,7 +71,7 @@ permalink: /publications/
         <span class="status-badge">Lab Writeup</span>
       </div>
       <p class="pub-type">Security Lab Infrastructure · Malware Analysis Lab Environment</p>
-      <p class="pub-summary">A technical walkthrough of a Proxmox-based malware-analysis lab environment running alongside a detection-engineering stack feeding Elastic SIEM. Documented as lab infrastructure — not a CTI report.</p>
+      <p class="pub-summary">A technical walkthrough of a Proxmox-based malware-analysis lab environment running alongside a detection-engineering stack feeding Elastic SIEM. Documented as lab infrastructure not a CTI report.</p>
       <a class="ic-link" href="{{ '/research/malware-reversing-lab/' | relative_url }}">Read the writeup →</a>
     </article>
   </div>
