@@ -91,7 +91,7 @@ permalink: /about/
     <span class="ic-tag">I2P research environment</span>
     <span class="ic-tag">Graph-based analysis</span>
   </div>
-  <p class="research-note">Detection Engineering tools such as Sigma, YARA, and detection-validation workflows are intentionally not listed as completed capabilities yet — that area is still in development.</p>
+  <p class="research-note">Detection Engineering tools such as Sigma, YARA, and detection-validation workflows are intentionally not listed as completed capabilities yet that area is still in development.</p>
 </section>
 
 <section class="home-section" id="experience">
@@ -137,8 +137,8 @@ permalink: /about/
 <section class="home-section home-section-emphasis" id="why-lab">
   <div class="section-heading"><p class="section-kicker">The Lab</p><h2>Why this lab exists</h2></div>
   <p class="closing-lead">This Cyber Threat Intelligence Lab is built on one conviction: the clearest way to show how an analyst thinks is to show the work — not to describe it.</p>
-  <p>It exists for more than a job search. A résumé can list skills; it cannot show the reasoning behind them. Every investigation here documents how evidence was gathered, how conclusions were reached, and where the analysis could be challenged — the actual tradecraft, made reviewable.</p>
-  <p>It is also a long-term, evolving body of work. As the portfolio grows — more investigations, deeper dark-web research, and detection engineering once that capability is genuinely earned — the lab becomes a transparent, honest record of an investigator's development: something that can be read, questioned, and improved over time.</p>
+  <p>It exists for more than a job search. A résumé can list skills; it cannot show the reasoning behind them. Every investigation here documents how evidence was gathered, how conclusions were reached, and where the analysis could be challenged the actual tradecraft, made reviewable.</p>
+  <p>It is also a long-term, evolving body of work. As the portfolio grows more investigations, deeper dark-web research, and detection engineering once that capability is genuinely earned the lab becomes a transparent, honest record of an investigator's development: something that can be read, questioned, and improved over time.</p>
   <p>The goal is simple: don't take the claims on faith. Read the work, and judge the thinking for yourself.</p>
   <div class="why-lab-cta">
     <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">Read the investigations</a>
