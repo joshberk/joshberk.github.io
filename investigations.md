@@ -10,7 +10,7 @@ redirect_from:
 <section class="page-hero">
   <p class="eyebrow">Investigation Portfolio</p>
   <h1>Threat Investigations</h1>
-  <p class="page-intro">Structured cyber threat investigations completed using realistic enterprise scenarios from the KC7 Cyber Security Analyst program. Each report documents analytical methodology, evidence collection, KQL investigations, IOC analysis, MITRE ATT&amp;CK mapping, and investigation findings. These are scenario-based investigations developed in a training environment — not real-world client engagements.</p>
+  <p class="page-intro">Structured cyber threat investigations completed using realistic enterprise scenarios from the KC7 Cyber Security Analyst program. Each report documents analytical methodology, evidence collection, KQL investigations, IOC analysis, MITRE ATT&amp;CK mapping, and investigation findings. These are scenario-based investigations developed in a training environment not real-world client engagements.</p>
   <p class="page-hero-actions">
     <a class="btn btn-outline" href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">View my KC7 Cyber profile →</a>
   </p>
