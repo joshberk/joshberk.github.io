@@ -4,10 +4,10 @@ projects:
   full_name: joshberk/joshberk.github.io
   description: This is my Personal Website
   url: https://github.com/joshberk/joshberk.github.io
-  language: SCSS
+  language: HTML
   stars: 1
   forks: 0
-  updated: '2026-06-28T08:45:30Z'
+  updated: '2026-06-29T15:25:57Z'
 - name: Agentic-Threat-Intel-Feed
   full_name: joshberk/Agentic-Threat-Intel-Feed
   description: This is my agentic threat intelligence feed project.
