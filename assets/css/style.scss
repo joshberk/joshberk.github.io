@@ -1277,6 +1277,39 @@ footer .container { padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp
 .im-chip { gap: 0.3rem; }
 .im-key { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 
+/* Report status notice (e.g. two-part report) */
+.report-status-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+  padding: 0.9rem 1.15rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+.rsn-label {
+  flex: 0 0 auto;
+  padding-top: 0.12rem;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.report-status-notice p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+@media (max-width: 560px) {
+  .report-status-notice { flex-direction: column; gap: 0.4rem; }
+}
+
 /* Case-file sidebar / metadata panel */
 .investigation-card-meta {
   border: 1px solid var(--line);

@@ -29,7 +29,7 @@ permalink: /publications/
         {% if inv.sector or inv.threat_type %}<p class="pub-meta-line">{% if inv.sector %}{{ inv.sector | escape }}{% endif %}{% if inv.threat_type %} · {{ inv.threat_type | escape }}{% endif %}</p>{% endif %}
         <p class="pub-summary">{{ inv.description | strip_html | truncatewords: 28 | escape }}</p>
         {% if inv.tags %}<div class="ic-tagrow">{% for tag in inv.tags %}<span class="ic-minitag">{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
-        {% unless inv_status == "Coming Soon" %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read full report →</a>{% endunless %}
+        {% if inv_status == "Coming Soon" %}{% elsif inv_status == "Completed" %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read full report →</a>{% else %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read Part 1 →</a>{% endif %}
       </article>
     {% endfor %}
   </div>

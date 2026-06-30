@@ -34,7 +34,7 @@ redirect_from:
       <div class="ic-tags">
         {% if inv.sector %}<span class="ic-tag">{{ inv.sector | escape }}</span>{% endif %}
         {% if inv.threat_type %}<span class="ic-tag">{{ inv.threat_type | escape }}</span>{% endif %}
-        {% if inv_status == "Coming Soon" %}<span class="ic-tag ic-tag-soon">In Progress</span>{% endif %}
+        {% unless inv_status == "Completed" %}<span class="ic-tag ic-tag-soon">{{ inv_status | escape }}</span>{% endunless %}
       </div>
       <h2 class="ic-title">
         {% if inv_status == "Coming Soon" %}{{ inv.title | escape }}{% else %}<a href="{{ inv.url | relative_url }}">{{ inv.title | escape }}</a>{% endif %}
@@ -52,7 +52,7 @@ redirect_from:
         </div>
       {% endif %}
       <div class="ic-meta">
-        {% if inv_status == "Coming Soon" %}<span class="ic-status">Coming soon</span>{% else %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read investigation →</a>{% endif %}
+        {% if inv_status == "Coming Soon" %}<span class="ic-status">Coming soon</span>{% elsif inv_status == "Completed" %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read investigation →</a>{% else %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read Part 1 →</a>{% endif %}
       </div>
     </article>
   {% endfor %}

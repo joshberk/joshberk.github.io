@@ -82,12 +82,15 @@ layout: default
         <div class="case-card-metrics">
           {% if post_status == 'Coming Soon' %}
             <span class="case-status">In progress · Coming soon</span>
-          {% else %}
+          {% elsif post_status == 'Completed' %}
             <div class="metric-row">
               {% if post.attack_count %}<div class="metric"><strong>{{ post.attack_count }}</strong><span>Techniques</span></div>{% endif %}
               {% if post.confidence %}<div class="metric"><strong>{{ post.confidence | escape }}</strong><span>Confidence</span></div>{% endif %}
             </div>
             <a class="ic-link" href="{{ post.url | relative_url }}">Read investigation →</a>
+          {% else %}
+            <span class="case-status">{{ post_status | escape }} · In progress</span>
+            <a class="ic-link" href="{{ post.url | relative_url }}">Read Part 1 →</a>
           {% endif %}
         </div>
       </article>

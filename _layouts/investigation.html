@@ -54,6 +54,13 @@ layout: default
       {% endif %}
     </header>
 
+    {% if page.report_notice %}
+    <aside class="report-status-notice" role="note" aria-label="Report status">
+      <span class="rsn-label">Report Status</span>
+      <p>{{ page.report_notice }}</p>
+    </aside>
+    {% endif %}
+
     <aside class="investigation-card-meta" aria-label="Investigation metadata">
       <p class="activity-label">Investigation metadata</p>
       <dl class="meta-dl">
@@ -61,6 +68,7 @@ layout: default
         <div><dt>Environment</dt><dd>{{ page.environment | default: "KC7 Cyber" }}</dd></div>
         <div><dt>Analyst</dt><dd>{{ page.analyst | default: "Joshua Berkoh" }}</dd></div>
         <div><dt>Status</dt><dd>{{ page.status | default: "Completed" }}</dd></div>
+        {% if page.report_part %}<div><dt>Report</dt><dd>{{ page.report_part }}</dd></div>{% endif %}
         <div><dt>Primary Tools</dt><dd>{{ page.tools | default: "KQL · Azure Data Explorer · OSINT" }}</dd></div>
         <div><dt>Framework</dt><dd>{{ page.framework | default: "MITRE ATT&CK" }}</dd></div>
         <div><dt>Report Version</dt><dd>{{ page.report_version | default: "1.0" }}</dd></div>
