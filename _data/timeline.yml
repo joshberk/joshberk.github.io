@@ -29,11 +29,11 @@
   link: "/investigations/solvi-systems/"
 
 - date: "2026"
-  title: "Valdoria Votes Investigation"
+  title: "Valdoria Votes Investigation — Part 1"
   type: "Scenario-Based Investigation Report"
-  status: "In Progress"
-  description: "Developing an additional KC7-based investigation report as part of the growing threat investigation portfolio."
-  link: "/investigations/"
+  status: "Part 1 Published"
+  description: "Published Part 1 of a two-part KC7-based investigation into a social-engineering campaign against The Valdorian Times; Part 2 is in progress."
+  link: "/investigations/valdoria-votes/"
 
 - date: "2026"
   title: "I2P Hidden Service Ecosystem Analysis"
