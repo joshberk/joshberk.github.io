@@ -1100,14 +1100,14 @@ header {
 .contact-section .contact-links a:hover { color: #f4f1ea; }
 
 /* =====================================================================
-   FOOTER
+   SITE FOOTER  (general pages only — never applied to report .post-footer)
    ===================================================================== */
-footer {
+.site-footer {
   background: var(--footer-bg);
   color: var(--on-dark-faint);
   border-top: 1px solid var(--line-dark);
 }
-footer .container { padding-top: clamp(1.6rem, 3vw, 2.25rem); padding-bottom: clamp(1.6rem, 3vw, 2.25rem); }
+.site-footer .container { padding-top: clamp(1.6rem, 3vw, 2.25rem); padding-bottom: clamp(1.6rem, 3vw, 2.25rem); }
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(8rem, 0.6fr) minmax(8rem, 0.6fr);

@@ -96,8 +96,10 @@
     <!-- Custom JavaScript -->
     <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
 
-    <!-- Footer with current year -->
-    <footer>
+    {% comment %} Site footer appears on general pages only — reading pages (reports/posts)
+                  end cleanly with their own "Back" link and no dark footer band. {% endcomment %}
+    {% unless page.layout == 'post' or page.layout == 'investigation' %}
+    <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
@@ -130,5 +132,6 @@
         </p>
       </div>
     </footer>
+    {% endunless %}
   </body>
 </html>
