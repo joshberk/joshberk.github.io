@@ -148,8 +148,8 @@ function initializeTheme() {
     }
   };
 
-  // Initialize theme from localStorage or default
-  const savedTheme = safeGet('theme') || 'dark';
+  // Initialize theme from localStorage or default (light is the primary design)
+  const savedTheme = safeGet('theme') || 'light';
   applyTheme(savedTheme);
   themeToggle.setAttribute('aria-pressed', savedTheme === 'dark' ? 'true' : 'false');
 

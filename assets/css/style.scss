@@ -9,8 +9,8 @@
 
 /* ---------- Design tokens ---------- */
 :root,
-[data-theme="dark"],
 [data-theme="light"] {
+  color-scheme: light;
   /* surfaces */
   --bg: #f4f1ea;            /* warm off-white page */
   --bg-tint: #efebe1;       /* tinted section band */
@@ -45,6 +45,11 @@
   --accent-ink: #16130f;
   --ok: #3d5d50;
 
+  /* chrome */
+  --header-bg: rgba(244, 241, 234, 0.86);
+  --nav-hover: #ece6d9;
+  --footer-bg: #16130f;
+
   /* legacy aliases (kept so report-body components resolve) */
   --surface: var(--paper);
   --surface-alt: var(--bg-tint);
@@ -62,6 +67,45 @@
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+/* ---------- Night mode (opt-in via header toggle) ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #14110d;
+  --bg-tint: #1b1712;
+  --paper: #1e1a14;
+  --paper-strong: #241f18;
+  --ink: #100d0a;
+  --ink-deep: #0b0908;
+
+  --text: #efe9dd;
+  --text-strong: #f6f2ea;
+  --text-body: #cfc7b9;
+  --text-soft: #b8afa1;
+  --text-muted: #a49b8c;
+  --text-faint: #867e71;
+
+  --on-dark: #efe9dd;
+  --on-dark-muted: #c3baac;
+  --on-dark-faint: #a49b8c;
+  --on-dark-warm: #cbb8a0;
+
+  --line: #322c23;
+  --line-soft: #2a251e;
+  --line-strong: #4a4235;
+  --line-dark: rgba(239, 233, 221, 0.14);
+
+  --accent: #d0715e;
+  --accent-soft: rgba(208, 113, 94, 0.16);
+  --accent-ink: #14110d;
+  --ok: #6fae98;
+
+  --header-bg: rgba(20, 17, 13, 0.88);
+  --nav-hover: #2a251e;
+  --footer-bg: #0b0908;
+
+  --shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.65);
 }
 
 /* ---------- Reset / base ---------- */
@@ -202,7 +246,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(244, 241, 234, 0.86);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -267,9 +311,36 @@ header {
 }
 .nav-link:hover,
 .nav-link.active {
-  background: #ece6d9;
+  background: var(--nav-hover);
   color: var(--text-strong);
 }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 34px;
+  margin-left: 0.5rem;
+  padding: 0 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.theme-toggle::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: transparent;
+}
+[data-theme="dark"] .theme-toggle::before { background: currentColor; }
+.theme-toggle:hover { border-color: var(--text-strong); background: var(--nav-hover); }
 .nav-badge {
   margin-left: 0.4rem;
   font-family: var(--mono);
@@ -367,12 +438,22 @@ header {
 .btn-primary {
   background: var(--ink);
   border-color: var(--ink);
-  color: var(--bg);
+  color: var(--on-dark);
 }
 .btn-primary:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #f4f1ea;
+}
+[data-theme="dark"] .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #17130f;
+}
+[data-theme="dark"] .btn-primary:hover {
+  background: var(--text-strong);
+  border-color: var(--text-strong);
+  color: var(--ink);
 }
 .btn-outline { background: transparent; color: var(--text); }
 .btn-outline:hover { border-color: var(--text-strong); color: var(--text); }
@@ -974,10 +1055,12 @@ header {
 .contact-section .section-intro,
 .contact-section p { color: var(--on-dark-muted); max-width: 46ch; }
 .contact-section .split-heading { align-items: center; }
+/* Contact card — light context (Contact page) is the default */
 .contact-card {
-  border: 1px solid var(--line-dark);
+  border: 1px solid var(--line);
   border-radius: 5px;
   overflow: hidden;
+  background: var(--paper);
 }
 .contact-links { margin: 0; padding: 0; list-style: none; }
 .contact-links li {
@@ -985,36 +1068,44 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--line-dark);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
   transition: background 0.18s ease;
 }
 .contact-links li:last-child { border-bottom: 0; }
-.contact-links li:hover { background: #211d17; }
+.contact-links li:hover { background: var(--bg-tint); }
 .contact-links strong {
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--on-dark-faint);
+  color: var(--text-muted);
 }
 .contact-links a {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 16px;
-  color: var(--on-dark);
+  font-size: 15px;
+  color: var(--accent);
   text-align: right;
 }
-.contact-links a:hover { color: #f4f1ea; }
+.contact-links a:hover { color: var(--text-strong); }
+
+/* Contact card — dark context (homepage Contact section) */
+.contact-section .contact-card { border-color: var(--line-dark); background: transparent; }
+.contact-section .contact-links li { padding: 20px 24px; border-bottom-color: var(--line-dark); }
+.contact-section .contact-links li:hover { background: #211d17; }
+.contact-section .contact-links strong { letter-spacing: 0.12em; color: var(--on-dark-faint); }
+.contact-section .contact-links a { font-size: 16px; color: var(--on-dark); }
+.contact-section .contact-links a:hover { color: #f4f1ea; }
 
 /* =====================================================================
    FOOTER
    ===================================================================== */
 footer {
-  background: var(--ink-deep);
+  background: var(--footer-bg);
   color: var(--on-dark-faint);
-  border-top: 1px solid #2a251e;
+  border-top: 1px solid var(--line-dark);
 }
 footer .container { padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .footer-grid {
@@ -1430,7 +1521,14 @@ footer .container { padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp
   color: var(--text-muted);
 }
 
-.post-footer { margin-top: clamp(2rem, 4vw, 3rem); }
+.post-footer {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+}
+.post-footer .btn { background: var(--paper); }
+.post-footer .btn:hover { background: var(--bg-tint); border-color: var(--text-strong); }
+.blog-footer .btn { background: var(--paper); }
 .post-navigation {
   display: flex;
   justify-content: space-between;
@@ -1730,7 +1828,7 @@ summary:focus-visible {
     align-items: stretch;
     gap: 0;
     padding: 0.5rem var(--gutter) 1rem;
-    background: rgba(244, 241, 234, 0.98);
+    background: var(--bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
     display: none;
@@ -1739,6 +1837,7 @@ summary:focus-visible {
   .header-nav { position: relative; }
   .nav-link { padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--line-soft); }
   .nav-cta { margin: 0.5rem 0 0; justify-content: center; }
+  .theme-toggle { width: 100%; margin: 0.5rem 0 0; justify-content: center; }
 
   .capability-grid { grid-template-columns: 1fr; }
   .about-proof-grid { grid-template-columns: 1fr; }
@@ -1757,3 +1856,20 @@ summary:focus-visible {
   /* Reading pages: let the header scroll away for more room */
   body[data-page="post"] header { position: static; backdrop-filter: none; }
 }
+
+/* =====================================================================
+   NIGHT MODE — report-body legibility refinements
+   ===================================================================== */
+[data-theme="dark"] .lab-post .callout-warn .callout-title,
+[data-theme="dark"] .lab-post .tag-amber,
+[data-theme="dark"] .lab-post .st { color: #dcae5a; }
+[data-theme="dark"] .lab-post .callout-info .callout-title,
+[data-theme="dark"] .lab-post .tag-blue,
+[data-theme="dark"] .lab-post .fn { color: #74a9e0; }
+[data-theme="dark"] .lab-post .callout-danger .callout-title,
+[data-theme="dark"] .lab-post .tag-red { color: #e58273; }
+[data-theme="dark"] .lab-post .callout-tip .callout-title,
+[data-theme="dark"] .lab-post .tag-green { color: #63c295; }
+[data-theme="dark"] .lab-post .tag-purple,
+[data-theme="dark"] .lab-post .kw { color: #b191e0; }
+[data-theme="dark"] .lab-post .arch-vm { background: rgba(255, 255, 255, 0.05); }

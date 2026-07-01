@@ -4,6 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; script-src-attr 'none'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; object-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="same-origin">
     <!-- frame-ancestors and Permissions-Policy require HTTP headers; see _headers. -->
@@ -79,7 +80,8 @@
             <a href="{{ '/about/' | relative_url }}" class="nav-link{% if page.url contains '/about' %} active{% endif %}">About</a>
             <a href="{{ '/contact/' | relative_url }}" class="nav-link{% if page.url contains '/contact' %} active{% endif %}">Contact</a>
             <a href="{{ '/detection-engineering/' | relative_url }}" class="nav-link{% if page.url contains '/detection-engineering' %} active{% endif %}">Detection Engineering<span class="nav-badge">In Dev</span></a>
-            <a href="{{ '/resume/' | relative_url }}" class="nav-link nav-cta">Résumé</a>
+            <a href="{{ '/resume/' | relative_url }}" class="nav-link nav-cta">Resume</a>
+            <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">Dark</button>
           </div>
         </nav>
       </div>

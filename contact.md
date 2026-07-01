@@ -33,10 +33,10 @@ permalink: /contact/
   <div class="section-heading"><p class="section-kicker">Contact Options</p><h2>Contact options</h2></div>
   <div class="contact-card">
     <ul class="contact-links">
-      <li><strong>LinkedIn</strong> <span class="muted">(primary)</span><strong>:</strong> <a href="https://linkedin.com/in/joshfiifi" rel="me">Joshua Berkoh</a></li>
-      <li><strong>GitHub:</strong> <a href="https://github.com/joshberk" rel="me">@joshberk</a></li>
-      <li><strong>Résumé:</strong> <a href="{{ '/resume/' | relative_url }}">View / download CV</a></li>
-      <li><strong>Investigation Portfolio:</strong> <a href="{{ '/investigations/' | relative_url }}">/investigations/</a></li>
+      <li><strong>LinkedIn <span class="muted">(primary)</span></strong> <a href="https://linkedin.com/in/joshfiifi" rel="me">Joshua Berkoh →</a></li>
+      <li><strong>GitHub</strong> <a href="https://github.com/joshberk" rel="me">@joshberk →</a></li>
+      <li><strong>Resume</strong> <a href="{{ '/resume/' | relative_url }}">View / download CV →</a></li>
+      <li><strong>Investigation Portfolio</strong> <a href="{{ '/investigations/' | relative_url }}">View portfolio →</a></li>
     </ul>
   </div>
 </section>
@@ -48,7 +48,7 @@ permalink: /contact/
     <li>The <a href="{{ '/investigations/' | relative_url }}">Investigation Portfolio</a></li>
     <li>The <a href="{{ '/research/' | relative_url }}">I2P Hidden Service Ecosystem Analysis</a> research page</li>
     <li><a href="{{ '/publications/' | relative_url }}">Publications &amp; Technical Writing</a></li>
-    <li>My <a href="{{ '/resume/' | relative_url }}">résumé</a></li>
+    <li>My <a href="{{ '/resume/' | relative_url }}">resume</a></li>
   </ol>
   <p>These sections provide the clearest view of how I investigate, document, and reason about security problems.</p>
   <p>If my background aligns with your team's work in cyber threat intelligence, security research, threat hunting, or investigative analysis, feel free to reach out via LinkedIn.</p>
