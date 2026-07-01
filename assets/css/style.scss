@@ -708,7 +708,7 @@ header {
 }
 .case-file-muted {
   background:
-    repeating-linear-gradient(135deg, #ece6d9 0 10px, #e7e0d2 10px 20px);
+    repeating-linear-gradient(135deg, var(--bg-tint) 0 10px, var(--paper) 10px 20px);
   border-color: var(--line-strong);
 }
 .case-card-body { min-width: 0; }
@@ -1873,3 +1873,12 @@ summary:focus-visible {
 [data-theme="dark"] .lab-post .tag-purple,
 [data-theme="dark"] .lab-post .kw { color: #b191e0; }
 [data-theme="dark"] .lab-post .arch-vm { background: rgba(255, 255, 255, 0.05); }
+[data-theme="dark"] .lab-post .arch-zone-red .arch-zone-label { color: #e58273; }
+[data-theme="dark"] .lab-post .arch-zone-teal .arch-zone-label { color: #63c295; }
+[data-theme="dark"] .lab-post .arch-zone-purple .arch-zone-label { color: #b191e0; }
+[data-theme="dark"] .lab-post .dot-red { background: #e58273; }
+[data-theme="dark"] .lab-post .dot-green { background: #63c295; }
+
+/* Dark: give the always-dark showcase panels a visible edge */
+[data-theme="dark"] .hero-intel-panel,
+[data-theme="dark"] .intel-graph-panel { border: 1px solid var(--line-strong); }
