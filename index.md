@@ -5,8 +5,7 @@ layout: default
 {% assign completed_investigations = site.investigations | where: "status", "Completed" %}
 {% assign completed_count = completed_investigations.size %}
 {% assign partial_investigations = site.investigations | where: "status", "Part 1 Published" %}
-{% assign partial_half = partial_investigations.size | times: 0.5 %}
-{% assign published_score = completed_count | plus: partial_half %}
+{% assign published_score = completed_count | plus: partial_investigations.size %}
 {% assign attack_total = 0 %}
 {% for inv in site.investigations %}{% unless inv.status == "Coming Soon" %}{% if inv.attack_count %}{% assign attack_total = attack_total | plus: inv.attack_count %}{% endif %}{% endunless %}{% endfor %}
 
@@ -35,7 +34,7 @@ layout: default
     <aside class="hero-intel-panel" aria-label="Lab index">
       <p class="panel-label"><span>Lab Index</span><span class="panel-live">// LIVE</span></p>
       <dl class="hero-metrics">
-        <div><dt>Investigations published</dt><dd>{{ published_score }}</dd></div>
+        <div><dt>Investigations published</dt><dd>{% if published_score < 10 %}0{% endif %}{{ published_score }}</dd></div>
         <div><dt>ATT&amp;CK techniques mapped</dt><dd>{{ attack_total }}</dd></div>
         <div><dt>Active research</dt><dd class="metric-sm">I2P Mapping</dd></div>
         <div><dt>Discipline</dt><dd class="metric-mono">CTI · DFIR · OSINT</dd></div>
