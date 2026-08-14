@@ -914,26 +914,31 @@ header {
   white-space: nowrap;
 }
 
-/* Active-learning row (KC7 profile) under lab activity */
+/* Active-learning platforms under lab activity */
 .activity-learning {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.7rem 1.1rem;
   margin: clamp(2rem, 4vw, 3rem) 0 0;
-  padding: 0.95rem 1.15rem;
+  padding: clamp(1.15rem, 2.5vw, 1.55rem);
   background: var(--paper);
   border: 1px solid var(--line);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius);
 }
+.al-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.7rem 1.25rem;
+  margin-bottom: 1.15rem;
+}
 .al-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  margin: 0;
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 500;
+  line-height: 1.4;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
@@ -956,15 +961,83 @@ header {
   opacity: 0;
   animation: pulseRing 2.6s ease-out infinite;
 }
-.al-text {
-  flex: 1 1 16rem;
-  min-width: 0;
+.al-intro {
+  max-width: 66ch;
+  margin: 0;
   font-size: 0.92rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--text-soft);
 }
+.al-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.al-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.05rem, 2vw, 1.35rem);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.al-card:hover,
+.al-card:focus-within {
+  background: var(--paper-strong);
+  border-color: var(--text-muted);
+}
+.al-card-header {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.al-name {
+  margin: 0 0 0.3rem;
+  font-size: clamp(1.22rem, 2vw, 1.45rem);
+  color: var(--text);
+}
+.al-category {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.al-description {
+  margin: 0.9rem 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.58;
+  color: var(--text-soft);
+}
+.al-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  list-style: none;
+}
+.al-skills li {
+  margin: 0;
+  padding: 0.2rem 0.45rem;
+  background: var(--bg-tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.35;
+  letter-spacing: 0.045em;
+  color: var(--text-muted);
+}
 .al-link {
-  margin-left: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.04em;
@@ -974,6 +1047,8 @@ header {
   white-space: nowrap;
 }
 .al-link:hover { color: var(--accent); }
+.al-arrow { transition: transform 0.18s ease; }
+.al-link:hover .al-arrow { transform: translateX(3px); }
 
 @keyframes pulseRing {
   0% { transform: scale(0.5); opacity: 0.7; }
@@ -1797,6 +1872,8 @@ summary:focus-visible {
   .case-status::before,
   .activity-label.is-live::before,
   .al-dot::after { animation: none; }
+  .al-arrow { transition: none; }
+  .al-link:hover .al-arrow { transform: none; }
 }
 
 /* =====================================================================
@@ -1840,6 +1917,9 @@ summary:focus-visible {
   .theme-toggle { width: 100%; margin: 0.5rem 0 0; justify-content: center; }
 
   .capability-grid { grid-template-columns: 1fr; }
+  .al-header,
+  .al-grid { grid-template-columns: 1fr; }
+  .al-header { gap: 0.45rem; }
   .about-proof-grid { grid-template-columns: 1fr; }
   .case-card-metrics .metric-row { gap: 2rem; }
   .timeline-list li { grid-template-columns: 4rem minmax(0, 1fr); }
