@@ -175,11 +175,27 @@ layout: default
       </ul>
     </div>
   </div>
-  <div class="activity-learning">
-    <span class="al-badge"><span class="al-dot" aria-hidden="true"></span>Active Learning</span>
-    <span class="al-text">Hands-on threat-investigation training on KC7 Cyber scenario-based KQL, IOC pivoting, and ATT&amp;CK mapping.</span>
-    <a class="al-link" href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">View KC7 profile →</a>
-  </div>
+  <section class="activity-learning" aria-labelledby="active-learning-title">
+    <div class="al-header">
+      <h3 class="al-badge" id="active-learning-title"><span class="al-dot" aria-hidden="true"></span>Active Learning</h3>
+      <p class="al-intro">Hands-on environments I use to continuously sharpen investigative and threat-intelligence skills.</p>
+    </div>
+    <div class="al-grid">
+      {% for platform in site.data.learning_platforms %}
+      <article class="al-card">
+        <div class="al-card-header">
+          <h4 class="al-name">{{ platform.name | escape }}</h4>
+          <p class="al-category">{{ platform.category | escape }}</p>
+        </div>
+        <p class="al-description">{{ platform.description | escape }}</p>
+        <ul class="al-skills" aria-label="{{ platform.name | escape }} skills in active development">
+          {% for skill in platform.skills %}<li>{{ skill | escape }}</li>{% endfor %}
+        </ul>
+        <a class="al-link" href="{{ platform.href | escape }}" target="_blank" rel="noopener noreferrer" aria-label="{{ platform.cta | escape }} (opens in a new tab)">{{ platform.cta | escape }} <span class="al-arrow" aria-hidden="true">→</span></a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
 </section>
 
 <section class="home-section section-about" id="about">
