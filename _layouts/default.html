@@ -44,6 +44,8 @@
   {% assign page_kind = 'default' %}
   {% if page.url == '/' %}
     {% assign page_kind = 'home' %}
+  {% elsif page.layout == 'investigation' %}
+    {% assign page_kind = 'investigation' %}
   {% elsif page.layout == 'post' %}
     {% assign page_kind = 'post' %}
   {% elsif page.url contains '/blog' %}
@@ -57,7 +59,7 @@
         <span class="strip-right">OSINT · MITRE ATT&amp;CK · DFIR · Est. 2025</span>
       </div>
     </div>
-    <header>
+    <header class="site-header">
       <div class="container">
         <nav class="header-nav" aria-label="Main navigation">
           <a id="a-title" href="{{ '/' | relative_url }}" class="site-brand">
