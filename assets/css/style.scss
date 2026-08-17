@@ -242,7 +242,7 @@ main#main_content { padding: 0; }
 }
 
 /* ---------- Header / nav ---------- */
-header {
+.site-header {
   position: sticky;
   top: 0;
   z-index: 50;
@@ -250,6 +250,16 @@ header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+/* Keep report reading unobstructed: all headers scroll with the document. */
+body[data-page="investigation"] .site-header,
+body[data-page="investigation"] .post-header {
+  position: static;
+  top: auto;
+  z-index: auto;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .header-nav {
@@ -1934,7 +1944,7 @@ summary:focus-visible {
   .footer-legal { flex-direction: column; gap: 0.5rem; }
 
   /* Reading pages: let the header scroll away for more room */
-  body[data-page="post"] header { position: static; backdrop-filter: none; }
+  body[data-page="post"] .site-header { position: static; backdrop-filter: none; }
 }
 
 /* =====================================================================
