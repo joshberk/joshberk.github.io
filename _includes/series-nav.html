@@ -1,0 +1,69 @@
+{%- comment -%}
+  Compact series navigation for multi-part investigations.
+
+  Driven entirely by front matter, so any future series works without changes:
+    series        the series name, identical across every part
+    part          integer position within the series
+    series_title  short label for this part used in the series list
+
+  Params
+    series   series name to build navigation for
+    current  url of the page being rendered
+
+  Renders the full part list with the current part marked, then previous /
+  next links and a route back to the investigation index.
+{%- endcomment -%}
+{%- assign parts = site.investigations | where: "series", include.series | sort: "part" -%}
+{%- if parts.size > 1 -%}
+{%- assign total = parts.size -%}
+<nav class="series-nav" aria-label="{{ include.series | escape }} navigation">
+  <p class="series-nav-label">{{ include.series | escape }}</p>
+  <ol class="series-list">
+    {%- for entry in parts -%}
+      {%- assign entry_label = entry.series_title | default: entry.title -%}
+      {%- if entry.url == include.current -%}
+        <li class="series-item is-current" aria-current="page">
+          <span class="series-item-part">Part {{ entry.part }}</span>
+          <span class="series-item-title">{{ entry_label | escape }}</span>
+          <span class="sr-only">(current article)</span>
+        </li>
+      {%- else -%}
+        <li class="series-item">
+          <a href="{{ entry.url | relative_url }}">
+            <span class="series-item-part">Part {{ entry.part }}</span>
+            <span class="series-item-title">{{ entry_label | escape }}</span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ol>
+
+  {%- assign current_part = 0 -%}
+  {%- for entry in parts -%}
+    {%- if entry.url == include.current -%}{%- assign current_part = entry.part -%}{%- endif -%}
+  {%- endfor -%}
+  {%- assign prev_part = current_part | minus: 1 -%}
+  {%- assign next_part = current_part | plus: 1 -%}
+  {%- assign prev_entry = parts | where: "part", prev_part | first -%}
+  {%- assign next_entry = parts | where: "part", next_part | first -%}
+
+  <div class="series-pager">
+    <div class="series-pager-side">
+      {%- if prev_entry -%}
+        <a class="series-pager-link series-pager-prev" href="{{ prev_entry.url | relative_url }}" aria-label="Previous: Part {{ prev_entry.part }}, {{ prev_entry.series_title | default: prev_entry.title | escape }}">
+          <span aria-hidden="true">←</span> Part {{ prev_entry.part }}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="series-pager-side series-pager-end">
+      {%- if next_entry -%}
+        <a class="series-pager-link series-pager-next" href="{{ next_entry.url | relative_url }}" aria-label="Continue to Part {{ next_entry.part }}: {{ next_entry.series_title | default: next_entry.title | escape }}">
+          Continue to Part {{ next_entry.part }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+  <p class="series-nav-all"><a href="{{ '/investigations/' | relative_url }}">View all investigations</a></p>
+</nav>
+{%- endif -%}

@@ -12,6 +12,7 @@ confidence: "High"
 focus: "Supply Chain Espionage, Source-Code Exfiltration"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+source: kc7-cyber
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
 description: "Triaging a complex supply-chain intrusion targeting regional energy distribution. Tracks the complete lifecycle from perimeter XSS probing and weaponized phishing documents to lateral movement and source-code exfiltration using raw web utilities."

@@ -14,6 +14,7 @@ confidence: "High"
 focus: "Social Engineering, Persistence, Workflow Injection"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+source: kc7-cyber
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
 description: "Part 1 of a two-part, scenario-based investigation into a multi-stage social-engineering campaign against The Valdorian Times. Reconstructs weaponized recruitment lures, scheduled-task persistence, automated plink.exe reverse-SSH tunneling, 7-Zip data archival and curl exfiltration, and the editorial-mailbox hijack that pushed a falsified article into the print queue."

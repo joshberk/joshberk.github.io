@@ -30,7 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
- * Investigation portfolio search + status filter.
+ * Investigation portfolio search + faceted filtering.
+ *
+ * Filter groups are discovered from the DOM rather than hard-coded, so a new
+ * facet only needs a `[data-filter-group="<key>"]` container of buttons on the
+ * page and a matching `data-<key>` attribute on each card. The investigations
+ * index currently declares `source` and `status`; the source buttons are
+ * generated from _data/investigation_sources.yml, so adding a platform there
+ * adds its filter without touching this file.
+ *
  * No-ops on pages that do not have the investigation list.
  */
 function initializeInvestigationFilters() {
@@ -38,29 +46,29 @@ function initializeInvestigationFilters() {
   if (!list) return;
 
   const cards = Array.from(list.querySelectorAll('.investigation-card'));
+  const groups = Array.from(document.querySelectorAll('[data-filter-group]'));
   const searchInput = document.getElementById('investigation-search');
-  const filterButtons = document.querySelectorAll('[data-inv-filter]');
   const noResults = document.getElementById('inv-no-results');
 
-  let activeFilter = 'all';
+  // group key -> selected value, 'all' meaning unfiltered
+  const active = {};
+  groups.forEach(group => { active[group.dataset.filterGroup] = 'all'; });
+
   let query = '';
+
+  const matchesFacets = (card) => Object.keys(active).every(key => {
+    const selected = active[key];
+    return selected === 'all' || (card.dataset[key] || '') === selected;
+  });
 
   const apply = () => {
     let visible = 0;
     cards.forEach(card => {
-      const status = card.dataset.status || '';
       const haystack = card.dataset.search || '';
-      const matchesFilter =
-        activeFilter === 'all' ||
-        (activeFilter === 'completed' && status === 'completed') ||
-        (activeFilter === 'in-progress' && status !== 'completed');
       const matchesQuery = query === '' || haystack.indexOf(query) !== -1;
-      if (matchesFilter && matchesQuery) {
-        card.classList.remove('hidden');
-        visible++;
-      } else {
-        card.classList.add('hidden');
-      }
+      const show = matchesFacets(card) && matchesQuery;
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
     });
     if (noResults) noResults.classList.toggle('hidden', visible !== 0);
   };
@@ -72,12 +80,20 @@ function initializeInvestigationFilters() {
     });
   }
 
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      button.classList.add('active');
-      activeFilter = button.dataset.invFilter;
-      apply();
+  groups.forEach(group => {
+    const key = group.dataset.filterGroup;
+    const buttons = Array.from(group.querySelectorAll('[data-filter-value]'));
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
+        active[key] = button.dataset.filterValue;
+        apply();
+      });
     });
   });
 }

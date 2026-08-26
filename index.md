@@ -65,17 +65,25 @@ layout: default
   <div class="section-heading">
     <p class="section-kicker">02 — Investigations</p>
     <h2>Featured investigations</h2>
-    <p class="section-intro">Threat-investigation case studies: full intrusion reconstructions with timelines, IOC analysis, and MITRE ATT&amp;CK mapping developed from KC7 scenarios and written to professional intelligence-reporting standards.</p>
+    <p class="section-intro">Threat-investigation case studies drawn from realistic training environments: intrusion reconstructions with timelines, IOC analysis, and MITRE ATT&amp;CK mapping from KC7 scenarios, and dark-web intelligence work from Flare Darkroom, all written to professional intelligence-reporting standards.</p>
   </div>
   <div class="investigation-grid">
+    {% comment %} Multi-part series are represented by their first part here so a
+                  single series cannot fill the featured row. {% endcomment %}
     {% assign investigations = site.investigations | sort: "date" | reverse %}
-    {% for post in investigations limit:3 %}
+    {% assign featured_shown = 0 %}
+    {% for post in investigations %}
+      {% if featured_shown >= 3 %}{% break %}{% endif %}
+      {% if post.series and post.part and post.part > 1 %}{% continue %}{% endif %}
+      {% assign featured_shown = featured_shown | plus: 1 %}
       {% assign post_status = post.status | default: "Completed" %}
-      {% capture cid %}00{{ forloop.index }}{% endcapture %}
+      {% assign post_source = site.data.investigation_sources | where: "id", post.source | first %}
+      {% capture cid %}00{{ featured_shown }}{% endcapture %}
       <article class="investigation-card case-file-card{% if post_status == 'Coming Soon' %} case-file-muted{% endif %}">
         <div class="case-card-body">
           <div class="case-file-topline">
             <span class="case-label">CASE-{{ post.date | date: "%Y" }}-{{ cid | slice: -3, 3 }}</span>
+            {% if post_source %}<span class="case-source">{{ post_source.name | escape }}</span>{% endif %}
             {% if post.tags %}<span class="case-themes">{{ post.tags | join: " · " | escape }}</span>{% endif %}
           </div>
           <h3 class="ic-title">
@@ -87,14 +95,18 @@ layout: default
           {% if post_status == 'Coming Soon' %}
             <span class="case-status">In progress · Coming soon</span>
           {% elsif post_status == 'Completed' %}
+            {% if post.series %}{% assign series_parts = site.investigations | where: "series", post.series %}{% endif %}
+            {% if post.attack_count or post.confidence or post.series %}
             <div class="metric-row">
               {% if post.attack_count %}<div class="metric"><strong>{{ post.attack_count }}</strong><span>Techniques</span></div>{% endif %}
               {% if post.confidence %}<div class="metric"><strong>{{ post.confidence | escape }}</strong><span>Confidence</span></div>{% endif %}
+              {% if post.series %}<div class="metric"><strong>{{ series_parts.size }}</strong><span>Part series</span></div>{% endif %}
             </div>
-            <a class="ic-link" href="{{ post.url | relative_url }}">Read investigation →</a>
+            {% endif %}
+            <a class="ic-link" href="{{ post.url | relative_url }}" aria-label="{% if post.series %}Read the series{% else %}Read investigation{% endif %}: {{ post.title | escape }}">{% if post.series %}Read the series →{% else %}Read investigation →{% endif %}</a>
           {% else %}
             <span class="case-status">{{ post_status | escape }} · In progress</span>
-            <a class="ic-link" href="{{ post.url | relative_url }}">Read Part 1 →</a>
+            <a class="ic-link" href="{{ post.url | relative_url }}" aria-label="Read Part 1: {{ post.title | escape }}">Read Part 1 →</a>
           {% endif %}
         </div>
       </article>
@@ -191,7 +203,10 @@ layout: default
         <ul class="al-skills" aria-label="{{ platform.name | escape }} skills in active development">
           {% for skill in platform.skills %}<li>{{ skill | escape }}</li>{% endfor %}
         </ul>
-        <a class="al-link" href="{{ platform.href | escape }}" target="_blank" rel="noopener noreferrer" aria-label="{{ platform.cta | escape }} (opens in a new tab)">{{ platform.cta | escape }} <span class="al-arrow" aria-hidden="true">→</span></a>
+        <div class="al-actions">
+          <a class="al-link" href="{{ platform.href | escape }}" target="_blank" rel="noopener noreferrer" aria-label="{{ platform.cta | escape }} (opens in a new tab)">{{ platform.cta | escape }} <span class="al-arrow" aria-hidden="true">→</span></a>
+          {% if platform.investigations_href %}<a class="al-link al-link-internal" href="{{ platform.investigations_href | relative_url }}">{{ platform.investigations_cta | default: "Read the investigations" | escape }} <span class="al-arrow" aria-hidden="true">→</span></a>{% endif %}
+        </div>
       </article>
       {% endfor %}
     </div>
