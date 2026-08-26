@@ -1,0 +1,29 @@
+# Investigation source registry
+# ---------------------------------------------------------------------------
+# Investigations live under one umbrella content type. The platform an
+# investigation originated from is metadata, declared per-file as `source: <id>`.
+#
+# Everything downstream is driven from this list: the index filter buttons, the
+# card source labels, the article eyebrow, and the "Source" row in the article
+# metadata panel. To add a platform later (CyberDefenders, Hack The Box,
+# LetsDefend, personal research), append an entry here and set `source:` on the
+# relevant investigations. No template or JavaScript changes are needed.
+#
+# Fields
+#   id          slug used by `source:` in investigation front matter (required)
+#   name        display label shown on cards, filters, and article headers
+#   focus       one line describing what this source's investigations demonstrate
+#   environment value for the "Environment" row of the article metadata panel
+#   url         optional link to the platform
+
+- id: kc7-cyber
+  name: "KC7 Cyber"
+  focus: "Detection, KQL, threat hunting, incident reconstruction, and ATT&CK-mapped intrusion analysis."
+  environment: "KC7 Cyber"
+  url: "https://kc7cyber.com"
+
+- id: flare-darkroom
+  name: "Flare Darkroom"
+  focus: "Dark-web intelligence, initial access brokers, credential ecosystems, ransomware operations, and cross-forum correlation."
+  environment: "Darkroom by Flare (simulated training environment)"
+  url: "https://flare.io"

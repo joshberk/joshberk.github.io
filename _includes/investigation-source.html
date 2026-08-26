@@ -1,0 +1,23 @@
+{%- comment -%}
+  Investigation source label.
+
+  Renders the platform an investigation came from, resolved from
+  _data/investigation_sources.yml. Organisational metadata, not vendor branding.
+
+  Params
+    source  source id from the investigation's front matter (e.g. "flare-darkroom")
+    kind    trailing descriptor. Defaults to "Investigation".
+    tag     element to render. Defaults to "p".
+
+  Renders nothing when `source` is missing or unknown, so investigations that
+  predate the source field degrade quietly rather than showing a broken label.
+{%- endcomment -%}
+{%- assign inv_source = site.data.investigation_sources | where: "id", include.source | first -%}
+{%- if inv_source -%}
+{%- assign source_tag = include.tag | default: "p" -%}
+<{{ source_tag }} class="inv-source">
+  <span class="inv-source-name">{{ inv_source.name | escape }}</span>
+  <span class="inv-source-sep" aria-hidden="true">·</span>
+  <span class="inv-source-kind">{{ include.kind | default: "Investigation" | escape }}</span>
+</{{ source_tag }}>
+{%- endif -%}

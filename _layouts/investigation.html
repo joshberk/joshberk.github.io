@@ -2,10 +2,26 @@
 layout: default
 ---
 
+{%- comment -%}
+  Investigation report layout.
+
+  Source attribution is metadata-driven: `source:` in front matter resolves
+  against _data/investigation_sources.yml for the header label, the Source row,
+  and the Environment default. Multi-part investigations add `series` / `part`
+  and pick up series navigation automatically.
+{%- endcomment -%}
+{%- assign inv_source = site.data.investigation_sources | where: "id", page.source | first -%}
+{%- assign series_parts = site.investigations | where: "series", page.series -%}
+{%- assign series_total = series_parts.size -%}
+
 {% if page.status == 'Coming Soon' %}
   <article class="post post-coming-soon">
     <header class="post-header">
-      <p class="eyebrow">Investigation</p>
+      {% if inv_source %}
+        {% include investigation-source.html source=page.source %}
+      {% else %}
+        <p class="eyebrow">Investigation</p>
+      {% endif %}
       <h1 class="post-title">{{ page.title | escape }}</h1>
       <div class="investigation-meta">
         {% if page.sector %}<span class="im-chip"><span class="im-key">Sector</span> {{ page.sector | escape }}</span>{% endif %}
@@ -28,7 +44,18 @@ layout: default
 
   <article class="post investigation">
     <header class="post-header">
-      <p class="eyebrow">Investigation</p>
+      {% if page.series and page.part and series_total > 1 %}
+        {% capture series_kind %}Investigation Series · Part {{ page.part }} of {{ series_total }}{% endcapture %}
+      {% else %}
+        {% assign series_kind = "Investigation" %}
+      {% endif %}
+
+      {% if inv_source %}
+        {% include investigation-source.html source=page.source kind=series_kind %}
+      {% else %}
+        <p class="eyebrow">{{ series_kind }}</p>
+      {% endif %}
+
       <h1 class="post-title">{{ page.title | escape }}</h1>
 
       <div class="investigation-meta">
@@ -40,7 +67,11 @@ layout: default
         <span class="im-chip"><span class="im-key">Read</span> {{ reading_time }} min</span>
       </div>
 
-      {% if page.tags %}
+      {% if page.topics %}
+        <div class="ic-tags">
+          {% for topic in page.topics %}<span class="ic-tag">{{ topic | escape }}</span>{% endfor %}
+        </div>
+      {% elsif page.tags %}
         <div class="ic-tags">
           {% for tag in page.tags %}<span class="ic-tag">{{ tag | escape }}</span>{% endfor %}
         </div>
@@ -65,7 +96,8 @@ layout: default
       <p class="activity-label">Investigation metadata</p>
       <dl class="meta-dl">
         <div><dt>Investigation Type</dt><dd>{{ page.investigation_type | default: "Scenario-Based Investigation" }}</dd></div>
-        <div><dt>Environment</dt><dd>{{ page.environment | default: "KC7 Cyber" }}</dd></div>
+        {% if inv_source %}<div><dt>Source</dt><dd>{{ inv_source.name | escape }}</dd></div>{% endif %}
+        <div><dt>Environment</dt><dd>{{ page.environment | default: inv_source.environment | default: "KC7 Cyber" }}</dd></div>
         <div><dt>Analyst</dt><dd>{{ page.analyst | default: "Joshua Berkoh" }}</dd></div>
         <div><dt>Status</dt><dd>{{ page.status | default: "Completed" }}</dd></div>
         {% if page.report_part %}<div><dt>Report</dt><dd>{{ page.report_part }}</dd></div>{% endif %}
@@ -78,6 +110,17 @@ layout: default
     <div class="post-content">
       {{ content }}
     </div>
+
+    {% if page.simulation_note %}
+    <aside class="simulation-note" role="note" aria-label="Training environment notice">
+      <span class="sn-label">Training Environment</span>
+      <p>{{ page.simulation_note }}</p>
+    </aside>
+    {% endif %}
+
+    {% if page.series and page.part %}
+      {% include series-nav.html series=page.series current=page.url %}
+    {% endif %}
 
     <footer class="post-footer">
       <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">← Back to Investigations</a>

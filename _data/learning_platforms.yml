@@ -22,3 +22,6 @@
     - "Pre-Breach Intelligence"
   href: "https://darkroom.labs.flare.io/profile"
   cta: "View Darkroom Profile"
+  # Optional second action: the investigations written up from this platform.
+  investigations_href: "/investigations/flare-darkroom/initial-access-credential-exposure/"
+  investigations_cta: "Read the Darkroom series"

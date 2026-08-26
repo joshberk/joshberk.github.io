@@ -12,6 +12,7 @@ confidence: "High"
 focus: "Insider Exfiltration, Active Directory Ransomware"
 type: "Case Study"
 discipline: "Threat Detection Engineering"
+source: kc7-cyber
 source_name: "KC7 Cyber Detective Game"
 source_url: "https://kc7cyber.com"
 description: "A dual-track insider-threat investigation at Encryptodera Financial: a contractor's 27-day FTP exfiltration of cold-storage crypto-wallet secrets running in parallel with a hijacked-identity intrusion that escalates to a domain-wide Active Directory ransomware deployment across 306 endpoints."
