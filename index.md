@@ -100,7 +100,7 @@ layout: default
             <div class="metric-row">
               {% if post.attack_count %}<div class="metric"><strong>{{ post.attack_count }}</strong><span>Techniques</span></div>{% endif %}
               {% if post.confidence %}<div class="metric"><strong>{{ post.confidence | escape }}</strong><span>Confidence</span></div>{% endif %}
-              {% if post.series %}<div class="metric"><strong>{{ series_parts.size }}</strong><span>Part series</span></div>{% endif %}
+              {% if post.series %}<div class="metric"><strong>{{ series_parts.size }}</strong><span>Parts</span></div>{% endif %}
             </div>
             {% endif %}
             <a class="ic-link" href="{{ post.url | relative_url }}" aria-label="{% if post.series %}Read the series{% else %}Read investigation{% endif %}: {{ post.title | escape }}">{% if post.series %}Read the series →{% else %}Read investigation →{% endif %}</a>
