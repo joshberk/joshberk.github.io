@@ -2,6 +2,19 @@
 layout: default
 title: "Research"
 permalink: /research/
+manuscripts:
+  - title: "XL-I2P: Cross-Layer I2P Darkweb Mapper"
+    authorship: "First author"
+    status: "Under review"
+    venue: "Workshop on Cyber Security Experimentation and Test (CSET)"
+  - title: "A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets"
+    authorship: "Second author"
+    status: "Under review"
+    venue: "IEEE iThings 2026"
+  - title: "Chrono-GINE: A Chronological Edge-Aware Graph Isomorphism Network for Self-Supervised I2P Network Behavior Modeling"
+    authorship: "Last author"
+    status: "Under review"
+    venue: "2026 IEEE International Conference on Smart Data"
 ---
 
 <section class="page-hero">
@@ -27,6 +40,26 @@ permalink: /research/
     <span class="ic-tag">Graph-based relationship analysis</span>
     <span class="ic-tag">Application-layer crawling</span>
     <span class="ic-tag">Reproducible research workflows</span>
+  </div>
+</section>
+
+<section class="home-section research-manuscripts" id="research-manuscripts" aria-labelledby="manuscripts-heading">
+  <div class="section-heading">
+    <p class="section-kicker">Manuscripts</p>
+    <h2 id="manuscripts-heading">Research manuscripts</h2>
+    <p class="section-intro">Current manuscripts spanning I2P network mapping, botnet detection, and graph-based network behavior modeling.</p>
+  </div>
+  <div class="pub-list">
+    {% for manuscript in page.manuscripts %}
+    <article class="pub-card">
+      <div class="pub-card-head">
+        <h3 class="pub-title">{{ manuscript.title | escape }}</h3>
+        <span class="status-badge">{{ manuscript.status | escape }}</span>
+      </div>
+      <p class="pub-meta-line"><strong>Authorship:</strong> {{ manuscript.authorship | escape }}</p>
+      <p class="pub-meta-line"><strong>Submitted to:</strong> {{ manuscript.venue | escape }}</p>
+    </article>
+    {% endfor %}
   </div>
 </section>
 
@@ -66,10 +99,10 @@ permalink: /research/
   <ul class="activity-list">
     <li>Doctoral dissertation research <span class="tag-dev">In Progress</span></li>
     <li>Technical research notes <span class="muted">— published as the work matures</span></li>
-    <li>Future conference / journal papers <span class="tag-dev">Planned</span></li>
+    <li><a href="#research-manuscripts">Three research manuscripts — <span class="tag-dev">Under review</span></a></li>
     <li>Related lab artifacts <span class="muted">— see Security Lab Artifacts below</span></li>
   </ul>
-  <p class="muted">See the <a href="{{ '/publications/' | relative_url }}">Publications</a> page for the formal record.</p>
+  <p class="muted">See the <a href="{{ '/publications/' | relative_url }}">Publications</a> page for additional technical writing.</p>
 </section>
 
 <section class="home-section" id="lab-artifacts">
