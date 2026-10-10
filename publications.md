@@ -76,11 +76,3 @@ permalink: /publications/
     </article>
   </div>
 </section>
-
-<section class="home-section" id="peer-reviewed">
-  <div class="section-heading">
-    <p class="section-kicker">Conference / Journal Publications</p>
-    <h2>Peer-reviewed publications</h2>
-  </div>
-  <p class="pub-empty">No peer-reviewed conference or journal publications yet. Research manuscripts are in progress — see <a href="#research-manuscripts">Research Manuscripts</a> above. This section will list work here only once it has been formally accepted or published.</p>
-</section>
