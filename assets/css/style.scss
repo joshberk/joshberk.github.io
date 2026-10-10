@@ -2080,6 +2080,27 @@ a.rc-val:hover { color: var(--accent); }
   color: var(--text-muted);
 }
 
+/* ---------- Compact rhythm (résumé page only) ----------
+   The site's section bands are intentionally airy (up to 7rem top AND
+   bottom). On a dense CV that reads as too much empty space, so the
+   résumé page tightens the vertical rhythm without touching the rest
+   of the site. */
+.resume-hero {
+  padding-top: clamp(2rem, 4.5vw, 3.25rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+.resume-section {
+  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
+  padding-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+.resume-section .section-heading { margin-bottom: clamp(1rem, 2vw, 1.4rem); }
+.resume-section .section-heading .section-kicker { margin-bottom: 0.6rem; }
+.resume-section .home-summary { margin-top: 0; }
+.resume-entries .resume-entry { padding: clamp(1rem, 2vw, 1.35rem) 0; }
+.resume-entry-head { margin-bottom: 0.65rem; }
+.resume-bullets li { margin-bottom: 0.35rem; }
+.resume-facts li { padding: 0.85rem 0; }
+
 /* =====================================================================
    RESUME — print suppression
    This résumé is a view-only web document. Printing and "Save as PDF"
