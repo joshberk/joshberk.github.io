@@ -31,7 +31,7 @@ manuscripts:
   <div class="research-status">
     <span class="status-badge status-progress">PhD Research · In Progress</span>
   </div>
-  <p>A PhD research project focused on discovering, collecting, and analyzing application-layer and network-layer observations within the I2P anonymity network to better understand hidden-service connectivity, infrastructure structure, and ecosystem behavior. The work treats anonymity infrastructure and the hidden services that ride on it as one connected system, and builds a reproducible collection-and-analysis framework around it.</p>
+  <p>A PhD research program measuring the I2P anonymity network's hidden-service (eepsite) ecosystem across three sequential studies. Study 1 validated the measurement methodology, comparing the purpose-built XL-I2P crawler against the c4i2p baseline. Study 2 is a longitudinal campaign now collecting epoch-tagged observations to measure eepsite churn against application-layer link-graph change. Study 3 will test the resulting theories for generality against published measurements of other anonymity networks. Network-layer observations are recorded with strict provenance separation from application-layer crawls, so cross-layer claims are made only where the data supports them.</p>
   <p class="research-note">This is a privacy-preserving hidden-service ecosystem study with relevance to cyber threat intelligence. It characterizes darknet infrastructure and connectivity; it does not identify, attribute, or track real-world adversary groups.</p>
   <div class="focus-grid">
     <span class="ic-tag">Hidden-service discovery</span>
@@ -67,13 +67,12 @@ manuscripts:
   <div class="section-heading">
     <p class="section-kicker">Objectives</p>
     <h2>Research questions</h2>
-    <p class="section-intro">The study is organized around a small set of questions about how the I2P hidden-service ecosystem is structured and how it can be observed responsibly.</p>
+    <p class="section-intro">The program is organized around three research questions, one per study, about how the I2P hidden-service ecosystem is structured and how it can be observed responsibly.</p>
   </div>
   <ul class="research-qs">
-    <li>How can hidden services on the I2P network be discovered and enumerated at scale using only application-layer and network-layer observations?</li>
-    <li>What does connectivity between hidden services and the underlying routing infrastructure look like when the two layers are fused into a single graph?</li>
-    <li>How is the darknet hidden-service ecosystem structured, and how does that structure change over time?</li>
-    <li>What collection-and-analysis workflow makes this kind of darknet measurement reproducible and defensible?</li>
+    <li>Can a single-vantage crawler recover the I2P application-layer graph with coverage and resilience sufficient for rigorous structural analysis? <span class="muted">(Study 1 — completed)</span></li>
+    <li>How do eepsites appear, persist, and disappear over a longitudinal window, and how does that churn relate to application-layer link-graph change? <span class="muted">(Study 2 — in progress)</span></li>
+    <li>Do the resulting theories generalize to other anonymity networks such as Tor and Freenet? <span class="muted">(Study 3)</span></li>
   </ul>
 </section>
 
@@ -82,7 +81,7 @@ manuscripts:
     <p class="section-kicker">Methodology</p>
     <h2>Collection &amp; analysis approach</h2>
   </div>
-  <p>At a high level, the framework fuses two layers of observation network-layer routing data and application-layer hidden-service ("eepsite") crawls into a single directed graph for analysis.</p>
+  <p>At a high level, the framework runs a verify-then-crawl pipeline against I2P hidden services ("eepsites") through the I2P HTTP proxy: sites are verified for reachability, then crawled for pages and hyperlinks, with every attempt recorded in an immutable audit trail. Network-layer observations (netDB records visible to a participating router) are stored in separate, provenance-tagged tables — never silently counted as confirmed application-layer crawls. For analysis, hyperlinks form a directed graph (nodes are eepsites, edges carry epoch tags) supporting churn, survival, and structural analysis. All crawl reachability is measured from a single vantage, and findings are reported with that condition attached.</p>
   <div class="home-summary">
     <article class="summary-card"><h3>Collection</h3><p>Application-layer crawling of I2P hidden services via the I2P HTTP proxy, with structured storage in MariaDB.</p></article>
     <article class="summary-card"><h3>Tooling</h3><p>Python collection and processing pipelines built for repeatable, scriptable runs.</p></article>
@@ -100,6 +99,8 @@ manuscripts:
     <li>Doctoral dissertation research <span class="tag-dev">In Progress</span></li>
     <li>Technical research notes <span class="muted">— published as the work matures</span></li>
     <li><a href="#research-manuscripts">Three research manuscripts — <span class="tag-dev">Under review</span></a></li>
+    <li>Study 1 validation datasets &amp; artifacts <span class="muted">— <a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort (DOI: 10.21227/rkan-zq07)</a></span></li>
+    <li>Study 2 crawler &amp; dashboard code <span class="muted">— <a href="https://github.com/joshberk/XL-I2P-Study2">GitHub: joshberk/XL-I2P-Study2</a></span></li>
     <li>Related lab artifacts <span class="muted">— see Security Lab Artifacts below</span></li>
   </ul>
   <p class="muted">See the <a href="{{ '/publications/' | relative_url }}">Publications</a> page for additional technical writing.</p>

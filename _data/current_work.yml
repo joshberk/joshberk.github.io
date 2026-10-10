@@ -3,7 +3,7 @@
 - title: "I2P Hidden Service Ecosystem Analysis"
   status: "In Progress"
   category: "Dark-Web Intelligence Research"
-  description: "PhD research focused on hidden-service discovery, application-layer crawling, infrastructure mapping, graph-based relationship analysis, and reproducible collection workflows within the I2P anonymity network."
+  description: "PhD research program on the I2P hidden-service ecosystem: completed crawler methodology validation (Study 1), an in-progress longitudinal eepsite churn measurement campaign (Study 2), and a planned cross-network generalization study (Study 3)."
   link: "/research/"
 
 - title: "KC7 Cyber Investigation Portfolio"
