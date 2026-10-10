@@ -61,7 +61,7 @@ redirect_from:
         <p class="inv-source">
           <span class="inv-source-name">{{ inv_source.name | escape }}</span>
           <span class="inv-source-sep" aria-hidden="true">·</span>
-          <span class="inv-source-kind">Investigation</span>
+          <span class="inv-source-kind">Simulated investigation</span>
         </p>
       {% endif %}
       <h2 class="ic-title">

@@ -190,6 +190,15 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
   </div>
 </section>
 
+<section class="home-section resume-section" id="publications">
+  <div class="section-heading"><p class="section-kicker">Research Papers</p><h2>Publications</h2></div>
+  <ul class="activity-list">
+    <li><strong>A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets</strong> <span class="muted">— Accepted, IEEE iThings 2026.</span></li>
+    <li><strong>Chrono-GINE: A Chronological Edge-Aware Graph Isomorphism Network for Self-Supervised I2P Network Behavior Modeling</strong> <span class="muted">— Accepted, IEEE Smart Data 2026.</span></li>
+    <li><strong>XL-I2P: Cross-Layer I2P Darkweb Mapper</strong> <span class="muted">— Under review, CSET.</span></li>
+  </ul>
+</section>
+
 <section class="home-section resume-section" id="vulnerability">
   <div class="section-heading"><p class="section-kicker">Vulnerability Research &amp; OSINT</p><h2>Vulnerability research</h2></div>
 

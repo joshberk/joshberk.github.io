@@ -83,6 +83,7 @@ layout: default
         <div class="case-card-body">
           <div class="case-file-topline">
             <span class="case-label">CASE-{{ post.date | date: "%Y" }}-{{ cid | slice: -3, 3 }}</span>
+            <span class="case-source">Simulated scenario</span>
             {% if post_source %}<span class="case-source">{{ post_source.name | escape }}</span>{% endif %}
             {% if post.tags %}<span class="case-themes">{{ post.tags | join: " · " | escape }}</span>{% endif %}
           </div>
@@ -118,15 +119,15 @@ layout: default
 <section class="home-section section-research" id="research">
   <div class="section-heading">
     <p class="section-kicker">03 — Research</p>
-    <h2>Current research — dark-web intelligence</h2>
+    <h2>Current research — network measurement</h2>
   </div>
   <div class="research-feature research-lab-panel">
     <div class="research-copy">
-      <h3>Mapping the I2P anonymous network</h3>
-      <p>A three-study PhD program measuring the I2P hidden-service (eepsite) ecosystem: completed crawler methodology validation (Study 1), an in-progress longitudinal churn measurement campaign (Study 2), and a planned cross-network generalization study (Study 3). Network-layer observations are recorded with strict provenance separation from application-layer crawls.</p>
-      <p>Two papers peer-reviewed and accepted at IEEE iThings 2026 and IEEE Smart Data 2026.</p>
+      <h3>Measuring the I2P hidden-service ecosystem</h3>
+      <p>A verify-then-crawl measurement framework benchmarked against the c4i2p baseline — 1,400 eepsites crawled, 366,304 hyperlinks extracted — with the resulting hyperlink graph structurally characterized (bow-tie decomposition, power-law degree distribution, PageRank authority structure). Validation datasets released on IEEE DataPort (<a href="https://doi.org/10.21227/rkan-zq07">DOI: 10.21227/rkan-zq07</a>); crawler source on <a href="https://github.com/joshberk/XL-I2P-Study2">GitHub</a>. A longitudinal churn campaign (Study 2) and a cross-network generalization study (Study 3) extend the program.</p>
+      <p>Separately, two papers peer-reviewed and accepted: a behavioral temporal GNN framework for botnet detection (IEEE iThings 2026), and Chrono-GINE, a chronological edge-aware graph isomorphism network for self-supervised I2P network behavior modeling (IEEE Smart Data 2026).</p>
       <div class="research-tags">
-        <span class="ic-tag">Hidden-Service Discovery</span>
+        <span class="ic-tag">Network Measurement</span>
         <span class="ic-tag">Longitudinal Measurement</span>
         <span class="ic-tag">Graph Analysis</span>
       </div>
@@ -239,8 +240,8 @@ layout: default
   <div class="section-heading split-heading">
     <div>
       <p class="section-kicker">06 — Contact</p>
-      <h2>Open to threat intelligence work</h2>
-      <p class="section-intro">If your team works in cyber threat intelligence, threat hunting, or security research, I'd welcome a conversation.</p>
+      <h2>Open to threat intelligence and research work</h2>
+      <p class="section-intro">If your team works in cyber threat intelligence, threat hunting, security research, or network measurement, I'd welcome a conversation.</p>
     </div>
     <div class="contact-card">
       <ul class="contact-links">
