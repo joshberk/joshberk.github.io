@@ -39,7 +39,7 @@ permalink: /publications/
   <div class="section-heading">
     <p class="section-kicker">Research Manuscripts</p>
     <h2>Research manuscripts</h2>
-    <p class="section-intro">Manuscripts from my doctoral research working papers and manuscripts not yet peer reviewed.</p>
+    <p class="section-intro">Manuscripts from my doctoral research — working papers and accepted work not yet published.</p>
   </div>
   <div class="pub-list">
     {% for pub in site.data.publications %}

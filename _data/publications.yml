@@ -9,12 +9,12 @@
 #     - text: "PDF"
 #       url: "link_to_pdf"
 
-- title: "A Behavioural Graph Temporal Neural Network Framework"
-  venue: "IEEE Transactions on Network and Service Management (TNSM)"
+- title: "A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets"
+  venue: "IEEE iThings"
   year: 2026
   type: "Research Manuscript"
-  status: "Manuscript · Not Peer Reviewed"
-  internal_status: "Not Accepted"   # preserved internally; not used as the public-facing label
-  research_area: "Graph machine learning for network behaviour"
-  summary: "A behavioural graph temporal neural-network framework developed as part of my doctoral research."
+  status: "Accepted"
+  internal_status: "Accepted"   # preserved internally; not used as the public-facing label
+  research_area: "Graph machine learning for network behavior"
+  summary: "A behavioral graph temporal neural-network framework for detecting botnets, developed as part of my doctoral research."
   related: "I2P Hidden Service Ecosystem Analysis"
