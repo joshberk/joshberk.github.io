@@ -9,11 +9,11 @@ manuscripts:
     venue: "Workshop on Cyber Security Experimentation and Test (CSET)"
   - title: "A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets"
     authorship: "Second author"
-    status: "Under review"
+    status: "Accepted"
     venue: "IEEE iThings 2026"
   - title: "Chrono-GINE: A Chronological Edge-Aware Graph Isomorphism Network for Self-Supervised I2P Network Behavior Modeling"
     authorship: "Last author"
-    status: "Under review"
+    status: "Accepted"
     venue: "2026 IEEE International Conference on Smart Data"
 ---
 
@@ -98,7 +98,7 @@ manuscripts:
   <ul class="activity-list">
     <li>Doctoral dissertation research <span class="tag-dev">In Progress</span></li>
     <li>Technical research notes <span class="muted">— published as the work matures</span></li>
-    <li><a href="#research-manuscripts">Three research manuscripts — <span class="tag-dev">Under review</span></a></li>
+    <li><a href="#research-manuscripts">Three research manuscripts <span class="muted">— two accepted, one under review</span></a></li>
     <li>Study 1 validation datasets &amp; artifacts <span class="muted">— <a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort (DOI: 10.21227/rkan-zq07)</a></span></li>
     <li>Study 2 crawler &amp; dashboard code <span class="muted">— <a href="https://github.com/joshberk/XL-I2P-Study2">GitHub: joshberk/XL-I2P-Study2</a></span></li>
     <li>Related lab artifacts <span class="muted">— see Security Lab Artifacts below</span></li>
