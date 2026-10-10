@@ -59,7 +59,7 @@
   --content: 1140px;
   --content-narrow: 880px;
   --gutter: clamp(1.15rem, 5vw, 3rem);
-  --section-y: clamp(3.5rem, 8vw, 7rem);
+  --section-y: clamp(2.25rem, 5vw, 4.5rem);
   --radius: 4px;
   --radius-sm: 2px;
   --shadow: 0 24px 60px -28px rgba(22, 19, 15, 0.45);
@@ -411,7 +411,7 @@ body[data-page="investigation"] .post-header {
   margin: 0 0 1.1rem;
 }
 
-.section-heading { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.section-heading { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
 .section-heading h2 { max-width: 16ch; }
 .section-intro {
   max-width: 54ch;
