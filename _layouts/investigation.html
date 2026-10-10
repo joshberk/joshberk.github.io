@@ -92,6 +92,12 @@ layout: default
     </aside>
     {% endif %}
 
+    {% if page.report_pdf %}
+    <p class="report-download">
+      <a class="btn btn-outline btn-sm" href="{{ page.report_pdf | relative_url }}" download>Download the full report (PDF)</a>
+    </p>
+    {% endif %}
+
     <aside class="investigation-card-meta" aria-label="Investigation metadata">
       <p class="activity-label">Investigation metadata</p>
       <dl class="meta-dl">

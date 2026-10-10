@@ -10,6 +10,7 @@ attack_count: 7
 status: "Part 1 Published"
 report_part: "Part 1 of 2 — Part 2 Coming Soon"
 report_notice: "Part 1 Published. This is the first installment of a two-part investigation. Part 2 is coming soon, and the full Valdoria investigation remains in progress until it is added."
+report_pdf: /assets/reports/valdoria-votes-part-1.pdf
 confidence: "High"
 focus: "Social Engineering, Persistence, Workflow Injection"
 type: "Case Study"
