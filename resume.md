@@ -23,7 +23,7 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
 
 <section class="home-section resume-section" id="summary">
   <div class="section-heading"><p class="section-kicker">Professional Summary</p><h2>Summary</h2></div>
-  <p class="resume-summary">Cybersecurity professional and PhD researcher focused on cyber threat investigations, threat hunting, OSINT, security operations, and dark-web intelligence research. I publish public, scenario-based threat investigation reports through the Cyber Threat Intelligence Lab, applying KQL, Azure Data Explorer, IOC pivoting, timeline reconstruction, and MITRE ATT&amp;CK mapping. My work combines SOC experience, security engineering, vulnerability research, and Python-driven research workflows to produce defensible intelligence and hidden-service ecosystem analysis.</p>
+  <p class="resume-summary">Cybersecurity professional and PhD researcher focused on threat investigations, threat hunting, OSINT, and dark-web intelligence research. I publish scenario-based investigation reports through the Cyber Threat Intelligence Lab — KQL and Azure Data Explorer analysis, IOC pivoting, timeline reconstruction, MITRE ATT&amp;CK mapping — built on SOC experience, security engineering, and Python-driven research workflows.</p>
 </section>
 
 <section class="home-section resume-section" id="competencies">
