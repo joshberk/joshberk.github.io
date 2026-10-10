@@ -1878,18 +1878,236 @@ body[data-page="investigation"] .post-header {
 .pub-status--not-accepted { color: var(--accent); border-color: var(--accent); }
 
 /* =====================================================================
-   RESUME
+   RESUME — native, document-style CV (no embedded PDF)
+   Reuses the editorial system: serif roles, mono metadata, case-file
+   metrics, cream/ink surfaces. Prints cleanly via the @media print block.
    ===================================================================== */
-.resume-page {
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  background: var(--paper);
-  padding: 1.5rem;
+.resume-hero .resume-tagline {
+  margin: 0.1rem 0 1.6rem;
+  font-family: var(--mono);
+  font-size: clamp(11px, 1.3vw, 13.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
-.resume-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1rem 0 1.25rem; }
-.resume-frame { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-tint); min-height: 78vh; }
-.resume-object { width: 100%; height: 78vh; display: block; }
-.resume-fallback { padding: 1.25rem; }
+
+/* Contact row — mono key / strong value pairs, LinkedIn-first (no phone) */
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.25rem;
+  margin: 0 0 1.9rem;
+  padding: 0;
+  list-style: none;
+}
+.resume-contact li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+}
+.resume-contact .rc-key {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.resume-contact .rc-val {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+a.rc-val { text-decoration-color: var(--accent); }
+a.rc-val:hover { color: var(--accent); }
+
+.resume-summary {
+  max-width: 74ch;
+  font-size: 1.05rem;
+  line-height: 1.72;
+  color: var(--text-body);
+}
+
+/* ---------- Experience / research / vulnerability entries ---------- */
+.resume-entries { display: flex; flex-direction: column; }
+.resume-entry {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+  border-top: 1px solid var(--line-strong);
+}
+.resume-entries .resume-entry:first-child,
+.section-investigations > .resume-entry { padding-top: 0; border-top: 0; }
+.resume-entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.3rem 1.5rem;
+  margin-bottom: 0.95rem;
+}
+.resume-role {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+  line-height: 1.15;
+  color: var(--text);
+}
+.resume-org {
+  margin: 0.3rem 0 0;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text-soft);
+}
+.resume-loc { font-weight: 400; color: var(--text-muted); }
+.resume-dates {
+  margin: 0;
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.resume-bullets { margin: 0; padding-left: 1.15rem; }
+.resume-bullets li {
+  margin-bottom: 0.5rem;
+  max-width: 76ch;
+  line-height: 1.62;
+  color: var(--text-body);
+}
+.resume-bullets li::marker { color: var(--accent); }
+
+/* ---------- Investigation case files (metrics grid) ---------- */
+.resume-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.resume-case {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: clamp(1.25rem, 2.2vw, 1.6rem);
+  background: var(--bg);
+}
+.resume-case-label {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.resume-case-title { margin: 0; font-size: 1.2rem; line-height: 1.25; }
+.resume-case-title a { color: var(--text); }
+.resume-case-title a:hover { color: var(--accent); }
+.resume-case-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+.resume-case-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem 1.5rem;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+.resume-case-metrics div { display: flex; flex-direction: column; }
+.resume-case-metrics strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.55rem;
+  line-height: 1;
+  color: var(--text);
+}
+.resume-case-metrics span {
+  margin-top: 0.3rem;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.resume-case-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: auto 0 0;
+  padding-top: 0.4rem;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.resume-case-status::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 2.4s infinite;
+}
+
+/* ---------- Education / facts list ---------- */
+.resume-facts { margin: 0; padding: 0; list-style: none; }
+.resume-facts li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.3rem 1.5rem;
+  padding: 1.05rem 0;
+  border-top: 1px solid var(--line-strong);
+}
+.resume-facts li:first-child { padding-top: 0; border-top: 0; }
+.resume-facts strong {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+.resume-facts li > div > span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* =====================================================================
+   RESUME — print suppression
+   This résumé is a view-only web document. Printing and "Save as PDF"
+   are intentionally blocked: the page content is hidden on print and a
+   short notice is shown instead. (Client-side blocking cannot stop
+   screenshots or determined extraction — it only removes the normal
+   print path.)
+   ===================================================================== */
+@media print {
+  html,
+  body { background: #ffffff !important; }
+
+  /* Hide every real element on the page... */
+  body > * { display: none !important; }
+
+  /* ...and show a plain notice in their place. */
+  body::before {
+    content: "This résumé is available to view online only and is not available for printing or saving as a PDF. Please visit joshuaberkoh.engineer/resume.";
+    display: block;
+    max-width: 40rem;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13pt;
+    line-height: 1.6;
+    color: #000000;
+  }
+}
 
 /* =====================================================================
    INVESTIGATION SOURCE / SERIES
