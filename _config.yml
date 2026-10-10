@@ -79,3 +79,4 @@ exclude:
   - Gemfile.lock
   - "*.config.js"
   - _templates/
+  - _archive/
