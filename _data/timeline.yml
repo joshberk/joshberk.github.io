@@ -39,14 +39,7 @@
   title: "I2P Hidden Service Ecosystem Analysis"
   type: "Dissertation Research"
   status: "In Progress"
-  description: "Conducting PhD research on hidden-service discovery, I2P ecosystem structure, application-layer crawling, infrastructure mapping, and graph-based analysis."
-  link: "/research/"
-
-- date: "2026"
-  title: "I2P Research Positioning"
-  type: "Research Milestone"
-  status: "In Progress"
-  description: "Reframed the I2P dissertation work as dark-web intelligence research focused on hidden-service discovery, infrastructure characterization, and ecosystem analysis without overstating adversary attribution."
+  description: "Conducting PhD research on the I2P hidden-service ecosystem: crawler methodology validation (Study 1), a longitudinal eepsite churn measurement campaign (Study 2), and a planned cross-network generalization study (Study 3)."
   link: "/research/"
 
 - date: "2026"
@@ -71,10 +64,10 @@
   link: "/publications/"
 
 - date: "2026"
-  title: "IEEE TNSM Research Manuscript"
+  title: "Behavioral Temporal GNN Paper Accepted"
   type: "Research Manuscript"
-  status: "Manuscript · Not Peer Reviewed"
-  description: "Maintained dissertation-related manuscript work as a research manuscript without representing it as accepted, published, or peer reviewed."
+  status: "Accepted"
+  description: "Peer-reviewed and accepted at IEEE iThings 2026: A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets."
   link: "/publications/"
 
 - date: "2026"

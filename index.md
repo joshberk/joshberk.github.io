@@ -13,7 +13,7 @@ layout: default
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">Cyber Threat Intelligence · Threat Hunting · Dark-Web Research</p>
-      <h1>Tracking adversaries. Hunting threats. Producing actionable intelligence.</h1>
+      <h1>Tracking threats. Hunting intrusions. Producing actionable intelligence.</h1>
       <p class="hero-description">I'm Joshua Berkoh, a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. Through scenario-based investigations and security research, I reconstruct intrusion activity, map observed tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
       <div class="hero-buttons">
         <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">View investigations</a>
@@ -123,11 +123,11 @@ layout: default
   <div class="research-feature research-lab-panel">
     <div class="research-copy">
       <h3>Mapping the I2P anonymous network</h3>
-      <p>A cross-layer framework that fuses network-layer routing data with application-layer hidden-service ("eepsite") crawls into a single graph making it possible to study anonymity infrastructure and the services riding on it as one connected hidden-service ecosystem.</p>
-      <p>The work spans hidden-service discovery, infrastructure mapping, large-scale collection, and graph analysis.</p>
+      <p>A three-study PhD program measuring the I2P hidden-service (eepsite) ecosystem: completed crawler methodology validation (Study 1), an in-progress longitudinal churn measurement campaign (Study 2), and a planned cross-network generalization study (Study 3). Network-layer observations are recorded with strict provenance separation from application-layer crawls.</p>
+      <p>Two papers peer-reviewed and accepted at IEEE iThings 2026 and IEEE Smart Data 2026.</p>
       <div class="research-tags">
         <span class="ic-tag">Hidden-Service Discovery</span>
-        <span class="ic-tag">Infrastructure Mapping</span>
+        <span class="ic-tag">Longitudinal Measurement</span>
         <span class="ic-tag">Graph Analysis</span>
       </div>
       <a href="{{ '/research/' | relative_url }}" class="btn btn-outline btn-sm">Explore the research →</a>

@@ -16,8 +16,8 @@ permalink: /about/
       <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="profile-image" loading="lazy" width="1400" height="2100" />
     </div>
     <div class="about-text">
-      <p>Joshua Berkoh is a cybersecurity professional and PhD researcher focused on cyber threat intelligence, threat investigations, dark-web intelligence research, and security analysis.</p>
-      <p>His work combines security operations experience, hands-on investigation practice, application security, technical writing, and doctoral research into hidden-service ecosystems. Through this Cyber Threat Intelligence Lab, Joshua documents his development as an investigator and researcher by publishing structured investigation reports, research notes, lab artifacts, and technical writing.</p>
+      <p>I'm a cybersecurity professional and PhD researcher focused on cyber threat intelligence, threat investigations, dark-web intelligence research, and security analysis.</p>
+      <p>My work combines security operations experience, hands-on investigation practice, application security, technical writing, and doctoral research into hidden-service ecosystems. Through this Cyber Threat Intelligence Lab, I document my development as an investigator and researcher by publishing structured investigation reports, research notes, lab artifacts, and technical writing.</p>
     </div>
   </div>
 </section>
@@ -26,7 +26,7 @@ permalink: /about/
   <div class="section-heading"><p class="section-kicker">Current Focus</p><h2>What I'm focused on</h2></div>
   <ul class="activity-list">
     <li><strong>Threat Investigations</strong> <span class="muted">— building a public portfolio of scenario-based cyber threat investigations using KC7 Cyber materials.</span></li>
-    <li><strong>Dark-Web Intelligence Research</strong> <span class="muted">— conducting PhD research on the I2P hidden-service ecosystem, infrastructure structure, and application-layer connectivity.</span></li>
+    <li><strong>Dark-Web Intelligence Research</strong> <span class="muted">— PhD research on the I2P hidden-service ecosystem across three studies: methodology validation (completed), longitudinal churn measurement (in progress), cross-network generalization (planned).</span></li>
     <li><strong>Security Analysis &amp; Threat Hunting</strong> <span class="muted">— strengthening investigation workflows using KQL, IOC pivoting, OSINT, and MITRE ATT&amp;CK mapping.</span></li>
     <li><strong>Detection Engineering Study</strong> <span class="muted">— studying Practical Detection Engineering as an in-progress capability that will later support defensible detection artifacts.</span></li>
   </ul>
@@ -35,15 +35,15 @@ permalink: /about/
 <section class="home-section" id="portfolio">
   <div class="section-heading"><p class="section-kicker">Investigation Portfolio</p><h2>Investigation portfolio</h2></div>
   <p>The investigation portfolio contains structured cyber threat investigations completed using realistic enterprise scenarios from the KC7 Cyber Security Analyst program.</p>
-  <p>These reports are not presented as real-world client incidents. They are scenario-based investigations that document Joshua's analytical workflow, evidence collection, KQL analysis, IOC pivoting, MITRE ATT&amp;CK mapping, and findings.</p>
+  <p>These reports are not presented as real-world client incidents. They are scenario-based investigations that document my analytical workflow, evidence collection, KQL analysis, IOC pivoting, MITRE ATT&amp;CK mapping, and findings.</p>
   <p>The goal is to show the investigative process clearly and honestly: what evidence was reviewed, how conclusions were reached, and how the analysis developed over time.</p>
   <a href="{{ '/investigations/' | relative_url }}" class="ic-link">View the investigation portfolio →</a>
 </section>
 
 <section class="home-section" id="research-focus">
   <div class="section-heading"><p class="section-kicker">Research Focus</p><h2>Research focus</h2></div>
-  <p>Joshua's doctoral research focuses on the I2P anonymity network and hidden-service ecosystem analysis.</p>
-  <p>The research examines how application-layer and network-layer observations can be collected, structured, and analyzed to better understand hidden-service connectivity, infrastructure relationships, and ecosystem behavior.</p>
+  <p>My doctoral research focuses on the I2P anonymity network's hidden-service ecosystem across three studies: completed crawler methodology validation, an in-progress longitudinal churn measurement campaign, and a planned cross-network generalization study.</p>
+  <p>Network-layer observations are recorded with strict provenance separation from application-layer crawls, so cross-layer claims are made only where the data supports them.</p>
   <p>This work is framed as dark-web intelligence research and security measurement. It does not claim real-world adversary attribution or active threat actor tracking.</p>
   <a href="{{ '/research/' | relative_url }}" class="ic-link">Explore the research →</a>
 </section>
@@ -98,22 +98,22 @@ permalink: /about/
   <div class="section-heading"><p class="section-kicker">Experience</p><h2>Experience highlights</h2></div>
 
   <h3>Security Operations Center Analyst</h3>
-  <p>Joshua worked as a Security Operations Center Analyst at Virtual Infosec Africa, where he monitored and analyzed security activity, supported incident response, and contributed to SOC operations.</p>
+  <p>I worked as a Security Operations Center Analyst at Virtual Infosec Africa, where I monitored and analyzed security activity, supported incident response, and contributed to SOC operations.</p>
 
   <h3>Security Engineer Intern</h3>
-  <p>As a Security Engineer Intern at Intuit, Joshua supported security engineering work involving red team tooling, compliance automation, and remediation of security-related issues before deployment.</p>
+  <p>As a Security Engineer Intern at Intuit, I supported security engineering work involving red team tooling, compliance automation, and remediation of security-related issues before deployment.</p>
 
   <h3>Cyber Threat Investigation Practice</h3>
-  <p>Joshua is building a public investigation portfolio through KC7 Cyber scenario-based investigations. These reports document his use of KQL, IOC pivoting, OSINT, ATT&amp;CK mapping, and evidence-driven analysis. His ongoing hands-on progress is tracked on his <a href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">public KC7 profile</a>.</p>
+  <p>I'm building a public investigation portfolio through KC7 Cyber scenario-based investigations. These reports document my use of KQL, IOC pivoting, OSINT, ATT&amp;CK mapping, and evidence-driven analysis. My ongoing hands-on progress is tracked on my <a href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">public KC7 profile</a>.</p>
 
   <h3>Dark-Web Intelligence Research</h3>
-  <p>Joshua's PhD research focuses on I2P hidden-service ecosystem analysis, hidden-service discovery, infrastructure characterization, and graph-based relationship analysis.</p>
+  <p>My PhD research focuses on I2P hidden-service ecosystem analysis: crawler methodology validation, longitudinal churn measurement, and graph-based link analysis.</p>
 
   <h3>Application Security and Bug Bounty</h3>
-  <p>Joshua has participated in bug bounty and application security work, including responsible disclosure across multiple programs and Hall of Fame recognition from organizations including Centrify, Arlo, and Humble Bundle.</p>
+  <p>I've participated in bug bounty and application security work, including responsible disclosure across multiple programs and Hall of Fame recognition from organizations including Centrify, Arlo, and Humble Bundle.</p>
 
   <h3>OSINT and Community Work</h3>
-  <p>Joshua has participated in TraceLabs OSINT work and has contributed to cybersecurity community efforts through OWASP and ISC2.</p>
+  <p>I've participated in TraceLabs OSINT work and contributed to cybersecurity community efforts through OWASP and ISC2.</p>
 </section>
 
 <section class="home-section" id="education">
