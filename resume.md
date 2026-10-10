@@ -43,7 +43,7 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
     </div>
     <div class="summary-card">
       <h3>Dark-Web Research</h3>
-      <p>I2P hidden-service discovery, infrastructure mapping, ecosystem analysis, graph analysis, and Python / MariaDB workflows.</p>
+      <p>I2P hidden-service measurement, longitudinal churn analysis, link-graph analysis, and Python / MariaDB workflows.</p>
     </div>
     <div class="summary-card">
       <h3>Technical Tooling</h3>
@@ -167,10 +167,10 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
         <p class="resume-dates">2025 – Present</p>
       </div>
       <ul class="resume-bullets">
-        <li>Design and operate a Python-based collection and analysis framework for studying hidden services within the I2P anonymity network.</li>
-        <li>Collect and structure application-layer observations from eepsite crawls using MariaDB and reproducible pipelines.</li>
-        <li>Analyze hidden-service connectivity, infrastructure relationships, and ecosystem behavior through graph-based workflows.</li>
-        <li>Frame the work as dark-web intelligence research focused on infrastructure and ecosystem measurement, not real-world adversary attribution.</li>
+        <li>Lead a three-study PhD research program measuring the I2P anonymity network's hidden-service (eepsite) ecosystem.</li>
+        <li>Study 1 (completed): built XL-I2P, a verify-then-crawl measurement framework, and benchmarked it against the c4i2p baseline — 1,400 eepsites crawled, 366,304 hyperlinks extracted; manuscript under review; validation datasets published on IEEE DataPort (DOI: 10.21227/rkan-zq07).</li>
+        <li>Study 2 (in progress): longitudinal campaign collecting epoch-tagged observations to measure eepsite churn against application-layer link-graph change, with survival analysis.</li>
+        <li>Engineer Python/MariaDB collection pipelines with immutable audit trails, error taxonomies, and provenance-separated network-layer observations; all reachability measured from a single disclosed vantage.</li>
       </ul>
     </article>
 
