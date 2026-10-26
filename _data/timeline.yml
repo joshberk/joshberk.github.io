@@ -47,14 +47,12 @@
   type: "Professional Development"
   status: "In Progress"
   description: "Studying Practical Detection Engineering to build future capability in threat-informed detection logic, validation, and detection engineering workflows."
-  link: "/detection-engineering/"
 
 - date: "2026"
   title: "Detection Engineering Portfolio"
   type: "Future Capability"
   status: "Planned"
   description: "Reserved a future site section for detection engineering artifacts such as Sigma, KQL, YARA, validation reports, and detection case studies once the work is completed and defensible."
-  link: "/detection-engineering/"
 
 - date: "2026"
   title: "Publications & Technical Writing Archive"

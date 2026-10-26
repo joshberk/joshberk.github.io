@@ -16,7 +16,6 @@
   status: "In Progress"
   category: "Detection Engineering Study"
   description: "Studying detection engineering concepts and workflows. This capability is actively developing and will only be published as rules, detections, or validation reports once the work is completed and defensible."
-  link: "/detection-engineering/"
 
 - title: "Cyber Threat Intelligence Research & Writing"
   status: "In Progress"
