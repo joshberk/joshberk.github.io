@@ -3,10 +3,6 @@ layout: default
 title: "Research"
 permalink: /research/
 manuscripts:
-  - title: "XL-I2P: Cross-Layer I2P Darkweb Mapper"
-    authorship: "First author"
-    status: "Under review"
-    venue: "Workshop on Cyber Security Experimentation and Test (CSET)"
   - title: "A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets"
     authorship: "Second author"
     status: "Accepted"
@@ -19,10 +15,9 @@ manuscripts:
 
 {% comment %}
   Research redesign (2026-10-26), designer layout in site colours.
-  Open items: Study 2 expected completion, Study 3 planned start,
-  and the XL-I2P "in review at CSET" lines (Study 1 card + Papers list)
-  — known-stale since the CSET rejection, kept per the 2026-10-26
-  direction that content follows the new design, so the batch matches.
+  Open items: Study 2 expected completion, Study 3 planned start.
+  XL-I2P CSET entries removed from the Study 1 card and Papers list
+  2026-10-26 after the CSET rejection.
   Advisor, dates and Study 1 figures are as in the mock / current site.
 {% endcomment %}
 
@@ -46,7 +41,6 @@ manuscripts:
           <dt>Crawled</dt><dd><strong>1,400 eepsites</strong></dd>
           <dt>Extracted</dt><dd><strong>366,304 hyperlinks</strong></dd>
           <dt>Data</dt><dd><a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort, DOI</a></dd>
-          <dt>Paper</dt><dd>XL-I2P, in review at CSET</dd>
         </dl>
       </article>
       <article class="rd-study">
@@ -100,10 +94,6 @@ manuscripts:
   <section class="rd-section">
     <div class="rd-section-head"><h2>Papers from this work</h2><a href="{{ '/publications/' | relative_url }}">All publications →</a></div>
     <div class="rd-card">
-      <div class="rd-paper">
-        <span class="rd-pill rd-pill-amber">In review</span>
-        <div><h3>XL-I2P: Cross-Layer I2P Darkweb Mapper</h3><p>CSET Workshop 2026 · First author · Study 1</p></div>
-      </div>
       <div class="rd-paper">
         <span class="rd-pill rd-pill-ok">Accepted</span>
         <div><h3>Chrono-GINE: Chronological Edge-Aware GIN for I2P Behavior Modeling</h3><p>IEEE Intl. Conf. on Smart Data 2026 · Last author</p></div>

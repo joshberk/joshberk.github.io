@@ -17,11 +17,8 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
   the new design does not include it, it is not included here):
   no [your email] / [co-authors] / [exact title] placeholders, no
   extra Study 2 bullet, and no Valdoria note beyond the design's two
-  selected investigations. XL-I2P is shown as "In review, CSET" as in
-  the new design, for batch consistency — note: this is known-stale
-  since the CSET rejection, and the user directed that the new design's
-  content stands. Change the pill + line in Publications below if that
-  decision changes.
+  selected investigations. XL-I2P CSET entry removed 2026-10-26
+  after the CSET rejection.
 {% endcomment %}
 
 <div class="resume-redesign">
@@ -105,10 +102,6 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
         <div class="rr-pub">
           <span class="rr-pill rr-pill-accepted">Accepted</span>
           <p><strong>Chrono-GINE: A Chronological Edge-Aware Graph Isomorphism Network for Self-Supervised I2P Network Behavior Modeling.</strong> <em>IEEE Smart Data</em>, 2026.</p>
-        </div>
-        <div class="rr-pub">
-          <span class="rr-pill rr-pill-review">In review</span>
-          <p><strong>XL-I2P: Cross-Layer I2P Darkweb Mapper.</strong> <em>CSET</em>, 2026.</p>
         </div>
         <div class="rr-pub">
           <span class="rr-pill rr-pill-dataset">Dataset</span>

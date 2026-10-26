@@ -5,11 +5,9 @@ layout: default
 {% comment %}
   Home redesign (2026-10-26), designer layout in site colours (.rd-* in
   style.scss). Global header/footer from default.html are reused.
-  Open items: public email address (mock shows [your email]);
-  XL-I2P "In review" line in the Now list follows the new design
-  (2026-10-26 direction: content follows the new design only), so the
-  batch is consistent on that wording, even though it is known-stale
-  since the CSET rejection.
+  Open items: public email address (mock shows [your email]).
+  XL-I2P CSET entry removed from the Now list 2026-10-26 after the
+  CSET rejection (see Publications, Research, Resume).
 {% endcomment %}
 
 <div class="rd-wrap">
@@ -82,7 +80,6 @@ layout: default
           <li><span>I2P Study 2: eepsite churn and link-graph change</span><span class="rd-status">In progress</span></li>
           <li><span>Valdoria Votes, Part 2</span><span class="rd-status">Writing</span></li>
           <li><span>Practical Detection Engineering study</span><span class="rd-status">Studying</span></li>
-          <li><span>XL-I2P paper at CSET</span><span class="rd-status">In review</span></li>
         </ul>
       </article>
       <article class="rd-card">

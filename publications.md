@@ -6,13 +6,10 @@ permalink: /publications/
 
 {% comment %}
   Publications redesign (2026-10-26), designer layout in site colours.
-  Open items: Google Scholar and ORCID URLs (mock shows bracket
-  placeholders, not invented here); DOI / BibTeX links once the two
-  accepted papers are published (mock shows "[DOI once published]");
-  malware-lab month ([Month 2026] in the mock); and the XL-I2P
-  "In review" count/paper — known-stale since the CSET rejection,
-  kept per the 2026-10-26 direction that content follows the new
-  design, so the whole batch is consistent on that wording.
+  Open items: malware-lab month ([Month 2026] in the mock).
+  XL-I2P CSET entry, Google Scholar / ORCID lines, and the DOI /
+  BibTeX placeholder lines were removed 2026-10-26 (Scholar, ORCID,
+  paper DOIs and BibTeX to be added when DJ Breezy supplies them).
   Paper titles follow the mock (including its shortened Chrono-GINE
   title); the full title is in research.md's manuscript record.
 {% endcomment %}
@@ -34,7 +31,6 @@ permalink: /publications/
             <div>
               <h3>A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets</h3>
               <p>Conference paper · Second author · IEEE International Conference on Internet of Things (iThings), 2026.</p>
-              <p>Abstract · DOI once published · BibTeX</p>
             </div>
           </div>
           <div class="rd-paper">
@@ -42,15 +38,6 @@ permalink: /publications/
             <div>
               <h3>Chrono-GINE: Chronological Edge-Aware GIN for I2P Behavior Modeling</h3>
               <p>Conference paper · Last author · IEEE International Conference on Smart Data, 2026.</p>
-              <p>Abstract · DOI once published · BibTeX</p>
-            </div>
-          </div>
-          <div class="rd-paper">
-            <span class="rd-pill rd-pill-amber">In review</span>
-            <div>
-              <h3>XL-I2P: Cross-Layer I2P Darkweb Mapper</h3>
-              <p>Workshop paper · First author · Submitted to CSET Workshop, 2026.</p>
-              <p><a href="{{ '/research/' | relative_url }}">Related: I2P research, Study 1</a></p>
             </div>
           </div>
         </div>
@@ -100,14 +87,11 @@ permalink: /publications/
       <div class="rd-side-card">
         <h3>At a glance</h3>
         <div class="rd-side-row"><span>Accepted papers</span><strong>2</strong></div>
-        <div class="rd-side-row"><span>In review</span><strong>1</strong></div>
         <div class="rd-side-row"><span>Open datasets</span><strong>1</strong></div>
       </div>
       <div class="rd-side-card">
         <h3>Scholarly profiles</h3>
-        <!-- TODO: Google Scholar and ORCID URLs -->
         <p><a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort</a></p>
-        <p>Google Scholar · ORCID iD (URLs to be added)</p>
       </div>
     </aside>
   </div>
