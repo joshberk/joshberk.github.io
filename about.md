@@ -7,9 +7,9 @@ permalink: /about/
 {% comment %}
   About & Contact redesign (2026-10-26), designer layout in site colours.
   This page now carries the contact panel too, matching the designer's
-  "About and contact" page; the site's separate /contact/ nav link in
-  default.html is left unchanged — open decision whether
-  it should point here.
+  "About and contact" page. The site's separate /contact/ page and its
+  nav link were removed 2026-10-26; contact now lives on this page's
+  panel below.
   Open items: public email address (mock shows [your email] and
   "[2 working days]" reply time, both carried as text, not invented).
   Photo uses the site's existing /assets/images/joshua_berkoh.jpg.
