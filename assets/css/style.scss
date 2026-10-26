@@ -2923,3 +2923,7 @@ summary:focus-visible {
 /* Filter wiring: rd-case cards also carry .investigation-card so main.js
    filtering works; keep the redesign's padding/radius over the old card rule. */
 #investigation-list .rd-case { padding: 26px; border-radius: 10px; }
+
+/* Graph figures: real images replace the dashed placeholders (2026-10-26). */
+.rd-fig-img { border: 0; padding: 0; background: transparent; }
+.rd-fig-img img { display: block; width: 100%; height: auto; border-radius: 8px; }
