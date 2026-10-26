@@ -15,7 +15,8 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
   duplicated here.
   Content follows the new design only (2026-10-26 clarification: if
   the new design does not include it, it is not included here):
-  no [your email] / [co-authors] / [exact title] placeholders, no
+  Email joshuaberkoh19@gmail.com added 2026-10-26 from the INL resume PDF; no
+  [co-authors] / [exact title] placeholders, no
   extra Study 2 bullet, and no Valdoria note beyond the design's two
   selected investigations. XL-I2P CSET entry removed 2026-10-26
   after the CSET rejection.
@@ -28,6 +29,7 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
     <p class="rr-tagline">Cyber Threat Intelligence &amp; Threat Hunting · PhD Researcher, I2P Network Measurement</p>
     <p class="rr-contact">
       <span>Cincinnati, OH</span>
+      <a href="mailto:joshuaberkoh19@gmail.com">joshuaberkoh19@gmail.com</a>
       <a href="https://linkedin.com/in/joshfiifi" rel="me">linkedin.com/in/joshfiifi</a>
       <a href="https://github.com/joshberk" rel="me">github.com/joshberk</a>
       <a href="{{ '/' | relative_url }}">joshuaberkoh.engineer</a>
@@ -50,9 +52,10 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
             <span class="rr-dates">2024 – Present</span>
           </div>
           <ul>
-            <li>Lead a three-study measurement program on the I2P hidden-service ecosystem using a directed multiplex graph framework.</li>
-            <li>Study 1 complete: crawled 1,400 eepsites and extracted 366,304 hyperlinks into a cross-layer relationship graph.</li>
-            <li>Released the crawler validation dataset on IEEE DataPort (DOI 10.21227/rkan-zq07) and the crawler source on GitHub.</li>
+            <li>Design and operate a Python-based collection and analysis framework for studying hidden services within the I2P anonymity network.</li>
+            <li>Collect and structure application-layer observations from eepsite crawls and related network observations using MariaDB and reproducible pipelines.</li>
+            <li>Analyze hidden-service connectivity, infrastructure relationships, and ecosystem behavior through graph-based workflows.</li>
+            <li>Frame the work as dark-web intelligence research focused on infrastructure and ecosystem measurement, not real-world adversary attribution.</li>
           </ul>
         </div>
 
@@ -62,9 +65,10 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
             <span class="rr-dates">Jun – Sep 2023</span>
           </div>
           <ul>
-            <li>Improved operational efficiency by 20% by consolidating security repositories into red-team toolsets.</li>
-            <li>Reduced manual review effort by 30% by automating code-based compliance validation through Tox integration.</li>
-            <li>Remediated 70% of identified vulnerabilities by resolving compliance-related security issues before deployment.</li>
+            <li>Consolidated security repositories into red-team toolsets, improving operational efficiency by 20%.</li>
+            <li>Automated code-based compliance validation through Tox integration, reducing manual review effort by 30%.</li>
+            <li>Resolved compliance-related security issues before deployment, contributing to remediation of 70% of identified vulnerabilities.</li>
+            <li>Collaborated with cross-functional teams to improve security controls, deployment readiness, and control validation workflows.</li>
           </ul>
         </div>
 
@@ -81,12 +85,23 @@ description: "Resume of Joshua Offe Berkoh — cyber threat intelligence, threat
 
         <div class="rr-job">
           <div class="rr-job-head">
+            <h3>Threat Analysis, Detection and Mitigation <span>· University of Cincinnati</span></h3>
+            <span class="rr-dates">Jan – Apr 2023</span>
+          </div>
+          <ul>
+            <li>Researched APT tactics, techniques, procedures, and defensive countermeasures.</li>
+            <li>Applied behavioral analytics and threat intelligence concepts to support detection and mitigation planning.</li>
+          </ul>
+        </div>
+
+        <div class="rr-job">
+          <div class="rr-job-head">
             <h3>SOC Analyst <span>· Virtual Infosec Africa, Accra, Ghana</span></h3>
             <span class="rr-dates">Oct 2021 – Jun 2022</span>
           </div>
           <ul>
-            <li>Monitored and analyzed network activity supporting a 95% intrusion-detection rate for a major financial institution.</li>
-            <li>Investigated security events and supported incident response, reducing response times by 30%.</li>
+            <li>Monitored and analyzed network activity supporting a 95% intrusion detection rate for a major financial institution.</li>
+            <li>Investigated security events and supported incident response activities, reducing response times by 30%.</li>
             <li>Assisted with deployment and operation of SOC security solutions that contributed to a 20% reduction in cybersecurity incidents.</li>
           </ul>
         </div>

@@ -10,8 +10,9 @@ permalink: /about/
   "About and contact" page. The site's separate /contact/ page and its
   nav link were removed 2026-10-26; contact now lives on this page's
   panel below.
-  Open items: public email address (mock shows [your email] and
-  "[2 working days]" reply time, both carried as text, not invented).
+  Email joshuaberkoh19@gmail.com added 2026-10-26 from the INL resume PDF.
+  Open item: "[2 working days]" reply time (carried as text from the
+  mock, not confirmed).
   Photo uses the site's existing /assets/images/joshua_berkoh.jpg.
 {% endcomment %}
 
@@ -61,8 +62,7 @@ permalink: /about/
       <h2>Let&rsquo;s talk about CTI, threat hunting or security research roles.</h2>
       <p>Email is the fastest way to reach me. I usually reply within [2 working days].</p>
       <div class="rd-hero-actions">
-        <!-- TODO: public email address -->
-        <a href="#contact" class="btn btn-primary">Email</a>
+        <a href="mailto:joshuaberkoh19@gmail.com" class="btn btn-primary">joshuaberkoh19@gmail.com</a>
         <a href="https://linkedin.com/in/joshfiifi" rel="me" class="btn btn-outline">LinkedIn</a>
         <a href="https://github.com/joshberk" rel="me" class="btn btn-outline">GitHub</a>
       </div>

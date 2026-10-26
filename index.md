@@ -5,7 +5,8 @@ layout: default
 {% comment %}
   Home redesign (2026-10-26), designer layout in site colours (.rd-* in
   style.scss). Global header/footer from default.html are reused.
-  Open items: public email address (mock shows [your email]).
+  Email joshuaberkoh19@gmail.com is on the About contact panel; the Home Email
+  button links there.
   XL-I2P CSET entry removed from the Now list 2026-10-26 after the
   CSET rejection (see Publications, Research, Resume).
 {% endcomment %}
