@@ -22,7 +22,7 @@ permalink: /about/
     <div>
       <p class="rd-kicker">About</p>
       <h1 style="font-family:var(--sans);font-weight:700;letter-spacing:-0.015em;font-size:clamp(32px,4vw,44px);margin:0 0 16px;color:var(--text);">I&rsquo;m Joshua Offe Berkoh.</h1>
-      <p class="rd-lead">I started in a SOC in Accra, triaging alerts and working incidents. That led to security engineering at Intuit, and then to a PhD at the University of Cincinnati, where I measure how the I2P anonymous network is structured and how it changes.</p>
+      <p class="rd-lead">I started in a SOC in Accra, triaging alerts and working incidents. That led to security engineering, and then to a PhD at the University of Cincinnati, where I measure how the I2P anonymous network is structured and how it changes.</p>
       <p class="rd-lead" style="margin-top:16px;">Outside the dissertation I work intrusion scenarios end to end and write them up as CTI reports, so my research and my analyst work keep each other honest.</p>
       <p class="rd-meta"><span>Cincinnati, OH</span><span>Open to internships and full-time roles</span></p>
     </div>
@@ -37,7 +37,7 @@ permalink: /about/
           <li><span class="rd-date">2026</span><span><strong>Two IEEE papers accepted</strong> · iThings and Smart Data</span></li>
           <li><span class="rd-date">2024 – now</span><span><strong>PhD researcher</strong> · I2P hidden-service measurement, University of Cincinnati</span></li>
           <li><span class="rd-date">Aug 2024</span><span><strong>MS, Information Technology</strong> · University of Cincinnati</span></li>
-          <li><span class="rd-date">2023</span><span><strong>Security Engineer Intern</strong> · Intuit, San Diego</span></li>
+          <li><span class="rd-date">2023</span><span><strong>Security Engineer Intern</strong> · San Diego</span></li>
           <li><span class="rd-date">2023</span><span><strong>Adjunct Instructor</strong> · University of Cincinnati</span></li>
           <li><span class="rd-date">2021 – 22</span><span><strong>SOC Analyst</strong> · Virtual Infosec Africa, Accra</span></li>
           <li><span class="rd-date">2021</span><span><strong>Bugcrowd Hall of Fame</strong> · 7 programs; TraceLabs OSINT CTF player, later judge</span></li>

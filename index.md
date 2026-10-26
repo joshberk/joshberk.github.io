@@ -15,7 +15,7 @@ layout: default
   <section class="rd-hero">
     <p class="rd-kicker">PhD Researcher · Threat Hunter</p>
     <h1>I map the I2P darknet and write up threat investigations, case by case.</h1>
-    <p class="rd-lead">I&rsquo;m Joshua Berkoh, a PhD researcher at the University of Cincinnati and a former Intuit security engineering intern. I publish network-measurement research on anonymous overlays and CTI reports mapped to MITRE ATT&amp;CK.</p>
+    <p class="rd-lead">I&rsquo;m Joshua Berkoh, a PhD researcher at the University of Cincinnati and a former security engineering intern. I publish network-measurement research on anonymous overlays and CTI reports mapped to MITRE ATT&amp;CK.</p>
     <div class="rd-hero-actions">
       <a href="{{ '/research/' | relative_url }}" class="btn btn-primary">Read the research</a>
       <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">View investigations</a>
@@ -86,10 +86,10 @@ layout: default
       <article class="rd-card">
         <div class="rd-section-head"><h3>About me</h3></div>
         <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="rd-photo" loading="lazy" />
-        <p>SOC analyst turned researcher. I started in incident triage, did security engineering at Intuit, and now study how anonymous networks are structured.</p>
+        <p>SOC analyst turned researcher. I started in incident triage, did security engineering, and now study how anonymous networks are structured.</p>
         <ul class="rd-now">
           <li><span>2024 –</span><span>PhD researcher, University of Cincinnati</span></li>
-          <li><span>2023</span><span>Security Engineer Intern, Intuit</span></li>
+          <li><span>2023</span><span>Security Engineer Intern</span></li>
           <li><span>2021 – 22</span><span>SOC Analyst, Virtual Infosec Africa</span></li>
         </ul>
         <a href="{{ '/about/' | relative_url }}">More about me →</a>
