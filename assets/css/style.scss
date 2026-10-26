@@ -2624,3 +2624,302 @@ summary:focus-visible {
 /* Dark: give the always-dark showcase panels a visible edge */
 [data-theme="dark"] .hero-intel-panel,
 [data-theme="dark"] .intel-graph-panel { border: 1px solid var(--line-strong); }
+
+/* =====================================================================
+   RESUME REDESIGN (2026-10-26) — designer's two-column card layout,
+   recoloured to this site's tokens. Scoped to .resume-redesign so no
+   other page changes. Designer values kept: 1120px card, 48px padding,
+   48px column gap, 42px name, mono 12px section labels, pill + table
+   treatment. Designer colours NOT kept: page #F3F4F1 and accent
+   #0F6B52 are replaced by --bg / --paper / --accent, so dark mode
+   follows the site's dark tokens automatically.
+   ===================================================================== */
+.resume-redesign {
+  max-width: 1120px;
+  margin: 40px auto 72px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 48px 48px 56px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+.resume-redesign a { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); }
+.resume-redesign a:hover { color: var(--accent); }
+.rr-head { padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.rr-kicker {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.resume-redesign h1 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 42px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.rr-tagline { margin: 10px 0 0; font-size: 18px; font-weight: 500; color: var(--text-body); }
+.rr-contact {
+  margin: 14px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.rr-contact a { text-decoration: underline; text-decoration-color: var(--accent); }
+.rr-summary { padding: 28px 0 8px; }
+.rr-summary p { margin: 0; font-size: 16px; max-width: 78ch; }
+.resume-redesign .rr-section h2,
+.rr-summary h2 {
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.rr-summary h2 { border-bottom: 0; padding-bottom: 0; }
+.rr-layout { display: flex; flex-wrap: wrap; gap: 48px; padding-top: 24px; }
+.rr-main { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+.rr-side { flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+.rr-main .rr-section, .rr-side .rr-section { display: flex; flex-direction: column; gap: 22px; }
+.rr-side .rr-section { gap: 14px; }
+.rr-job { display: flex; flex-direction: column; gap: 0; }
+.rr-job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; align-items: baseline; }
+.resume-redesign .rr-job-head h3 { margin: 0; font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--text); }
+.rr-job-head h3 span { font-weight: 400; color: var(--text-muted); }
+.rr-dates { font-family: var(--mono); font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+.rr-job ul, .rr-side ul { margin: 8px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px; }
+.rr-job li, .rr-side li { margin: 0; font-size: 15px; }
+.rr-side li { font-size: 14px; }
+.rr-pub { display: flex; gap: 14px; align-items: flex-start; }
+.rr-pub p { margin: 0; font-size: 15px; }
+.rr-main .rr-section .rr-pub + .rr-pub { margin-top: -6px; }
+.rr-pill {
+  flex: none;
+  margin-top: 2px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.rr-pill-accepted { background: #e6ece8; color: var(--ok); }
+.rr-pill-dataset { background: var(--bg-tint); color: var(--text-soft); }
+.rr-pill-grey, .rd-pill-grey { background: var(--bg-tint); color: var(--text-muted); }
+[data-theme="dark"] .rr-pill-accepted { background: rgba(111, 174, 152, 0.18); color: var(--ok); }
+[data-theme="dark"] .rr-pill-dataset { background: var(--bg-tint); color: var(--text-soft); }
+.rr-note { margin: 0; font-size: 14px; color: var(--text-muted); }
+.rr-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+.rr-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+.rr-table th { padding: 10px 14px; font-weight: 600; color: var(--text); text-align: left; background: var(--bg-tint); }
+.rr-table td { padding: 10px 14px; border-top: 1px solid var(--line); }
+.rr-table .rr-num { text-align: right; font-family: var(--mono); }
+.rr-table .rr-muted { color: var(--text-muted); }
+.rr-edu, .rr-skill { display: flex; flex-direction: column; gap: 0; }
+.rr-edu p, .rr-skill p { margin: 0; font-size: 14px; }
+.rr-edu p strong, .rr-skill p strong { font-size: 14px; color: var(--text); }
+.rr-edu .rr-dates { margin-top: 2px; }
+.rr-skill p:first-child { font-size: 13px; }
+@media (max-width: 900px) {
+  .rr-layout { gap: 36px; }
+}
+@media (max-width: 640px) {
+  .resume-redesign { padding: 28px 20px 36px; margin: 24px auto 48px; }
+  .resume-redesign h1 { font-size: 32px; }
+  .rr-tagline { font-size: 16px; }
+}
+
+/* =====================================================================
+   SITE REDESIGN (2026-10-26) — designer layouts for Home, Research,
+   Investigations, Publications and About & Contact, recoloured to
+   this site's tokens. Scoped to .rd-* so existing report pages are
+   untouched. Designer colours NOT kept: page #F3F4F1 and accent
+   #0F6B52 are replaced by --bg / --paper / --accent (brick red),
+   and the dark contact panel uses --ink. Global header/footer from
+   default.html are reused, not duplicated.
+   Content note: these pages carry the new design's copy as supplied,
+   including "In review at CSET" for XL-I2P (2026-10-26 direction:
+   content follows the new design only). That wording is known-stale
+   since the CSET rejection, but the whole batch, including resume.md,
+   now uses it consistently, per that direction. See resume.md comment.
+   Placeholders still open (public email, Scholar profiles, DOI/BibTeX
+   once published, Study 2 target, Study 3 start, malware-lab month)
+   are marked TODO in the page files, not invented.
+   ===================================================================== */
+.rd-wrap { max-width: 1120px; margin: 0 auto; padding: 64px 0 88px; font-size: 15px; line-height: 1.55; }
+.rd-muted { color: var(--text-muted); }
+.rd-kicker {
+  margin: 0 0 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.rd-hero h1, .rd-title {
+  margin: 0 0 16px;
+  font-family: var(--sans);
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  max-width: 22ch;
+}
+.rd-lead { margin: 0; font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 68ch; }
+.rd-meta { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--text-muted); }
+.rd-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; align-items: center; }
+.rd-hero-actions a:not(.btn) { font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-stats {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 40px 0 0; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+}
+.rd-stat { padding: 22px 24px; border-right: 1px solid var(--line); }
+.rd-stat:last-child { border-right: 0; }
+.rd-stat strong { display: block; font-size: 30px; line-height: 1.1; color: var(--text); }
+.rd-stat span { display: block; margin-top: 6px; font-size: 14px; color: var(--text-muted); line-height: 1.45; }
+.rd-stat a { text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-section { margin-top: 56px; }
+.rd-section h2 {
+  margin: 0 0 20px; font-family: var(--sans); font-size: 28px; font-weight: 700; color: var(--text);
+}
+.rd-section-head.rd-rule { border-bottom: 2px solid var(--text); padding-bottom: 10px; }
+.rd-section-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; align-items: baseline; margin-bottom: 20px; }
+.rd-section-head h2 { margin: 0; }
+.rd-section-head a { font-size: 14px; font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.rd-grid-32 { display: grid; grid-template-columns: 3fr 2fr; gap: 24px; }
+.rd-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.rd-card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+.rd-card h3 { margin: 0 0 8px; font-family: var(--sans); font-size: 20px; font-weight: 700; color: var(--text); }
+.rd-card p { margin: 0 0 12px; font-size: 15px; line-height: 1.6; color: var(--text-body); }
+.rd-card p:last-child { margin-bottom: 0; }
+.rd-card a { font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-fig {
+  border: 1px dashed var(--line-strong); border-radius: 8px; min-height: 180px;
+  display: grid; place-items: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 16px;
+}
+.rd-fig-lg { min-height: 280px; }
+.rd-caption { margin: 10px 0 0; font-size: 14px; color: var(--text-muted); }
+.rd-cols-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.rd-cols-3 h3 { margin: 0 0 8px; padding-top: 16px; border-top: 2px solid var(--text); font-family: var(--sans); font-size: 18px; color: var(--text); }
+.rd-cols-3 p { margin: 0 0 12px; font-size: 15px; line-height: 1.6; }
+.rd-cols-3 a { font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-two-col { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
+.rd-side { display: flex; flex-direction: column; gap: 20px; }
+.rd-side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.rd-side-card h3 { margin: 0 0 12px; font-family: var(--sans); font-size: 16px; color: var(--text); }
+.rd-side-card p { font-size: 14px; margin: 0; }
+.rd-side-row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 15px; }
+.rd-side-row + .rd-side-row { border-top: 1px solid var(--line-soft); }
+.rd-pill {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+}
+.rd-pill-ok { background: #e6ece8; color: var(--ok); }
+.rd-pill-warn { background: var(--accent-soft); color: var(--accent); }
+.rd-pill-amber { background: #f5ead6; color: #7a4a00; }
+[data-theme="dark"] .rd-pill-ok { background: rgba(111,174,152,0.18); color: var(--ok); }
+[data-theme="dark"] .rd-pill-amber { background: rgba(220,174,90,0.18); color: #dcae5a; }
+.rd-study { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.rd-study-bar { height: 6px; border-radius: 999px; background: var(--bg-tint); overflow: hidden; }
+.rd-study-bar i { display: block; height: 100%; background: var(--accent); }
+.rd-study-bar i.ok { background: var(--ok); }
+.rd-study-bar i.amber { background: #c98a1b; }
+.rd-study-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.rd-study h3 { margin: 0; font-family: var(--sans); font-size: 20px; color: var(--text); }
+.rd-study p { margin: 0; font-size: 15px; line-height: 1.6; }
+.rd-study dl { margin: 6px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-size: 14px; }
+.rd-study dt { color: var(--text-muted); }
+.rd-study dd { margin: 0; }
+.rd-study dd a { text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-paper { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--line); }
+.rd-paper:first-of-type { border-top: 0; padding-top: 0; }
+.rd-paper .rd-pill { margin-top: 2px; flex: none; }
+.rd-paper h3 { margin: 0 0 4px; font-family: var(--sans); font-size: 18px; color: var(--text); }
+.rd-paper p { margin: 0 0 6px; font-size: 14px; color: var(--text-muted); }
+.rd-paper a { font-size: 14px; font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-filter { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 8px; }
+.rd-filter .filter-btn {
+  min-height: 44px; padding: 0 16px; border-radius: 999px; font-size: 14px; cursor: pointer;
+  background: var(--paper); color: var(--text); border: 1px solid var(--line-strong); font-weight: 500;
+}
+.rd-filter .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #f4f1ea; font-weight: 600; }
+.rd-note { margin: 16px 0 0; font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.rd-case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+.rd-case { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 12px; }
+.rd-case-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
+.rd-case h3, .rd-case h2 { margin: 0; font-family: var(--sans); font-size: 21px; color: var(--text); }
+.rd-case p { margin: 0; font-size: 15px; line-height: 1.6; }
+.rd-case .rd-sector { font-weight: 500; font-size: 14px; color: var(--text); }
+.rd-parts { margin: 6px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line-soft); }
+.rd-parts li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
+.rd-parts li a { text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+.rd-tag { font-family: var(--sans); font-size: 12px; color: var(--text-muted); background: var(--bg-tint); border: 0; border-radius: 999px; padding: 4px 10px; }
+.rd-case a.rd-cta { font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); }
+.rd-timeline { margin: 0; padding: 0; list-style: none; }
+.rd-timeline li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.rd-timeline li:last-child { border-bottom: 1px solid var(--line); }
+.rd-timeline .rd-date { font-family: var(--mono); font-size: 13px; color: var(--text-muted); }
+.rd-timeline strong { color: var(--text); }
+.rd-about { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+.rd-photo { border: 1px dashed var(--line-strong); border-radius: 10px; aspect-ratio: 4/5; object-fit: cover; width: 100%; display: block; background: var(--paper); }
+.rd-dark {
+  margin-top: 56px; background: var(--ink); color: var(--on-dark); border-radius: 12px; padding: 40px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+}
+.rd-dark h2 { margin: 0 0 12px; font-family: var(--sans); font-size: 30px; line-height: 1.2; color: #f4f1ea; }
+.rd-dark p { color: var(--on-dark-muted); font-size: 15px; line-height: 1.6; }
+.rd-dark .rd-kicker { color: #d0715e; }
+.rd-dark .btn-primary { background: var(--paper); color: var(--text); border-color: var(--paper); }
+.rd-dark .btn-outline { color: var(--on-dark); border-color: var(--on-dark-muted); }
+.rd-dark-list { margin: 0; padding: 0; list-style: none; }
+.rd-dark-list li { padding: 14px 0; border-top: 1px solid var(--line-dark); }
+.rd-dark-list li:last-child { border-bottom: 1px solid var(--line-dark); }
+.rd-dark-list a { color: var(--on-dark); font-weight: 600; text-decoration: underline; text-decoration-color: #d0715e; }
+.rd-dark-list span { display: block; margin-top: 2px; font-size: 14px; color: var(--on-dark-muted); }
+.rd-now { margin: 0; padding: 0; list-style: none; }
+.rd-now li { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.rd-now li:last-child { border-bottom: 1px solid var(--line); }
+.rd-now .rd-status { font-family: var(--mono); font-size: 12px; color: #7a4a00; white-space: nowrap; }
+[data-theme="dark"] .rd-now .rd-status { color: #dcae5a; }
+@media (max-width: 900px) {
+  .rd-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rd-stat:nth-child(2) { border-right: 0; }
+  .rd-stat:nth-child(1), .rd-stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .rd-grid-2, .rd-grid-3, .rd-cols-3, .rd-two-col, .rd-case-grid, .rd-dark, .rd-about { grid-template-columns: 1fr; }
+  .rd-dark, .rd-about { gap: 28px; }
+  .rd-two-col { gap: 28px; }
+}
+@media (max-width: 640px) {
+  .rd-wrap { padding: 24px 16px 48px; }
+  .rd-stats { grid-template-columns: 1fr; }
+  .rd-stat { border-right: 0; border-bottom: 1px solid var(--line); }
+  .rd-stat:last-child { border-bottom: 0; }
+  .rd-timeline li { grid-template-columns: 1fr; gap: 2px; }
+}
+/* Resume In-review pill, matching the redesign batch's amber treatment in site tones */
+.rr-pill-review { background: #f5ead6; color: #7a4a00; }
+[data-theme="dark"] .rr-pill-review { background: rgba(220,174,90,0.18); color: #dcae5a; }
+
+/* Filter wiring: rd-case cards also carry .investigation-card so main.js
+   filtering works; keep the redesign's padding/radius over the old card rule. */
+#investigation-list .rd-case { padding: 26px; border-radius: 10px; }

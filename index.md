@@ -2,253 +2,113 @@
 layout: default
 ---
 
-{% assign completed_investigations = site.investigations | where: "status", "Completed" %}
-{% assign completed_count = completed_investigations.size %}
-{% assign partial_investigations = site.investigations | where: "status", "Part 1 Published" %}
-{% assign published_score = completed_count | plus: partial_investigations.size %}
-{% assign attack_total = 0 %}
-{% for inv in site.investigations %}{% unless inv.status == "Coming Soon" %}{% if inv.attack_count %}{% assign attack_total = attack_total | plus: inv.attack_count %}{% endif %}{% endunless %}{% endfor %}
+{% comment %}
+  Home redesign (2026-10-26), designer layout in site colours (.rd-* in
+  style.scss). Global header/footer from default.html are reused.
+  Open items: public email address (mock shows [your email]);
+  XL-I2P "In review" line in the Now list follows the new design
+  (2026-10-26 direction: content follows the new design only), so the
+  batch is consistent on that wording, even though it is known-stale
+  since the CSET rejection.
+{% endcomment %}
 
-<section class="hero-section lab-hero">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Cyber Threat Intelligence · Threat Hunting · Dark-Web Research</p>
-      <h1>Tracking threats. Hunting intrusions. Producing actionable intelligence.</h1>
-      <p class="hero-description">I'm Joshua Berkoh, a cybersecurity professional and PhD researcher working in threat investigations, threat hunting, and dark-web intelligence research. Through scenario-based investigations and security research, I reconstruct intrusion activity, map observed tradecraft to MITRE ATT&amp;CK, and turn raw telemetry into clear, defensible intelligence.</p>
-      <div class="hero-buttons">
-        <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">View investigations</a>
-        <a href="{{ '/research/' | relative_url }}" class="btn btn-outline">Read research</a>
-        <a href="{{ '/resume/' | relative_url }}" class="btn btn-outline">Download resume</a>
-      </div>
-      <div class="hero-stack" aria-label="Core methods">
-        <span>MITRE ATT&amp;CK</span>
-        <span>KQL</span>
-        <span>OSINT</span>
-        <span>IOC Pivoting</span>
-        <span>Threat Hunting</span>
-        <span>Python</span>
-        <span>Graph Analysis</span>
-      </div>
+<div class="rd-wrap">
+  <section class="rd-hero">
+    <p class="rd-kicker">PhD Researcher · Threat Hunter</p>
+    <h1>I map the I2P darknet and write up threat investigations, case by case.</h1>
+    <p class="rd-lead">I&rsquo;m Joshua Berkoh, a PhD researcher at the University of Cincinnati and a former Intuit security engineering intern. I publish network-measurement research on anonymous overlays and CTI reports mapped to MITRE ATT&amp;CK.</p>
+    <div class="rd-hero-actions">
+      <a href="{{ '/research/' | relative_url }}" class="btn btn-primary">Read the research</a>
+      <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">View investigations</a>
+      <a href="{{ '/resume/' | relative_url }}">Resume</a>
     </div>
-
-    <aside class="hero-intel-panel" aria-label="Lab index">
-      <p class="panel-label"><span>Lab Index</span><span class="panel-live">// LIVE</span></p>
-      <dl class="hero-metrics">
-        <div><dt>Investigations published</dt><dd>{% if published_score < 10 %}0{% endif %}{{ published_score }}</dd></div>
-        <div><dt>ATT&amp;CK techniques mapped</dt><dd>{{ attack_total }}</dd></div>
-        <div><dt>Active research</dt><dd class="metric-sm">I2P Mapping</dd></div>
-        <div><dt>Discipline</dt><dd class="metric-mono">CTI · DFIR · OSINT</dd></div>
-      </dl>
-    </aside>
-  </div>
-</section>
-
-<section class="home-section section-capabilities" id="capabilities">
-  <div class="section-heading split-heading">
-    <div>
-      <p class="section-kicker">01 — Capabilities</p>
-      <h2>What I do</h2>
-    </div>
-    <p class="section-intro">Demonstrated competencies across the intelligence cycle collection, analysis, and reporting grounded in completed investigative and research work.</p>
-  </div>
-  <div class="capability-grid">
-    <article class="summary-card"><div class="card-top"><span class="card-number">01</span><span class="card-badge">Intel Cycle</span></div><h3>Cyber Threat Intelligence</h3><p>Collect, analyze, and report structured intelligence on threat activity, tradecraft, indicators, and investigative findings.</p></article>
-    <article class="summary-card"><div class="card-top"><span class="card-number">02</span><span class="card-badge">KQL · ATT&amp;CK</span></div><h3>Threat Hunting</h3><p>Hypothesis-driven hunts across endpoint and network telemetry using KQL and the ATT&amp;CK framework.</p></article>
-    <article class="summary-card"><div class="card-top"><span class="card-number">03</span><span class="card-badge">DFIR</span></div><h3>Threat Investigations</h3><p>End-to-end intrusion reconstruction timelines, evidence, IOCs, and defensible assessments.</p></article>
-    <article class="summary-card"><div class="card-top"><span class="card-number">04</span><span class="card-badge">I2P · Hidden Services</span></div><h3>Dark-Web Intelligence</h3><p>Research into anonymity networks, hidden services, and privacy-preserving infrastructure.</p></article>
-    <article class="summary-card"><div class="card-top"><span class="card-number">05</span><span class="card-badge">Analytic Methods</span></div><h3>Intelligence Research</h3><p>Structured analytic methods, source evaluation, and confidence-based judgments.</p></article>
-    <article class="summary-card"><div class="card-top"><span class="card-number">06</span><span class="card-badge">Method</span></div><h3>Security Research</h3><p>Tooling, measurement, and methodology that extend how threats are studied.</p></article>
-  </div>
-</section>
-
-<section class="home-section section-investigations" id="investigations">
-  <div class="section-heading">
-    <p class="section-kicker">02 — Investigations</p>
-    <h2>Featured investigations</h2>
-    <p class="section-intro">Threat-investigation case studies drawn from realistic training environments: intrusion reconstructions with timelines, IOC analysis, and MITRE ATT&amp;CK mapping from KC7 scenarios, and dark-web intelligence work from Flare Darkroom, all written to professional intelligence-reporting standards.</p>
-  </div>
-  <div class="investigation-grid">
-    {% comment %} Multi-part series are represented by their first part here so a
-                  single series cannot fill the featured row. {% endcomment %}
-    {% assign investigations = site.investigations | sort: "date" | reverse %}
-    {% assign featured_shown = 0 %}
-    {% for post in investigations %}
-      {% if featured_shown >= 3 %}{% break %}{% endif %}
-      {% if post.series and post.part and post.part > 1 %}{% continue %}{% endif %}
-      {% assign featured_shown = featured_shown | plus: 1 %}
-      {% assign post_status = post.status | default: "Completed" %}
-      {% assign post_source = site.data.investigation_sources | where: "id", post.source | first %}
-      {% capture cid %}00{{ featured_shown }}{% endcapture %}
-      <article class="investigation-card case-file-card{% if post_status == 'Coming Soon' %} case-file-muted{% endif %}">
-        <div class="case-card-body">
-          <div class="case-file-topline">
-            <span class="case-label">CASE-{{ post.date | date: "%Y" }}-{{ cid | slice: -3, 3 }}</span>
-            <span class="case-source">Simulated scenario</span>
-            {% if post_source %}<span class="case-source">{{ post_source.name | escape }}</span>{% endif %}
-            {% if post.tags %}<span class="case-themes">{{ post.tags | join: " · " | escape }}</span>{% endif %}
-          </div>
-          <h3 class="ic-title">
-            {% if post_status == 'Coming Soon' %}{{ post.title | escape }}{% else %}<a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>{% endif %}
-          </h3>
-          <p class="ic-desc">{{ post.description | strip_html | truncatewords: 28 | escape }}</p>
-        </div>
-        <div class="case-card-metrics">
-          {% if post_status == 'Coming Soon' %}
-            <span class="case-status">In progress · Coming soon</span>
-          {% elsif post_status == 'Completed' %}
-            {% if post.series %}{% assign series_parts = site.investigations | where: "series", post.series %}{% endif %}
-            {% if post.attack_count or post.confidence or post.series %}
-            <div class="metric-row">
-              {% if post.attack_count %}<div class="metric"><strong>{{ post.attack_count }}</strong><span>Techniques</span></div>{% endif %}
-              {% if post.confidence %}<div class="metric"><strong>{{ post.confidence | escape }}</strong><span>Confidence</span></div>{% endif %}
-              {% if post.series %}<div class="metric"><strong>{{ series_parts.size }}</strong><span>Parts</span></div>{% endif %}
-            </div>
-            {% endif %}
-            <a class="ic-link" href="{{ post.url | relative_url }}" aria-label="{% if post.series %}Read the series{% else %}Read investigation{% endif %}: {{ post.title | escape }}">{% if post.series %}Read the series →{% else %}Read investigation →{% endif %}</a>
-          {% else %}
-            <span class="case-status">{{ post_status | escape }} · In progress</span>
-            <a class="ic-link" href="{{ post.url | relative_url }}" aria-label="Read Part 1: {{ post.title | escape }}">Read Part 1 →</a>
-          {% endif %}
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-  <a href="{{ '/investigations/' | relative_url }}" class="btn btn-outline">View all investigations →</a>
-</section>
-
-<section class="home-section section-research" id="research">
-  <div class="section-heading">
-    <p class="section-kicker">03 — Research</p>
-    <h2>Current research — network measurement</h2>
-  </div>
-  <div class="research-feature research-lab-panel">
-    <div class="research-copy">
-      <h3>Measuring the I2P hidden-service ecosystem</h3>
-      <p>A verify-then-crawl measurement framework benchmarked against the c4i2p baseline — 1,400 eepsites crawled, 366,304 hyperlinks extracted — with the resulting hyperlink graph structurally characterized (bow-tie decomposition, power-law degree distribution, PageRank authority structure). Validation datasets released on IEEE DataPort (<a href="https://doi.org/10.21227/rkan-zq07">DOI: 10.21227/rkan-zq07</a>); crawler source on <a href="https://github.com/joshberk/XL-I2P-Study2">GitHub</a>. A longitudinal churn campaign (Study 2) and a cross-network generalization study (Study 3) extend the program.</p>
-      <p>Separately, two papers peer-reviewed and accepted: a behavioral temporal GNN framework for botnet detection (IEEE iThings 2026), and Chrono-GINE, a chronological edge-aware graph isomorphism network for self-supervised I2P network behavior modeling (IEEE Smart Data 2026).</p>
-      <div class="research-tags">
-        <span class="ic-tag">Network Measurement</span>
-        <span class="ic-tag">Longitudinal Measurement</span>
-        <span class="ic-tag">Graph Analysis</span>
-      </div>
-      <a href="{{ '/research/' | relative_url }}" class="btn btn-outline btn-sm">Explore the research →</a>
-    </div>
-    <figure class="method-panel intel-graph-panel" aria-label="I2P eepsite relationship graph">
-      <svg viewBox="0 0 400 300" role="presentation" aria-hidden="true">
-        <g stroke="#6e665b" stroke-width="1">
-          <line x1="200" y1="150" x2="90" y2="70"></line><line x1="200" y1="150" x2="320" y2="80"></line>
-          <line x1="200" y1="150" x2="110" y2="230"></line><line x1="200" y1="150" x2="310" y2="225"></line>
-          <line x1="90" y1="70" x2="40" y2="150"></line><line x1="320" y1="80" x2="360" y2="170"></line>
-          <line x1="110" y1="230" x2="200" y2="270"></line><line x1="310" y1="225" x2="200" y2="270"></line>
-          <line x1="90" y1="70" x2="200" y2="40"></line><line x1="320" y1="80" x2="200" y2="40"></line>
-        </g>
-        <g>
-          <circle cx="200" cy="150" r="9" fill="#8f2d22"></circle>
-          <circle cx="90" cy="70" r="6" fill="#cbb8a0"></circle><circle cx="320" cy="80" r="6" fill="#cbb8a0"></circle>
-          <circle cx="110" cy="230" r="6" fill="#cbb8a0"></circle><circle cx="310" cy="225" r="6" fill="#cbb8a0"></circle>
-          <circle cx="40" cy="150" r="4" fill="#9a9183"></circle><circle cx="360" cy="170" r="4" fill="#9a9183"></circle>
-          <circle cx="200" cy="270" r="4" fill="#9a9183"></circle><circle cx="200" cy="40" r="4" fill="#9a9183"></circle>
-        </g>
-      </svg>
-      <figcaption>Fig.01 — Eepsite relationship graph</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="home-section section-activity" id="activity">
-  <div class="section-heading">
-    <p class="section-kicker">04 — Lab Activity</p>
-    <h2>Recent intelligence activity</h2>
-  </div>
-  <div class="activity-grid">
-    <div class="activity-col">
-      <p class="activity-label is-live">Currently working on</p>
-      <ul class="activity-list">
-        {% for item in site.data.current_work limit:4 %}
-        <li>
-          <div class="activity-row">
-            {% if item.link %}<a href="{{ item.link | relative_url }}">{{ item.title | escape }}</a>{% else %}<strong>{{ item.title | escape }}</strong>{% endif %}
-            <span class="tag-dev">{{ item.status | escape }}</span>
-          </div>
-          {% if item.description %}<p class="activity-desc">{{ item.description | escape }}</p>{% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="activity-col">
-      <p class="activity-label">Timeline</p>
-      <ul class="timeline-list">
-        {% for entry in site.data.timeline limit:9 %}
-        <li>
-          <span class="tl-date">{{ entry.date | escape }}</span>
-          {% if entry.link %}<a href="{{ entry.link | relative_url }}">{{ entry.title | escape }}</a>{% else %}<span>{{ entry.title | escape }}</span>{% endif %}
-          <span class="tl-status">{{ entry.status | escape }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-  <section class="activity-learning" aria-labelledby="active-learning-title">
-    <div class="al-header">
-      <h3 class="al-badge" id="active-learning-title"><span class="al-dot" aria-hidden="true"></span>Active Learning</h3>
-      <p class="al-intro">Hands-on environments I use to continuously sharpen investigative and threat-intelligence skills.</p>
-    </div>
-    <div class="al-grid">
-      {% for platform in site.data.learning_platforms %}
-      <article class="al-card">
-        <div class="al-card-header">
-          <h4 class="al-name">{{ platform.name | escape }}</h4>
-          <p class="al-category">{{ platform.category | escape }}</p>
-        </div>
-        <p class="al-description">{{ platform.description | escape }}</p>
-        <ul class="al-skills" aria-label="{{ platform.name | escape }} skills in active development">
-          {% for skill in platform.skills %}<li>{{ skill | escape }}</li>{% endfor %}
-        </ul>
-        <div class="al-actions">
-          <a class="al-link" href="{{ platform.href | escape }}" target="_blank" rel="noopener noreferrer" aria-label="{{ platform.cta | escape }} (opens in a new tab)">{{ platform.cta | escape }} <span class="al-arrow" aria-hidden="true">→</span></a>
-          {% if platform.investigations_href %}<a class="al-link al-link-internal" href="{{ platform.investigations_href | relative_url }}">{{ platform.investigations_cta | default: "Read the investigations" | escape }} <span class="al-arrow" aria-hidden="true">→</span></a>{% endif %}
-        </div>
-      </article>
-      {% endfor %}
+    <div class="rd-stats">
+      <div class="rd-stat"><strong>2</strong><span>IEEE papers accepted in 2026 (iThings, Smart Data)</span></div>
+      <div class="rd-stat"><strong>1,400</strong><span>I2P eepsites crawled</span></div>
+      <div class="rd-stat"><strong>366,304</strong><span>hyperlinks mapped into a relationship graph</span></div>
+      <div class="rd-stat"><strong>Open data</strong><span>Validation dataset on <a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort</a></span></div>
     </div>
   </section>
-</section>
 
-<section class="home-section section-about" id="about">
-  <div class="about-content">
-    <div class="profile-section">
-      <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="profile-image" loading="lazy" width="1400" height="2100" />
-      <p class="profile-caption">Joshua Berkoh — Researcher &amp; threat investigator</p>
+  <section class="rd-section">
+    <div class="rd-grid-32">
+      <article class="rd-card">
+        <p class="rd-kicker">Featured Research</p>
+        <h3>Measuring the I2P hidden-service ecosystem</h3>
+        <div class="rd-fig">[Fig. 01: eepsite relationship graph]</div>
+        <p>A three-study, cross-layer measurement program using a directed multiplex graph framework. Study 1 is complete; Study 2 is under way.</p>
+        <a href="{{ '/research/' | relative_url }}">Read about the project →</a>
+      </article>
+      <article class="rd-card">
+        <p class="rd-kicker">Latest Investigations</p>
+        <h3>Case files</h3>
+        <ul class="rd-now">
+          <li><span><span class="rd-muted">CASE-2026-001 · Aug 2026 · Simulated</span><br><a href="{{ '/investigations/flare-darkroom/initial-access-credential-exposure/' | relative_url }}"><strong>Inside Flare Darkroom</strong></a><br><span class="rd-muted">Initial access brokers to cross-forum intel · 3-part series</span></span></li>
+          <li><span><span class="rd-muted">CASE-2026-003 · Jun 2026 · Simulated</span><br><a href="{{ '/investigations/solvi-systems/' | relative_url }}"><strong>Solvi Systems</strong></a><br><span class="rd-muted">ICS supply-chain intrusion · 8 ATT&amp;CK techniques</span></span></li>
+          <li><span><span class="rd-muted">CASE-2026-002 · Jun 2026 · Simulated</span><br><a href="{{ '/investigations/inside-encryptodera/' | relative_url }}"><strong>Inside Encryptodera</strong></a><br><span class="rd-muted">Insider threat to AD ransomware · 8 ATT&amp;CK techniques</span></span></li>
+        </ul>
+        <a href="{{ '/investigations/' | relative_url }}">All investigations →</a>
+      </article>
     </div>
-    <div class="about-text">
-      <p class="section-kicker">05 — About</p>
-      <h2>Researcher &amp; threat investigator</h2>
-      <p>I'm a PhD researcher in Information Technology and a practicing security professional. My work sits where intelligence analysis meets hands-on investigation: reconstructing intrusions, hunting suspicious activity in telemetry, and researching the infrastructure that threats rely on.</p>
-      <p>I write every investigation to be defensible evidence-first, mapped to MITRE ATT&amp;CK, and honest about confidence. Detection engineering is an area I'm actively studying and will publish as the work matures.</p>
-      <div class="about-proof-grid">
-        <div><strong>SOC Analyst</strong><span>Financial sector · 2021–22</span></div>
-        <div><strong>Security Engineer Intern</strong><span>Intuit · 2023</span></div>
-        <div><strong>Bug-Bounty Hall of Fame</strong><span>Multiple programs</span></div>
-        <div><strong>PhD Researcher</strong><span>Information Tech · 2024–</span></div>
+  </section>
+
+  <section class="rd-section">
+    <p class="rd-kicker">What I Do</p>
+    <h2>Three areas, one method: collect, pivot, map, write it up.</h2>
+    <div class="rd-cols-3">
+      <div>
+        <h3>Anonymity-network research</h3>
+        <p>Measuring how I2P hidden services link, churn and cluster, using crawling and graph analysis that others can reproduce.</p>
+        <a href="{{ '/research/' | relative_url }}">Research →</a>
       </div>
-      <a href="{{ '/about/' | relative_url }}" class="btn btn-outline btn-sm">More about me →</a>
+      <div>
+        <h3>Threat investigations &amp; CTI</h3>
+        <p>Working intrusion scenarios end to end: scoping, IOC pivoting, timeline reconstruction and ATT&amp;CK mapping, written as finished reports.</p>
+        <a href="{{ '/investigations/' | relative_url }}">Case files →</a>
+      </div>
+      <div>
+        <h3>Threat hunting &amp; detection</h3>
+        <p>KQL and Splunk hunting from SOC work, and a detection-engineering study turning investigation findings into tested rules.</p>
+        <a href="{{ '/about/' | relative_url }}">Background →</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="home-section contact-section" id="contact">
-  <div class="section-heading split-heading">
+  <section class="rd-section">
+    <div class="rd-grid-2">
+      <article class="rd-card">
+        <div class="rd-section-head"><h3>Now</h3><span class="rd-muted">Updated Oct 2026</span></div>
+        <ul class="rd-now">
+          <li><span>I2P Study 2: eepsite churn and link-graph change</span><span class="rd-status">In progress</span></li>
+          <li><span>Valdoria Votes, Part 2</span><span class="rd-status">Writing</span></li>
+          <li><span>Practical Detection Engineering study</span><span class="rd-status">Studying</span></li>
+          <li><span>XL-I2P paper at CSET</span><span class="rd-status">In review</span></li>
+        </ul>
+      </article>
+      <article class="rd-card">
+        <div class="rd-section-head"><h3>About me</h3></div>
+        <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="rd-photo" loading="lazy" />
+        <p>SOC analyst turned researcher. I started in incident triage, did security engineering at Intuit, and now study how anonymous networks are structured.</p>
+        <ul class="rd-now">
+          <li><span>2024 –</span><span>PhD researcher, University of Cincinnati</span></li>
+          <li><span>2023</span><span>Security Engineer Intern, Intuit</span></li>
+          <li><span>2021 – 22</span><span>SOC Analyst, Virtual Infosec Africa</span></li>
+        </ul>
+        <a href="{{ '/about/' | relative_url }}">More about me →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="rd-dark">
     <div>
-      <p class="section-kicker">06 — Contact</p>
-      <h2>Open to threat intelligence and research work</h2>
-      <p class="section-intro">If your team works in cyber threat intelligence, threat hunting, security research, or network measurement, I'd welcome a conversation.</p>
+      <p class="rd-kicker">Hiring</p>
+      <h2>Hiring for CTI, threat hunting or security research?</h2>
+      <p>I&rsquo;m open to internships and full-time roles. Email is the fastest way to reach me.</p>
     </div>
-    <div class="contact-card">
-      <ul class="contact-links">
-        <li><strong>LinkedIn</strong> <a href="https://linkedin.com/in/joshfiifi" rel="me">Joshua Berkoh →</a></li>
-        <li><strong>GitHub</strong> <a href="https://github.com/joshberk" rel="me">@joshberk →</a></li>
-        <li><strong>Resume</strong> <a href="{{ '/resume/' | relative_url }}">View / download CV →</a></li>
-      </ul>
+    <div class="rd-hero-actions">
+      <!-- TODO: public email address, currently [your email] in the mock -->
+      <a href="{{ '/about/#contact' | relative_url }}" class="btn btn-primary">Email</a>
+      <a href="https://linkedin.com/in/joshfiifi" rel="me" class="btn btn-outline">LinkedIn</a>
     </div>
-  </div>
-</section>
+  </section>
+</div>

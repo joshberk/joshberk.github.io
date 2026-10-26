@@ -4,144 +4,77 @@ title: "About"
 permalink: /about/
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">About</p>
-  <h1>About Joshua Berkoh</h1>
-  <p class="page-intro">Cybersecurity professional and PhD researcher building a CTI-focused body of work through investigations, dark-web research, and technical writing.</p>
-</section>
+{% comment %}
+  About & Contact redesign (2026-10-26), designer layout in site colours.
+  This page now carries the contact panel too, matching the designer's
+  "About and contact" page; the site's separate /contact/ nav link in
+  default.html is left unchanged — open decision whether
+  it should point here.
+  Open items: public email address (mock shows [your email] and
+  "[2 working days]" reply time, both carried as text, not invented).
+  Photo uses the site's existing /assets/images/joshua_berkoh.jpg.
+{% endcomment %}
 
-<section class="home-section" id="bio">
-  <div class="about-content">
-    <div class="profile-section">
-      <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="profile-image" loading="lazy" width="1400" height="2100" />
+<div class="rd-wrap">
+  <section class="rd-about">
+    <img src="{{ '/assets/images/joshua_berkoh.jpg' | relative_url }}" alt="Joshua Berkoh" class="rd-photo" loading="lazy" />
+    <div>
+      <p class="rd-kicker">About</p>
+      <h1 style="font-family:var(--sans);font-weight:700;letter-spacing:-0.015em;font-size:clamp(32px,4vw,44px);margin:0 0 16px;color:var(--text);">I&rsquo;m Joshua Offe Berkoh.</h1>
+      <p class="rd-lead">I started in a SOC in Accra, triaging alerts and working incidents. That led to security engineering at Intuit, and then to a PhD at the University of Cincinnati, where I measure how the I2P anonymous network is structured and how it changes.</p>
+      <p class="rd-lead" style="margin-top:16px;">Outside the dissertation I work intrusion scenarios end to end and write them up as CTI reports, so my research and my analyst work keep each other honest.</p>
+      <p class="rd-meta"><span>Cincinnati, OH</span><span>Open to internships and full-time roles</span></p>
     </div>
-    <div class="about-text">
-      <p>I'm a cybersecurity professional and PhD researcher focused on cyber threat intelligence, threat investigations, dark-web intelligence research, and security analysis.</p>
-      <p>My work combines security operations experience, hands-on investigation practice, application security, technical writing, and doctoral research into hidden-service ecosystems. Through this Cyber Threat Intelligence Lab, I document my development as an investigator and researcher by publishing structured investigation reports, research notes, lab artifacts, and technical writing.</p>
+  </section>
+
+  <section class="rd-section">
+    <div class="rd-two-col">
+      <div>
+        <h2>Path so far</h2>
+        <ul class="rd-timeline">
+          <li><span class="rd-date">Apr 2028</span><span><strong>PhD, Information Technology</strong> (expected) · University of Cincinnati</span></li>
+          <li><span class="rd-date">2026</span><span><strong>Two IEEE papers accepted</strong> · iThings and Smart Data</span></li>
+          <li><span class="rd-date">2024 – now</span><span><strong>PhD researcher</strong> · I2P hidden-service measurement, University of Cincinnati</span></li>
+          <li><span class="rd-date">Aug 2024</span><span><strong>MS, Information Technology</strong> · University of Cincinnati</span></li>
+          <li><span class="rd-date">2023</span><span><strong>Security Engineer Intern</strong> · Intuit, San Diego</span></li>
+          <li><span class="rd-date">2023</span><span><strong>Adjunct Instructor</strong> · University of Cincinnati</span></li>
+          <li><span class="rd-date">2021 – 22</span><span><strong>SOC Analyst</strong> · Virtual Infosec Africa, Accra</span></li>
+          <li><span class="rd-date">2021</span><span><strong>Bugcrowd Hall of Fame</strong> · 7 programs; TraceLabs OSINT CTF player, later judge</span></li>
+        </ul>
+        <p style="margin-top:16px;"><a href="{{ '/resume/' | relative_url }}" style="font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);">Full resume →</a></p>
+      </div>
+      <div>
+        <h2>Community</h2>
+        <div class="rd-side" style="gap:16px;">
+          <div class="rd-side-card"><h3>AWS Community Builder</h3><p>Security category</p></div>
+          <div class="rd-side-card"><h3>OWASP Cincinnati</h3><p>Bugbash mentor</p></div>
+          <div class="rd-side-card"><h3>ISC2</h3><p>Examination developer</p></div>
+          <div class="rd-side-card"><h3>TraceLabs</h3><p>OSINT CTF for missing persons</p></div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="home-section" id="current-focus">
-  <div class="section-heading"><p class="section-kicker">Current Focus</p><h2>What I'm focused on</h2></div>
-  <ul class="activity-list">
-    <li><strong>Threat Investigations</strong> <span class="muted">— building a public portfolio of scenario-based cyber threat investigations using KC7 Cyber materials.</span></li>
-    <li><strong>Dark-Web Intelligence Research</strong> <span class="muted">— PhD research on the I2P hidden-service ecosystem across three studies: methodology validation (completed), longitudinal churn measurement (in progress), cross-network generalization (planned).</span></li>
-    <li><strong>Security Analysis &amp; Threat Hunting</strong> <span class="muted">— strengthening investigation workflows using KQL, IOC pivoting, OSINT, and MITRE ATT&amp;CK mapping.</span></li>
-    <li><strong>Detection Engineering Study</strong> <span class="muted">— studying Practical Detection Engineering as an in-progress capability that will later support defensible detection artifacts.</span></li>
-  </ul>
-</section>
-
-<section class="home-section" id="portfolio">
-  <div class="section-heading"><p class="section-kicker">Investigation Portfolio</p><h2>Investigation portfolio</h2></div>
-  <p>The investigation portfolio contains structured cyber threat investigations completed using realistic enterprise scenarios from the KC7 Cyber Security Analyst program.</p>
-  <p>These reports are not presented as real-world client incidents. They are scenario-based investigations that document my analytical workflow, evidence collection, KQL analysis, IOC pivoting, MITRE ATT&amp;CK mapping, and findings.</p>
-  <p>The goal is to show the investigative process clearly and honestly: what evidence was reviewed, how conclusions were reached, and how the analysis developed over time.</p>
-  <a href="{{ '/investigations/' | relative_url }}" class="ic-link">View the investigation portfolio →</a>
-</section>
-
-<section class="home-section" id="research-focus">
-  <div class="section-heading"><p class="section-kicker">Research Focus</p><h2>Research focus</h2></div>
-  <p>My doctoral research focuses on the I2P anonymity network's hidden-service ecosystem across three studies: completed crawler methodology validation, an in-progress longitudinal churn measurement campaign, and a planned cross-network generalization study.</p>
-  <p>Network-layer observations are recorded with strict provenance separation from application-layer crawls, so cross-layer claims are made only where the data supports them.</p>
-  <p>This work is framed as dark-web intelligence research and security measurement. It does not claim real-world adversary attribution or active threat actor tracking.</p>
-  <a href="{{ '/research/' | relative_url }}" class="ic-link">Explore the research →</a>
-</section>
-
-<section class="home-section" id="technical-areas">
-  <div class="section-heading"><p class="section-kicker">Technical Areas</p><h2>Technical areas</h2></div>
-  <div class="focus-grid">
-    <span class="ic-tag">Cyber Threat Intelligence</span>
-    <span class="ic-tag">Threat Investigations</span>
-    <span class="ic-tag">Threat Hunting Practice</span>
-    <span class="ic-tag">OSINT</span>
-    <span class="ic-tag">KQL Log Analysis</span>
-    <span class="ic-tag">IOC Pivoting</span>
-    <span class="ic-tag">MITRE ATT&amp;CK Mapping</span>
-    <span class="ic-tag">Security Operations</span>
-    <span class="ic-tag">Incident Response Support</span>
-    <span class="ic-tag">Dark-Web Intelligence Research</span>
-    <span class="ic-tag">Hidden-Service Ecosystem Analysis</span>
-    <span class="ic-tag">Application Security</span>
-    <span class="ic-tag">Vulnerability Assessment</span>
-    <span class="ic-tag">Security Research</span>
-    <span class="ic-tag">Technical Writing</span>
-  </div>
-</section>
-
-<section class="home-section" id="tools">
-  <div class="section-heading"><p class="section-kicker">Tools &amp; Methods</p><h2>Tools and methods</h2></div>
-  <div class="focus-grid">
-    <span class="ic-tag">KQL</span>
-    <span class="ic-tag">Azure Data Explorer</span>
-    <span class="ic-tag">OSINT</span>
-    <span class="ic-tag">MITRE ATT&amp;CK</span>
-    <span class="ic-tag">Cyber Kill Chain</span>
-    <span class="ic-tag">Python</span>
-    <span class="ic-tag">SQL</span>
-    <span class="ic-tag">MariaDB</span>
-    <span class="ic-tag">Splunk</span>
-    <span class="ic-tag">Wireshark</span>
-    <span class="ic-tag">Burp Suite</span>
-    <span class="ic-tag">Nmap</span>
-    <span class="ic-tag">Metasploit</span>
-    <span class="ic-tag">Nessus</span>
-    <span class="ic-tag">Kali Linux</span>
-    <span class="ic-tag">Docker</span>
-    <span class="ic-tag">I2P research environment</span>
-    <span class="ic-tag">Graph-based analysis</span>
-  </div>
-  <p class="research-note">Detection Engineering tools such as Sigma, YARA, and detection-validation workflows are intentionally not listed as completed capabilities yet that area is still in development.</p>
-</section>
-
-<section class="home-section" id="experience">
-  <div class="section-heading"><p class="section-kicker">Experience</p><h2>Experience highlights</h2></div>
-
-  <h3>Security Operations Center Analyst</h3>
-  <p>I worked as a Security Operations Center Analyst at Virtual Infosec Africa, where I monitored and analyzed security activity, supported incident response, and contributed to SOC operations.</p>
-
-  <h3>Security Engineer Intern</h3>
-  <p>As a Security Engineer Intern at Intuit, I supported security engineering work involving red team tooling, compliance automation, and remediation of security-related issues before deployment.</p>
-
-  <h3>Cyber Threat Investigation Practice</h3>
-  <p>I'm building a public investigation portfolio through KC7 Cyber scenario-based investigations. These reports document my use of KQL, IOC pivoting, OSINT, ATT&amp;CK mapping, and evidence-driven analysis. My ongoing hands-on progress is tracked on my <a href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">public KC7 profile</a>.</p>
-
-  <h3>Dark-Web Intelligence Research</h3>
-  <p>My PhD research focuses on I2P hidden-service ecosystem analysis: crawler methodology validation, longitudinal churn measurement, and graph-based link analysis.</p>
-
-  <h3>Application Security and Bug Bounty</h3>
-  <p>I've participated in bug bounty and application security work, including responsible disclosure across multiple programs and Hall of Fame recognition from organizations including Centrify, Arlo, and Humble Bundle.</p>
-
-  <h3>OSINT and Community Work</h3>
-  <p>I've participated in TraceLabs OSINT work and contributed to cybersecurity community efforts through OWASP and ISC2.</p>
-</section>
-
-<section class="home-section" id="education">
-  <div class="section-heading"><p class="section-kicker">Education</p><h2>Education</h2></div>
-  <ul class="activity-list">
-    <li><strong>PhD, Information Technology</strong> <span class="muted">— University of Cincinnati, expected April 2028.</span></li>
-    <li><strong>Master of Science, Information Technology</strong> <span class="muted">— University of Cincinnati, August 2024.</span></li>
-  </ul>
-</section>
-
-<section class="home-section" id="community">
-  <div class="section-heading"><p class="section-kicker">Community</p><h2>Community involvement</h2></div>
-  <ul class="activity-list">
-    <li>OWASP Cincinnati Chapter — Bugbash Mentor</li>
-    <li>ISC2 — Examination Developer</li>
-    <li>TraceLabs — OSINT CTF Player and Coach</li>
-    <li>AWS Community Builder — Security Division</li>
-  </ul>
-</section>
-
-<section class="home-section home-section-emphasis" id="why-lab">
-  <div class="section-heading"><p class="section-kicker">The Lab</p><h2>Why this lab exists</h2></div>
-  <p class="closing-lead">This Cyber Threat Intelligence Lab is built on one conviction: the clearest way to show how an analyst thinks is to show the work — not to describe it.</p>
-  <p>It exists for more than a job search. A resume can list skills; it cannot show the reasoning behind them. Every investigation here documents how evidence was gathered, how conclusions were reached, and where the analysis could be challenged the actual tradecraft, made reviewable.</p>
-  <p>It is also a long-term, evolving body of work. As the portfolio grows more investigations, deeper dark-web research, and detection engineering once that capability is genuinely earned the lab becomes a transparent, honest record of an investigator's development: something that can be read, questioned, and improved over time.</p>
-  <p>The goal is simple: don't take the claims on faith. Read the work, and judge the thinking for yourself.</p>
-  <div class="why-lab-cta">
-    <a href="{{ '/investigations/' | relative_url }}" class="btn btn-primary">Read the investigations</a>
-    <a href="{{ '/research/' | relative_url }}" class="btn btn-outline">Explore the research</a>
-  </div>
-</section>
+  <section class="rd-dark" id="contact">
+    <div>
+      <p class="rd-kicker">Contact</p>
+      <h2>Let&rsquo;s talk about CTI, threat hunting or security research roles.</h2>
+      <p>Email is the fastest way to reach me. I usually reply within [2 working days].</p>
+      <div class="rd-hero-actions">
+        <!-- TODO: public email address -->
+        <a href="#contact" class="btn btn-primary">Email</a>
+        <a href="https://linkedin.com/in/joshfiifi" rel="me" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/joshberk" rel="me" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;color:#f4f1ea;margin:0 0 8px;">Hiring? Start here</h3>
+      <ul class="rd-dark-list">
+        <li><a href="{{ '/research/' | relative_url }}">1. I2P research</a><span>Depth: a multi-year measurement program</span></li>
+        <li><a href="{{ '/investigations/' | relative_url }}">2. Case files</a><span>Analyst work: pivots, timelines, ATT&amp;CK</span></li>
+        <li><a href="{{ '/publications/' | relative_url }}">3. Publications</a><span>Peer-reviewed papers and open data</span></li>
+        <li><a href="{{ '/resume/' | relative_url }}">4. Resume</a><span>Everything on one page</span></li>
+      </ul>
+    </div>
+  </section>
+</div>

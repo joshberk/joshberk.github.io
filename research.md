@@ -17,132 +17,108 @@ manuscripts:
     venue: "2026 IEEE International Conference on Smart Data"
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">Security &amp; Intelligence Research</p>
-  <h1>Research</h1>
-  <p class="page-intro">This section collects my security research, dark-web intelligence work, and lab-based technical studies structured research into how anonymity infrastructure and hidden-service ecosystems behave, and the collection and analysis workflows that make that research reproducible.</p>
-</section>
+{% comment %}
+  Research redesign (2026-10-26), designer layout in site colours.
+  Open items: Study 2 expected completion, Study 3 planned start,
+  and the XL-I2P "in review at CSET" lines (Study 1 card + Papers list)
+  — known-stale since the CSET rejection, kept per the 2026-10-26
+  direction that content follows the new design, so the batch matches.
+  Advisor, dates and Study 1 figures are as in the mock / current site.
+{% endcomment %}
 
-<section class="home-section home-section-emphasis" id="featured-research">
-  <div class="section-heading">
-    <p class="section-kicker">Featured Research</p>
-    <h2>I2P Hidden Service Ecosystem Analysis</h2>
-  </div>
-  <div class="research-status">
-    <span class="status-badge status-progress">PhD Research · In Progress</span>
-  </div>
-  <p>A PhD research program measuring the I2P anonymity network's hidden-service (eepsite) ecosystem across three sequential studies. Study 1 validated the measurement methodology, comparing the purpose-built XL-I2P crawler against the c4i2p baseline. Study 2 is a longitudinal campaign now collecting epoch-tagged observations to measure eepsite churn against application-layer link-graph change. Study 3 will test the resulting theories for generality against published measurements of other anonymity networks. Network-layer observations are recorded with strict provenance separation from application-layer crawls, so cross-layer claims are made only where the data supports them.</p>
-  <p class="research-note">This is a privacy-preserving hidden-service ecosystem study with relevance to cyber threat intelligence. It characterizes darknet infrastructure and connectivity; it does not identify, attribute, or track real-world adversary groups.</p>
-  <div class="focus-grid">
-    <span class="ic-tag">Hidden-service discovery</span>
-    <span class="ic-tag">Intelligence collection framework</span>
-    <span class="ic-tag">I2P ecosystem analysis</span>
-    <span class="ic-tag">Graph-based relationship analysis</span>
-    <span class="ic-tag">Application-layer crawling</span>
-    <span class="ic-tag">Reproducible research workflows</span>
-  </div>
-</section>
+<div class="rd-wrap">
+  <section class="rd-hero">
+    <p class="rd-kicker">PhD Research · University of Cincinnati</p>
+    <h1>Measuring the I2P hidden-service ecosystem</h1>
+    <p class="rd-lead">How do I2P eepsites link to each other, how fast do they appear and disappear, and do the answers hold on Tor and Freenet? I answer these with application-layer crawling and a directed multiplex graph that joins network-layer and application-layer views of the same network.</p>
+    <p class="rd-meta"><span>Advisor: Dr. Jacques Bou Abdo</span><span>2024 – present</span><span>Dissertation expected Apr 2028</span></p>
+  </section>
 
-<section class="home-section research-manuscripts" id="research-manuscripts" aria-labelledby="manuscripts-heading">
-  <div class="section-heading">
-    <p class="section-kicker">Manuscripts</p>
-    <h2 id="manuscripts-heading">Research manuscripts</h2>
-    <p class="section-intro">Current manuscripts spanning I2P network mapping, botnet detection, and graph-based network behavior modeling.</p>
-  </div>
-  <div class="pub-list">
-    {% for manuscript in page.manuscripts %}
-    <article class="pub-card">
-      <div class="pub-card-head">
-        <h3 class="pub-title">{{ manuscript.title | escape }}</h3>
-        <span class="status-badge">{{ manuscript.status | escape }}</span>
+  <section class="rd-section">
+    <h2>Three studies</h2>
+    <div class="rd-grid-3">
+      <article class="rd-study">
+        <div class="rd-study-bar"><i style="width:100%"></i></div>
+        <div class="rd-study-top"><span>Study 1</span><span class="rd-pill rd-pill-ok">Complete</span></div>
+        <h3>Crawler coverage and resilience</h3>
+        <p>Can an application-layer crawler find and keep up with I2P hidden services, and how much does it miss?</p>
+        <dl>
+          <dt>Crawled</dt><dd><strong>1,400 eepsites</strong></dd>
+          <dt>Extracted</dt><dd><strong>366,304 hyperlinks</strong></dd>
+          <dt>Data</dt><dd><a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort, DOI</a></dd>
+          <dt>Paper</dt><dd>XL-I2P, in review at CSET</dd>
+        </dl>
+      </article>
+      <article class="rd-study">
+        <div class="rd-study-bar"><i class="amber" style="width:45%"></i></div>
+        <div class="rd-study-top"><span>Study 2</span><span class="rd-pill rd-pill-amber">In progress</span></div>
+        <h3>Eepsite churn and link-graph change</h3>
+        <p>How quickly do eepsites appear, vanish and rewire, and what does that say about the ecosystem&rsquo;s stability?</p>
+        <dl>
+          <dt>Code</dt><dd><a href="https://github.com/joshberk/XL-I2P-Study2">GitHub repository</a></dd>
+          <dt>Target</dt><dd>[Expected completion]</dd>
+        </dl>
+      </article>
+      <article class="rd-study">
+        <div class="rd-study-bar"><i style="width:0%"></i></div>
+        <div class="rd-study-top"><span>Study 3</span><span class="rd-pill rd-pill-grey">Planned</span></div>
+        <h3>Generalizing to Tor and Freenet</h3>
+        <p>Do the same collection methods and graph findings carry over to other anonymity networks?</p>
+        <dl>
+          <dt>Start</dt><dd>[Planned start]</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="rd-section">
+    <div class="rd-fig rd-fig-lg">[Fig. 01: eepsite relationship graph, full width]</div>
+    <p class="rd-caption"><strong>Fig. 01.</strong> Eepsite relationship graph from Study 1. [One sentence on what the reader should notice: clusters, hubs, isolated sites.]</p>
+  </section>
+
+  <section class="rd-section">
+    <h2>How the work is done</h2>
+    <div class="rd-cols-3">
+      <div>
+        <h3>Collection</h3>
+        <p>Application-layer crawling of eepsites, with coverage checked against a validation set.</p>
       </div>
-      <p class="pub-meta-line"><strong>Authorship:</strong> {{ manuscript.authorship | escape }}</p>
-      <p class="pub-meta-line"><strong>Submitted to:</strong> {{ manuscript.venue | escape }}</p>
-    </article>
-    {% endfor %}
-  </div>
-</section>
+      <div>
+        <h3>Analysis</h3>
+        <p>A directed multiplex graph joins application-layer hyperlinks with network-layer relationships between the same sites.</p>
+      </div>
+      <div>
+        <h3>Reproducibility</h3>
+        <p>Datasets go to IEEE DataPort and code to GitHub, so results can be checked and rerun.</p>
+      </div>
+    </div>
+    <div class="rd-card" style="margin-top:24px;">
+      <p><strong>Research ethics.</strong> This work measures structure, not people. It does not identify or attribute real-world actors, and operational details that could aid abuse are left out of public write-ups.</p>
+    </div>
+  </section>
 
-<section class="home-section" id="research-questions">
-  <div class="section-heading">
-    <p class="section-kicker">Objectives</p>
-    <h2>Research questions</h2>
-    <p class="section-intro">The program is organized around three research questions, one per study, about how the I2P hidden-service ecosystem is structured and how it can be observed responsibly.</p>
-  </div>
-  <ul class="research-qs">
-    <li>Can a single-vantage crawler recover the I2P application-layer graph with coverage and resilience sufficient for rigorous structural analysis? <span class="muted">(Study 1 — completed)</span></li>
-    <li>How do eepsites appear, persist, and disappear over a longitudinal window, and how does that churn relate to application-layer link-graph change? <span class="muted">(Study 2 — in progress)</span></li>
-    <li>Do the resulting theories generalize to other anonymity networks such as Tor and Freenet? <span class="muted">(Study 3)</span></li>
-  </ul>
-</section>
+  <section class="rd-section">
+    <div class="rd-section-head"><h2>Papers from this work</h2><a href="{{ '/publications/' | relative_url }}">All publications →</a></div>
+    <div class="rd-card">
+      <div class="rd-paper">
+        <span class="rd-pill rd-pill-amber">In review</span>
+        <div><h3>XL-I2P: Cross-Layer I2P Darkweb Mapper</h3><p>CSET Workshop 2026 · First author · Study 1</p></div>
+      </div>
+      <div class="rd-paper">
+        <span class="rd-pill rd-pill-ok">Accepted</span>
+        <div><h3>Chrono-GINE: Chronological Edge-Aware GIN for I2P Behavior Modeling</h3><p>IEEE Intl. Conf. on Smart Data 2026 · Last author</p></div>
+      </div>
+      <div class="rd-paper">
+        <span class="rd-pill rd-pill-ok">Accepted</span>
+        <div><h3>A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets</h3><p>IEEE iThings 2026 · Second author</p></div>
+      </div>
+    </div>
+  </section>
 
-<section class="home-section" id="methodology">
-  <div class="section-heading">
-    <p class="section-kicker">Methodology</p>
-    <h2>Collection &amp; analysis approach</h2>
-  </div>
-  <p>At a high level, the framework runs a verify-then-crawl pipeline against I2P hidden services ("eepsites") through the I2P HTTP proxy: sites are verified for reachability, then crawled for pages and hyperlinks, with every attempt recorded in an immutable audit trail. Network-layer observations (netDB records visible to a participating router) are stored in separate, provenance-tagged tables — never silently counted as confirmed application-layer crawls. For analysis, hyperlinks form a directed graph (nodes are eepsites, edges carry epoch tags) supporting churn, survival, and structural analysis. All crawl reachability is measured from a single vantage, and findings are reported with that condition attached.</p>
-  <div class="home-summary">
-    <article class="summary-card"><h3>Collection</h3><p>Application-layer crawling of I2P hidden services via the I2P HTTP proxy, with structured storage in MariaDB.</p></article>
-    <article class="summary-card"><h3>Tooling</h3><p>Python collection and processing pipelines built for repeatable, scriptable runs.</p></article>
-    <article class="summary-card"><h3>Analysis</h3><p>Graph-based relationship analysis to characterize connectivity and infrastructure structure.</p></article>
-  </div>
-  <p class="research-note">Methodology is described at the level appropriate for a public research summary; sensitive operational specifics are intentionally omitted.</p>
-</section>
-
-<section class="home-section" id="outputs">
-  <div class="section-heading">
-    <p class="section-kicker">Outputs</p>
-    <h2>Research outputs</h2>
-  </div>
-  <ul class="activity-list">
-    <li>Doctoral dissertation research <span class="tag-dev">In Progress</span></li>
-    <li>Technical research notes <span class="muted">— published as the work matures</span></li>
-    <li><a href="#research-manuscripts">Three research manuscripts <span class="muted">— two accepted, one under review</span></a></li>
-    <li>Study 1 validation datasets &amp; artifacts <span class="muted">— <a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort (DOI: 10.21227/rkan-zq07)</a></span></li>
-    <li>Study 2 crawler &amp; dashboard code <span class="muted">— <a href="https://github.com/joshberk/XL-I2P-Study2">GitHub: joshberk/XL-I2P-Study2</a></span></li>
-    <li>Related lab artifacts <span class="muted">— see Security Lab Artifacts below</span></li>
-  </ul>
-  <p class="muted">See the <a href="{{ '/publications/' | relative_url }}">Publications</a> page for additional technical writing.</p>
-</section>
-
-<section class="home-section" id="lab-artifacts">
-  <div class="section-heading">
-    <p class="section-kicker">Lab</p>
-    <h2>Security lab artifacts</h2>
-    <p class="section-intro">Technical environments and lab build-outs that support hands-on research and skills development.</p>
-  </div>
-  <article class="investigation-card">
-    <div class="ic-tags"><span class="ic-tag">Security Lab Infrastructure</span><span class="ic-tag">Malware Analysis Lab Environment</span></div>
-    <h3 class="ic-title"><a href="{{ '/research/malware-reversing-lab/' | relative_url }}">Building a Malware Reversing Lab on Proxmox</a></h3>
-    <p class="ic-desc">Security lab infrastructure for static and dynamic malware analysis, built on Proxmox alongside a detection-engineering stack feeding Elastic SIEM. Documented as a malware-analysis lab environment not a CTI report or investigation.</p>
-    <div class="ic-meta"><a class="ic-link" href="{{ '/research/malware-reversing-lab/' | relative_url }}">View the lab build →</a></div>
-  </article>
-</section>
-
-<section class="home-section" id="current-activity">
-  <div class="section-heading">
-    <p class="section-kicker">Activity</p>
-    <h2>Current research activity</h2>
-  </div>
-  <ul class="activity-list">
-    {% for item in site.data.current_work %}
-    <li>{% if item.link %}<a href="{{ item.link | relative_url }}">{{ item.title | escape }}</a>{% else %}{{ item.title | escape }}{% endif %} <span class="tag-dev">{{ item.status | escape }}</span>{% if item.description %}<span class="muted"> — {{ item.description | escape }}</span>{% endif %}</li>
-    {% endfor %}
-  </ul>
-</section>
-
-<section class="home-section" id="future">
-  <div class="section-heading">
-    <p class="section-kicker">Direction</p>
-    <h2>Future research directions</h2>
-    <p class="section-intro">Where the lab is headed as the work matures.</p>
-  </div>
-  <div class="home-summary">
-    <article class="summary-card"><h3>Dark-web infrastructure analysis</h3><p>Extending ecosystem mapping to characterize darknet infrastructure at scale.</p></article>
-    <article class="summary-card"><h3>Threat-informed detection engineering</h3><p>Translating observed tradecraft into detections once the detection-engineering capability is established.</p></article>
-    <article class="summary-card"><h3>AI-enabled threat analysis</h3><p>Applying machine learning to security measurement and triage.</p></article>
-    <article class="summary-card"><h3>Intelligence collection methodology</h3><p>Reproducible, defensible collection workflows for hard-to-observe networks.</p></article>
-    <article class="summary-card"><h3>Security measurement research</h3><p>Empirical measurement of security-relevant network ecosystems.</p></article>
-  </div>
-</section>
+  <section class="rd-section">
+    <div class="rd-card">
+      <div class="rd-section-head" style="margin-bottom:8px;"><div><p class="rd-kicker" style="margin-bottom:4px;">Lab Build</p><h3 style="margin:0;">Building a malware reversing lab on Proxmox</h3></div><a href="{{ '/research/malware-reversing-lab/' | relative_url }}" class="btn btn-outline">Read the write-up</a></div>
+      <p>The isolated analysis environment behind the investigations, written up so others can build it.</p>
+    </div>
+  </section>
+</div>

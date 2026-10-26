@@ -4,75 +4,111 @@ title: "Publications & Technical Writing"
 permalink: /publications/
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">Publications &amp; Technical Writing</p>
-  <h1>Publications &amp; Technical Writing</h1>
-  <p class="page-intro">A record of my written work scenario-based investigation reports, research manuscripts, and technical articles. This archive shows how I document investigations, communicate technical findings, and structure analytical writing.</p>
-</section>
+{% comment %}
+  Publications redesign (2026-10-26), designer layout in site colours.
+  Open items: Google Scholar and ORCID URLs (mock shows bracket
+  placeholders, not invented here); DOI / BibTeX links once the two
+  accepted papers are published (mock shows "[DOI once published]");
+  malware-lab month ([Month 2026] in the mock); and the XL-I2P
+  "In review" count/paper — known-stale since the CSET rejection,
+  kept per the 2026-10-26 direction that content follows the new
+  design, so the whole batch is consistent on that wording.
+  Paper titles follow the mock (including its shortened Chrono-GINE
+  title); the full title is in research.md's manuscript record.
+{% endcomment %}
 
-<section class="home-section" id="investigation-reports">
-  <div class="section-heading">
-    <p class="section-kicker">Investigation Reports</p>
-    <h2>Scenario-based investigation reports</h2>
-    <p class="section-intro">Full cyber threat investigations completed in the KC7 Cyber Security Analyst program, written to professional intelligence-reporting standards. Scenario-based not real-world client incidents.</p>
-  </div>
-  <div class="pub-list">
-    {% assign reports = site.investigations | sort: "date" | reverse %}
-    {% for inv in reports %}
-      {% assign inv_status = inv.status | default: "Completed" %}
-      <article class="pub-card">
-        <div class="pub-card-head">
-          <h3 class="pub-title">{% if inv_status == "Coming Soon" %}{{ inv.title | escape }}{% else %}<a href="{{ inv.url | relative_url }}">{{ inv.title | escape }}</a>{% endif %}</h3>
-          <span class="status-badge">{% if inv_status == "Coming Soon" %}In Progress{% else %}{{ inv_status | escape }}{% endif %}</span>
+<div class="rd-wrap">
+  <div class="rd-two-col">
+    <div>
+      <section class="rd-hero">
+        <p class="rd-kicker">Publications</p>
+        <h1>Papers, data and writing</h1>
+        <p class="rd-lead">Peer-reviewed work first, then the datasets and code behind it, then technical write-ups. Investigation reports have their own page.</p>
+      </section>
+
+      <section class="rd-section">
+        <div class="rd-section-head rd-rule"><h2>Papers</h2><span style="font-family:var(--mono);font-size:13px;">2026</span></div>
+        <div class="rd-card">
+          <div class="rd-paper">
+            <span class="rd-pill rd-pill-ok">Accepted</span>
+            <div>
+              <h3>A Behavioral Temporal Graph Neural Network Framework for Detecting Botnets</h3>
+              <p>Conference paper · Second author · IEEE International Conference on Internet of Things (iThings), 2026.</p>
+              <p>Abstract · DOI once published · BibTeX</p>
+            </div>
+          </div>
+          <div class="rd-paper">
+            <span class="rd-pill rd-pill-ok">Accepted</span>
+            <div>
+              <h3>Chrono-GINE: Chronological Edge-Aware GIN for I2P Behavior Modeling</h3>
+              <p>Conference paper · Last author · IEEE International Conference on Smart Data, 2026.</p>
+              <p>Abstract · DOI once published · BibTeX</p>
+            </div>
+          </div>
+          <div class="rd-paper">
+            <span class="rd-pill rd-pill-amber">In review</span>
+            <div>
+              <h3>XL-I2P: Cross-Layer I2P Darkweb Mapper</h3>
+              <p>Workshop paper · First author · Submitted to CSET Workshop, 2026.</p>
+              <p><a href="{{ '/research/' | relative_url }}">Related: I2P research, Study 1</a></p>
+            </div>
+          </div>
         </div>
-        <p class="pub-type">Scenario-Based Investigation Report · KC7 Cyber{% if inv.date %} · {{ inv.date | date: "%b %Y" }}{% endif %}</p>
-        {% if inv.sector or inv.threat_type %}<p class="pub-meta-line">{% if inv.sector %}{{ inv.sector | escape }}{% endif %}{% if inv.threat_type %} · {{ inv.threat_type | escape }}{% endif %}</p>{% endif %}
-        <p class="pub-summary">{{ inv.description | strip_html | truncatewords: 28 | escape }}</p>
-        {% if inv.tags %}<div class="ic-tagrow">{% for tag in inv.tags %}<span class="ic-minitag">{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
-        {% if inv_status == "Coming Soon" %}{% elsif inv_status == "Completed" %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read full report →</a>{% else %}<a class="ic-link" href="{{ inv.url | relative_url }}">Read Part 1 →</a>{% endif %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+      </section>
 
-<section class="home-section" id="research-manuscripts">
-  <div class="section-heading">
-    <p class="section-kicker">Research Manuscripts</p>
-    <h2>Research manuscripts</h2>
-    <p class="section-intro">Manuscripts from my doctoral research — working papers and accepted work not yet published.</p>
-  </div>
-  <div class="pub-list">
-    {% for pub in site.data.publications %}
-      <article class="pub-card">
-        <div class="pub-card-head">
-          <h3 class="pub-title">{{ pub.title | escape }}</h3>
-          {% if pub.status %}<span class="status-badge">{{ pub.status | escape }}</span>{% endif %}
+      <section class="rd-section">
+        <h2 class="rd-rule" style="border-bottom:2px solid var(--text);padding-bottom:10px;">Datasets &amp; code</h2>
+        <div class="rd-card">
+          <div class="rd-paper">
+            <div>
+              <h3>I2P crawler validation dataset</h3>
+              <p>IEEE DataPort · Study 1 · 1,400 eepsites, 366,304 hyperlinks</p>
+            </div>
+            <a href="https://doi.org/10.21227/rkan-zq07" style="margin-left:auto;white-space:nowrap;">10.21227/rkan-zq07</a>
+          </div>
+          <div class="rd-paper">
+            <div>
+              <h3>I2P crawler and analysis code</h3>
+              <p>GitHub · Study 2</p>
+            </div>
+            <a href="https://github.com/joshberk" rel="me" style="margin-left:auto;white-space:nowrap;">github.com/joshberk</a>
+          </div>
         </div>
-        <p class="pub-type">{{ pub.type | default: "Research Manuscript" }}{% if pub.venue %} · {{ pub.venue | escape }}{% endif %}{% if pub.year %} · {{ pub.year }}{% endif %}</p>
-        {% if pub.research_area %}<p class="pub-meta-line">{{ pub.research_area | escape }}</p>{% endif %}
-        {% if pub.summary %}<p class="pub-summary">{{ pub.summary | escape }}</p>{% endif %}
-        {% if pub.related %}<p class="pub-related">Related project: {{ pub.related | escape }}</p>{% endif %}
-        {% if pub.links %}{% for link in pub.links %}<a class="ic-link" href="{{ link.url | escape }}">{{ link.text | escape }} →</a> {% endfor %}{% endif %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+      </section>
 
-<section class="home-section" id="technical-articles">
-  <div class="section-heading">
-    <p class="section-kicker">Technical Articles</p>
-    <h2>Technical articles &amp; lab writeups</h2>
-    <p class="section-intro">Security lab infrastructure writeups, methodology notes, and research notes.</p>
-  </div>
-  <div class="pub-list">
-    <article class="pub-card">
-      <div class="pub-card-head">
-        <h3 class="pub-title"><a href="{{ '/research/malware-reversing-lab/' | relative_url }}">Building a Malware Reversing Lab on Proxmox</a></h3>
-        <span class="status-badge">Lab Writeup</span>
+      <section class="rd-section">
+        <h2 class="rd-rule" style="border-bottom:2px solid var(--text);padding-bottom:10px;">Technical writing</h2>
+        <div class="rd-card">
+          <div class="rd-paper">
+            <div>
+              <h3><a href="{{ '/research/malware-reversing-lab/' | relative_url }}">Building a malware reversing lab on Proxmox</a></h3>
+              <p>Lab write-up · [Month 2026]</p>
+            </div>
+          </div>
+          <div class="rd-paper">
+            <div>
+              <h3><a href="{{ '/investigations/' | relative_url }}">Investigation reports</a></h3>
+              <p>6 reports across 4 simulated cases · Jun – Aug 2026</p>
+            </div>
+            <a href="{{ '/investigations/' | relative_url }}" style="margin-left:auto;white-space:nowrap;">Case files →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="rd-side">
+      <div class="rd-side-card">
+        <h3>At a glance</h3>
+        <div class="rd-side-row"><span>Accepted papers</span><strong>2</strong></div>
+        <div class="rd-side-row"><span>In review</span><strong>1</strong></div>
+        <div class="rd-side-row"><span>Open datasets</span><strong>1</strong></div>
       </div>
-      <p class="pub-type">Security Lab Infrastructure · Malware Analysis Lab Environment</p>
-      <p class="pub-summary">A technical walkthrough of a Proxmox-based malware-analysis lab environment running alongside a detection-engineering stack feeding Elastic SIEM. Documented as lab infrastructure not a CTI report.</p>
-      <a class="ic-link" href="{{ '/research/malware-reversing-lab/' | relative_url }}">Read the writeup →</a>
-    </article>
+      <div class="rd-side-card">
+        <h3>Scholarly profiles</h3>
+        <!-- TODO: Google Scholar and ORCID URLs -->
+        <p><a href="https://doi.org/10.21227/rkan-zq07">IEEE DataPort</a></p>
+        <p>Google Scholar · ORCID iD (URLs to be added)</p>
+      </div>
+    </aside>
   </div>
-</section>
+</div>

@@ -7,92 +7,72 @@ redirect_from:
   - /blog/index.html
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">Investigation Portfolio</p>
-  <h1>Threat Investigations</h1>
-  <p class="page-intro">Structured cyber threat investigations worked end to end in realistic training environments. Each report documents analytical methodology, evidence collection, pivoting, and findings. Investigations are grouped by the platform they originated from. That source determines the kind of evidence available and the tradecraft the investigation demonstrates. These are scenario-based investigations, not real-world client engagements.</p>
-  <p class="page-hero-actions">
-    {% for platform in site.data.learning_platforms %}
-      <a class="btn btn-outline" href="{{ platform.href | escape }}" target="_blank" rel="noopener noreferrer" aria-label="{{ platform.cta | escape }} (opens in a new tab)">{{ platform.cta | escape }} →</a>
-    {% endfor %}
-  </p>
-</section>
+{% comment %}
+  Investigations redesign (2026-10-26), designer layout in site colours.
+  Case cards are the designer's four cases. Flare Darkroom parts link
+  to their live report pages; Solvi / Encryptodera / Valdoria link to theirs.
+  Filter wiring verified against assets/js/main.js: the grid carries
+  id="investigation-list", each card carries .investigation-card with
+  data-source, and the source buttons carry data-filter-group="source".
+{% endcomment %}
 
-<ul class="source-legend">
-  {% for source in site.data.investigation_sources %}
-    <li class="source-legend-item">
-      <span class="source-legend-name">{{ source.name | escape }}</span>
-      <span class="source-legend-focus">{{ source.focus | escape }}</span>
-    </li>
-  {% endfor %}
-</ul>
+<div class="rd-wrap">
+  <section class="rd-hero">
+    <p class="rd-kicker">Case Files</p>
+    <h1>Threat investigations</h1>
+    <p class="rd-lead">Intrusion scenarios from KC7 Cyber and Flare Darkroom, worked end to end and written up as finished CTI reports: scope, pivots, timeline, ATT&amp;CK mapping and findings.</p>
+    <p class="rd-meta">
+      <a href="https://kc7cyber.com/profile/dd63b85e" target="_blank" rel="noopener noreferrer">My KC7 profile →</a>
+      <a href="https://flare.io" target="_blank" rel="noopener noreferrer">Flare Darkroom →</a>
+    </p>
+    <div class="rd-filter investigation-filters" role="group" aria-label="Filter investigations by source" data-filter-group="source">
+      <button class="filter-btn active" type="button" aria-pressed="true" data-filter-value="all">All sources · 4</button>
+      <button class="filter-btn" type="button" aria-pressed="false" data-filter-value="kc7-cyber">KC7 Cyber · 3</button>
+      <button class="filter-btn" type="button" aria-pressed="false" data-filter-value="flare-darkroom">Flare Darkroom · 1</button>
+    </div>
+    <p class="rd-note">Every case is a simulated training environment, not a client incident. &ldquo;ATT&amp;CK techniques&rdquo; counts the distinct MITRE ATT&amp;CK techniques mapped in each report.</p>
+  </section>
 
-<div class="investigation-controls">
-  <input type="search" id="investigation-search" class="investigation-search" placeholder="Search by title, source, sector, threat type, or topic…" aria-label="Search investigations">
-  <div class="investigation-filter-groups">
-    {% comment %} Source buttons are generated from _data/investigation_sources.yml,
-                  so adding a platform there adds its filter here. {% endcomment %}
-    <div class="investigation-filters" role="group" aria-label="Filter investigations by source" data-filter-group="source">
-      <button class="filter-btn active" type="button" aria-pressed="true" data-filter-value="all">All sources</button>
-      {% for source in site.data.investigation_sources %}
-        <button class="filter-btn" type="button" aria-pressed="false" data-filter-value="{{ source.id | escape }}">{{ source.name | escape }}</button>
-      {% endfor %}
-    </div>
-    <div class="investigation-filters" role="group" aria-label="Filter investigations by status" data-filter-group="status">
-      <button class="filter-btn active" type="button" aria-pressed="true" data-filter-value="all">All statuses</button>
-      <button class="filter-btn" type="button" aria-pressed="false" data-filter-value="completed">Completed</button>
-      <button class="filter-btn" type="button" aria-pressed="false" data-filter-value="in-progress">In Progress</button>
-    </div>
+  <div class="rd-case-grid" id="investigation-list">
+    <article class="rd-case investigation-card" data-source="flare-darkroom">
+      <div class="rd-case-top"><span>CASE-2026-001 · Aug 2026</span><span class="rd-pill rd-pill-ok">Complete</span></div>
+      <h2>Inside Flare Darkroom</h2>
+      <p class="rd-sector">Dark-web intelligence · 3-part series</p>
+      <p>From initial access brokers to the ransomware and credential economy, ending in cross-forum correlation and simulated threat-actor engagement.</p>
+      <ul class="rd-parts">
+        <li><a href="{{ '/investigations/flare-darkroom/initial-access-credential-exposure/' | relative_url }}">Part 1 · From initial access to credential exposure</a><span>9 min</span></li>
+        <li><a href="{{ '/investigations/flare-darkroom/ransomware-credential-economy/' | relative_url }}">Part 2 · Following the ransomware and credential economy</a><span>8 min</span></li>
+        <li><a href="{{ '/investigations/flare-darkroom/cross-forum-intelligence/' | relative_url }}">Part 3 · Cross-forum intelligence and simulated engagement</a><span>14 min</span></li>
+      </ul>
+      <div class="rd-tags"><span class="rd-tag">Flare Darkroom</span><span class="rd-tag">31 min total</span></div>
+      <a class="rd-cta" href="{{ '/investigations/flare-darkroom/initial-access-credential-exposure/' | relative_url }}">Start with Part 1 →</a>
+    </article>
+
+    <article class="rd-case investigation-card" data-source="kc7-cyber">
+      <div class="rd-case-top"><span>CASE-2026-004 · Jun 2026</span><span class="rd-pill rd-pill-amber">Part 1 of 2</span></div>
+      <h2>Valdoria Votes</h2>
+      <p class="rd-sector">Public sector / elections · APT campaign</p>
+      <p>An election-themed APT campaign, tracked through its infrastructure.</p>
+      <div class="rd-tags"><span class="rd-tag">KC7 Cyber</span><span class="rd-tag">7 ATT&amp;CK techniques</span><span class="rd-tag">8 min</span></div>
+      <a class="rd-cta" href="{{ '/investigations/valdoria-votes/' | relative_url }}">Read Part 1 →</a>
+    </article>
+
+    <article class="rd-case investigation-card" data-source="kc7-cyber">
+      <div class="rd-case-top"><span>CASE-2026-003 · Jun 2026</span><span class="rd-pill rd-pill-ok">Complete</span></div>
+      <h2>Solvi Systems</h2>
+      <p class="rd-sector">Energy / ICS · Supply-chain espionage</p>
+      <p>A supply-chain intrusion into an industrial control systems operator: 470 C2 connections traced across 38 endpoints.</p>
+      <div class="rd-tags"><span class="rd-tag">KC7 Cyber</span><span class="rd-tag">8 ATT&amp;CK techniques</span><span class="rd-tag">11 min</span></div>
+      <a class="rd-cta" href="{{ '/investigations/solvi-systems/' | relative_url }}">Read the report →</a>
+    </article>
+
+    <article class="rd-case investigation-card" data-source="kc7-cyber">
+      <div class="rd-case-top"><span>CASE-2026-002 · Jun 2026</span><span class="rd-pill rd-pill-ok">Complete</span></div>
+      <h2>Inside Encryptodera</h2>
+      <p class="rd-sector">Financial services · Insider threat → AD ransomware</p>
+      <p>An insider-threat case escalating to Active Directory ransomware: 306 endpoints and a 27-day exfiltration window.</p>
+      <div class="rd-tags"><span class="rd-tag">KC7 Cyber</span><span class="rd-tag">8 ATT&amp;CK techniques</span><span class="rd-tag">9 min</span></div>
+      <a class="rd-cta" href="{{ '/investigations/inside-encryptodera/' | relative_url }}">Read the report →</a>
+    </article>
   </div>
 </div>
-
-<div class="investigation-grid" id="investigation-list">
-  {% assign items = site.investigations | sort: "date" | reverse %}
-  {% for inv in items %}
-    {% assign inv_status = inv.status | default: "Completed" %}
-    {% if inv_status == "Completed" %}{% assign status_slug = "completed" %}{% else %}{% assign status_slug = "in-progress" %}{% endif %}
-    {% assign inv_source = site.data.investigation_sources | where: "id", inv.source | first %}
-    {% assign domains = inv.topics | default: inv.tags %}
-    <article class="investigation-card"
-             data-status="{{ status_slug }}"
-             data-source="{{ inv.source | default: 'unattributed' | escape }}"
-             data-search="{{ inv.title | downcase }} {{ inv_source.name | downcase }} {{ inv.sector | downcase }} {{ inv.threat_type | downcase }} {% for topic in domains %}{{ topic | downcase }} {% endfor %}">
-      {% if inv_source %}
-        <p class="inv-source">
-          <span class="inv-source-name">{{ inv_source.name | escape }}</span>
-          <span class="inv-source-sep" aria-hidden="true">·</span>
-          <span class="inv-source-kind">Simulated investigation</span>
-        </p>
-      {% endif %}
-      <h2 class="ic-title">
-        {% if inv_status == "Coming Soon" %}{{ inv.title | escape }}{% else %}<a href="{{ inv.url | relative_url }}">{{ inv.title | escape }}</a>{% endif %}
-      </h2>
-      <p class="ic-desc">{{ inv.description | strip_html | truncatewords: 30 | escape }}</p>
-      {% comment %} Cards show at most three domains; the article header carries the full set. {% endcomment %}
-      {% if domains %}
-        {% assign shown_domains = domains | slice: 0, 3 %}
-        <p class="ic-domains">{{ shown_domains | join: " · " | escape }}</p>
-      {% endif %}
-      <div class="ic-metarow">
-        {% if inv.attack_count %}<span class="ic-meta-item">ATT&amp;CK · {{ inv.attack_count }}</span>{% endif %}
-        {% unless inv_status == "Coming Soon" %}{% assign rt = inv.content | number_of_words | divided_by: 200 | plus: 1 %}<span class="ic-meta-item">{{ rt }} min read</span>{% endunless %}
-        {% unless inv_status == "Completed" %}<span class="ic-meta-item ic-meta-status">{{ inv_status | escape }}</span>{% endunless %}
-      </div>
-      <div class="ic-meta">
-        {% if inv.series and inv.part %}
-          {% assign series_parts = site.investigations | where: "series", inv.series %}
-          <span class="ic-part">Part {{ inv.part }} of {{ series_parts.size }}</span>
-        {% endif %}
-        {% if inv_status == "Coming Soon" %}
-          <span class="ic-status">Coming soon</span>
-        {% elsif inv_status == "Completed" %}
-          <a class="ic-link" href="{{ inv.url | relative_url }}" aria-label="Read investigation: {{ inv.title | escape }}">Read investigation →</a>
-        {% else %}
-          <a class="ic-link" href="{{ inv.url | relative_url }}" aria-label="Read Part 1: {{ inv.title | escape }}">Read Part 1 →</a>
-        {% endif %}
-      </div>
-    </article>
-  {% endfor %}
-</div>
-
-<p class="no-results hidden" id="inv-no-results">No investigations match your search.</p>
