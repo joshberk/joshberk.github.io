@@ -66,8 +66,8 @@ manuscripts:
   </section>
 
   <section class="rd-section">
-    <div class="rd-fig rd-fig-lg rd-fig-img"><img src="{{ '/assets/images/eepsite-graph-light.png' | relative_url }}" alt="Eepsite relationship graph from Study 1, showing clusters, hubs, and isolated sites" width="1672" height="941" loading="lazy" /></div>
-    <p class="rd-caption"><strong>Fig. 01.</strong> Eepsite relationship graph from Study 1. Clusters, hubs, and isolated sites show how the hidden-service ecosystem is structured.</p>
+    <div class="rd-fig rd-fig-lg rd-fig-img"><img src="{{ '/assets/images/eepsite-graph-light.png' | relative_url }}" alt="Illustrative representation of an eepsite relationship graph, showing clusters, hubs, and isolated sites" width="1672" height="941" loading="lazy" /></div>
+    <p class="rd-caption"><strong>Fig. 01.</strong> Illustrative representation of an eepsite relationship graph, not plotted from Study 1 data. Clusters, hubs, and isolated sites show how a hidden-service ecosystem can be structured.</p>
   </section>
 
   <section class="rd-section">

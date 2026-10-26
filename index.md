@@ -34,7 +34,7 @@ layout: default
       <article class="rd-card">
         <p class="rd-kicker">Featured Research</p>
         <h3>Measuring the I2P hidden-service ecosystem</h3>
-        <div class="rd-fig rd-fig-img"><img src="{{ '/assets/images/eepsite-graph-dark.png' | relative_url }}" alt="Eepsite relationship graph: clusters of linked hidden services" width="1672" height="940" loading="lazy" /></div>
+        <div class="rd-fig rd-fig-img"><img src="{{ '/assets/images/eepsite-graph-dark.png' | relative_url }}" alt="Illustrative representation of an eepsite relationship graph" width="1672" height="940" loading="lazy" /></div>
         <p>A three-study, cross-layer measurement program using a directed multiplex graph framework. Study 1 is complete; Study 2 is under way.</p>
         <a href="{{ '/research/' | relative_url }}">Read about the project →</a>
       </article>
