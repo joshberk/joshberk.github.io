@@ -7,7 +7,7 @@ projects:
   language: HTML
   stars: 1
   forks: 0
-  updated: '2026-11-15T13:20:31Z'
+  updated: '2026-11-16T14:35:07Z'
 - name: Agentic-Threat-Intel-Feed
   full_name: joshberk/Agentic-Threat-Intel-Feed
   description: This is my agentic threat intelligence feed project.
@@ -16,13 +16,3 @@ projects:
   stars: 2
   forks: 0
   updated: '2026-02-23T19:13:07Z'
-- name: PVE-Resource-monitor
-  full_name: joshberk/PVE-Resource-monitor
-  description: A Python-based telemetry tool for Proxmox Virtual Environments running
-    on Supermicro hardware. This script provides daily resource utilization reports
-    and real-time hardware power consumption stats via Slack.
-  url: https://github.com/joshberk/PVE-Resource-monitor
-  language: Python
-  stars: 1
-  forks: 0
-  updated: '2026-03-03T03:22:08Z'
